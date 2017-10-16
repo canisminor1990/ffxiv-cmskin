@@ -1,0 +1,13 @@
+@import 'import';
+.view {
+}
+.zone {
+  > span:after {
+    content: ':';
+    margin-right: 0.2rem;
+  }
+}
+.time {
+  color: #eee1c5;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,30 @@
+.view {
+  height: calc(100% - 0.2rem);
+  width: 100%;
+  position: relative;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #222;
+  background: linear-gradient(to bottom, #555 0, #333 3rem);
+  color: #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6);
+}
+.header {
+  color: #c2c2c2;
+  font-weight: 500;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+  padding: 0.6rem 0.8rem 0;
+  > hr {
+    margin-top: 0.6rem;
+    border: none;
+    border-top: 1px solid #1c1c1c;
+    border-bottom: 1px solid #5b5e5b;
+    height: 1px;
+    background: #524d52;
+  }
+}
+.body {
+  padding: 0.8rem;
+  width: 100%;
+  height: calc(100vh - 3rem);
+}

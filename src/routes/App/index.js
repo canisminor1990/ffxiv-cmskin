@@ -1,7 +1,6 @@
 import { connect } from 'dva';
-import Overlay from '../../components/Overlay';
-
-const App = ({ dispatch }) => {
+import { View } from '../../components';
+const App = ({ dispatch, children }) => {
   document.addEventListener('onOverlayDataUpdate', data => {
     dispatch({ type: 'data/update', payload: data.detail });
   });
@@ -11,7 +10,7 @@ const App = ({ dispatch }) => {
     }
   });
 
-  return <Overlay />;
+  return <View>{children}</View>;
 };
 
 export default connect()(App);
