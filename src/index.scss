@@ -1,0 +1,23 @@
+@import 'import';
+@import 'root';
+
+html,
+body,
+:global(#root) {
+  height: 100%;
+}
+
+:global {
+  .ant-back-top {
+    bottom: 4rem;
+    right: 4rem;
+    @include media($m-middle) {
+      display: none !important;
+    }
+  }
+
+  .ant-back-top-content {
+    background: #222;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" class="webp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+	<title>CanisMinor</title>
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_399961_0hn2h38wf9z1if6r.css"/>
+</head>
+<body>
+<div id="root"></div>
+<!-- script -->
+<% if (process.env.NODE_ENV === 'development') { %>
+<script type="text/javascript" src="/roadhog.dll.js"></script>
+<% } %>
+</body>
+<% if (process.env.NODE_ENV === 'development') { %>
+<script type="text/javascript" src="/debug.js"></script>
+<% } %>
+</html>

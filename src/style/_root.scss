@@ -1,0 +1,18 @@
+@import 'symbol/font';
+@import 'symbol/scroll';
+
+a:focus {
+  text-decoration: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+div {
+  box-sizing: border-box;
+}
