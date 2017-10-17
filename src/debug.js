@@ -3127,7 +3127,7 @@ setInterval(() => {
   Encounter.ENCDPS = Math.round(allEncdps);
 
   _.forEach(Combatant, item => {
-    item['damage%'] = parseInt(item.dps / Encounter.dps * 100);
+    item['damage%'] = parseInt(item.dps / Encounter.dps * 100)+'%';
   });
 
   const event = new CustomEvent('onOverlayDataUpdate', { detail: ActData });

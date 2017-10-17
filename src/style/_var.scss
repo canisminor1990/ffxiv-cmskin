@@ -1,18 +1,24 @@
 // color
-$c-primary: #62e6ac;
-$c-font-dark: #323a45;
-$c-font-normal: #747c83;
-$c-split: rgba(0, 0, 0, 0.05);
-$c-white: #f8f8f2;
-$c-grey: #666;
-$c-red: #f92672;
-$c-orange: #fd971f;
-$c-yellow: #e6db74;
-$c-green: #a6e22e;
-$c-blue: #66d9ef;
-$c-purple: #ae81ff;
-// font
-$font-code: Hack, Menlo, Consolas, Courier, monospace !important;
+$c-white: #ccc;
+$c-grey: #555;
+$c-yellow: #bca98a;
+$c-red: #d86f87;
+$c-green: #649029;
+$c-blue: #4488fc;
+$c-purple: #bb84ff;
+$c-red-light: #e881b5;
+$c-yellow-light: #eee1c5;
+$c-green-light: #b3ffbe;
+$c-blue-light: #57c0e5;
+
+$c-bg: #1e1e1e;
+$c-bg-highlight: #3a3a3a;
+$c-bg-dark: rgba(#000, 0.4);
+$c-bg-light: rgba(#fff, 0.1);
+
+$c-border: #554121;
+$c-border-highlight: #cfc36e;
+
 // media-point
 $m-large: '<=720px';
 $m-middle: '<=580px';

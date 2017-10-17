@@ -3,14 +3,12 @@ import style from './index.scss';
 export default ({ data, isActive }) => {
   let Content;
   if (isActive) {
-    const Zone = (
+    Content = (
       <span className={style.zone}>
-        <span>{data.zone}</span>
         {data.name}
+        <span> · {data.zone}</span>
       </span>
     );
-    const Time = <span className={style.time}> · {data.duration}</span>;
-    Content = [Zone, Time];
   } else {
     Content = 'CanisMinor Act';
   }

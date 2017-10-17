@@ -7,6 +7,11 @@ body,
   height: 100%;
 }
 
+body {
+  padding: 1rem;
+  color: $c-white;
+}
+
 :global {
   .ant-back-top {
     bottom: 4rem;

@@ -34,14 +34,14 @@
     "classnames": "^2.2.5",
     "dva": "^2.0.3",
     "dva-loading": "^1.0.2",
+    "g2": "^2.3.12",
+    "g2-react": "^1.3.1",
     "gitment": "^0.0.3",
     "history": "^4.7.2",
     "include-media": "^1.4.9",
     "path": "^0.12.7",
-    "polished": "^1.8.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "styled-components": "^2.2.0"
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

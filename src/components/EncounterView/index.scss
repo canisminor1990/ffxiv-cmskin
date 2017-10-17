@@ -2,12 +2,9 @@
 .view {
 }
 .zone {
-  > span:after {
-    content: ':';
-    margin-right: 0.2rem;
+  > span {
+    color: $c-grey;
+    font-size: 0.8rem;
+    text-shadow: none;
   }
-}
-.time {
-  color: #eee1c5;
-  font-size: 0.8rem;
 }

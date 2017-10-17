@@ -23,20 +23,24 @@ const parseJob = db => {
 const parseLongjob = db => {
   if (typeof db['Job'] !== 'undefined' && db['Job'] !== '') {
     return Job[db['Job'].toLowerCase()].name;
-  } else if (typeof db['name'] !== 'undefined' && db['name'].indexOf('(') !== -1) {
-    return 'Chocobo';
+  } else if (typeof db['name'] !== 'undefined') {
+    try {
+      return db['name'].indexOf('(') !== -1 ? 'Chocobo' : Job[db['name'].toLowerCase()].name;
+    } catch (e) {
+      return db['name'];
+    }
   } else {
     return db['name'];
   }
 };
 
 const parseDamage = db => ({
-  total: parseFloat(db['damage']).toLocaleString(),
-  dps: parseFloat(db['encdps']).toLocaleString(),
+  total: parseInt(db['damage']),
+  ps: parseInt(db['encdps']),
   count: db['swings'],
   percent: db['damage%'],
   highest: {
-    full: db['maxhit'],
+    full: _.startCase(db['maxhit']),
     value: db['MAXHIT'],
   },
   accuracy: {
@@ -58,14 +62,14 @@ const parseDamage = db => ({
 });
 
 const parseHealing = db => ({
-  total: parseFloat(db['healed']).toLocaleString(),
-  ps: parseFloat(db['enchps']).toLocaleString(),
-  psraw: parseFloat(db['enchps']),
+  total: parseInt(db['healed']),
+  ps: parseInt(db['enchps']),
+  psraw: parseInt(db['enchps']),
   count: db['heals'],
   percent: db['healed%'],
   over: db['OverHealPct'],
   highest: {
-    full: db['maxheal'],
+    full: _.startCase(db['maxhit']),
     value: db['MAXHEAL'],
   },
   criticals: {
@@ -74,8 +78,8 @@ const parseHealing = db => ({
   },
 });
 const parseTanking = db => ({
-  raw: parseFloat(db['damagetaken']).toLocaleString(),
-  total: parseFloat(db['damagetaken']).toLocaleString(),
+  raw: parseInt(db['damagetaken']),
+  total: parseInt(db['damagetaken']),
   parry: db['ParryPct'],
   block: db['BlockPct'],
 });
@@ -83,7 +87,7 @@ const parseData = db => ({
   name: parseName(db),
   job: parseJob(db),
   longjob: parseLongjob(db),
-  role: db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : false,
+  role: db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他',
   damage: parseDamage(db),
   healing: parseHealing(db),
   tanking: parseTanking(db),
@@ -92,9 +96,9 @@ const parseData = db => ({
 });
 
 const parseCombatant = db => {
-  let Combatant = {};
+  let Combatant = [];
   _.forEach(db, (item, key) => {
-    Combatant[key] = parseData(item);
+    Combatant.push(parseData(item));
   });
   return Combatant;
 };

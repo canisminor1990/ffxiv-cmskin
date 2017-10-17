@@ -1,0 +1,80 @@
+@import 'import';
+.view {
+}
+.list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.8rem;
+  }
+}
+.header {
+  width: 25%;
+  white-space: nowrap;
+  position: relative;
+  margin-right: 1rem;
+  .name {
+    overflow: hidden;
+    width: 100%;
+    font-weight: 500;
+    text-shadow: 0 1px $c-bg-dark;
+    text-overflow: ellipsis;
+  }
+  .desc {
+    overflow: hidden;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+    color: $c-yellow;
+    text-overflow: ellipsis;
+    > span {
+      + span {
+        margin-left: 0.6rem;
+      }
+    }
+  }
+}
+.info {
+  height: 32px;
+  flex: 1;
+  margin-right: 1rem;
+  background: rgba(#000, 0.2);
+  border: 1px solid $c-bg-dark;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.damage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 8rem;
+  position: relative;
+  .skill {
+    color: $c-yellow;
+    margin-bottom: 0.2rem;
+  }
+  .dps {
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-shadow: 0 1px $c-bg-dark;
+    z-index: 9;
+  }
+  .progress {
+    margin-top: -0.3rem;
+    height: 4px;
+    border-radius: 4px;
+    width: 100%;
+    background: $c-grey;
+    position: relative;
+    overflow: hidden;
+    .active {
+      height: 100%;
+      border-radius: 4px;
+      background: $c-red;
+    }
+  }
+}

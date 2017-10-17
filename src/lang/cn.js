@@ -95,15 +95,15 @@ const Job = {
     role: '坦克',
     name: '骑士',
   },
-  'smn-pet': {
+  'smn pet': {
     role: '其他',
     name: '宝石兽',
   },
-  'sch-pet': {
+  'sch pet': {
     role: '其他',
     name: '小仙女',
   },
-  'mch-pet': {
+  'mch pet': {
     role: '其他',
     name: '炮塔',
   },
@@ -111,7 +111,7 @@ const Job = {
     role: '其他',
     name: '陆行鸟',
   },
-  'limit-break': {
+  'limit break': {
     role: '其他',
     name: '极限技',
   },

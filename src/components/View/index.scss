@@ -1,30 +1,78 @@
+@import 'import';
 .view {
-  height: calc(100% - 0.2rem);
+  height: 100%;
   width: 100%;
   position: relative;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #222;
-  background: linear-gradient(to bottom, #555 0, #333 3rem);
-  color: #ddd;
+  overflow: hidden;
   border-radius: 0.5rem;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6);
+  background: $c-border;
+  padding: 5px;
+  box-shadow: 0 1px 1px 0 $c-border-highlight inset,
+    0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 0 2px #333,
+    0 2px 2px 2px rgba(#000, 0.5);
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(to bottom, $c-bg-highlight, $c-bg 2rem);
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px $c-bg-light inset, 0 0 0 2px #222,
+    0 3px 1px $c-border-highlight, 0 0 2px 1px $c-bg-dark;
 }
 .header {
-  color: #c2c2c2;
   font-weight: 500;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.6);
-  padding: 0.6rem 0.8rem 0;
-  > hr {
-    margin-top: 0.6rem;
-    border: none;
-    border-top: 1px solid #1c1c1c;
-    border-bottom: 1px solid #5b5e5b;
-    height: 1px;
-    background: #524d52;
+  text-shadow: 0 1px $c-bg-dark;
+  padding: 0.6rem 0.8rem;
+}
+.footer {
+  padding: 0.6rem 0.8rem;
+}
+.content {
+  @include showup;
+  width: 100%;
+  display: block;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  .body {
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  &:before,
+  &:after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 0.8rem;
+    position: absolute;
+    left: 0;
+  }
+  &:before {
+    background: linear-gradient(to bottom, $c-bg, rgba($c-bg, 0));
+    top: 0;
+  }
+  &:after {
+    bottom: 0;
+    background: linear-gradient(to top, $c-bg, rgba($c-bg, 0));
   }
 }
-.body {
-  padding: 0.8rem;
-  width: 100%;
-  height: calc(100vh - 3rem);
+.bar {
+  background: $c-bg-dark;
+  box-shadow: 0 -1px 0 $c-bg-light inset, 0 1px 0 #000 inset;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  z-index: 9;
+}
+.split {
+  margin-top: 0.6rem;
+  border: none;
+  height: 1px;
+  background: $c-bg-light;
+  box-shadow: 0 -1px 0 $c-bg-dark;
 }
