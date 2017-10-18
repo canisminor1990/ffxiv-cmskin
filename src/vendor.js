@@ -6,6 +6,5 @@ import 'history';
 import 'path';
 import 'react';
 import 'react-dom';
-import 'gitment';
 import 'g2';
 import 'g2-react';
