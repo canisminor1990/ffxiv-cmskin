@@ -1,0 +1,11 @@
+@import 'import';
+.menu {
+  z-index: 50;
+  border-top: 1px solid $c-bg-light;
+  border-bottom: 1px solid $c-bg-dark;
+  background: $c-bg;
+  border-radius: 6px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6);
+  min-width: 200px;
+}

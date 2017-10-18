@@ -42,6 +42,7 @@ export default ({ tab, item, firstItem, graph }) => {
       .position(`time*${tab}`)
       .color(tabData[tab].color);
     chart.axis(false);
+    chart.tooltip(false);
     chart.animate(false);
     chart.render();
   });
