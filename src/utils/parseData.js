@@ -64,7 +64,6 @@ const parseDamage = db => ({
 const parseHealing = db => ({
   total: parseInt(db['healed']),
   ps: parseInt(db['enchps']),
-  psraw: parseInt(db['enchps']),
   count: db['heals'],
   percent: db['healed%'],
   over: db['OverHealPct'],
@@ -78,7 +77,6 @@ const parseHealing = db => ({
   },
 });
 const parseTanking = db => ({
-  raw: parseInt(db['damagetaken']),
   total: parseInt(db['damagetaken']),
   parry: db['ParryPct'],
   block: db['BlockPct'],

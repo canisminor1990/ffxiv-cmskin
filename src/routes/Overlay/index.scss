@@ -1,0 +1,13 @@
+@import 'import';
+.tab {
+  color: $c-grey;
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover,
+  &.active {
+    color: $c-yellow;
+    font-weight: 600;
+  }
+}

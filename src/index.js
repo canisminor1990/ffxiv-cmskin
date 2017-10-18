@@ -4,7 +4,9 @@ import createLoading from 'dva-loading';
 import createHistory from 'history/createBrowserHistory';
 import './index.scss';
 import Console from './utils/console';
+import Debug from './utils/debug';
 
+const ifDebug = true;
 const ERROR_MSG_DURATION = 3; // 3 秒
 
 // 1. Initialize
@@ -28,6 +30,5 @@ app.router(require('./router'));
 app.start('#root');
 
 // 6. Other
-if (process.env.NODE_ENV !== 'development') {
-  Console();
-}
+if (ifDebug && process.env.NODE_ENV === 'development') Debug();
+if (process.env.NODE_ENV !== 'development') Console();

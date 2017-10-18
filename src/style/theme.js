@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const PrimaryColor = '#62e6ac';
+const PrimaryColor = '#bca98a';
 
 const Base = {
   '@primary-color': PrimaryColor,

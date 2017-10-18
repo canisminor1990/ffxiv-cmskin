@@ -1,8 +1,10 @@
 import { connect } from 'dva';
 import { EncounterView, CombatantView, View, NoticeBar } from '../../components';
 import { Component } from 'react';
+import classnames from 'classnames/bind';
+import style from './index.scss';
 
-const { Header, Content, Bar, Footer } = View;
+const { Header, Content, Bar, Footer, Split } = View;
 
 const State = state => ({
   Encounter: state.data.Encounter,
@@ -14,6 +16,12 @@ class Overlay extends Component {
   state = {
     tab: 'dps',
   };
+
+  tabClass = tab =>
+    classnames.bind(style)({
+      [style.tab]: true,
+      [style.active]: this.state.tab === tab,
+    });
 
   render() {
     const { Encounter, Combatant, isActive } = this.props;
@@ -32,10 +40,17 @@ class Overlay extends Component {
           isActive={isActive}
         />
       </Content>,
+      <Split key="split" />,
       <Footer key="footer">
-        <span onClick={() => this.setState({ tab: 'dps' })}>输出</span>
-        <span onClick={() => this.setState({ tab: 'heal' })}>治疗</span>
-        <span onClick={() => this.setState({ tab: 'tank' })}>承伤</span>
+        <span className={this.tabClass('dps')} onClick={() => this.setState({ tab: 'dps' })}>
+          输出
+        </span>
+        <span className={this.tabClass('heal')} onClick={() => this.setState({ tab: 'heal' })}>
+          治疗
+        </span>
+        <span className={this.tabClass('tank')} onClick={() => this.setState({ tab: 'tank' })}>
+          承伤
+        </span>
       </Footer>,
     ];
   }

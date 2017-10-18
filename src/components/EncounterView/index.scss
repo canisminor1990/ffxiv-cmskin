@@ -1,10 +1,17 @@
 @import 'import';
 .view {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
 }
 .zone {
+  flex: 1;
   > span {
     color: $c-grey;
     font-size: 0.8rem;
     text-shadow: none;
+    @include media($m-small) {
+      display: none;
+    }
   }
 }

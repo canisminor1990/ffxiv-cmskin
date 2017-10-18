@@ -28,10 +28,30 @@
   padding: 0.6rem 0.8rem;
 }
 .footer {
-  padding: 0.6rem 0.8rem;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.infooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.copyright {
+  line-height: 1;
+  color: $c-grey;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+    color: $c-yellow;
+  }
+  @include media($m-small) {
+    display: none;
+  }
 }
 .content {
-  @include showup;
   width: 100%;
   display: block;
   flex: 1;
@@ -44,25 +64,11 @@
     overflow-x: hidden;
     overflow-y: auto;
   }
-  &:before,
-  &:after {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 0.8rem;
-    position: absolute;
-    left: 0;
-  }
-  &:before {
-    background: linear-gradient(to bottom, $c-bg, rgba($c-bg, 0));
-    top: 0;
-  }
-  &:after {
-    bottom: 0;
-    background: linear-gradient(to top, $c-bg, rgba($c-bg, 0));
-  }
 }
 .bar {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: $c-bg-dark;
   box-shadow: 0 -1px 0 $c-bg-light inset, 0 1px 0 #000 inset;
   padding: 0.4rem 0.8rem;
@@ -70,7 +76,6 @@
   z-index: 9;
 }
 .split {
-  margin-top: 0.6rem;
   border: none;
   height: 1px;
   background: $c-bg-light;

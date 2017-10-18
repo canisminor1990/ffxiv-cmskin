@@ -20,4 +20,18 @@ export default {
       yield put({ type: 'save', payload: Data });
     },
   },
+  subscriptions: {
+    setup({ dispatch, history }) {
+      return history.listen(() => {
+        document.addEventListener('onOverlayDataUpdate', data => {
+          dispatch({ type: 'update', payload: data.detail });
+        });
+        window.addEventListener('message', data => {
+          if (data.data.type === 'onOverlayDataUpdate') {
+            dispatch({ type: 'update', payload: data.data.detail });
+          }
+        });
+      });
+    },
+  },
 };

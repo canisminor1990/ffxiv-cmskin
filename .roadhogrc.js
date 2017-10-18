@@ -4,7 +4,6 @@ import pxtorem from 'postcss-pxtorem';
 export default {
   entry: {
     index: './src/index.js',
-	  debug: './src/debug.js',
     common: './src/vendor.js'
   },
   multipage: true,
