@@ -11,5 +11,4 @@ npm-debug.log*
 
 .idea/
 /test
-/dist
 yarn.lock
