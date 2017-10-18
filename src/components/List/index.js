@@ -4,17 +4,19 @@ import path from 'path';
 import createG2 from 'g2-react';
 
 export default ({ tab, item, firstItem, graph }) => {
+  if (!item.job) return;
+
   const tabData = {
     dps: {
       desc: [['暴击', item.damage.criticals.percent], ['直击', item.damage.directhit.percent]],
-      skill: item.damage.highest.full,
+      skill: item.damage.highest.full ? item.damage.highest.full : '输出',
       progressShow: item.damage.ps,
       progress: parseInt(item.damage.ps) / parseInt(firstItem.damage.ps),
       color: '#d86f87',
     },
     heal: {
       desc: [['暴击', item.healing.criticals.percent], ['溢出', item.healing.over]],
-      skill: item.healing.highest.full,
+      skill: item.healing.highest.full ? item.healing.highest.full : '治疗',
       progressShow: item.healing.ps,
       progress: parseInt(item.healing.ps) / parseInt(firstItem.healing.ps),
       color: '#649029',
@@ -28,10 +30,10 @@ export default ({ tab, item, firstItem, graph }) => {
     },
   };
 
-  // if (tabData[tab].progressShow <= 0) return [];
-
   const Chart = createG2(chart => {
-    chart.col('time', { range: [0, 1] });
+    chart.col('time', {
+      range: [0, 1],
+    });
     chart.col(tab);
     chart
       .area()
@@ -49,7 +51,7 @@ export default ({ tab, item, firstItem, graph }) => {
 
   const listClass = classnames.bind(style)({
     [style.list]: true,
-    [style.my]: item.name === 'YOU',
+    [style.my]: item.isMy,
   });
 
   return (
@@ -71,7 +73,9 @@ export default ({ tab, item, firstItem, graph }) => {
       <div className={style.info}>
         <Chart
           data={graph}
-          plotCfg={{ margin: [0, 0, 0, 0] }}
+          plotCfg={{
+            margin: [0, 0, 0, 0],
+          }}
           width={100}
           height={32}
           forceFit={true}
@@ -81,13 +85,15 @@ export default ({ tab, item, firstItem, graph }) => {
         <div className={style.skill}>{tabData[tab].skill}</div>
         <div className={style.show}>{parseFloat(tabData[tab].progressShow).toLocaleString()}</div>
         <div className={style.progress}>
-          <div
-            className={style.active}
-            style={{
-              background: tabData[tab].color,
-              width: tabData[tab].progress * 100 + '%',
-            }}
-          />
+          {tabData[tab].progress ? (
+            <div
+              className={style.active}
+              style={{
+                background: tabData[tab].color,
+                width: tabData[tab].progress * 100 + '%',
+              }}
+            />
+          ) : null}
         </div>
       </div>
     </div>

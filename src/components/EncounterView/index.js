@@ -5,8 +5,8 @@ export default ({ data, isActive }) => {
   if (isActive) {
     Content = (
       <span className={style.zone}>
-        {data.name}
-        <span> · {data.zone}</span>
+        {data.zone}
+        <span> · {data.name}</span>
       </span>
     );
   } else {

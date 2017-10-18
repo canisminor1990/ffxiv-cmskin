@@ -1,11 +1,36 @@
 @import 'import';
+.view {
+  height: 100%;
+}
+:global(.react-contextmenu-wrapper) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .menu {
   z-index: 50;
   border-top: 1px solid $c-bg-light;
   border-bottom: 1px solid $c-bg-dark;
-  background: $c-bg;
-  border-radius: 6px;
+  background: #282828;
+  border-radius: 4px;
   text-shadow: 0 1px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6);
   min-width: 200px;
+}
+
+.title {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+}
+:global(.react-contextmenu-item) {
+  display: block;
+  margin: 0.2rem 0.3rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: $c-yellow-light;
+  &:hover {
+    background: linear-gradient(to right, rgba(#000, 0.4), rgba(#000, 0));
+  }
 }

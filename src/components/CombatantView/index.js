@@ -10,14 +10,16 @@ export default ({ tab, data, time, isActive }) => {
   if (isActive) {
     if (time !== timeBackup) {
       _.forEach(data, item => {
-        if (!graph[item.name]) graph[item.name] = [];
-        graph[item.name].push({
-          time: time,
-          dps: item.damage.ps,
-          heal: item.healing.ps,
-          tank: item.tanking.total,
-        });
-        if (graph[item.name].length > 30) graph[item.name].shift();
+        try {
+          if (!graph[item.name]) graph[item.name] = [];
+          graph[item.name].push({
+            time: time,
+            dps: item.damage.ps,
+            heal: item.healing.ps,
+            tank: item.tanking.total,
+          });
+          if (graph[item.name].length > 30) graph[item.name].shift();
+        } catch (e) {}
       });
       timeBackup = time;
     }

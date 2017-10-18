@@ -4,7 +4,11 @@ import _ from 'lodash';
 const parseName = db => {
   if (typeof db['name'] === 'undefined') return false;
   if (db['name'].indexOf('(') !== -1) {
-    return 'Chocobo';
+    return '陆行鸟';
+  } else if (db['name'].toLowerCase() === 'you') {
+    return '我';
+  } else if (db['name'].toLowerCase() === 'lilimit break') {
+    return '极限技';
   } else {
     return db['name'];
   }
@@ -68,7 +72,7 @@ const parseHealing = db => ({
   percent: db['healed%'],
   over: db['OverHealPct'],
   highest: {
-    full: _.startCase(db['maxhit']),
+    full: _.startCase(db['maxheal']),
     value: db['MAXHEAL'],
   },
   criticals: {
@@ -91,6 +95,7 @@ const parseData = db => ({
   tanking: parseTanking(db),
   kills: db['kills'],
   deaths: db['deaths'],
+  isMy: db['name'] === 'YOU',
 });
 
 const parseCombatant = db => {

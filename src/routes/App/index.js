@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import style from './index.scss';
 
+const { Split } = View;
 const State = state => ({
   fullscreen: state.setting.fullscreen,
 });
@@ -10,17 +11,20 @@ const State = state => ({
 const App = ({ children, fullscreen, dispatch }) => {
   const handleClick = e => dispatch({ type: 'setting/update', payload: e });
 
-  return [
-    <ContextMenuTrigger key="view">
-      <View>{children}</View>
-    </ContextMenuTrigger>,
-    <ContextMenu key="menu" className={style.menu}>
-      <div>菜单</div>
-      <MenuItem onClick={() => handleClick({ fullscreen: !fullscreen })}>
-        {fullscreen ? '折叠菜单' : '展开菜单'}
-      </MenuItem>
-    </ContextMenu>,
-  ];
+  return (
+    <View>
+      <ContextMenuTrigger key="view" className={style.view}>
+        {children}
+      </ContextMenuTrigger>
+      <ContextMenu key="menu" className={style.menu}>
+        <div className={style.title}>菜单</div>
+        <Split />
+        <MenuItem className={style.time} onClick={() => handleClick({ fullscreen: !fullscreen })}>
+          {fullscreen ? '折叠菜单' : '展开菜单'}
+        </MenuItem>
+      </ContextMenu>
+    </View>
+  );
 };
 
 export default connect(State)(App);
