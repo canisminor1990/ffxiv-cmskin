@@ -1,6 +1,6 @@
 # FFXIV CanisMinor Act Skin
 
-最终幻想 XIV ACT OverlayPlugin Skin
+最终幻想 XIV ACT OverlayPlugin Skin [演示](http://ffxiv.canisminor.cc)
 
 ## Usage
 
