@@ -28,7 +28,7 @@ export default ({ tab, item, firstItem, graph }) => {
     },
   };
 
-  if (tabData[tab].progressShow <= 0) return [];
+  // if (tabData[tab].progressShow <= 0) return [];
 
   const Chart = createG2(chart => {
     chart.col('time', { range: [0, 1] });
