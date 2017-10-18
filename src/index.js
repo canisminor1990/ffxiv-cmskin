@@ -4,6 +4,7 @@ import createLoading from 'dva-loading';
 import createHistory from 'history/createBrowserHistory';
 import './index.scss';
 import Console from './utils/console';
+import Baidu from './utils/baiduPush';
 import Debug from './utils/debug';
 
 const ifDebug = true;
@@ -31,4 +32,7 @@ app.start('#root');
 
 // 6. Other
 if (ifDebug && process.env.NODE_ENV === 'development') Debug();
-if (process.env.NODE_ENV !== 'development') Console();
+if (process.env.NODE_ENV !== 'development') {
+  Console();
+  Baidu();
+}
