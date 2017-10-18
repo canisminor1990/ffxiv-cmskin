@@ -15,6 +15,7 @@ const App = ({ children, fullscreen, dispatch }) => {
       <View>{children}</View>
     </ContextMenuTrigger>,
     <ContextMenu key="menu" className={style.menu}>
+      <div>菜单</div>
       <MenuItem onClick={() => handleClick({ fullscreen: !fullscreen })}>
         {fullscreen ? '折叠菜单' : '展开菜单'}
       </MenuItem>
