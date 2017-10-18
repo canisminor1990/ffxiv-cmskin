@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "start": "roadhog server",
-    "build": "roadhog build",
+    "build": "roadhog build && yarn push && git checkout coding-pages && git pull && bash ./sync.sh && yarn push",
     "build:dll": "roadhog buildDll",
+    "push":"git add -A && git commit -m 'update' && git push",
     "lint": "lint-staged",
     "lint:es": "eslint --fix --ext .js src"
   },
