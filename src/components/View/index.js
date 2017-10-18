@@ -1,8 +1,8 @@
 import style from './index.scss';
 
-const View = ({ children }) => {
+const View = ({ children, ...other }) => {
   return (
-    <div className={style.view}>
+    <div className={style.view} {...other}>
       <div className={style.inner}>{children}</div>
     </div>
   );

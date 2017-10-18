@@ -12,10 +12,8 @@ const App = ({ children, fullscreen, dispatch }) => {
   const handleClick = e => dispatch({ type: 'setting/update', payload: e });
 
   return (
-    <View>
-      <ContextMenuTrigger key="view" className={style.view}>
-        {children}
-      </ContextMenuTrigger>
+    <View style={fullscreen ? { height: '100%' } : {}}>
+      <ContextMenuTrigger key="view">{children}</ContextMenuTrigger>
       <ContextMenu key="menu" className={style.menu}>
         <div className={style.title}>菜单</div>
         <Split />

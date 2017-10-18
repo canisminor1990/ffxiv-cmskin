@@ -2,10 +2,14 @@ import classnames from 'classnames/bind';
 import style from './index.scss';
 import path from 'path';
 import createG2 from 'g2-react';
+import { connect } from 'dva';
 
-export default ({ tab, item, firstItem, graph }) => {
-  if (!item.job) return;
-
+const State = state => ({
+  fullscreen: state.setting.fullscreen,
+});
+const ListView = ({ tab, item, firstItem, graph, fullscreen }) => {
+  if (!item.job || item.job === 'you') return [];
+  if (!fullscreen && !item.isMy) return [];
   const tabData = {
     dps: {
       desc: [['暴击', item.damage.criticals.percent], ['直击', item.damage.directhit.percent]],
@@ -51,7 +55,8 @@ export default ({ tab, item, firstItem, graph }) => {
 
   const listClass = classnames.bind(style)({
     [style.list]: true,
-    [style.my]: item.isMy,
+    [style.my]: item.isMy && fullscreen,
+    [style.mini]: !fullscreen,
   });
 
   return (
@@ -99,3 +104,4 @@ export default ({ tab, item, firstItem, graph }) => {
     </div>
   );
 };
+export default connect(State)(ListView);

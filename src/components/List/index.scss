@@ -7,6 +7,19 @@
   position: relative;
   white-space: nowrap;
 }
+.mini {
+  margin: 0;
+}
+.my {
+  background: linear-gradient(
+    to right,
+    rgba($c-yellow-light, 0.1),
+    rgba($c-yellow-light, 0) 80%
+  );
+  margin: -0.4rem -0.4rem 0.4rem -0.4rem;
+  padding: 0.4rem 0.4rem;
+  border-radius: 0.5rem;
+}
 .avatar {
   min-width: 2.5rem;
   width: 2.5rem;
@@ -28,16 +41,6 @@
   border-radius: 1rem;
   padding: 0.1rem 0.4rem;
   font-size: 0.7rem;
-}
-.my {
-  background: linear-gradient(
-    to right,
-    rgba($c-yellow-light, 0.1),
-    rgba($c-yellow-light, 0) 80%
-  );
-  margin: -0.4rem -0.4rem 0.4rem -0.4rem;
-  padding: 0.4rem 0.4rem;
-  border-radius: 0.5rem;
 }
 .header {
   max-width: 120px;
