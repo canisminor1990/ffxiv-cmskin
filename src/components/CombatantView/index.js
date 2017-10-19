@@ -2,27 +2,10 @@ import style from './index.scss';
 import { List, ChangeLog } from '../';
 import _ from 'lodash';
 
-let timeBackup;
 let content = [];
-let graph = {};
 
-export default ({ tab, data, time, isActive }) => {
+export default ({ tab, data, isActive }) => {
   if (isActive) {
-    if (time !== timeBackup) {
-      _.forEach(data, item => {
-        try {
-          if (!graph[item.name]) graph[item.name] = [];
-          graph[item.name].push({
-            time: time,
-            dps: item.damage.ps,
-            heal: item.healing.ps,
-            tank: item.tanking.total,
-          });
-          if (graph[item.name].length > 30) graph[item.name].shift();
-        } catch (e) {}
-      });
-      timeBackup = time;
-    }
     let sortedData = [];
     if (tab === 'dps') {
       sortedData = _.reverse(_.sortBy(data, 'damage.ps'));
@@ -34,13 +17,7 @@ export default ({ tab, data, time, isActive }) => {
       sortedData = _.reverse(_.sortBy(data, 'tanking.total'));
     }
     content = sortedData.map((item, key) => (
-      <List
-        tab={tab}
-        key={item.name}
-        item={item}
-        graph={graph[item.name]}
-        firstItem={sortedData[0]}
-      />
+      <List tab={tab} key={item.name} item={item} firstItem={sortedData[0]} />
     ));
   } else {
     content = <ChangeLog />;

@@ -1,57 +1,39 @@
 import classnames from 'classnames/bind';
 import style from './index.scss';
 import path from 'path';
-import createG2 from 'g2-react';
+import { Link } from 'dva/router';
 import { connect } from 'dva';
+import { Avatar, Chart, Progress } from '../';
 
 const State = state => ({
   fullscreen: state.setting.fullscreen,
 });
-const ListView = ({ tab, item, firstItem, graph, fullscreen }) => {
+const ListView = ({ tab, item, firstItem, fullscreen }) => {
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
   const tabData = {
     dps: {
       desc: [['暴击', item.damage.criticals.percent], ['直击', item.damage.directhit.percent]],
-      skill: item.damage.highest.full ? item.damage.highest.full : '输出',
-      progressShow: item.damage.ps,
+      title: item.damage.highest.full ? item.damage.highest.full : '输出',
+      number: item.damage.ps,
       progress: parseInt(item.damage.ps) / parseInt(firstItem.damage.ps),
       color: '#d86f87',
     },
     heal: {
       desc: [['暴击', item.healing.criticals.percent], ['溢出', item.healing.over]],
-      skill: item.healing.highest.full ? item.healing.highest.full : '治疗',
-      progressShow: item.healing.ps,
+      title: item.healing.highest.full ? item.healing.highest.full : '治疗',
+      number: item.healing.ps,
       progress: parseInt(item.healing.ps) / parseInt(firstItem.healing.ps),
       color: '#649029',
     },
     tank: {
       desc: [['招架', item.tanking.parry], ['格挡', item.tanking.block]],
-      skill: '承伤总量',
-      progressShow: item.tanking.total,
+      title: '承伤总量',
+      number: item.tanking.total,
       progress: parseInt(item.tanking.total) / parseInt(firstItem.damage.total),
       color: '#4488fc',
     },
   };
-
-  const Chart = createG2(chart => {
-    chart.col('time', {
-      range: [0, 1],
-    });
-    chart.col(tab);
-    chart
-      .area()
-      .position(`time*${tab}`)
-      .color(tabData[tab].color);
-    chart
-      .line()
-      .position(`time*${tab}`)
-      .color(tabData[tab].color);
-    chart.axis(false);
-    chart.tooltip(false);
-    chart.animate(false);
-    chart.render();
-  });
 
   const listClass = classnames.bind(style)({
     [style.list]: true,
@@ -60,11 +42,8 @@ const ListView = ({ tab, item, firstItem, graph, fullscreen }) => {
   });
 
   return (
-    <div className={listClass}>
-      <div className={style.avatar}>
-        {item.deaths > 0 ? <div className={style.deaths}>✗{item.deaths}</div> : null}
-        <img src={path.join('img/jobs', item.job + '.png')} />
-      </div>
+    <Link to={path.join('/detail', item.name)} className={listClass}>
+      <Avatar deaths={item.deaths} job={item.job} />
       <div className={style.header}>
         <div className={style.name}>{item.name}</div>
         <div className={style.desc}>
@@ -76,32 +55,16 @@ const ListView = ({ tab, item, firstItem, graph, fullscreen }) => {
         </div>
       </div>
       <div className={style.info}>
-        <Chart
-          data={graph}
-          plotCfg={{
-            margin: [0, 0, 0, 0],
-          }}
-          width={100}
-          height={32}
-          forceFit={true}
-        />
+        <Chart name={item.name} tab={tab} color={tabData[tab].color} size={32} />
       </div>
-      <div className={style.right}>
-        <div className={style.skill}>{tabData[tab].skill}</div>
-        <div className={style.show}>{parseFloat(tabData[tab].progressShow).toLocaleString()}</div>
-        <div className={style.progress}>
-          {tabData[tab].progress ? (
-            <div
-              className={style.active}
-              style={{
-                background: tabData[tab].color,
-                width: tabData[tab].progress * 100 + '%',
-              }}
-            />
-          ) : null}
-        </div>
-      </div>
-    </div>
+      <Progress
+        className={style.right}
+        title={tabData[tab].title}
+        number={tabData[tab].number}
+        progress={tabData[tab].progress}
+        color={tabData[tab].color}
+      />
+    </Link>
   );
 };
 export default connect(State)(ListView);

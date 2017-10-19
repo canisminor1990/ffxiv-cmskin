@@ -1,20 +1,19 @@
-import dynamic from 'dva/dynamic';
 import { Route, Router, Switch } from 'dva/router';
 import App from './routes/App';
+import Overlay from './routes/Overlay';
+import Detail from './routes/Detail';
 
-export default ({ app, history }) => {
+export default ({ history }) => {
   history.listen(() => window.scrollTo(0, 0));
-
-  const Overlay = dynamic({ app, component: () => import('./routes/Overlay') });
 
   return (
     <Router history={history}>
-      <App>
-        <Switch>
-          <Route path="/" component={Overlay} />
-          <Route path="/test" component={Overlay} />
-        </Switch>
-      </App>
+      <Switch>
+        <App>
+          <Route exact path="/" component={Overlay} />
+          <Route exact path="/detail/:name" component={Detail} />
+        </App>
+      </Switch>
     </Router>
   );
 };

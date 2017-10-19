@@ -1,4 +1,5 @@
 import style from './index.scss';
+import classnames from 'classnames/bind';
 
 const View = ({ children, ...other }) => {
   return (
@@ -8,15 +9,23 @@ const View = ({ children, ...other }) => {
   );
 };
 
-View.Header = ({ children }) => <div className={style.header}>{children}</div>;
-View.Content = ({ children }) => (
-  <div className={style.content}>
-    <div className={style.body}>{children}</div>
+View.Header = ({ className, children, ...other }) => (
+  <div className={classnames.bind(style)(style.header, className)} {...other}>
+    {children}
   </div>
 );
-View.Footer = ({ children }) => (
+View.Content = ({ className, children, ...other }) => (
+  <div className={style.content}>
+    <div className={classnames.bind(style)(style.body, className)} {...other}>
+      {children}
+    </div>
+  </div>
+);
+View.Footer = ({ className, children, ...other }) => (
   <div className={style.footer}>
-    <div className={style.infooter}>{children}</div>
+    <div className={classnames.bind(style)(style.infooter, className)} {...other}>
+      {children}
+    </div>
     <a
       className={style.copyright}
       href="https://coding.net/u/canisminor1990/p/ffxiv-cmskin/git"
@@ -27,6 +36,20 @@ View.Footer = ({ children }) => (
     </a>
   </div>
 );
-View.Bar = ({ children }) => <div className={style.bar}>{children}</div>;
-View.Split = () => <div className={style.split} />;
+View.Bar = ({ className, children, ...other }) => (
+  <div className={style.bar} {...other}>
+    {children}
+  </div>
+);
+View.Split = ({ title, ...other }) => {
+  let List = [];
+  if (title)
+    List.push(
+      <div key="title" className={style.title}>
+        {title}
+      </div>
+    );
+  List.push(<div key="split" className={style.split} {...other} />);
+  return List;
+};
 export default View;

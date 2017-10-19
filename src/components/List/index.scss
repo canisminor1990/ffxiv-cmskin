@@ -1,47 +1,28 @@
 @import 'import';
 .list {
+  color: $c-white;
   display: flex;
   align-items: center;
-  margin-bottom: 0.8rem;
   font-size: 0.8rem;
   position: relative;
   white-space: nowrap;
+  margin: -0.4rem -0.4rem 0.4rem -0.4rem;
+  padding: 0.4rem 0.4rem;
+  border-radius: 0.5rem;
+  &.my,
+  &:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      to right,
+      rgba($c-yellow-light, 0.1),
+      rgba($c-yellow-light, 0) 80%
+    );
+  }
 }
 .mini {
   margin: 0;
 }
-.my {
-  background: linear-gradient(
-    to right,
-    rgba($c-yellow-light, 0.1),
-    rgba($c-yellow-light, 0) 80%
-  );
-  margin: -0.4rem -0.4rem 0.4rem -0.4rem;
-  padding: 0.4rem 0.4rem;
-  border-radius: 0.5rem;
-}
-.avatar {
-  min-width: 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-right: 0.8rem;
-  position: relative;
-  > img {
-    width: 100%;
-    height: auto;
-  }
-}
-.deaths {
-  font-weight: 600;
-  top: -0.2rem;
-  left: -0.5rem;
-  position: absolute;
-  background: rgb(195, 68, 72);
-  box-shadow: 1px 2px 6px 1px rgba(#000, 0.2);
-  border-radius: 1rem;
-  padding: 0.1rem 0.4rem;
-  font-size: 0.7rem;
-}
+
 .header {
   max-width: 120px;
   min-width: 2rem;
@@ -74,13 +55,11 @@
 }
 .info {
   min-width: 32px;
-  height: 32px;
   flex: 1;
   margin-right: 1rem;
-  background: rgba(#000, 0.2);
-  border: 1px solid $c-bg-dark;
-  border-radius: 4px;
-  overflow: hidden;
+  @include media($m-large) {
+    max-width: 2.5rem;
+  }
   @include media($m-middle) {
     display: none;
   }
@@ -89,35 +68,9 @@
   min-width: 5rem;
   max-width: 160px;
   flex: 1;
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-}
-.skill {
-  text-align: right;
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  color: $c-yellow;
-  margin-bottom: 0.2rem;
-}
-.show {
-  font-weight: 800;
-  font-size: 0.9rem;
-  text-shadow: 0 1px $c-bg-dark;
-  z-index: 9;
-}
-.progress {
-  margin-top: -0.3rem;
-  height: 4px;
-  border-radius: 4px;
-  width: 100%;
-  background: $c-grey;
-  position: relative;
-  overflow: hidden;
-}
-.active {
-  height: 100%;
-  border-radius: 4px;
 }

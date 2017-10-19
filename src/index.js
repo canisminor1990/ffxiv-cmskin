@@ -7,7 +7,7 @@ import Console from './utils/console';
 import Baidu from './utils/baiduPush';
 import Debug from './utils/debug';
 
-const ifDebug = false;
+const ifDebug = true;
 const ERROR_MSG_DURATION = 3; // 3 秒
 
 // 1. Initialize
@@ -23,6 +23,7 @@ app.use(createLoading());
 
 // 3. Model
 app.model(require('./models/updateActData'));
+app.model(require('./models/updateChart'));
 app.model(require('./models/setting'));
 
 // 4. Router

@@ -1,0 +1,21 @@
+@import 'import';
+
+.avatar {
+  margin-right: 0.8rem;
+  position: relative;
+  > img {
+    width: 100%;
+    height: auto;
+  }
+}
+.deaths {
+  font-weight: 600;
+  top: -0.2rem;
+  left: -0.5rem;
+  position: absolute;
+  background: rgb(195, 68, 72);
+  box-shadow: 1px 2px 6px 1px rgba(#000, 0.2);
+  border-radius: 1rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+}

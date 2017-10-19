@@ -25,10 +25,12 @@ export default {
       return history.listen(() => {
         document.addEventListener('onOverlayDataUpdate', data => {
           dispatch({ type: 'update', payload: data.detail });
+          dispatch({ type: 'chart/update', payload: data.detail });
         });
         window.addEventListener('message', data => {
           if (data.data.type === 'onOverlayDataUpdate') {
             dispatch({ type: 'update', payload: data.data.detail });
+            dispatch({ type: 'chart/update', payload: data.data.detail });
           }
         });
       });

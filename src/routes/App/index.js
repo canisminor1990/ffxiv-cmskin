@@ -13,8 +13,10 @@ const App = ({ children, fullscreen, dispatch }) => {
 
   return (
     <View style={fullscreen ? { height: '100%' } : {}}>
-      <ContextMenuTrigger key="view">{children}</ContextMenuTrigger>
-      <ContextMenu key="menu" className={style.menu}>
+      <ContextMenuTrigger id="view" key="view">
+        {children}
+      </ContextMenuTrigger>
+      <ContextMenu id="view" key="menu" className={style.menu}>
         <div className={style.title}>菜单</div>
         <Split />
         <MenuItem className={style.time} onClick={() => handleClick({ fullscreen: !fullscreen })}>

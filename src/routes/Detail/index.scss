@@ -1,0 +1,50 @@
+@import 'import';
+.header {
+  display: flex;
+  align-items: center;
+}
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.role {
+  color: $c-grey;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+.progress {
+  padding: 0 0.8rem 0.8rem;
+  display: flex;
+  font-size: 1.1rem;
+  > div {
+    flex: 1;
+    + div {
+      margin-left: 0.8rem;
+    }
+  }
+}
+.desc {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  margin: 0.6rem 0 1rem;
+}
+.content {
+  width: 50%;
+  display: flex;
+  margin: 0.2rem 0;
+}
+.title {
+  color: $c-yellow;
+  margin-right: 0.3rem;
+}
+.tab {
+  color: $c-yellow;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    font-weight: 600;
+  }
+}

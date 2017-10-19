@@ -50,7 +50,7 @@ const parseDamage = db => ({
   accuracy: {
     hits: db['hits'],
     misses: db['misses'],
-    percent: db['tohit'],
+    percent: parseInt(db['tohit']) + '%',
   },
   criticals: {
     count: db['crithits'],
@@ -80,19 +80,21 @@ const parseHealing = db => ({
     percent: db['critheal%'],
   },
 });
-const parseTanking = db => ({
+const parseTanking = (db, Damage) => ({
   total: parseInt(db['damagetaken']),
+  percent: parseInt(db['damagetaken'] / Damage * 100) + '%',
   parry: db['ParryPct'],
   block: db['BlockPct'],
+  inc: parseInt(100 - db['IncToHit']) + '%',
 });
-const parseData = db => ({
+const parseData = (db, Damage) => ({
   name: parseName(db),
   job: parseJob(db),
   longjob: parseLongjob(db),
   role: db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他',
   damage: parseDamage(db),
   healing: parseHealing(db),
-  tanking: parseTanking(db),
+  tanking: parseTanking(db, Damage),
   kills: db['kills'],
   deaths: db['deaths'],
   isMy: db['name'] === 'YOU',
@@ -100,8 +102,12 @@ const parseData = db => ({
 
 const parseCombatant = db => {
   let Combatant = [];
-  _.forEach(db, (item, key) => {
-    Combatant.push(parseData(item));
+  let Damage = 0;
+  _.forEach(db, item => {
+    Damage = Damage + parseInt(item['damagetaken']);
+  });
+  _.forEach(db, item => {
+    Combatant.push(parseData(item, Damage));
   });
   return Combatant;
 };
