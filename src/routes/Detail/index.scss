@@ -22,6 +22,11 @@
       margin-left: 0.8rem;
     }
   }
+  //@include media($m-large) {
+  //	> div {
+  //		width: 33%;
+  //	}
+  //}
 }
 .desc {
   display: flex;
@@ -33,6 +38,9 @@
   width: 50%;
   display: flex;
   margin: 0.2rem 0;
+  @include media($m-large) {
+    width: 25%;
+  }
 }
 .title {
   color: $c-yellow;
