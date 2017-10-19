@@ -9,7 +9,7 @@ import style from './index.scss';
 const { Header, Content, Bar, Footer, Split } = View;
 
 const State = state => ({
-  fullscreen: state.setting.fullsycreen,
+  fullscreen: state.setting.fullscreen,
   Combatant: state.data.Combatant,
   isActive: !state.loading.global && state.data.isActive,
 });
@@ -94,19 +94,6 @@ const Detail = ({ location, fullscreen, Combatant, isActive }) => {
     );
   });
 
-  let Body = [];
-
-  if (fullscreen) {
-    Body = [
-      <Bar key="bar">详细数据</Bar>,
-      <Content key="body">
-        {DataList}
-        <Split key={'split'} title="数据图表" />
-        {ChartList}
-      </Content>,
-    ];
-  }
-
   return [
     <Header key="header" className={style.header}>
       <Avatar size="3rem" deaths={Data.deaths} job={Data.job} />
@@ -120,7 +107,14 @@ const Detail = ({ location, fullscreen, Combatant, isActive }) => {
     <div key="progerss" className={style.progress}>
       {ProgressList}
     </div>,
-    Body,
+    <Bar key="bar" style={!fullscreen ? { display: 'none' } : {}}>
+      详细数据
+    </Bar>,
+    <Content key="body" style={!fullscreen ? { display: 'none' } : {}}>
+      {DataList}
+      <Split key={'split'} title="数据图表" />
+      {ChartList}
+    </Content>,
     <Split key="split" />,
     <Footer key="footer">
       <Link to="/" className={style.tab}>
