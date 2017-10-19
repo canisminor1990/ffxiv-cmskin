@@ -7,7 +7,7 @@ import Console from './utils/console';
 import Baidu from './utils/baiduPush';
 import Debug from './utils/debug';
 
-const ifDebug = true;
+const ifDebug = false;
 const ERROR_MSG_DURATION = 3; // 3 秒
 
 // 1. Initialize

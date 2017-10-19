@@ -1,5 +1,22 @@
 @import 'import';
-
+.setting {
+  width: 0.8rem;
+  height: 0.8rem;
+  color: rgba(#000, 0.5);
+  display: block;
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  font-size: 1rem;
+  z-index: 999;
+  box-shadow: 0 0 0 1px $c-bg-dark, 0 0 2px 2px $c-bg-dark;
+  background: linear-gradient(to top, $c-border, $c-border-highlight);
+  border-radius: 100%;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+}
 :global(.react-contextmenu-wrapper) {
   height: 100%;
   display: flex;
@@ -15,7 +32,6 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6);
   min-width: 200px;
 }
-
 .title {
   padding: 0.4rem 0.6rem;
   font-size: 0.8rem;
