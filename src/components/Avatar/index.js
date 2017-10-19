@@ -19,7 +19,7 @@ export default ({ size = '2.5rem', deaths = 0, job }) => {
     'drk',
     'gla',
     'limitbreak',
-    'Inc',
+    'lnc',
     'mch',
     'mnk',
     'mrd',
