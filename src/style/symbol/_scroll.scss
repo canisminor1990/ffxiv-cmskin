@@ -1,24 +1,16 @@
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
+  display: none;
   background: transparent;
-  height: 0.4rem;
-  width: 0.6rem;
+  height: 0;
+  width: 0;
 }
-
-/*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
+  display: none;
   background: transparent;
-  border-radius: 0;
   box-shadow: none;
 }
-
-/*定义滑块 内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
+  display: none;
   background: transparent;
-  border-radius: 0.6rem;
   box-shadow: none;
-
-  &:hover {
-    background: $c-grey;
-  }
 }

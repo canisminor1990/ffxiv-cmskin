@@ -111,9 +111,8 @@ const Detail = ({ location, fullscreen, Combatant, isActive }) => {
       详细数据
     </Bar>,
     <Content key="body" style={!fullscreen ? { display: 'none' } : {}}>
+      <div className={style.chartlist}>{ChartList}</div>
       {DataList}
-      <Split key={'split'} title="数据图表" />
-      {ChartList}
     </Content>,
     <Split key="split" />,
     <Footer key="footer">

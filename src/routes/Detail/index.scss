@@ -22,11 +22,6 @@
       margin-left: 0.8rem;
     }
   }
-  //@include media($m-large) {
-  //	> div {
-  //		width: 33%;
-  //	}
-  //}
 }
 .desc {
   display: flex;
@@ -38,7 +33,7 @@
   width: 50%;
   display: flex;
   margin: 0.2rem 0;
-  @include media($m-large) {
+  @include media($m-extra) {
     width: 25%;
   }
 }
@@ -46,8 +41,16 @@
   color: $c-yellow;
   margin-right: 0.3rem;
 }
+.chartlist {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
 .chart {
-  margin-top: 0.6rem;
+  flex: 1;
+  + .chart {
+    margin-left: 0.8rem;
+  }
 }
 .tab {
   color: $c-yellow;
