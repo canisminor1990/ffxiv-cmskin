@@ -3,17 +3,18 @@ import { Link } from 'dva/router';
 import { Icon } from 'antd';
 import path from 'path';
 import _ from 'lodash';
-import { View, Avatar, Progress } from '../../components';
+import { View, Avatar, Progress, Chart } from '../../components';
 import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
 
 const State = state => ({
+  fullscreen: state.setting.fullsycreen,
   Combatant: state.data.Combatant,
   isActive: !state.loading.global && state.data.isActive,
 });
 
-const Detail = ({ location, Combatant, isActive }) => {
+const Detail = ({ location, fullscreen, Combatant, isActive }) => {
   if (!isActive) return [];
 
   const Name = path.basename(location.pathname);
@@ -59,6 +60,7 @@ const Detail = ({ location, Combatant, isActive }) => {
 
   let ProgressList = [];
   let DataList = [];
+  let ChartList = [];
   _.forEach(tabData, (item, key) => {
     ProgressList.push(
       <Progress
@@ -81,7 +83,29 @@ const Detail = ({ location, Combatant, isActive }) => {
         {Desc}
       </div>
     );
+    ChartList.push(
+      <Chart
+        key={key + 'chart'}
+        className={style.chart}
+        name={Data.name}
+        tab={key}
+        color={item.color}
+      />
+    );
   });
+
+  let Body = [];
+
+  if (fullscreen) {
+    Body = [
+      <Bar key="bar">详细数据</Bar>,
+      <Content key="body">
+        {DataList}
+        <Split key={'split'} title="数据图表" />
+        {ChartList}
+      </Content>,
+    ];
+  }
 
   return [
     <Header key="header" className={style.header}>
@@ -96,8 +120,7 @@ const Detail = ({ location, Combatant, isActive }) => {
     <div key="progerss" className={style.progress}>
       {ProgressList}
     </div>,
-    <Bar key="bar">详细数据</Bar>,
-    <Content key="body">{DataList}</Content>,
+    Body,
     <Split key="split" />,
     <Footer key="footer">
       <Link to="/" className={style.tab}>

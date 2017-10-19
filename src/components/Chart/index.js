@@ -1,15 +1,16 @@
 import createG2 from 'g2-react';
 import style from './index.scss';
+import classnames from 'classnames/bind';
 import { connect } from 'dva';
 
 const State = state => ({ data: state.chart.data });
 
-const ChartView = ({ data, name, tab, color, size = 32 }) => {
+const ChartView = ({ className, data, name, tab, color, size = 32 }) => {
   const Data = data[name];
   let content = [];
 
   if (!Data || Data.length <= 1) {
-    content = '等待数据积累...';
+    content = <div className={style.loading}>等待数据积累...</div>;
   } else {
     const Chart = createG2(chart => {
       chart.col('time', {
@@ -43,7 +44,10 @@ const ChartView = ({ data, name, tab, color, size = 32 }) => {
     );
   }
   return (
-    <div className={style.chart} style={{ height: `${size}px`, lineHeight: `${size}px` }}>
+    <div
+      className={classnames.bind(style)(style.chart, className)}
+      style={{ height: `${size}px`, lineHeight: `${size}px` }}
+    >
       {content}
     </div>
   );

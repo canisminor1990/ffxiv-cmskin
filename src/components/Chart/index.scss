@@ -1,7 +1,8 @@
 @import 'import';
 .chart {
+  width: 100%;
+
   font-size: 0.7rem;
-  text-overflow: ellipsis;
   color: $c-grey;
   text-align: center;
   overflow: hidden;
@@ -9,4 +10,10 @@
   background: $c-bg-dark;
   box-shadow: 0 1px 0 $c-bg-light, 0 -1px 0 #000;
   border-radius: 4px;
+}
+.loading {
+  margin: 0 0.4rem;
+  width: calc(100% - 0.8rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
