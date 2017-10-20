@@ -1,7 +1,25 @@
+import _ from 'lodash';
+import { getCookie } from '../utils/cookie';
+
 export default {
   namespace: 'setting',
   state: {
     fullscreen: true,
+    name: '我',
+    nameDefault: '我',
+    nameActive: false,
+    img: '',
+    imgDefault: '',
+    imgActive: false,
+    graphTime: 30,
+    graphTimeDefault: 30,
+    graphTimeActive: false,
+    miniTime: 10,
+    miniTimeDefault: 10,
+    miniTimeActive: false,
+    uiScale: 1,
+    uiScaleDefault: 1,
+    uiScaleActive: false,
   },
   reducers: {
     save(state, { payload: data }) {
@@ -9,8 +27,21 @@ export default {
     },
   },
   effects: {
-    *update({ payload: data }, { put }) {
-      yield put({ type: 'save', payload: data });
+    *root({}, { put, select }) {
+      const data = getCookie('setting');
+      const Setting = yield select(state => state.setting);
+      yield put({ type: 'save', payload: _.assign(Setting, data) });
+    },
+    *update({ payload: data }, { put, select }) {
+      const Setting = yield select(state => state.setting);
+      yield put({ type: 'save', payload: _.assign(Setting, data) });
+    },
+  },
+  subscriptions: {
+    setup({ dispatch, history }) {
+      return history.listen(() => {
+        dispatch({ type: 'root' });
+      });
     },
   },
 };

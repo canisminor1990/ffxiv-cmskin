@@ -37,7 +37,7 @@ View.Footer = ({ className, children, ...other }) => (
   </div>
 );
 View.Bar = ({ className, children, ...other }) => (
-  <div className={style.bar} {...other}>
+  <div className={classnames.bind(style)(style.bar, className)} {...other}>
     {children}
   </div>
 );

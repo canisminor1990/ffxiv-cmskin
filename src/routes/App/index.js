@@ -1,5 +1,6 @@
 import { View } from '../../components';
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
 import style from './index.scss';
@@ -7,29 +8,35 @@ import style from './index.scss';
 const { Split } = View;
 const State = state => ({
   fullscreen: state.setting.fullscreen,
+  uiScale: state.setting.uiScale,
+  uiScaleActive: state.setting.uiScaleActive,
 });
 
 class App extends Component {
-  handleClick = e => this.props.dispatch({ type: 'setting/update', payload: e });
-  showMenu = () => {};
-
   render() {
-    const { children, fullscreen } = this.props;
+    const { dispatch, children, fullscreen, uiScale, uiScaleActive } = this.props;
+    if (uiScaleActive) {
+      document.getElementsByTagName('html')[0].style.fontSize = 16 * uiScale + 'px';
+      console.log(16 * uiScale + 'px');
+    }
+
     return (
       <View style={fullscreen ? { height: '100%' } : {}}>
-        <ContextMenuTrigger id="view" key="view">
-          <div className={style.setting} onClick={this.showMenu} />
+        <ContextMenuTrigger id="view" key="view" holdToDisplay={-1}>
           {children}
         </ContextMenuTrigger>
         <ContextMenu id="view" key="menu" className={style.menu}>
           <div className={style.title}>菜单</div>
           <Split />
-          <MenuItem
-            className={style.time}
-            onClick={() => this.handleClick({ fullscreen: !fullscreen })}
-          >
-            {fullscreen ? '折叠菜单' : '展开菜单'}
-          </MenuItem>
+          <div className={style.item}>
+            <MenuItem
+              onClick={() =>
+                dispatch({ type: 'setting/update', payload: { fullscreen: !fullscreen } })}
+            >
+              {fullscreen ? '折叠菜单' : '展开菜单'}
+            </MenuItem>
+            <MenuItem onClick={() => dispatch(routerRedux.push('/setting'))}>设置</MenuItem>
+          </div>
         </ContextMenu>
       </View>
     );

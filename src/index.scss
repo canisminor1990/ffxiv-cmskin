@@ -1,24 +1,16 @@
 @import 'import';
 @import 'root';
-
 html,
 body,
 :global(#root) {
   height: 100%;
   background: transparent;
 }
-
-html {
-  font-size: 16px;
-}
-
 body {
-  font-size: 1rem;
   padding: 0.5rem;
   color: $c-white;
   user-select: none;
 }
-
 :global {
   .ant-back-top {
     bottom: 4rem;

@@ -7,8 +7,12 @@ import { Avatar, Chart, Progress } from '../';
 
 const State = state => ({
   fullscreen: state.setting.fullscreen,
+  name: state.setting.name,
+  nameActive: state.setting.nameActive,
+  img: state.setting.img,
+  imgActive: state.setting.imgActive,
 });
-const ListView = ({ tab, item, firstItem, fullscreen }) => {
+const ListView = ({ tab, item, firstItem, fullscreen, name, nameActive, img, imgActive }) => {
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
   const tabData = {
@@ -41,11 +45,21 @@ const ListView = ({ tab, item, firstItem, fullscreen }) => {
     [style.mini]: !fullscreen,
   });
 
+  let Name, Img;
+
+  if (item.isMy) {
+    Name = nameActive ? name : item.name;
+    Img = imgActive ? img : item.job;
+  } else {
+    Name = item.name;
+    Img = item.job;
+  }
+
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
-      <Avatar deaths={item.deaths} job={item.job} />
+      <Avatar deaths={item.deaths} job={Img} diy={imgActive && item.isMy} />
       <div className={style.header}>
-        <div className={style.name}>{item.name}</div>
+        <div className={style.name}>{Name}</div>
         <div className={style.desc}>
           {tabData[tab].desc.map((desc, i) => (
             <span key={i}>

@@ -18,6 +18,8 @@ export default {
       const isActive = data.isActive;
       const Time = Encounter.duration;
       const timeBackup = yield select(state => state.chart.time);
+      const { graphTime, graphTimeDefault, graphTimeActive } = yield select(state => state.setting);
+      const Length = graphTimeActive ? graphTime : graphTimeDefault;
       let Graph = yield select(state => state.chart.data);
       if (isActive) {
         if (Time !== timeBackup) {
@@ -30,7 +32,7 @@ export default {
                 heal: item.healing.ps >= 0 ? item.healing.ps : 0,
                 tank: item.tanking.total >= 0 ? item.tanking.total : 0,
               });
-              if (Graph[item.name].length > 30) Graph[item.name].shift();
+              if (Graph[item.name].length > Length) Graph[item.name].shift();
             } catch (e) {}
           });
         }

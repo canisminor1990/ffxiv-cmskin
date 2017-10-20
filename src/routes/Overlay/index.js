@@ -10,6 +10,10 @@ const State = state => ({
   Encounter: state.data.Encounter,
   Combatant: state.data.Combatant,
   isActive: !state.loading.global && state.data.isActive,
+  fullscreen: state.setting.fullscreen,
+  miniTime: state.setting.miniTime,
+  miniTimeActive: state.setting.miniTimeActive,
+  timeout: 0,
 });
 
 class Overlay extends Component {
@@ -23,8 +27,24 @@ class Overlay extends Component {
       [style.active]: this.state.tab === tab,
     });
 
+  componentWillMount() {
+    const { dispatch, isActive, fullscreen, miniTime, miniTimeActive } = this.props;
+    if (miniTimeActive) {
+      if (fullscreen && !isActive) {
+        setTimeout(
+          () => dispatch({ type: 'setting/update', payload: { fullscreen: false } }),
+          miniTime * 1000
+        );
+      } else {
+        dispatch({ type: 'setting/update', payload: { fullscreen: true } });
+        this.setState({ timeout: new Date() });
+      }
+    }
+  }
+
   render() {
     const { Encounter, Combatant, isActive } = this.props;
+
     return [
       <Header key="header">
         <EncounterView data={Encounter} isActive={isActive} />

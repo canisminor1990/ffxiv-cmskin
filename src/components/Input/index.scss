@@ -1,0 +1,14 @@
+@import 'import';
+.input {
+  color: $c-white;
+  height: 1.4rem;
+  font-size: 0.8rem;
+  text-align: center;
+  background: rgba(#000, 0.2);
+  background: $c-bg-dark;
+  box-shadow: 0 1px 0 $c-bg-light, 0 -1px 0 #000;
+  border: none;
+  &::-webkit-input-placeholder {
+    color: $c-grey;
+  }
+}

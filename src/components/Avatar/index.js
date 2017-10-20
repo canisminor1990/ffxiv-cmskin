@@ -1,7 +1,7 @@
 import style from './index.scss';
 import path from 'path';
 
-export default ({ size = '2.5rem', deaths = 0, job }) => {
+export default ({ size = '2.5rem', deaths = 0, job, diy }) => {
   const avatarStyle = {
     minWidth: size,
     width: size,
@@ -37,11 +37,17 @@ export default ({ size = '2.5rem', deaths = 0, job }) => {
     'whm',
   ];
   const Job = Jobs.indexOf(job) === -1 ? 'default' : job;
-
+  const Img = diy ? (
+    <div className={style.diy}>
+      <div style={{ backgroundImage: `url(${job})` }} />
+    </div>
+  ) : (
+    <img src={path.join('/img/jobs', Job + '.png')} />
+  );
   return (
     <div className={style.avatar} style={avatarStyle}>
       {deaths > 0 ? <div className={style.deaths}>✗{deaths}</div> : null}
-      <img src={path.join('/img/jobs', Job + '.png')} />
+      {Img}
     </div>
   );
 };

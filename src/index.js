@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { Message } from './components';
 import dva from 'dva';
 import createLoading from 'dva-loading';
 import createHistory from 'history/createBrowserHistory';
@@ -14,7 +14,7 @@ const ERROR_MSG_DURATION = 3; // 3 秒
 const app = dva({
   history: createHistory(),
   onError(e) {
-    message.error(e.message, ERROR_MSG_DURATION);
+    Message.error(e.message, ERROR_MSG_DURATION);
   },
 });
 
@@ -22,9 +22,9 @@ const app = dva({
 app.use(createLoading());
 
 // 3. Model
+app.model(require('./models/setting'));
 app.model(require('./models/updateActData'));
 app.model(require('./models/updateChart'));
-app.model(require('./models/setting'));
 
 // 4. Router
 app.router(require('./router'));

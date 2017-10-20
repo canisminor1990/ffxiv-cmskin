@@ -1,0 +1,57 @@
+@import 'import';
+.bar {
+  color: $c-yellow;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+}
+.body {
+  flex: 1;
+  font-size: 0.9rem;
+}
+.title {
+  text-shadow: 0 1px rgba(#000, 0.8);
+  margin-bottom: 0.6rem;
+}
+.item {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 0 0.4rem !important;
+  color: $c-yellow-light;
+}
+:global {
+  .ant-checkbox-inner {
+    background: linear-gradient(to bottom, #373232 0, #6a6662 100%);
+    border: 1px solid #7c776d;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6),
+      inset -1px -1px 1px rgba(0, 0, 0, 0.3), 0 0 2px rgba(0, 0, 0, 0.7);
+    &:after {
+      content: ' ';
+      border: none !important;
+      width: 10px;
+      height: 10px;
+      left: 1px;
+      top: 1px;
+      transform: none !important;
+      background: linear-gradient(to bottom, #f7c35a 0, #ffbe31 100%);
+      box-shadow: inset 0 0 2px 1px #ffeb7b, 0 0 3px 2px rgba(255, 190, 49, 0.6);
+      opacity: 0;
+    }
+  }
+  .ant-checkbox-checked {
+    .ant-checkbox-inner {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+.btngroup {
+  min-height: 22px;
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+}

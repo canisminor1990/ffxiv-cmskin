@@ -8,3 +8,8 @@ export { default as ChangeLog } from './ChangeLog';
 export { default as Avatar } from './Avatar';
 export { default as Chart } from './Chart';
 export { default as Progress } from './Progress';
+export { default as Back } from './Back';
+export { default as Button } from './Button';
+export { default as Checkbox } from './Checkbox';
+export { default as Input } from './Input';
+export { default as Message } from './Message';

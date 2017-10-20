@@ -1,0 +1,51 @@
+@import 'import';
+$btn-highlight: lighten($c-bg-highlight, 5%);
+$btn: lighten($c-bg, 5%);
+$btn-hover-highlight: lighten($c-bg-highlight, 10%);
+$btn-hover: lighten($c-bg, 10%);
+.btn {
+  height: 22px;
+  color: $c-white;
+  font-size: 0.8rem;
+  text-decoration: none;
+  background: linear-gradient(
+    to bottom,
+    $btn-highlight 0,
+    $btn-highlight 45%,
+    $btn 55%,
+    $btn 100%
+  );
+  border-radius: 2rem;
+  display: inline-block;
+  text-align: center;
+  width: 6rem;
+  text-shadow: 0 1px rgba(#000, 0.8);
+  padding: 3px;
+  border-top: 1px solid rgba($c-white, 0.5);
+  box-shadow: 0 0 3px 1px #000;
+  position: relative;
+  font-weight: 600;
+  + .btn {
+    margin-left: 0.5rem;
+  }
+  &:hover {
+    color: #fff;
+    background: linear-gradient(
+      to bottom,
+      $btn-hover-highlight 0,
+      $btn-hover-highlight 45%,
+      $btn-hover 55%,
+      $btn-hover 100%
+    );
+  }
+  &:active {
+    color: rgba($c-white, 0.6);
+    background: linear-gradient(
+      to bottom,
+      $c-bg-highlight 0,
+      $c-bg-highlight 45%,
+      $c-bg 55%,
+      $c-bg 100%
+    );
+  }
+}

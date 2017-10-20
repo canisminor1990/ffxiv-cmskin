@@ -1,9 +1,7 @@
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import { Icon } from 'antd';
 import path from 'path';
 import _ from 'lodash';
-import { View, Avatar, Progress, Chart } from '../../components';
+import { View, Avatar, Progress, Chart, Back } from '../../components';
 import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
@@ -116,9 +114,7 @@ const Detail = ({ location, fullscreen, Combatant, isActive }) => {
     </Content>,
     <Split key="split" />,
     <Footer key="footer">
-      <Link to="/" className={style.tab}>
-        <Icon type="left" /> 返回
-      </Link>
+      <Back />
     </Footer>,
   ];
 };
