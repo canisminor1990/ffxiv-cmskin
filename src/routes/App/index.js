@@ -15,11 +15,8 @@ const State = state => ({
 class App extends Component {
   render() {
     const { dispatch, children, fullscreen, uiScale, uiScaleActive } = this.props;
-    if (uiScaleActive) {
+    if (uiScaleActive)
       document.getElementsByTagName('html')[0].style.fontSize = 16 * uiScale + 'px';
-      console.log(16 * uiScale + 'px');
-    }
-
     return (
       <View style={fullscreen ? { height: '100%' } : {}}>
         <ContextMenuTrigger id="view" key="view" holdToDisplay={-1}>
