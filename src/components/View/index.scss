@@ -52,10 +52,11 @@
 }
 .content {
   width: 100%;
+  max-height: 100%;
   display: block;
   flex: 1;
   position: relative;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 .body {
   padding: 0.8rem;

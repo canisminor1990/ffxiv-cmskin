@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { View, Back, Button, Checkbox, Input, Message } from '../../components';
+import { View, Button, Checkbox, Input, Message } from '../../components';
 import { setCookie } from '../../utils/cookie';
 import { Component } from 'react';
 import style from './index.scss';
@@ -139,8 +139,8 @@ class Overlay extends Component {
         </div>
       </Content>,
       <Split key="split" />,
-      <Footer key="footer">
-        <Back />
+      <Footer className={style.foot} key="footer">
+        保存设置后请重新加载
       </Footer>,
     ];
   }

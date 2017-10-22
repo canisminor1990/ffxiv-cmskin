@@ -1,6 +1,5 @@
 import { View } from '../../components';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
 import style from './index.scss';
@@ -32,7 +31,9 @@ class App extends Component {
             >
               {fullscreen ? '折叠菜单' : '展开菜单'}
             </MenuItem>
-            <MenuItem onClick={() => dispatch(routerRedux.push('/setting'))}>设置</MenuItem>
+            <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=360')}>
+              设置
+            </MenuItem>
           </div>
         </ContextMenu>
       </View>
