@@ -5,6 +5,7 @@ export default {
   namespace: 'setting',
   state: {
     fullscreen: true,
+    transparent: false,
     name: '我',
     nameDefault: '我',
     nameActive: false,
@@ -14,12 +15,10 @@ export default {
     graphTime: 30,
     graphTimeDefault: 30,
     graphTimeActive: false,
-    miniTime: 10,
-    miniTimeDefault: 10,
-    miniTimeActive: false,
     uiScale: 1,
     uiScaleDefault: 1,
     uiScaleActive: false,
+    uiTrans: false,
   },
   reducers: {
     save(state, { payload: data }) {

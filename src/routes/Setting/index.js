@@ -18,10 +18,9 @@ class Overlay extends Component {
     imgActive: this.props.setting.imgActive,
     graphTime: this.props.setting.graphTime,
     graphTimeActive: this.props.setting.graphTimeActive,
-    miniTime: this.props.setting.miniTime,
-    miniTimeActive: this.props.setting.miniTimeActive,
     uiScale: this.props.setting.uiScale,
     uiScaleActive: this.props.setting.uiScaleActive,
+    uiTrans: this.props.setting.uiTrans,
   };
 
   inputOnChange = (e, name, isNumber) => {
@@ -48,19 +47,20 @@ class Overlay extends Component {
       imgActive: false,
       graphTime: this.props.setting.graphTimeDefault,
       graphTimeActive: false,
-      miniTime: this.props.setting.miniTimeDefault,
-      miniTimeActive: false,
       uiScale: this.props.setting.uiScaleDefault,
       uiScaleActive: false,
+      uiTrans: false,
     };
     this.setState(Default);
     Message.success('重置成功');
   };
 
   onSave = () => {
+    this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
     setCookie('setting', this.state);
     Message.success('保存成功');
+    Message.info('请刷新界面');
   };
 
   render() {
@@ -72,76 +72,75 @@ class Overlay extends Component {
       imgActive,
       graphTime,
       graphTimeActive,
-      miniTime,
-      miniTimeActive,
       uiScale,
       uiScaleActive,
+      uiTrans,
     } = this.state;
-    return [
-      <Header key="header">设置</Header>,
-      <Bar key="bar" className={style.bar}>
-        基础设置
-      </Bar>,
-      <Content key={timekey} className={style.content}>
-        <div className={style.body}>
-          <div className={style.title}>个人</div>
-          <Checkbox
-            title="自定义昵称"
-            defaultChecked={nameActive}
-            onChange={e => this.checkboxOnChange(e, 'nameActive')}
-          >
-            <Input defaultValue={name} onChange={e => this.inputOnChange(e, 'name')} />
-          </Checkbox>
-          <Checkbox
-            title="自定义头像"
-            defaultChecked={imgActive}
-            onChange={e => this.checkboxOnChange(e, 'imgActive')}
-          >
-            <Input
-              defaultValue={img}
-              placeholder={'图片网址'}
-              onChange={e => this.inputOnChange(e, 'img')}
+    return (
+      <View style={{ height: '100%' }}>
+        <Header key="header">设置</Header>
+        <Bar key="bar" className={style.bar}>
+          基础设置
+        </Bar>
+        <Content key={timekey} className={style.content}>
+          <div className={style.body}>
+            <div className={style.title}>个人</div>
+            <Checkbox
+              title="自定义昵称"
+              defaultChecked={nameActive}
+              onChange={e => this.checkboxOnChange(e, 'nameActive')}
+            >
+              <Input defaultValue={name} onChange={e => this.inputOnChange(e, 'name')} />
+            </Checkbox>
+            <Checkbox
+              title="自定义头像"
+              defaultChecked={imgActive}
+              onChange={e => this.checkboxOnChange(e, 'imgActive')}
+            >
+              <Input
+                defaultValue={img}
+                placeholder={'图片网址'}
+                onChange={e => this.inputOnChange(e, 'img')}
+              />
+            </Checkbox>
+            <br />
+            <div className={style.title}>常规</div>
+            <Checkbox
+              title="图表统计时长(秒)"
+              defaultChecked={graphTimeActive}
+              onChange={e => this.checkboxOnChange(e, 'graphTimeActive')}
+            >
+              <Input
+                defaultValue={graphTime}
+                onChange={e => this.inputOnChange(e, 'graphTime', true)}
+              />
+            </Checkbox>
+            <Checkbox
+              title="UI缩放(倍)"
+              defaultChecked={uiScaleActive}
+              onChange={e => this.checkboxOnChange(e, 'uiScaleActive')}
+            >
+              <Input
+                defaultValue={uiScale}
+                onChange={e => this.inputOnChange(e, 'uiScale', true)}
+              />
+            </Checkbox>
+            <Checkbox
+              title="透明模式"
+              defaultChecked={uiTrans}
+              onChange={e => this.checkboxOnChange(e, 'uiTrans')}
             />
-          </Checkbox>
-          <br />
-          <div className={style.title}>常规</div>
-          <Checkbox
-            title="图表统计时长(秒)"
-            defaultChecked={graphTimeActive}
-            onChange={e => this.checkboxOnChange(e, 'graphTimeActive')}
-          >
-            <Input
-              defaultValue={graphTime}
-              onChange={e => this.inputOnChange(e, 'graphTime', true)}
-            />
-          </Checkbox>
-          <Checkbox
-            title="自动折叠(秒)"
-            defaultChecked={miniTimeActive}
-            onChange={e => this.checkboxOnChange(e, 'miniTimeActive')}
-          >
-            <Input
-              defaultValue={miniTime}
-              onChange={e => this.inputOnChange(e, 'miniTime', true)}
-            />
-          </Checkbox>
-          <Checkbox
-            title="UI缩放(倍)"
-            defaultChecked={uiScaleActive}
-            onChange={e => this.checkboxOnChange(e, 'uiScaleActive')}
-          >
-            <Input defaultValue={uiScale} onChange={e => this.inputOnChange(e, 'uiScale', true)} />
-          </Checkbox>
-        </div>
-      </Content>,
-      <Split key="split" />,
-      <Footer className={style.foot} key="footer">
-        <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>恢复默认</Button>
-          <Button onClick={this.onSave}>保存</Button>
-        </div>
-      </Footer>,
-    ];
+          </div>
+        </Content>
+        <Split />
+        <Footer className={style.foot} key="footer">
+          <div className={style.btngroup}>
+            <Button onClick={this.onDefault}>恢复默认</Button>
+            <Button onClick={this.onSave}>保存</Button>
+          </div>
+        </Footer>
+      </View>
+    );
   }
 }
 

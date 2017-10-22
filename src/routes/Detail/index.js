@@ -8,11 +8,12 @@ const { Header, Content, Bar, Footer, Split } = View;
 
 const State = state => ({
   fullscreen: state.setting.fullscreen,
+  uiTrans: state.setting.uiTrans,
   Combatant: state.data.Combatant,
   isActive: !state.loading.global && state.data.isActive,
 });
 
-const Detail = ({ location, fullscreen, Combatant, isActive }) => {
+const Detail = ({ location, fullscreen, uiTrans, Combatant, isActive }) => {
   if (!isActive) return [];
 
   const Name = path.basename(location.pathname);
@@ -92,31 +93,33 @@ const Detail = ({ location, fullscreen, Combatant, isActive }) => {
     );
   });
 
-  return [
-    <Header key="header" className={style.header}>
-      <Avatar size="3rem" deaths={Data.deaths} job={Data.job} />
-      <div>
-        <div className={style.name}>{Data.name}</div>
-        <div className={style.role}>
-          {Data.role}: {Data.longjob}
+  return (
+    <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
+      <Header key="header" className={style.header}>
+        <Avatar size="3rem" deaths={Data.deaths} job={Data.job} />
+        <div>
+          <div className={style.name}>{Data.name}</div>
+          <div className={style.role}>
+            {Data.role}: {Data.longjob}
+          </div>
         </div>
+      </Header>
+      <div key="progerss" className={style.progress}>
+        {ProgressList}
       </div>
-    </Header>,
-    <div key="progerss" className={style.progress}>
-      {ProgressList}
-    </div>,
-    <Bar key="bar" style={!fullscreen ? { display: 'none' } : {}}>
-      详细数据
-    </Bar>,
-    <Content key="body" style={!fullscreen ? { display: 'none' } : {}}>
-      <div className={style.chartlist}>{ChartList}</div>
-      {DataList}
-    </Content>,
-    <Split key="split" />,
-    <Footer key="footer">
-      <Back />
-    </Footer>,
-  ];
+      <Bar key="bar" style={!fullscreen ? { display: 'none' } : {}}>
+        详细数据
+      </Bar>
+      <Content key="body" style={!fullscreen ? { display: 'none' } : {}}>
+        <div className={style.chartlist}>{ChartList}</div>
+        {DataList}
+      </Content>
+      <Split key="split" />
+      <Footer key="footer">
+        <Back />
+      </Footer>
+    </View>
+  );
 };
 
 export default connect(State)(Detail);

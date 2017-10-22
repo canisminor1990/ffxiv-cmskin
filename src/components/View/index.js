@@ -1,9 +1,15 @@
 import style from './index.scss';
 import classnames from 'classnames/bind';
 
-const View = ({ children, ...other }) => {
+const View = ({ transparent, children, ...other }) => {
   return (
-    <div className={style.view} {...other}>
+    <div
+      className={classnames.bind(style)({
+        [style.view]: !transparent,
+        [style.viewTrans]: transparent,
+      })}
+      {...other}
+    >
       <div className={style.inner}>{children}</div>
     </div>
   );

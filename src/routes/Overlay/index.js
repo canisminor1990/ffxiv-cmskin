@@ -11,8 +11,7 @@ const State = state => ({
   Combatant: state.data.Combatant,
   isActive: !state.loading.global && state.data.isActive,
   fullscreen: state.setting.fullscreen,
-  miniTime: state.setting.miniTime,
-  miniTimeActive: state.setting.miniTimeActive,
+  uiTrans: state.setting.uiTrans,
   timeout: 0,
 });
 
@@ -27,52 +26,39 @@ class Overlay extends Component {
       [style.active]: this.state.tab === tab,
     });
 
-  componentWillMount() {
-    const { dispatch, isActive, fullscreen, miniTime, miniTimeActive } = this.props;
-    if (miniTimeActive) {
-      if (fullscreen && !isActive) {
-        setTimeout(
-          () => dispatch({ type: 'setting/update', payload: { fullscreen: false } }),
-          miniTime * 1000
-        );
-      } else {
-        dispatch({ type: 'setting/update', payload: { fullscreen: true } });
-        this.setState({ timeout: new Date() });
-      }
-    }
-  }
-
   render() {
-    const { Encounter, Combatant, isActive } = this.props;
+    const { Encounter, Combatant, isActive, uiTrans, fullscreen } = this.props;
 
-    return [
-      <Header key="header">
-        <EncounterView data={Encounter} isActive={isActive} />
-      </Header>,
-      <Bar key="bar">
-        <NoticeBar data={Encounter} isActive={isActive} />
-      </Bar>,
-      <Content key="body">
-        <CombatantView
-          tab={this.state.tab}
-          data={Combatant}
-          time={Encounter ? Encounter.duration : ''}
-          isActive={isActive}
-        />
-      </Content>,
-      <Split key="split" />,
-      <Footer key="footer">
-        <span className={this.tabClass('dps')} onClick={() => this.setState({ tab: 'dps' })}>
-          输出
-        </span>
-        <span className={this.tabClass('heal')} onClick={() => this.setState({ tab: 'heal' })}>
-          治疗
-        </span>
-        <span className={this.tabClass('tank')} onClick={() => this.setState({ tab: 'tank' })}>
-          承伤
-        </span>
-      </Footer>,
-    ];
+    return (
+      <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
+        <Header key="header">
+          <EncounterView data={Encounter} isActive={isActive} />
+        </Header>
+        <Bar key="bar">
+          <NoticeBar data={Encounter} isActive={isActive} />
+        </Bar>
+        <Content key="body">
+          <CombatantView
+            tab={this.state.tab}
+            data={Combatant}
+            time={Encounter ? Encounter.duration : ''}
+            isActive={isActive}
+          />
+        </Content>
+        <Split key="split" />
+        <Footer key="footer">
+          <span className={this.tabClass('dps')} onClick={() => this.setState({ tab: 'dps' })}>
+            输出
+          </span>
+          <span className={this.tabClass('heal')} onClick={() => this.setState({ tab: 'heal' })}>
+            治疗
+          </span>
+          <span className={this.tabClass('tank')} onClick={() => this.setState({ tab: 'tank' })}>
+            承伤
+          </span>
+        </Footer>
+      </View>
+    );
   }
 }
 

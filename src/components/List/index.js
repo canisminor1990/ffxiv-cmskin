@@ -7,12 +7,23 @@ import { Avatar, Chart, Progress } from '../';
 
 const State = state => ({
   fullscreen: state.setting.fullscreen,
+  uiTrans: state.setting.uiTrans,
   name: state.setting.name,
   nameActive: state.setting.nameActive,
   img: state.setting.img,
   imgActive: state.setting.imgActive,
 });
-const ListView = ({ tab, item, firstItem, fullscreen, name, nameActive, img, imgActive }) => {
+const ListView = ({
+  tab,
+  item,
+  firstItem,
+  fullscreen,
+  uiTrans,
+  name,
+  nameActive,
+  img,
+  imgActive,
+}) => {
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
   const tabData = {
@@ -42,6 +53,7 @@ const ListView = ({ tab, item, firstItem, fullscreen, name, nameActive, img, img
   const listClass = classnames.bind(style)({
     [style.list]: true,
     [style.my]: item.isMy && fullscreen,
+    [style.trans]: uiTrans,
     [style.mini]: !fullscreen,
   });
 

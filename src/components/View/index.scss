@@ -1,42 +1,49 @@
 @import 'import';
-.view {
+
+.view,
+.viewTrans {
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 0.5rem;
-  background: $c-border;
   padding: 5px;
-  box-shadow: 0 1px 1px 0 $c-border-highlight inset,
-    0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 1px 2px rgba(#000, 0.5),
-    0 2px 2px 2px rgba(#000, 0.5);
 }
+
 .inner {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   position: relative;
-  background: linear-gradient(to bottom, $c-bg-highlight, $c-bg 2rem);
-  border-radius: 0.25rem;
-  box-shadow: 0 0 0 1px $c-bg-light inset, 0 0 0 2px #222,
-    0 3px 1px $c-border-highlight, 0 0 2px 1px $c-bg-dark;
 }
+
+.bar {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  z-index: 9;
+}
+
 .header {
   font-weight: 500;
   text-shadow: 0 1px $c-bg-dark;
   padding: 0.6rem 0.8rem;
 }
+
 .footer {
   padding: 0.4rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .infooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .copyright {
   line-height: 1;
   color: $c-grey;
@@ -50,6 +57,7 @@
     display: none;
   }
 }
+
 .content {
   width: 100%;
   max-height: 100%;
@@ -58,6 +66,7 @@
   position: relative;
   overflow-y: scroll;
 }
+
 .body {
   padding: 0.8rem;
   width: 100%;
@@ -66,24 +75,99 @@
   overflow-y: auto;
   position: relative;
 }
-.bar {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: $c-bg-dark;
-  box-shadow: 0 -1px 0 $c-bg-light inset, 0 1px 0 #000 inset;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.75rem;
-  z-index: 9;
-}
-.split {
-  border: none;
-  height: 1px;
-  background: $c-bg-light;
-  box-shadow: 0 -1px 0 $c-bg-dark;
-}
+
 .title {
   font-size: 0.7rem;
   color: $c-grey;
   margin-bottom: 0.2rem;
+}
+
+.split {
+  border: none;
+  height: 1px;
+}
+
+.view {
+  border-radius: 0.5rem;
+  background: $c-border;
+  box-shadow: 0 1px 1px 0 $c-border-highlight inset,
+    0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 1px 2px rgba(#000, 0.5),
+    0 2px 2px 2px rgba(#000, 0.5);
+  .inner {
+    background: linear-gradient(to bottom, $c-bg-highlight, $c-bg 2rem);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 1px $c-bg-light inset, 0 0 0 2px #222,
+      0 3px 1px $c-border-highlight, 0 0 2px 1px $c-bg-dark;
+  }
+  .bar {
+    background: $c-bg-dark;
+    box-shadow: 0 -1px 0 $c-bg-light inset, 0 1px 0 #000 inset;
+  }
+  .split {
+    border: none;
+    height: 1px;
+    background: $c-bg-light;
+    box-shadow: 0 -1px 0 $c-bg-dark;
+  }
+}
+
+.viewTrans {
+  &:hover {
+    &:before {
+      display: block;
+    }
+  }
+  &:before {
+    display: none;
+    z-index: 99999;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    content: '';
+    width: 0;
+    height: 0;
+    border-bottom: 0.8rem solid rgba(#fff, 0.2);
+    border-left: 0.8rem solid transparent;
+  }
+  .inner {
+    &:before {
+      z-index: -1;
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      filter: blur(2px);
+      background: linear-gradient(
+        to right,
+        rgba(#000, 0),
+        rgba(#000, 0.8) 5%,
+        rgba(#000, 0.6) 60%,
+        rgba(#000, 0)
+      );
+    }
+    border-radius: 0.25rem;
+    text-shadow: 0 0 2px darken($c-yellow, 50%) !important;
+  }
+  .bar {
+    background: linear-gradient(
+      to right,
+      rgba($c-yellow-light, 0),
+      rgba($c-yellow-light, 0.1) 5%,
+      rgba($c-yellow-light, 0.1) 60%,
+      rgba($c-yellow-light, 0)
+    );
+  }
+  .split {
+    background: linear-gradient(
+      to right,
+      rgba($c-yellow-light, 0),
+      rgba($c-yellow-light, 0.1) 5%,
+      rgba($c-yellow-light, 0.1) 60%,
+      rgba($c-yellow-light, 0)
+    );
+  }
+  .footer {
+    padding-bottom: 0.5rem;
+  }
 }
