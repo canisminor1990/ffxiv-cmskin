@@ -12,7 +12,7 @@ export default ({ data, isActive }) => {
         >
           {data.zone}
         </a>
-        <span> · {data.name}</span>
+        {data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : ''}
       </span>
     );
   } else {

@@ -29,8 +29,8 @@
     rgba($c-yellow-light, 0)
   ) !important;
 }
-.mini {
-  margin: 0;
+.fullscreen {
+  margin-bottom: -0.4rem !important;
 }
 
 .header {
@@ -84,5 +84,8 @@
   align-items: flex-end;
   position: relative;
 }
-.miniMode {
+.mini {
+  &.fullscreen {
+    margin-bottom: -0.4rem !important;
+  }
 }

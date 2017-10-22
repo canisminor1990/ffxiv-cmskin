@@ -56,7 +56,8 @@ const ListView = ({
     [style.list]: true,
     [style.my]: item.isMy && fullscreen,
     [style.trans]: uiTrans,
-    [style.mini]: !fullscreen,
+    [style.fullscreen]: !fullscreen,
+    [style.mini]: miniMode,
   });
 
   let Name, Img;

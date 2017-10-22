@@ -1,7 +1,7 @@
 {
   "name": "ffxiv-cmskin",
-  "version": "1.0.6",
-  "main": "index.js",
+  "version": "1.0.7",
+  "main": "src/index.js",
   "repository": "git://git.coding.net/canisminor1990/cmskin.git",
   "author": "canisminor1990 <canisminor1990@gmail.com>",
   "license": "MIT",
