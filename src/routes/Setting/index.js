@@ -21,6 +21,7 @@ class Overlay extends Component {
     uiScale: this.props.setting.uiScale,
     uiScaleActive: this.props.setting.uiScaleActive,
     uiTrans: this.props.setting.uiTrans,
+    miniMode: this.props.setting.miniMode,
   };
 
   inputOnChange = (e, name, isNumber) => {
@@ -50,6 +51,7 @@ class Overlay extends Component {
       uiScale: this.props.setting.uiScaleDefault,
       uiScaleActive: false,
       uiTrans: false,
+      miniMode: false,
     };
     this.setState(Default);
     Message.success('重置成功');
@@ -75,6 +77,7 @@ class Overlay extends Component {
       uiScale,
       uiScaleActive,
       uiTrans,
+      miniMode,
     } = this.state;
     return (
       <View style={{ height: '100%' }}>
@@ -126,9 +129,14 @@ class Overlay extends Component {
               />
             </Checkbox>
             <Checkbox
-              title="透明模式(默认)"
+              title="默认开启 透明模式"
               defaultChecked={uiTrans}
               onChange={e => this.checkboxOnChange(e, 'uiTrans')}
+            />
+            <Checkbox
+              title="默认开启 迷你模式"
+              defaultChecked={miniMode}
+              onChange={e => this.checkboxOnChange(e, 'miniMode')}
             />
           </div>
         </Content>

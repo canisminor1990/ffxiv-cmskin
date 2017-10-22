@@ -10,11 +10,20 @@ const State = state => ({
   uiTrans: state.setting.uiTrans,
   uiScale: state.setting.uiScale,
   uiScaleActive: state.setting.uiScaleActive,
+  miniMode: state.setting.miniMode,
 });
 
 class App extends Component {
   render() {
-    const { dispatch, children, uiTrans, fullscreen, uiScale, uiScaleActive } = this.props;
+    const {
+      dispatch,
+      children,
+      uiTrans,
+      fullscreen,
+      uiScale,
+      uiScaleActive,
+      miniMode,
+    } = this.props;
     let Scale = 16;
     if (uiScaleActive) Scale = Scale * uiScale;
     document.getElementsByTagName('html')[0].style.fontSize = Scale + 'px';
@@ -37,6 +46,14 @@ class App extends Component {
           >
             {uiTrans ? '实体模式' : '透明模式'}
           </MenuItem>
+          <MenuItem
+            onClick={() => dispatch({ type: 'setting/update', payload: { miniMode: !miniMode } })}
+          >
+            {miniMode ? '完全模式' : '迷你模式'}
+          </MenuItem>
+        </div>
+        <Split />
+        <div className={style.item}>
           <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=360')}>
             设置
           </MenuItem>

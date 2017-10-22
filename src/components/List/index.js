@@ -12,6 +12,7 @@ const State = state => ({
   nameActive: state.setting.nameActive,
   img: state.setting.img,
   imgActive: state.setting.imgActive,
+  miniMode: state.setting.miniMode,
 });
 const ListView = ({
   tab,
@@ -23,6 +24,7 @@ const ListView = ({
   nameActive,
   img,
   imgActive,
+  miniMode,
 }) => {
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
@@ -68,24 +70,34 @@ const ListView = ({
   }
 
   return (
-    <Link to={path.join('/detail', item.name)} className={listClass}>
-      <Avatar deaths={item.deaths} job={Img} diy={imgActive && item.isMy} />
+    <Link
+      to={path.join('/detail', item.name)}
+      className={classnames.bind(style)(listClass, { [style.miniMode]: miniMode })}
+    >
+      <Avatar
+        deaths={item.deaths}
+        job={Img}
+        diy={imgActive && item.isMy}
+        size={miniMode ? '1.5rem' : '2.5rem'}
+      />
       <div className={style.header}>
         <div className={style.name}>{Name}</div>
-        <div className={style.desc}>
-          {tabData[tab].desc.map((desc, i) => (
-            <span key={i}>
-              {desc[0]}: {desc[1]}
-            </span>
-          ))}
-        </div>
+        {miniMode ? null : (
+          <div className={style.desc}>
+            {tabData[tab].desc.map((desc, i) => (
+              <span key={i}>
+                {desc[0]}: {desc[1]}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
       <div className={style.info}>
-        <Chart name={item.name} tab={tab} color={tabData[tab].color} size={32} />
+        <Chart name={item.name} tab={tab} color={tabData[tab].color} size={miniMode ? 20 : 32} />
       </div>
       <Progress
         className={style.right}
-        title={tabData[tab].title}
+        title={miniMode ? false : tabData[tab].title}
         number={tabData[tab].number}
         progress={tabData[tab].progress}
         color={tabData[tab].color}

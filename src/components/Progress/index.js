@@ -3,7 +3,7 @@ import style from './index.scss';
 export default ({ title, number, progress, color, ...other }) => {
   return (
     <div {...other}>
-      <div className={style.skill}>{title}</div>
+      {title ? <div className={style.skill}>{title}</div> : null}
       <div className={style.show}>{parseFloat(number).toLocaleString()}</div>
       <div className={style.progress}>
         {progress ? (

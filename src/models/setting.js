@@ -19,6 +19,7 @@ export default {
     uiScaleDefault: 1,
     uiScaleActive: false,
     uiTrans: false,
+    miniMode: false,
   },
   reducers: {
     save(state, { payload: data }) {

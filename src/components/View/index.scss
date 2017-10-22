@@ -85,6 +85,8 @@
 .split {
   border: none;
   height: 1px;
+  background: $c-bg-light;
+  box-shadow: 0 -1px 0 $c-bg-dark;
 }
 
 .view {
@@ -102,12 +104,6 @@
   .bar {
     background: $c-bg-dark;
     box-shadow: 0 -1px 0 $c-bg-light inset, 0 1px 0 #000 inset;
-  }
-  .split {
-    border: none;
-    height: 1px;
-    background: $c-bg-light;
-    box-shadow: 0 -1px 0 $c-bg-dark;
   }
 }
 
@@ -144,6 +140,7 @@
     text-shadow: 0 0 2px darken($c-yellow, 50%) !important;
   }
   .split {
+    box-shadow: none;
     background: linear-gradient(
       to right,
       rgba($c-yellow-light, 0),
