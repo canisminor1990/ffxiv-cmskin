@@ -5,7 +5,13 @@ export default ({ data, isActive }) => {
   if (isActive) {
     Content = (
       <span className={style.zone}>
-        {data.zone}
+        <a
+          href={`http://ff14.huijiwiki.com/wiki/${data.zone.split(' ')[0]}`}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {data.zone}
+        </a>
         <span> · {data.name}</span>
       </span>
     );

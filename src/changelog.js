@@ -17,6 +17,7 @@ const Changelog = [
 ];
 const Copyright = [
   '作者||CanisMinor',
+  'ID||男孩纸榨汁机(紫水)',
   'QQ||40073838',
   'Email||i@canisminor.cc',
   '皮肤地址||http://ffxiv.canisminor.cc',

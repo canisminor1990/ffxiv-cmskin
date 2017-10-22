@@ -6,6 +6,12 @@
 }
 .zone {
   flex: 1;
+  > a {
+    color: $c-white;
+    &:hover {
+      color: $c-yellow-light;
+    }
+  }
   > span {
     color: $c-grey;
     font-size: 0.8rem;
