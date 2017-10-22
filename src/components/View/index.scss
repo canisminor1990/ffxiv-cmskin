@@ -126,8 +126,8 @@
     content: '';
     width: 0;
     height: 0;
-    border-bottom: 0.8rem solid rgba(#fff, 0.2);
-    border-left: 0.8rem solid transparent;
+    border-bottom: 0.5rem solid rgba($c-yellow-light, 0.1);
+    border-left: 0.5rem solid transparent;
   }
   .inner {
     &:before {
@@ -138,25 +138,10 @@
       display: block;
       position: absolute;
       filter: blur(2px);
-      background: linear-gradient(
-        to right,
-        rgba(#000, 0),
-        rgba(#000, 0.8) 5%,
-        rgba(#000, 0.6) 60%,
-        rgba(#000, 0)
-      );
+      background: linear-gradient(to right, rgba(#000, 0.6) 60%, rgba(#000, 0));
     }
     border-radius: 0.25rem;
     text-shadow: 0 0 2px darken($c-yellow, 50%) !important;
-  }
-  .bar {
-    background: linear-gradient(
-      to right,
-      rgba($c-yellow-light, 0),
-      rgba($c-yellow-light, 0.1) 5%,
-      rgba($c-yellow-light, 0.1) 60%,
-      rgba($c-yellow-light, 0)
-    );
   }
   .split {
     background: linear-gradient(

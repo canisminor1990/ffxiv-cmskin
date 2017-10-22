@@ -126,7 +126,7 @@ class Overlay extends Component {
               />
             </Checkbox>
             <Checkbox
-              title="透明模式"
+              title="透明模式(默认)"
               defaultChecked={uiTrans}
               onChange={e => this.checkboxOnChange(e, 'uiTrans')}
             />
