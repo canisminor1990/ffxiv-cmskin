@@ -1,5 +1,5 @@
 @import 'import';
-.list {
+.item {
   font-size: 0.8rem;
   display: flex;
   margin-bottom: 0.5rem;
@@ -10,4 +10,10 @@
 }
 .content {
   flex: 1;
+}
+.line {
+  margin-bottom: 0.8rem;
+}
+.list {
+  margin-bottom: 1.6rem;
 }

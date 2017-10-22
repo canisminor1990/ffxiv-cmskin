@@ -41,7 +41,7 @@ View.Bar = ({ className, children, ...other }) => (
     {children}
   </div>
 );
-View.Split = ({ title, ...other }) => {
+View.Split = ({ className, title, ...other }) => {
   let List = [];
   if (title)
     List.push(
@@ -49,7 +49,9 @@ View.Split = ({ title, ...other }) => {
         {title}
       </div>
     );
-  List.push(<div key="split" className={style.split} {...other} />);
+  List.push(
+    <div key="split" className={classnames.bind(style)(style.split, className)} {...other} />
+  );
   return List;
 };
 export default View;

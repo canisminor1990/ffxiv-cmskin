@@ -34,6 +34,12 @@ class App extends Component {
             <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=360')}>
               设置
             </MenuItem>
+            <MenuItem
+              onClick={() =>
+                window.open('https://coding.net/u/canisminor1990/p/ffxiv-cmskin/topic')}
+            >
+              反馈
+            </MenuItem>
           </div>
         </ContextMenu>
       </View>
