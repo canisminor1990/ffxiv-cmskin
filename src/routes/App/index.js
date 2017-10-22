@@ -1,4 +1,5 @@
 import { View } from '../../components';
+import { getCookie } from '../../utils/cookie';
 import { connect } from 'dva';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
@@ -6,6 +7,7 @@ import style from './index.scss';
 
 const { Split } = View;
 const State = state => ({
+  key: state.setting.key,
   fullscreen: state.setting.fullscreen,
   uiScale: state.setting.uiScale,
   uiScaleActive: state.setting.uiScaleActive,
@@ -13,9 +15,14 @@ const State = state => ({
 
 class App extends Component {
   render() {
-    const { dispatch, children, fullscreen, uiScale, uiScaleActive } = this.props;
-    if (uiScaleActive)
-      document.getElementsByTagName('html')[0].style.fontSize = 16 * uiScale + 'px';
+    const { dispatch, children, key, fullscreen, uiScale, uiScaleActive } = this.props;
+    setInterval(() => {
+      const data = getCookie('setting');
+      if (data.key !== key) dispatch({ type: 'setting/root' });
+    }, 1000);
+    let Scale = 16;
+    if (uiScaleActive) Scale = Scale * uiScale;
+    document.getElementsByTagName('html')[0].style.fontSize = Scale + 'px';
     return (
       <View style={fullscreen ? { height: '100%' } : {}}>
         <ContextMenuTrigger id="view" key="view" holdToDisplay={-1}>
@@ -32,8 +39,9 @@ class App extends Component {
               {fullscreen ? '折叠菜单' : '展开菜单'}
             </MenuItem>
             <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=360')}>
-              设置
+              扩展设置
             </MenuItem>
+            <MenuItem onClick={() => window.location.reload()}> 刷新 </MenuItem>
             <MenuItem
               onClick={() =>
                 window.open('https://coding.net/u/canisminor1990/p/ffxiv-cmskin/topic')}

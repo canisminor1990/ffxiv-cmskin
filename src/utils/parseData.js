@@ -72,7 +72,7 @@ const parseHealing = db => ({
   percent: db['healed%'],
   over: db['OverHealPct'],
   highest: {
-    full: _.startCase(db['maxheal']),
+    full: _.startCase(db['maxheal']).replace('Unknown', '其他'),
     value: db['MAXHEAL'],
   },
   criticals: {

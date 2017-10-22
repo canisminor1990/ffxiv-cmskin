@@ -1,19 +1,24 @@
 @import 'import';
+
 .bar {
   color: $c-yellow;
 }
+
 .content {
   display: flex;
   flex-direction: column;
 }
+
 .body {
   flex: 1;
   font-size: 0.9rem;
 }
+
 .title {
   text-shadow: 0 1px rgba(#000, 0.8);
   margin-bottom: 0.6rem;
 }
+
 .item {
   font-size: 0.9rem;
   display: flex;
@@ -22,6 +27,7 @@
   margin: 0 0 0.4rem !important;
   color: $c-yellow-light;
 }
+
 :global {
   .ant-checkbox-inner {
     background: linear-gradient(to bottom, #373232 0, #6a6662 100%);
@@ -49,12 +55,14 @@
     }
   }
 }
+
 .btngroup {
-  min-height: 22px;
-  margin-top: 0.8rem;
+  height: 2rem;
+
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 }
+
 .foot {
   font-size: 0.7rem;
   color: $c-yellow;

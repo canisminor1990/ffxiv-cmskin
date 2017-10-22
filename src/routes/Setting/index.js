@@ -58,7 +58,6 @@ class Overlay extends Component {
   };
 
   onSave = () => {
-    this.props.dispatch({ type: 'setting/update', payload: this.state });
     setCookie('setting', this.state);
     Message.success('保存成功');
   };
@@ -133,14 +132,13 @@ class Overlay extends Component {
             <Input defaultValue={uiScale} onChange={e => this.inputOnChange(e, 'uiScale', true)} />
           </Checkbox>
         </div>
+      </Content>,
+      <Split key="split" />,
+      <Footer className={style.foot} key="footer">
         <div className={style.btngroup}>
           <Button onClick={this.onDefault}>恢复默认</Button>
           <Button onClick={this.onSave}>保存</Button>
         </div>
-      </Content>,
-      <Split key="split" />,
-      <Footer className={style.foot} key="footer">
-        保存设置后请重新加载
       </Footer>,
     ];
   }
