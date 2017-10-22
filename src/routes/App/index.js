@@ -7,7 +7,7 @@ import style from './index.scss';
 
 const { Split } = View;
 const State = state => ({
-  key: state.setting.key,
+  timekey: state.setting.timekey,
   fullscreen: state.setting.fullscreen,
   uiScale: state.setting.uiScale,
   uiScaleActive: state.setting.uiScaleActive,
@@ -15,10 +15,10 @@ const State = state => ({
 
 class App extends Component {
   render() {
-    const { dispatch, children, key, fullscreen, uiScale, uiScaleActive } = this.props;
+    const { dispatch, children, timekey, fullscreen, uiScale, uiScaleActive } = this.props;
     setInterval(() => {
       const data = getCookie('setting');
-      if (data.key !== key) dispatch({ type: 'setting/root' });
+      if (data.timekey !== timekey) dispatch({ type: 'setting/root' });
     }, 1000);
     let Scale = 16;
     if (uiScaleActive) Scale = Scale * uiScale;

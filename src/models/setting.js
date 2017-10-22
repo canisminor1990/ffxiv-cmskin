@@ -4,7 +4,6 @@ import { getCookie } from '../utils/cookie';
 export default {
   namespace: 'setting',
   state: {
-    key: '',
     fullscreen: true,
     name: '我',
     nameDefault: '我',

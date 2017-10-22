@@ -11,7 +11,7 @@ const State = state => ({
 
 class Overlay extends Component {
   state = {
-    key: 0,
+    timekey: 0,
     name: this.props.setting.name,
     nameActive: this.props.setting.nameActive,
     img: this.props.setting.img,
@@ -41,7 +41,7 @@ class Overlay extends Component {
 
   onDefault = () => {
     const Default = {
-      key: this.state.key + 1,
+      timekey: this.state.timekey + 1,
       name: this.props.setting.nameDefault,
       nameActive: false,
       img: this.props.setting.imgDefault,
@@ -58,13 +58,14 @@ class Overlay extends Component {
   };
 
   onSave = () => {
+    this.props.dispatch({ type: 'setting/update', payload: this.state });
     setCookie('setting', this.state);
     Message.success('保存成功');
   };
 
   render() {
     const {
-      key,
+      timekey,
       name,
       nameActive,
       img,
@@ -81,7 +82,7 @@ class Overlay extends Component {
       <Bar key="bar" className={style.bar}>
         基础设置
       </Bar>,
-      <Content key={key} className={style.content}>
+      <Content key={timekey} className={style.content}>
         <div className={style.body}>
           <div className={style.title}>个人</div>
           <Checkbox
