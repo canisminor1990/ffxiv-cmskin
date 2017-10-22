@@ -32,7 +32,7 @@ const Detail = ({ location, fullscreen, uiTrans, Combatant, isActive }) => {
       color: '#d86f87',
     },
     heal: {
-      title: '输出',
+      title: '治疗',
       desc: [
         ['占比', Data.healing.percent],
         ['暴击', Data.healing.criticals.percent],
