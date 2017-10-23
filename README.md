@@ -11,7 +11,7 @@
 ![](http://qn.canisminor.cc/2017-10-23-5.png)
 ![](http://qn.canisminor.cc/2017-10-23-6.png)
 
-## Usage
+## Setup
 
 - 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
 - 或直接下载ACT整合包: [NGA](http://bbs.ngacn.cc/read.php?tid=12526945)
@@ -21,6 +21,8 @@
 # 拷贝下面的地址至模板路径
 http://ffxiv.canisminor.cc
 ```
+
+## Usage
 
 |模式|路径|
 |---|---|
