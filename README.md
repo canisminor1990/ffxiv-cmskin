@@ -11,6 +11,8 @@
 ![](http://qn.canisminor.cc/2017-10-23-5.png)
 ![](http://qn.canisminor.cc/2017-10-23-6.png)
 
+<br />
+
 ## Usage
 
 - 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
@@ -30,6 +32,9 @@ http://ffxiv.canisminor.cc
 |扩展设置|右键菜单 - 设置|
 |意见反馈|右键菜单 - 反馈|
 
+
+<br />
+
 ## ChangeLog
 
 |日期|版本|改动|
@@ -43,12 +48,14 @@ http://ffxiv.canisminor.cc
 |2017.10.18|v1.0.1|增加右键菜单/折叠模式|
 |2017.10.18|v1.0.0|CanisMinor Act Skin|
 
+<br />
+
 ## Copyright
 
-- Author: CanisMinor
-- ID:男孩纸榨汁机(紫水)
-- Site: [ffxiv.canisminor.cc)](https://ffxiv.canisminor.cc)
-- Mail: <i@canisminor.cc>
-- License: MIT
-- Github: [github.com/canisminor1990/ffxiv-cmski](https://github.com/canisminor1990/ffxiv-cmskin)
-- Coding: [coding.net/u/canisminor1990/p/ffxiv-cmskin](https://coding.net/u/canisminor1990/p/ffxiv-cmskin)
+- **Author:** CanisMinor
+- **ID:** 男孩纸榨汁机(紫水)
+- **E-Mail:** <i@canisminor.cc>
+- **License:** MIT
+- **Site:** [ffxiv.canisminor.cc)](https://ffxiv.canisminor.cc)
+- **Github:** [github.com/canisminor1990/ffxiv-cmski](https://github.com/canisminor1990/ffxiv-cmskin)
+- **Coding:** [coding.net/u/canisminor1990/p/ffxiv-cmskin](https://coding.net/u/canisminor1990/p/ffxiv-cmskin)
