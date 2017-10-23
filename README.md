@@ -11,7 +11,7 @@
 ![](http://qn.canisminor.cc/2017-10-23-5.png)
 ![](http://qn.canisminor.cc/2017-10-23-6.png)
 
-## Setup
+## Usage
 
 - 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
 - 或直接下载ACT整合包: [NGA](http://bbs.ngacn.cc/read.php?tid=12526945)
@@ -21,8 +21,6 @@
 # 拷贝下面的地址至模板路径
 http://ffxiv.canisminor.cc
 ```
-
-## Usage
 
 |模式|路径|
 |---|---|
@@ -45,9 +43,6 @@ http://ffxiv.canisminor.cc
 |2017.10.18|v1.0.1|增加右键菜单/折叠模式|
 |2017.10.18|v1.0.0|CanisMinor Act Skin|
 
-- Github: <https://github.com/canisminor1990/ffxiv-cmskin>
-- Coding: <https://coding.net/u/canisminor1990/p/ffxiv-cmskin>
-
 ## Copyright
 
 - Author: CanisMinor
@@ -55,3 +50,5 @@ http://ffxiv.canisminor.cc
 - Site: <https://ffxiv.canisminor.cc>
 - Mail: <i@canisminor.cc>
 - License: MIT
+- Github: <https://github.com/canisminor1990/ffxiv-cmskin>
+- Coding: <https://coding.net/u/canisminor1990/p/ffxiv-cmskin>
