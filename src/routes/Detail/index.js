@@ -71,7 +71,7 @@ const Detail = ({
         ['占比', Data.tanking.percent],
         ['招架', Data.tanking.parry],
         ['格挡', Data.tanking.block],
-        ['直挡', Data.tanking.inc],
+        ['闪避', Data.tanking.inc],
       ],
       number: Data.tanking.total,
       progress: Data.tanking.percent,
