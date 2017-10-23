@@ -49,3 +49,4 @@ http://ffxiv.canisminor.cc
 - ID:男孩纸榨汁机(紫水)
 - Site: <https://ffxiv.canisminor.cc>
 - Mail: <i@canisminor.cc>
+- License: MIT

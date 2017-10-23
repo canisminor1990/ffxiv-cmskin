@@ -34,7 +34,7 @@ View.Footer = ({ className, children, ...other }) => (
     </div>
     <a
       className={style.copyright}
-      href="https://coding.net/u/canisminor1990/p/ffxiv-cmskin/git"
+      href="https://github.com/canisminor1990/ffxiv-cmskin"
       rel="noopener noreferrer"
       target="_blank"
     >

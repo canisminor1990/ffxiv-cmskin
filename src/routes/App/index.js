@@ -59,7 +59,7 @@ class App extends Component {
           </MenuItem>
           <MenuItem onClick={() => window.location.reload()}>刷新</MenuItem>
           <MenuItem
-            onClick={() => window.open('https://coding.net/u/canisminor1990/p/ffxiv-cmskin/topic')}
+            onClick={() => window.open('https://github.com/canisminor1990/ffxiv-cmskin/issues')}
           >
             反馈
           </MenuItem>
