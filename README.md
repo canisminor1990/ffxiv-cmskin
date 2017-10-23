@@ -56,6 +56,6 @@ http://ffxiv.canisminor.cc
 - **ID:** 男孩纸榨汁机(紫水)
 - **E-Mail:** <i@canisminor.cc>
 - **License:** MIT
-- **Site:** [ffxiv.canisminor.cc)](https://ffxiv.canisminor.cc)
+- **Site:** [ffxiv.canisminor.cc](https://ffxiv.canisminor.cc)
 - **Github:** [github.com/canisminor1990/ffxiv-cmski](https://github.com/canisminor1990/ffxiv-cmskin)
 - **Coding:** [coding.net/u/canisminor1990/p/ffxiv-cmskin](https://coding.net/u/canisminor1990/p/ffxiv-cmskin)
