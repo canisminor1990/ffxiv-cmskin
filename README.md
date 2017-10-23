@@ -1,6 +1,6 @@
-# FFXIV CanisMinor Act Skin
+# CanisMinor ACT
 
-最终幻想 XIV ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
+FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
 
 ## OverView
 
