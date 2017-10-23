@@ -52,12 +52,18 @@ http://ffxiv.canisminor.cc
 
 <br />
 
+## Link
+
+- **Site:** [ffxiv.canisminor.cc](https://ffxiv.canisminor.cc)
+- **NGA.cn:** [bbs.ngacn.cc/read.php?tid=12689516&page=](http://bbs.ngacn.cc/read.php?tid=12689516&page=e)
+- **Github:** [github.com/canisminor1990/ffxiv-cmski](https://github.com/canisminor1990/ffxiv-cmskin)
+- **Coding:** [coding.net/u/canisminor1990/p/ffxiv-cmskin](https://coding.net/u/canisminor1990/p/ffxiv-cmskin)
+
+<br />
+
 ## Copyright
 
 - **Author:** CanisMinor
 - **ID:** 男孩纸榨汁机(紫水)
 - **E-Mail:** <i@canisminor.cc>
 - **License:** MIT
-- **Site:** [ffxiv.canisminor.cc](https://ffxiv.canisminor.cc)
-- **Github:** [github.com/canisminor1990/ffxiv-cmski](https://github.com/canisminor1990/ffxiv-cmskin)
-- **Coding:** [coding.net/u/canisminor1990/p/ffxiv-cmskin](https://coding.net/u/canisminor1990/p/ffxiv-cmskin)
