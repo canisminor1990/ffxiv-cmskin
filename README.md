@@ -43,6 +43,9 @@ http://ffxiv.canisminor.cc
 |2017.10.18|v1.0.1|增加右键菜单/折叠模式|
 |2017.10.18|v1.0.0|CanisMinor Act Skin|
 
+- Github: <https://github.com/canisminor1990/ffxiv-cmskin>
+- Coding: <https://coding.net/u/canisminor1990/p/ffxiv-cmskin>
+
 ## Copyright
 
 - Author: CanisMinor
