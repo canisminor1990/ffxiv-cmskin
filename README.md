@@ -55,7 +55,7 @@ http://ffxiv.canisminor.cc
 ## Link
 
 - **Site:** [ffxiv.canisminor.cc](https://ffxiv.canisminor.cc)
-- **NGA.cn:** [bbs.ngacn.cc/read.php?tid=12689516&page=](http://bbs.ngacn.cc/read.php?tid=12689516&page=e)
+- **NGA.cn:** [bbs.ngacn.cc/read.php?tid=12689516](http://bbs.ngacn.cc/read.php?tid=12689516)
 - **Github:** [github.com/canisminor1990/ffxiv-cmski](https://github.com/canisminor1990/ffxiv-cmskin)
 - **Coding:** [coding.net/u/canisminor1990/p/ffxiv-cmskin](https://coding.net/u/canisminor1990/p/ffxiv-cmskin)
 
