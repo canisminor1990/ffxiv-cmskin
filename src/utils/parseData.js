@@ -7,7 +7,7 @@ const parseName = db => {
     return '陆行鸟';
   } else if (db['name'].toLowerCase() === 'you') {
     return '我';
-  } else if (db['name'].toLowerCase() === 'lilimit break') {
+  } else if (db['name'].toLowerCase() === 'limit break') {
     return '极限技';
   } else {
     return db['name'];

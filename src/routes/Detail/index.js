@@ -10,14 +10,36 @@ const State = state => ({
   fullscreen: state.setting.fullscreen,
   uiTrans: state.setting.uiTrans,
   Combatant: state.data.Combatant,
+  name: state.setting.name,
+  nameActive: state.setting.nameActive,
+  img: state.setting.img,
+  imgActive: state.setting.imgActive,
   isActive: !state.loading.global && state.data.isActive,
 });
 
-const Detail = ({ location, fullscreen, uiTrans, Combatant, isActive }) => {
+const Detail = ({
+  location,
+  fullscreen,
+  uiTrans,
+  Combatant,
+  isActive,
+  name,
+  nameActive,
+  img,
+  imgActive,
+}) => {
   if (!isActive) return [];
 
   const Name = path.basename(location.pathname);
   const Data = Combatant[_.findIndex(Combatant, item => item.name === Name)];
+  let MyName, MyImg;
+  if (Data.isMy) {
+    MyName = nameActive ? name : Data.name;
+    MyImg = imgActive ? img : Data.job;
+  } else {
+    MyName = Data.name;
+    MyImg = Data.job;
+  }
   const tabData = {
     dps: {
       title: '输出',
@@ -96,9 +118,9 @@ const Detail = ({ location, fullscreen, uiTrans, Combatant, isActive }) => {
   return (
     <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
       <Header key="header" className={style.header}>
-        <Avatar size="3rem" deaths={Data.deaths} job={Data.job} />
+        <Avatar size="3rem" deaths={Data.deaths} job={MyImg} />
         <div>
-          <div className={style.name}>{Data.name}</div>
+          <div className={style.name}>{MyName}</div>
           <div className={style.role}>
             {Data.role}: {Data.longjob}
           </div>

@@ -2,6 +2,15 @@
 
 最终幻想 XIV ACT OverlayPlugin Skin [演示](http://ffxiv.canisminor.cc)
 
+## OverView
+
+![](http://qn.canisminor.cc/2017-10-23-1.png)
+![](http://qn.canisminor.cc/2017-10-23-2.png)
+![](http://qn.canisminor.cc/2017-10-23-3.png)
+![](http://qn.canisminor.cc/2017-10-23-4.png)
+![](http://qn.canisminor.cc/2017-10-23-5.png)
+![](http://qn.canisminor.cc/2017-10-23-6.png)
+
 ## Usage
 
 - 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
