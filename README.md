@@ -1,5 +1,7 @@
 # CanisMinor ACT
 
+`ACT` `OverlayPlugin` `FFXIV` `React` `Redux`
+
 FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
 
 ## OverView
