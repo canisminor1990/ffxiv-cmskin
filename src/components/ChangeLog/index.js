@@ -10,7 +10,7 @@ export default () => {
         <div className={style.time}>{Data[1]}</div>
         <p className={style.content}>
           {Data[2]}
-          {Data[3] ? Data[3] : null}
+          {Data[3] ? ` ${Data[3]}` : null}
         </p>
       </div>
     );
