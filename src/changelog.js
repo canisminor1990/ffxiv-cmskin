@@ -1,3 +1,5 @@
+const Version = '1.0.8';
+
 const Help = [
   '详情模式||点击列表条目，即可显示该队友详情模式',
   '折叠模式||右键菜单 - 折叠/展开',
@@ -27,4 +29,4 @@ const Copyright = [
   'Email||i@canisminor.cc',
   '皮肤地址||http://ffxiv.canisminor.cc',
 ];
-export { Help, Changelog, Copyright };
+export { Version, Help, Changelog, Copyright };

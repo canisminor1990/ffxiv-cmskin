@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { Version } from '../../changelog';
 import style from './index.scss';
 
 export default ({ data, isActive, miniMode }) => {
@@ -17,7 +18,18 @@ export default ({ data, isActive, miniMode }) => {
       </span>
     );
   } else {
-    Content = 'CanisMinor Act';
+    Content = (
+      <span className={classnames.bind(style)(style.zone, { [style.miniMode]: miniMode })}>
+        <a
+          href="https://github.com/canisminor1990/ffxiv-cmskin"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          CanisMinor Act
+        </a>
+        <span>{` · ${Version}`}</span>
+      </span>
+    );
   }
 
   return <div className={style.view}>{Content}</div>;
