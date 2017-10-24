@@ -1,10 +1,11 @@
+import classnames from 'classnames';
 import style from './index.scss';
 
-export default ({ data, isActive }) => {
+export default ({ data, isActive, miniMode }) => {
   let Content;
   if (isActive) {
     Content = (
-      <span className={style.zone}>
+      <span className={classnames.bind(style)(style.zone, { [style.miniMode]: miniMode })}>
         <a
           href={`http://ff14.huijiwiki.com/wiki/${data.zone.split(' ')[0]}`}
           rel="noopener noreferrer"

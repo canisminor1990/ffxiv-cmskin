@@ -14,6 +14,7 @@ const State = state => ({
   nameActive: state.setting.nameActive,
   img: state.setting.img,
   imgActive: state.setting.imgActive,
+  miniMode: state.setting.miniMode,
   isActive: !state.loading.global && state.data.isActive,
 });
 
@@ -27,6 +28,7 @@ const Detail = ({
   nameActive,
   img,
   imgActive,
+  miniMode,
 }) => {
   if (!isActive) return [];
 
@@ -71,7 +73,7 @@ const Detail = ({
         ['占比', Data.tanking.percent],
         ['招架', Data.tanking.parry],
         ['格挡', Data.tanking.block],
-        ['闪避', Data.tanking.inc],
+        ['回避', Data.tanking.inc],
       ],
       number: Data.tanking.total,
       progress: Data.tanking.percent,
@@ -86,7 +88,7 @@ const Detail = ({
     ProgressList.push(
       <Progress
         key={key}
-        title={item.title}
+        title={miniMode ? false : item.title}
         number={item.number}
         progress={item.progress}
         color={item.color}
@@ -110,6 +112,7 @@ const Detail = ({
         className={style.chart}
         name={Data.name}
         tab={key}
+        size={miniMode ? 20 : 32}
         color={item.color}
       />
     );
@@ -118,20 +121,24 @@ const Detail = ({
   return (
     <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
       <Header key="header" className={style.header}>
-        <Avatar size="3rem" deaths={Data.deaths} job={MyImg} />
+        <Avatar size={miniMode ? '1.5rem' : '3rem'} deaths={Data.deaths} job={MyImg} />
         <div>
           <div className={style.name}>{MyName}</div>
-          <div className={style.role}>
-            {Data.role}: {Data.longjob}
-          </div>
+          {miniMode ? null : (
+            <div className={style.role}>
+              {Data.role}: {Data.longjob}
+            </div>
+          )}
         </div>
       </Header>
       <div key="progerss" className={style.progress}>
         {ProgressList}
       </div>
-      <Bar key="bar" style={!fullscreen ? { display: 'none' } : {}}>
-        详细数据
-      </Bar>
+      {miniMode ? null : (
+        <Bar key="bar" style={!fullscreen ? { display: 'none' } : {}}>
+          详细数据
+        </Bar>
+      )}
       <Content key="body" style={!fullscreen ? { display: 'none' } : {}}>
         <div className={style.chartlist}>{ChartList}</div>
         {DataList}

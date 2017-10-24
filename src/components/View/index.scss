@@ -29,6 +29,9 @@
   font-weight: 500;
   text-shadow: 0 1px $c-bg-dark;
   padding: 0.6rem 0.8rem;
+  &.miniMode {
+    padding: 0.3rem 0.8rem 0;
+  }
 }
 
 .footer {

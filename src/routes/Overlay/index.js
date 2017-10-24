@@ -11,6 +11,7 @@ const State = state => ({
   Combatant: state.data.Combatant,
   isActive: !state.loading.global && state.data.isActive,
   fullscreen: state.setting.fullscreen,
+  miniMode: state.setting.miniMode,
   uiTrans: state.setting.uiTrans,
   timeout: 0,
 });
@@ -27,16 +28,18 @@ class Overlay extends Component {
     });
 
   render() {
-    const { Encounter, Combatant, isActive, uiTrans, fullscreen } = this.props;
+    const { Encounter, Combatant, isActive, uiTrans, fullscreen, miniMode } = this.props;
 
     return (
       <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
-        <Header key="header">
-          <EncounterView data={Encounter} isActive={isActive} />
+        <Header key="header" miniMode={miniMode}>
+          <EncounterView data={Encounter} isActive={isActive} miniMode={miniMode} />
         </Header>
-        <Bar key="bar">
-          <NoticeBar data={Encounter} isActive={isActive} />
-        </Bar>
+        {miniMode ? null : (
+          <Bar key="bar">
+            <NoticeBar data={Encounter} isActive={isActive} />
+          </Bar>
+        )}
         <Content key="body">
           <CombatantView
             tab={this.state.tab}

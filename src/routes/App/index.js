@@ -11,6 +11,7 @@ const State = state => ({
   uiScale: state.setting.uiScale,
   uiScaleActive: state.setting.uiScaleActive,
   miniMode: state.setting.miniMode,
+  hideName: state.setting.hideName,
 });
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
       uiScale,
       uiScaleActive,
       miniMode,
+      hideName,
     } = this.props;
     let Scale = 16;
     if (uiScaleActive) Scale = Scale * uiScale;
@@ -51,18 +53,18 @@ class App extends Component {
           >
             {miniMode ? '完全模式' : '迷你模式'}
           </MenuItem>
+          <MenuItem
+            onClick={() => dispatch({ type: 'setting/update', payload: { hideName: !hideName } })}
+          >
+            {hideName ? '显示ID' : '马赛克ID'}
+          </MenuItem>
         </div>
         <Split />
         <div className={style.item}>
-          <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=360')}>
+          <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=380')}>
             设置
           </MenuItem>
           <MenuItem onClick={() => window.location.reload()}>刷新</MenuItem>
-          <MenuItem
-            onClick={() => window.open('https://github.com/canisminor1990/ffxiv-cmskin/issues')}
-          >
-            反馈
-          </MenuItem>
         </div>
       </ContextMenu>,
     ];

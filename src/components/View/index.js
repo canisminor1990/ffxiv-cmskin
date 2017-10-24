@@ -15,8 +15,11 @@ const View = ({ transparent, children, ...other }) => {
   );
 };
 
-View.Header = ({ className, children, ...other }) => (
-  <div className={classnames.bind(style)(style.header, className)} {...other}>
+View.Header = ({ className, children, miniMode, ...other }) => (
+  <div
+    className={classnames.bind(style)(style.header, className, { [style.miniMode]: miniMode })}
+    {...other}
+  >
     {children}
   </div>
 );

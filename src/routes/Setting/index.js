@@ -14,6 +14,8 @@ class Overlay extends Component {
     timekey: 0,
     name: this.props.setting.name,
     nameActive: this.props.setting.nameActive,
+    diyHideName: this.props.setting.diyHideName,
+    diyHideNameActive: this.props.setting.diyHideNameActive,
     img: this.props.setting.img,
     imgActive: this.props.setting.imgActive,
     graphTime: this.props.setting.graphTime,
@@ -44,6 +46,8 @@ class Overlay extends Component {
       timekey: this.state.timekey + 1,
       name: this.props.setting.nameDefault,
       nameActive: false,
+      diyHideName: this.props.setting.diyHideNameDefault,
+      diyHideNameActive: false,
       img: this.props.setting.imgDefault,
       imgActive: false,
       graphTime: this.props.setting.graphTimeDefault,
@@ -70,6 +74,8 @@ class Overlay extends Component {
       timekey,
       name,
       nameActive,
+      diyHideName,
+      diyHideNameActive,
       img,
       imgActive,
       graphTime,
@@ -104,6 +110,16 @@ class Overlay extends Component {
                 defaultValue={img}
                 placeholder={'图片网址'}
                 onChange={e => this.inputOnChange(e, 'img')}
+              />
+            </Checkbox>
+            <Checkbox
+              title="自定义马赛克"
+              defaultChecked={diyHideNameActive}
+              onChange={e => this.checkboxOnChange(e, 'diyHideNameActive')}
+            >
+              <Input
+                defaultValue={diyHideName}
+                onChange={e => this.inputOnChange(e, 'diyHideName')}
               />
             </Checkbox>
             <br />

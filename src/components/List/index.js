@@ -13,6 +13,10 @@ const State = state => ({
   img: state.setting.img,
   imgActive: state.setting.imgActive,
   miniMode: state.setting.miniMode,
+  hideName: state.setting.hideName,
+  diyHideName: state.setting.diyHideName,
+  diyHideNameDefault: state.setting.diyHideNameDefault,
+  diyHideNameActive: state.setting.diyHideNameActive,
 });
 const ListView = ({
   tab,
@@ -22,6 +26,10 @@ const ListView = ({
   uiTrans,
   name,
   nameActive,
+  hideName,
+  diyHideName,
+  diyHideNameDefault,
+  diyHideNameActive,
   img,
   imgActive,
   miniMode,
@@ -69,11 +77,19 @@ const ListView = ({
     Name = item.name;
     Img = item.job;
   }
+  if (hideName) {
+    if (Name !== '极限技' && Name !== '陆行鸟') {
+      Name = diyHideNameActive ? diyHideName : diyHideNameDefault;
+    }
+  }
 
   return (
     <Link
       to={path.join('/detail', item.name)}
-      className={classnames.bind(style)(listClass, { [style.miniMode]: miniMode })}
+      className={classnames.bind(style)(listClass, {
+        [style.miniMode]: miniMode,
+        [style.fullMode]: !miniMode,
+      })}
     >
       <Avatar
         deaths={item.deaths}
