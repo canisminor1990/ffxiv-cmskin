@@ -9,9 +9,9 @@
   margin: -0.4rem -0.4rem 0.4rem -0.4rem;
   padding: 0.4rem 0.4rem;
   border-radius: 0.5rem;
+  cursor: pointer;
   &.my,
   &:hover {
-    cursor: pointer;
     background: linear-gradient(
       to right,
       rgba($c-yellow-light, 0.1),

@@ -1,5 +1,7 @@
-import style from './index.scss';
 import classnames from 'classnames/bind';
+import { Icon } from 'antd';
+import { Link } from 'dva/router';
+import style from './index.scss';
 
 const View = ({ transparent, children, ...other }) => {
   return (
@@ -35,14 +37,20 @@ View.Footer = ({ className, children, ...other }) => (
     <div className={classnames.bind(style)(style.infooter, className)} {...other}>
       {children}
     </div>
-    <a
-      className={style.copyright}
-      href="https://github.com/canisminor1990/ffxiv-cmskin"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      By CanisMinor
-    </a>
+    {window.location.pathname === '/' ? (
+      <Link className={style.history} to="/history">
+        <Icon type="clock-circle-o" />
+      </Link>
+    ) : (
+      <a
+        className={style.copyright}
+        href="https://github.com/canisminor1990/ffxiv-cmskin"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        By CanisMinor
+      </a>
+    )}
   </div>
 );
 View.Bar = ({ className, children, ...other }) => (

@@ -1,39 +1,65 @@
 import { parseEncounter, parseCombatant } from '../utils/parseData';
+import _ from 'lodash';
 
 export default {
-  namespace: 'data',
-  state: {},
+  namespace: 'act',
+  state: [],
   reducers: {
     save(state, { payload: data }) {
-      return { ...state, data }.data;
+      return data;
     },
   },
   effects: {
-    *update({ payload: data }, { put }) {
-      const { Encounter, Combatant } = data;
+    *update({ payload: newData }, { put, select }) {
+      const { Encounter, Combatant, isActive } = newData;
 
-      const Data = {
-        Encounter: parseEncounter(Encounter),
-        Combatant: parseCombatant(Combatant),
-        isActive: data.isActive,
-      };
-      yield put({ type: 'save', payload: Data });
-    },
-  },
-  subscriptions: {
-    setup({ dispatch, history }) {
-      return history.listen(() => {
-        document.addEventListener('onOverlayDataUpdate', data => {
-          dispatch({ type: 'update', payload: data.detail });
-          dispatch({ type: 'chart/update', payload: data.detail });
-        });
-        window.addEventListener('message', data => {
-          if (data.data.type === 'onOverlayDataUpdate') {
-            dispatch({ type: 'update', payload: data.data.detail });
-            dispatch({ type: 'chart/update', payload: data.data.detail });
-          }
-        });
+      const { name, time } = yield select(state => state.event);
+
+      let data = yield select(state => state.act);
+
+      const newEncounter = parseEncounter(Encounter);
+      const newCombatant = parseCombatant(Combatant);
+
+      const newName = newEncounter.name;
+      const newTime = newEncounter.time;
+
+      const { graphTime, graphTimeDefault, graphTimeActive } = yield select(state => state.setting);
+      const Length = graphTimeActive ? graphTime : graphTimeDefault;
+
+      let newChart = newName === name && data[0] ? data[0].Chart : {};
+      _.forEach(newCombatant, item => {
+        if (!newChart[item.name]) newChart[item.name] = [];
+        try {
+          newChart[item.name].push({
+            time: time,
+            dps: item.damage.ps >= 0 ? item.damage.ps : 0,
+            heal: item.healing.ps >= 0 ? item.healing.ps : 0,
+            tank: item.tanking.total >= 0 ? item.tanking.total : 0,
+          });
+          if (newChart[item.name].length > Length) newChart[item.name].shift();
+        } catch (e) {}
       });
+
+      const newDate = new Date();
+
+      const parseData = {
+        Date: newDate.getHours() + ':' + newDate.getMinutes(),
+        Encounter: newEncounter,
+        Combatant: newCombatant,
+        Chart: newChart,
+        isActive: isActive,
+      };
+
+      if (newName === name) {
+        data[0] = _.assign(data[0], parseData);
+      } else {
+        const history = yield select(state => state.setting.historyLength);
+        if (data.length > history) data.pop();
+        data.unshift(parseData);
+      }
+
+      yield put({ type: 'save', payload: data });
+      yield put({ type: 'event/save', payload: { name: newName, time: newTime } });
     },
   },
 };

@@ -1,0 +1,52 @@
+@import 'import';
+.view {
+  height: 100%;
+  background: $c-bg;
+}
+.bar {
+  color: $c-yellow;
+}
+.content {
+  padding: 0.2rem 0.4rem;
+}
+.list {
+  display: flex;
+  padding: 0.4rem 0.4rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  &:hover,
+  &.active {
+    background: linear-gradient(
+      to right,
+      rgba($c-yellow-light, 0.1),
+      rgba($c-yellow-light, 0) 80%
+    );
+  }
+}
+.date {
+  width: 2rem;
+  color: $c-yellow;
+  margin-right: 0.2rem;
+}
+.title {
+  color: $c-white;
+  flex: 1;
+  white-space: nowrap;
+  font-weight: 600;
+  overflow: hidden;
+  > span {
+    color: $c-grey;
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+}
+.history {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $c-grey;
+  font-size: 0.8rem;
+}

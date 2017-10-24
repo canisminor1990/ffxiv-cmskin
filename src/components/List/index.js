@@ -5,35 +5,21 @@ import { Link } from 'dva/router';
 import { connect } from 'dva';
 import { Avatar, Chart, Progress } from '../';
 
-const State = state => ({
-  fullscreen: state.setting.fullscreen,
-  uiTrans: state.setting.uiTrans,
-  name: state.setting.name,
-  nameActive: state.setting.nameActive,
-  img: state.setting.img,
-  imgActive: state.setting.imgActive,
-  miniMode: state.setting.miniMode,
-  hideName: state.setting.hideName,
-  diyHideName: state.setting.diyHideName,
-  diyHideNameDefault: state.setting.diyHideNameDefault,
-  diyHideNameActive: state.setting.diyHideNameActive,
-});
-const ListView = ({
-  tab,
-  item,
-  firstItem,
-  fullscreen,
-  uiTrans,
-  name,
-  nameActive,
-  hideName,
-  diyHideName,
-  diyHideNameDefault,
-  diyHideNameActive,
-  img,
-  imgActive,
-  miniMode,
-}) => {
+const State = state => ({ setting: state.setting });
+const ListView = ({ tab, chart, item, firstItem, setting }) => {
+  const {
+    fullscreen,
+    uiTrans,
+    name,
+    nameActive,
+    hideName,
+    diyHideName,
+    diyHideNameDefault,
+    diyHideNameActive,
+    img,
+    imgActive,
+    miniMode,
+  } = setting;
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
   const tabData = {
@@ -110,7 +96,13 @@ const ListView = ({
         )}
       </div>
       <div className={style.info}>
-        <Chart name={item.name} tab={tab} color={tabData[tab].color} size={miniMode ? 20 : 32} />
+        <Chart
+          data={chart}
+          name={item.name}
+          tab={tab}
+          color={tabData[tab].color}
+          size={miniMode ? 20 : 32}
+        />
       </div>
       <Progress
         className={style.right}

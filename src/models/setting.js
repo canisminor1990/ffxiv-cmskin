@@ -23,6 +23,8 @@ export default {
     uiScale: 1,
     uiScaleDefault: 1,
     uiScaleActive: false,
+    historyLength: 30,
+    historyPage: 0,
   },
   reducers: {
     save(state, { payload: data }) {

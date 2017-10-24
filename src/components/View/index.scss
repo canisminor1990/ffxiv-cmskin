@@ -1,5 +1,4 @@
 @import 'import';
-
 .view,
 .viewTrans {
   width: 100%;
@@ -7,7 +6,6 @@
   overflow: hidden;
   padding: 5px;
 }
-
 .inner {
   display: flex;
   flex-direction: column;
@@ -15,7 +13,6 @@
   width: 100%;
   position: relative;
 }
-
 .bar {
   white-space: nowrap;
   overflow: hidden;
@@ -24,7 +21,6 @@
   font-size: 0.75rem;
   z-index: 9;
 }
-
 .header {
   font-weight: 500;
   text-shadow: 0 1px $c-bg-dark;
@@ -33,34 +29,28 @@
     padding: 0.3rem 0.8rem 0;
   }
 }
-
 .footer {
   padding: 0.4rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .infooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
-.copyright {
-  line-height: 1;
-  color: $c-grey;
-  font-size: 0.7rem;
-  opacity: 0.5;
-  &:hover {
-    opacity: 1;
-    color: $c-yellow;
+.history {
+  i:before {
+    color: $c-grey;
+    font-size: 0.8rem;
   }
-  @include media($m-small) {
-    display: none;
+  i:hover {
+    &:before {
+      color: $c-yellow;
+    }
   }
 }
-
 .content {
   width: 100%;
   max-height: 100%;
@@ -69,7 +59,6 @@
   position: relative;
   overflow-y: scroll;
 }
-
 .body {
   padding: 0.8rem;
   width: 100%;
@@ -78,20 +67,17 @@
   overflow-y: auto;
   position: relative;
 }
-
 .title {
   font-size: 0.7rem;
   color: $c-grey;
   margin-bottom: 0.2rem;
 }
-
 .split {
   border: none;
   height: 1px;
   background: $c-bg-light;
   box-shadow: 0 -1px 0 $c-bg-dark;
 }
-
 .view {
   border-radius: 0.5rem;
   background: $c-border;
@@ -109,7 +95,6 @@
     box-shadow: 0 -1px 0 $c-bg-light inset, 0 1px 0 #000 inset;
   }
 }
-
 .viewTrans {
   &:hover {
     &:before {
@@ -154,5 +139,18 @@
   }
   .footer {
     padding-bottom: 0.5rem;
+  }
+}
+.copyright {
+  line-height: 1;
+  color: $c-grey;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+    color: $c-yellow;
+  }
+  @include media($m-small) {
+    display: none;
   }
 }

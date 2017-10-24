@@ -6,15 +6,19 @@ import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
 
-const State = state => ({
-  Encounter: state.data.Encounter,
-  Combatant: state.data.Combatant,
-  isActive: !state.loading.global && state.data.isActive,
-  fullscreen: state.setting.fullscreen,
-  miniMode: state.setting.miniMode,
-  uiTrans: state.setting.uiTrans,
-  timeout: 0,
-});
+const State = state => {
+  const act = state.act[state.setting.historyPage];
+  return {
+    Encounter: act ? act.Encounter : {},
+    Combatant: act ? act.Combatant : {},
+    Chart: act ? act.Chart : {},
+    isActive: act ? act.isActive : false,
+    fullscreen: state.setting.fullscreen,
+    miniMode: state.setting.miniMode,
+    uiTrans: state.setting.uiTrans,
+    timeout: 0,
+  };
+};
 
 class Overlay extends Component {
   state = {
@@ -28,8 +32,7 @@ class Overlay extends Component {
     });
 
   render() {
-    const { Encounter, Combatant, isActive, uiTrans, fullscreen, miniMode } = this.props;
-
+    const { Encounter, Combatant, Chart, isActive, uiTrans, fullscreen, miniMode } = this.props;
     return (
       <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
         <Header key="header" miniMode={miniMode}>
@@ -44,6 +47,7 @@ class Overlay extends Component {
           <CombatantView
             tab={this.state.tab}
             data={Combatant}
+            chart={Chart}
             time={Encounter ? Encounter.duration : ''}
             isActive={isActive}
           />

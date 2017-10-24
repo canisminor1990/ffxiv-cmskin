@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 let content = [];
 
-export default ({ tab, data, isActive }) => {
+export default ({ tab, data, chart, isActive }) => {
   if (isActive) {
     let sortedData = [];
     if (tab === 'dps') {
@@ -17,7 +17,7 @@ export default ({ tab, data, isActive }) => {
       sortedData = _.reverse(_.sortBy(data, 'tanking.total'));
     }
     content = sortedData.map((item, key) => (
-      <List tab={tab} key={item.name} item={item} firstItem={sortedData[0]} />
+      <List chart={chart} tab={tab} key={item.name} item={item} firstItem={sortedData[0]} />
     ));
   } else {
     content = <ChangeLog />;

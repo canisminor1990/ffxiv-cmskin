@@ -1,4 +1,5 @@
 import _ from 'lodash';
+let time = 0;
 
 const ActData = {
 	Encounter: {
@@ -446,7 +447,7 @@ export default () => {
 			const encdps = parseInt(item.encdps + item.encdps * (Math.random() - 0.5)*0.1).toFixed(2);
 			const enchps = parseInt(item.enchps + item.enchps * (Math.random() - 0.5)*0.1).toFixed(2);
 			const damagetaken = parseInt(item.damagetaken + item.damagetaken * Math.random()*0.01).toFixed(2);
-			console.log(encdps,enchps)
+
 			item.encdps = encdps;
 			item.enchps = enchps;
 			item.damagetaken = damagetaken;
@@ -457,13 +458,13 @@ export default () => {
 		Encounter.duration = duration;
 		Encounter.encdps   = parseInt(allEncdps);
 		Encounter.enchps   = parseInt(allEnchps);
-
-		_.forEach(Combatant, item => {
-			//item['damage%'] = parseInt(item.encdps / Encounter.encdps * 100) + '%';
-			//item['healed%'] = parseInt(item.enchps / Encounter.enchps * 100) + '%';
-		});
+		if (time>5){
+			Encounter.title   = '测试';
+			time = 0
+		}
 
 		const event = new CustomEvent('onOverlayDataUpdate', {detail: ActData});
 		document.dispatchEvent(event);
+		time++
 	}, 1000);
 }

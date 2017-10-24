@@ -24,7 +24,7 @@ app.use(createLoading());
 // 3. Model
 app.model(require('./models/setting'));
 app.model(require('./models/updateActData'));
-app.model(require('./models/updateChart'));
+app.model(require('./models/event'));
 
 // 4. Router
 app.router(require('./router'));

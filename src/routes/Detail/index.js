@@ -6,32 +6,33 @@ import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
 
-const State = state => ({
-  fullscreen: state.setting.fullscreen,
-  uiTrans: state.setting.uiTrans,
-  Combatant: state.data.Combatant,
-  name: state.setting.name,
-  nameActive: state.setting.nameActive,
-  img: state.setting.img,
-  imgActive: state.setting.imgActive,
-  miniMode: state.setting.miniMode,
-  isActive: !state.loading.global && state.data.isActive,
-});
+const State = state => {
+  const act = state.act[state.setting.historyPage];
+  return {
+    Combatant: act ? act.Combatant : {},
+    ChartData: act ? act.Chart : {},
+    fullscreen: state.setting.fullscreen,
+    uiTrans: state.setting.uiTrans,
+    name: state.setting.name,
+    nameActive: state.setting.nameActive,
+    img: state.setting.img,
+    imgActive: state.setting.imgActive,
+    miniMode: state.setting.miniMode,
+  };
+};
 
 const Detail = ({
   location,
+  Combatant,
+  ChartData,
   fullscreen,
   uiTrans,
-  Combatant,
-  isActive,
   name,
   nameActive,
   img,
   imgActive,
   miniMode,
 }) => {
-  if (!isActive) return [];
-
   const Name = path.basename(location.pathname);
   const Data = Combatant[_.findIndex(Combatant, item => item.name === Name)];
   let MyName, MyImg;
@@ -108,6 +109,7 @@ const Detail = ({
     );
     ChartList.push(
       <Chart
+        data={ChartData}
         key={key + 'chart'}
         className={style.chart}
         name={Data.name}

@@ -113,6 +113,7 @@ const parseCombatant = db => {
 };
 
 const parseEncounter = db => ({
+  time: db['duration'],
   zone: db['CurrentZoneName'],
   name: db['title'],
   duration: db['duration'],

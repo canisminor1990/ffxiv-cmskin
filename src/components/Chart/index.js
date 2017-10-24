@@ -1,9 +1,6 @@
 import createG2 from 'g2-react';
 import style from './index.scss';
 import classnames from 'classnames/bind';
-import { connect } from 'dva';
-
-const State = state => ({ data: state.chart.data });
 
 const ChartView = ({ className, data, name, tab, color, size = 32 }) => {
   const Data = data[name];
@@ -53,4 +50,4 @@ const ChartView = ({ className, data, name, tab, color, size = 32 }) => {
   );
 };
 
-export default connect(State)(ChartView);
+export default ChartView;

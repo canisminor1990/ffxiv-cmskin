@@ -66,7 +66,11 @@ class Overlay extends Component {
     this.props.dispatch({ type: 'setting/update', payload: this.state });
     setCookie('setting', this.state);
     Message.success('保存成功');
-    Message.info('请刷新界面');
+    if (typeof window.OverlayPluginApi !== 'undefined') {
+      window.OverlayPluginApi.broadcastMessage('reload');
+    } else {
+      Message.info('请刷新界面');
+    }
   };
 
   render() {

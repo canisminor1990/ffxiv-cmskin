@@ -4,11 +4,14 @@ import { View } from '../';
 const { Split } = View;
 export default () => {
   const map = (item, key) => {
-    const Data = item.split('||');
+    const Data = item.split('|');
     return (
       <div className={style.item} key={key}>
-        <div className={style.time}>{Data[0]}</div>
-        <p className={style.content}>{Data[1]}</p>
+        <div className={style.time}>{Data[1]}</div>
+        <p className={style.content}>
+          {Data[2]}
+          {Data[3] ? Data[3] : null}
+        </p>
       </div>
     );
   };
