@@ -1,8 +1,8 @@
 import style from './index.scss';
-import { Help, Changelog, Copyright } from '../../changelog.js';
 import { View } from '../';
 const { Split } = View;
-export default () => {
+export default ({ data }) => {
+  const { usage, changelog, copyright } = data;
   const map = (item, key) => {
     const Data = item.split('|');
     return (
@@ -17,12 +17,12 @@ export default () => {
   };
   return (
     <div>
-      <Split className={style.line} title="使用说明" />
-      <div className={style.list}>{Help.map(map)}</div>
       <Split className={style.line} title="更新说明" />
-      <div className={style.list}>{Changelog.map(map)}</div>
+      <div className={style.list}>{changelog.map(map)}</div>
+      <Split className={style.line} title="使用说明" />
+      <div className={style.list}>{usage.map(map)}</div>
       <Split className={style.line} title="版权信息" />
-      <div className={style.list}>{Copyright.map(map)}</div>
+      <div className={style.list}>{copyright.map(map)}</div>
     </div>
   );
 };

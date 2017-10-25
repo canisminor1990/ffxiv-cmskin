@@ -17,9 +17,9 @@ const View = ({ transparent, children, ...other }) => {
   );
 };
 
-View.Header = ({ className, children, miniMode, ...other }) => (
+View.Header = ({ className, children, uiMini, ...other }) => (
   <div
-    className={classnames.bind(style)(style.header, className, { [style.miniMode]: miniMode })}
+    className={classnames.bind(style)(style.header, className, { [style.uiMini]: uiMini })}
     {...other}
   >
     {children}
@@ -32,12 +32,12 @@ View.Content = ({ className, children, ...other }) => (
     </div>
   </div>
 );
-View.Footer = ({ className, children, ...other }) => (
+View.Footer = ({ className, children, isActive, ...other }) => (
   <div className={style.footer}>
     <div className={classnames.bind(style)(style.infooter, className)} {...other}>
       {children}
     </div>
-    {window.location.pathname === '/' ? (
+    {window.location.pathname === '/' && isActive ? (
       <Link className={style.history} to="/history">
         <Icon type="clock-circle-o" />
       </Link>

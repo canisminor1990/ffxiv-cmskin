@@ -5,7 +5,7 @@
   align-items: center;
   height: 1.6rem;
   padding: 0;
-  margin: 0 0 0.4rem !important;
+  margin: 0 0 0.2rem !important;
   color: $c-yellow-light;
   > span {
     display: flex;
@@ -20,29 +20,30 @@
   flex: 1;
 }
 :global {
+  $size: 12px;
   .ant-checkbox-inner {
+    width: $size;
+    height: $size;
     background: linear-gradient(to bottom, #373232 0, #6a6662 100%);
     border: 1px solid #7c776d;
     box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6),
       inset -1px -1px 1px rgba(0, 0, 0, 0.3), 0 0 2px rgba(0, 0, 0, 0.7);
-    &:after {
-      content: ' ';
-      border: none !important;
-      width: 10px;
-      height: 10px;
-      left: 1px;
-      top: 1px;
-      transform: none !important;
-      background: linear-gradient(to bottom, #f7c35a 0, #ffbe31 100%);
-      box-shadow: inset 0 0 2px 1px #ffeb7b, 0 0 3px 2px rgba(255, 190, 49, 0.6);
-      opacity: 0;
-    }
+  }
+  .ant-checkbox-inner:after {
+    content: '';
+    border: none !important;
+    width: $size - 4px !important;
+    height: $size - 4px !important;
+    left: 1px !important;
+    top: 1px !important;
+    transform: none !important;
+    background: linear-gradient(to bottom, #f7c35a 0, #ffbe31 100%);
+    box-shadow: inset 0 0 2px 1px #ffeb7b, 0 0 3px 2px rgba(255, 190, 49, 0.6);
+    opacity: 0;
   }
   .ant-checkbox-checked {
-    .ant-checkbox-inner {
-      &:after {
-        opacity: 1;
-      }
+    .ant-checkbox-inner:after {
+      opacity: 1;
     }
   }
 }

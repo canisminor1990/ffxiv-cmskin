@@ -1,81 +1,111 @@
 {
-	"name": "ffxiv-cmskin",
-	"version": "1.0.9",
-	"main": "src/index.js",
-	"repository": "git://git.coding.net/canisminor1990/cmskin.git",
-	"author": "canisminor1990 <canisminor1990@gmail.com>",
-	"license": "MIT",
-	"scripts": {
-		"start": "roadhog server",
-		"build": "roadhog build",
+	"name"           : "ffxiv-cmskin",
+	"version"        : "1.1.0",
+	"usage"          : [
+		"|详情模式|点击列表条目，即可显示该队友详情模式|",
+		"|历史记录|点击右下角时钟查看历史记录|",
+		"|折叠模式|右键菜单 - 折叠/展开|",
+		"|透明模式|右键菜单 - 透明/实体|",
+		"|迷你模式|右键菜单 - 迷你/完全|",
+		"|马赛克ID|右键菜单 - 马赛克/显示|",
+		"|设置|右键菜单 - 设置|",
+		"|刷新|右键菜单 - 刷新|"
+	],
+	"changelog"      : [
+		"|2017.10.25|v1.1.0|添加设置:固定/动态图表坐标轴;溢出量不计入HPS|",
+		"|2017.10.24|v1.0.9|增加历史记录功能|",
+		"|2017.10.24|v1.0.8|优化迷你模式,增加马赛克ID功能|",
+		"|2017.10.22|v1.0.7|点场地标题直达Wiki|",
+		"|2017.10.22|v1.0.6|添加迷你模式|",
+		"|2017.10.22|v1.0.5|添加透明模式|",
+		"|2017.10.22|v1.0.4|修复设置页面和无法滚动Bug|",
+		"|2017.10.20|v1.0.3|添加设置页面|",
+		"|2017.10.19|v1.0.2|增加每人数据详情页面|",
+		"|2017.10.18|v1.0.1|增加右键菜单/折叠模式|",
+		"|2017.10.18|v1.0.0|CanisMinor Act Skin|"
+	],
+	"copyright"      : [
+		"|作者|CanisMinor|",
+		"|ID|男孩纸榨汁机(紫水)|",
+		"|QQ|40073838|",
+		"|Email|i@canisminor.cc|",
+		"|皮肤地址|http://ffxiv.canisminor.cc|"
+	],
+	"main"           : "src/index.js",
+	"repository"     : "git://git.coding.net/canisminor1990/cmskin.git",
+	"author"         : "canisminor1990 <canisminor1990@gmail.com>",
+	"license"        : "MIT",
+	"scripts"        : {
+		"start"    : "roadhog server",
+		"build"    : "roadhog build",
 		"build:dll": "roadhog buildDll",
-		"lint": "lint-staged",
-		"lint:es": "eslint --fix --ext .js src",
-		"commit": "git add -A && git commit -m"
+		"lint"     : "lint-staged",
+		"lint:es"  : "eslint --fix --ext .js src",
+		"commit"   : "git add -A && git commit -m"
 	},
-	"pre-commit": [
+	"pre-commit"     : [
 		"lint"
 	],
-	"lint-staged": {
+	"lint-staged"    : {
 		"src/**/*.scss": [
 			"prettier --trailing-comma all --single-quote --write",
 			"git add"
 		],
-		"src/**/*.js": [
+		"src/**/*.js"  : [
 			"eslint --fix",
 			"git add"
 		]
 	},
-	"engines": {
+	"engines"        : {
 		"install-node": "6.9.2"
 	},
-	"dependencies": {
-		"antd": "^2.13.4",
-		"babel-runtime": "^6.26.0",
-		"classnames": "^2.2.5",
-		"dva": "^2.0.4",
-		"dva-loading": "^1.0.3",
-		"g2": "^2.3.12",
-		"g2-react": "^1.3.1",
-		"gitment": "^0.0.3",
-		"history": "^4.7.2",
-		"include-media": "^1.4.9",
-		"path": "^0.12.7",
-		"react": "^16.0.0",
+	"dependencies"   : {
+		"antd"             : "^2.13.4",
+		"babel-runtime"    : "^6.26.0",
+		"classnames"       : "^2.2.5",
+		"dva"              : "^2.0.4",
+		"dva-loading"      : "^1.0.3",
+		"g2"               : "^2.3.12",
+		"g2-react"         : "^1.3.1",
+		"gitment"          : "^0.0.3",
+		"history"          : "^4.7.2",
+		"include-media"    : "^1.4.9",
+		"path"             : "^0.12.7",
+		"react"            : "^16.0.0",
 		"react-contextmenu": "^2.8.0",
-		"react-dom": "^16.0.0"
+		"react-dom"        : "^16.0.0"
 	},
 	"devDependencies": {
-		"babel-core": "^6.26.0",
-		"babel-eslint": "^8.0.0",
-		"babel-plugin-dva-hmr": "^0.3.2",
-		"babel-plugin-import": "^1.4.0",
-		"babel-plugin-lodash": "^3.2.11",
+		"babel-core"                    : "^6.26.0",
+		"babel-eslint"                  : "^8.0.0",
+		"babel-plugin-dva-hmr"          : "^0.3.2",
+		"babel-plugin-import"           : "^1.4.0",
+		"babel-plugin-lodash"           : "^3.2.11",
 		"babel-plugin-styled-components": "^1.2.0",
 		"babel-plugin-transform-runtime": "^6.23.0",
-		"babel-preset-env": "^1.6.0",
-		"babel-preset-stage-0": "^6.24.1",
-		"cssnano": "^3.10.0",
-		"eslint": "^4.7.2",
-		"eslint-config-prettier": "^2.6.0",
-		"eslint-config-standard": "^10.2.1",
-		"eslint-plugin-flowtype": "^2.37.0",
-		"eslint-plugin-import": "^2.7.0",
-		"eslint-plugin-node": "^5.2.0",
-		"eslint-plugin-prettier": "^2.3.1",
-		"eslint-plugin-promise": "^3.5.0",
-		"eslint-plugin-react": "^7.4.0",
-		"eslint-plugin-standard": "^3.0.1",
-		"expect": "^1.20.2",
-		"husky": "^0.12.0",
-		"lint-staged": "^4.2.3",
-		"lodash": "^4.17.4",
-		"node-sass": "^4.5.3",
-		"postcss-pxtorem": "^4.0.1",
-		"pre-commit": "^1.2.2",
-		"prettier": "^1.7.2",
-		"redbox-react": "^1.3.2",
-		"roadhog": "^1.2.2",
-		"sass-loader": "^6.0.6"
+		"babel-preset-env"              : "^1.6.0",
+		"babel-preset-stage-0"          : "^6.24.1",
+		"cssnano"                       : "^3.10.0",
+		"eslint"                        : "^4.7.2",
+		"eslint-config-prettier"        : "^2.6.0",
+		"eslint-config-standard"        : "^10.2.1",
+		"eslint-plugin-flowtype"        : "^2.37.0",
+		"eslint-plugin-import"          : "^2.7.0",
+		"eslint-plugin-node"            : "^5.2.0",
+		"eslint-plugin-prettier"        : "^2.3.1",
+		"eslint-plugin-promise"         : "^3.5.0",
+		"eslint-plugin-react"           : "^7.4.0",
+		"eslint-plugin-standard"        : "^3.0.1",
+		"expect"                        : "^1.20.2",
+		"husky"                         : "^0.12.0",
+		"lint-staged"                   : "^4.2.3",
+		"lodash"                        : "^4.17.4",
+		"node-sass"                     : "^4.5.3",
+		"postcss-pxtorem"               : "^4.0.1",
+		"pre-commit"                    : "^1.2.2",
+		"prettier"                      : "^1.7.2",
+		"redbox-react"                  : "^1.3.2",
+		"roadhog"                       : "^1.2.2",
+		"sass-loader"                   : "^6.0.6"
 	}
 }

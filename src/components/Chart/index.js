@@ -2,10 +2,20 @@ import createG2 from 'g2-react';
 import style from './index.scss';
 import classnames from 'classnames/bind';
 
-const ChartView = ({ className, data, name, tab, color, size = 32, firstItem }) => {
+const ChartView = ({
+  className,
+  data,
+  name,
+  tab,
+  color,
+  size = 32,
+  firstItem,
+  graphScale = false,
+}) => {
   const Data = data[name];
   let content = [];
-  const Config = firstItem ? { min: 0, max: firstItem } : { min: 0 };
+  let Config = {};
+  if (!graphScale) Config = firstItem ? { min: 0, max: firstItem } : { min: 0 };
   if (!Data || Data.length <= 1) {
     content = <div className={style.loading}>等待数据积累...</div>;
   } else {

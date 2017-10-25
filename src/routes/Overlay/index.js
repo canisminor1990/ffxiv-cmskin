@@ -2,6 +2,7 @@ import { connect } from 'dva';
 import { EncounterView, CombatantView, View, NoticeBar } from '../../components';
 import { Component } from 'react';
 import classnames from 'classnames/bind';
+import Package from '../../../package.json';
 import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
@@ -14,7 +15,7 @@ const State = state => {
     Chart: act ? act.Chart : {},
     isActive: act ? act.isActive : false,
     fullscreen: state.setting.fullscreen,
-    miniMode: state.setting.miniMode,
+    uiMini: state.setting.uiMini,
     uiTrans: state.setting.uiTrans,
     timeout: 0,
   };
@@ -25,20 +26,26 @@ class Overlay extends Component {
     tab: 'dps',
   };
 
-  tabClass = tab =>
-    classnames.bind(style)({
+  tabClass = (tab, name) => {
+    const tabClass = classnames.bind(style)({
       [style.tab]: true,
       [style.active]: this.state.tab === tab,
     });
+    return (
+      <span className={tabClass} onClick={() => this.setState({ tab: tab })}>
+        {name}
+      </span>
+    );
+  };
 
   render() {
-    const { Encounter, Combatant, Chart, isActive, uiTrans, fullscreen, miniMode } = this.props;
+    const { Encounter, Combatant, Chart, isActive, uiTrans, fullscreen, uiMini } = this.props;
     return (
       <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
-        <Header key="header" miniMode={miniMode}>
-          <EncounterView data={Encounter} isActive={isActive} miniMode={miniMode} />
+        <Header key="header" uiMini={uiMini}>
+          <EncounterView data={Encounter} log={Package} isActive={isActive} uiMini={uiMini} />
         </Header>
-        {miniMode ? null : (
+        {uiMini ? null : (
           <Bar key="bar">
             <NoticeBar data={Encounter} isActive={isActive} />
           </Bar>
@@ -47,25 +54,18 @@ class Overlay extends Component {
           <CombatantView
             tab={this.state.tab}
             data={Combatant}
+            log={Package}
             chart={Chart}
             time={Encounter ? Encounter.duration : ''}
             isActive={isActive}
           />
         </Content>
         <Split key="split" />
-        {isActive ? (
-          <Footer key="footer">
-            <span className={this.tabClass('dps')} onClick={() => this.setState({ tab: 'dps' })}>
-              输出
-            </span>
-            <span className={this.tabClass('heal')} onClick={() => this.setState({ tab: 'heal' })}>
-              治疗
-            </span>
-            <span className={this.tabClass('tank')} onClick={() => this.setState({ tab: 'tank' })}>
-              承伤
-            </span>
-          </Footer>
-        ) : null}
+        <Footer key="footer" isActive={isActive}>
+          {isActive
+            ? [this.tabClass('dps', '输出'), this.tabClass('heal', '治疗'), this.tabClass('tank', '承伤')]
+            : null}
+        </Footer>
       </View>
     );
   }

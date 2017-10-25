@@ -17,7 +17,7 @@ const State = state => {
     nameActive: state.setting.nameActive,
     img: state.setting.img,
     imgActive: state.setting.imgActive,
-    miniMode: state.setting.miniMode,
+    uiMini: state.setting.uiMini,
   };
 };
 
@@ -31,7 +31,7 @@ const Detail = ({
   nameActive,
   img,
   imgActive,
-  miniMode,
+  uiMini,
 }) => {
   const Name = path.basename(location.pathname);
   const Data = Combatant[_.findIndex(Combatant, item => item.name === Name)];
@@ -89,7 +89,7 @@ const Detail = ({
     ProgressList.push(
       <Progress
         key={key}
-        title={miniMode ? false : item.title}
+        title={uiMini ? false : item.title}
         number={item.number}
         progress={item.progress}
         color={item.color}
@@ -114,7 +114,7 @@ const Detail = ({
         className={style.chart}
         name={Data.name}
         tab={key}
-        size={miniMode ? 20 : 32}
+        size={uiMini ? 20 : 32}
         color={item.color}
       />
     );
@@ -123,10 +123,10 @@ const Detail = ({
   return (
     <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
       <Header key="header" className={style.header}>
-        <Avatar size={miniMode ? '1.5rem' : '3rem'} deaths={Data.deaths} job={MyImg} />
+        <Avatar size={uiMini ? '1.5rem' : '3rem'} deaths={Data.deaths} job={MyImg} />
         <div>
           <div className={style.name}>{MyName}</div>
-          {miniMode ? null : (
+          {uiMini ? null : (
             <div className={style.role}>
               {Data.role}: {Data.longjob}
             </div>
@@ -136,7 +136,7 @@ const Detail = ({
       <div key="progerss" className={style.progress}>
         {ProgressList}
       </div>
-      {miniMode ? null : (
+      {uiMini ? null : (
         <Bar key="bar" style={!fullscreen ? { display: 'none' } : {}}>
           详细数据
         </Bar>

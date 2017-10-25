@@ -10,7 +10,7 @@ const State = state => ({
   uiTrans: state.setting.uiTrans,
   uiScale: state.setting.uiScale,
   uiScaleActive: state.setting.uiScaleActive,
-  miniMode: state.setting.miniMode,
+  uiMini: state.setting.uiMini,
   hideName: state.setting.hideName,
 });
 
@@ -23,7 +23,7 @@ class App extends Component {
       fullscreen,
       uiScale,
       uiScaleActive,
-      miniMode,
+      uiMini,
       hideName,
     } = this.props;
     let Scale = 16;
@@ -49,9 +49,9 @@ class App extends Component {
             {uiTrans ? '实体模式' : '透明模式'}
           </MenuItem>
           <MenuItem
-            onClick={() => dispatch({ type: 'setting/update', payload: { miniMode: !miniMode } })}
+            onClick={() => dispatch({ type: 'setting/update', payload: { uiMini: !uiMini } })}
           >
-            {miniMode ? '完全模式' : '迷你模式'}
+            {uiMini ? '完全模式' : '迷你模式'}
           </MenuItem>
           <MenuItem
             onClick={() => dispatch({ type: 'setting/update', payload: { hideName: !hideName } })}

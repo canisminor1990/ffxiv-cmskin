@@ -12,18 +12,23 @@ const State = state => ({
 class Overlay extends Component {
   state = {
     timekey: 0,
+    // DIY
     name: this.props.setting.name,
     nameActive: this.props.setting.nameActive,
-    diyHideName: this.props.setting.diyHideName,
-    diyHideNameActive: this.props.setting.diyHideNameActive,
+    nameHide: this.props.setting.nameHide,
+    nameHideActive: this.props.setting.nameHideActive,
     img: this.props.setting.img,
     imgActive: this.props.setting.imgActive,
+    // DATA
+    pureHps: this.props.setting.pureHps,
+    graphScale: this.props.setting.graphScale,
     graphTime: this.props.setting.graphTime,
     graphTimeActive: this.props.setting.graphTimeActive,
+    // UI
     uiScale: this.props.setting.uiScale,
     uiScaleActive: this.props.setting.uiScaleActive,
     uiTrans: this.props.setting.uiTrans,
-    miniMode: this.props.setting.miniMode,
+    uiMini: this.props.setting.uiMini,
   };
 
   inputOnChange = (e, name, isNumber) => {
@@ -44,18 +49,23 @@ class Overlay extends Component {
   onDefault = () => {
     const Default = {
       timekey: this.state.timekey + 1,
+      // DIY
       name: this.props.setting.nameDefault,
       nameActive: false,
-      diyHideName: this.props.setting.diyHideNameDefault,
-      diyHideNameActive: false,
+      nameHide: this.props.setting.nameHideDefault,
+      nameHideActive: false,
       img: this.props.setting.imgDefault,
       imgActive: false,
+      // DATA
+      pureHps: false,
+      graphScale: false,
       graphTime: this.props.setting.graphTimeDefault,
       graphTimeActive: false,
+      // UI
       uiScale: this.props.setting.uiScaleDefault,
       uiScaleActive: false,
       uiTrans: false,
-      miniMode: false,
+      uiMini: false,
     };
     this.setState(Default);
     Message.success('重置成功');
@@ -76,19 +86,41 @@ class Overlay extends Component {
   render() {
     const {
       timekey,
+      // DIY
       name,
       nameActive,
-      diyHideName,
-      diyHideNameActive,
+      nameHide,
+      nameHideActive,
       img,
       imgActive,
+      // DATA
+      pureHps,
+      graphScale,
       graphTime,
       graphTimeActive,
+      // UI
       uiScale,
       uiScaleActive,
       uiTrans,
-      miniMode,
+      uiMini,
     } = this.state;
+
+    const CheckItem = (title, defaultChecked, onChange, inputValue, inputName, placeholder) => (
+      <Checkbox
+        title={title}
+        defaultChecked={defaultChecked}
+        onChange={e => this.checkboxOnChange(e, onChange)}
+      >
+        {inputValue || placeholder ? (
+          <Input
+            defaultValue={inputValue}
+            placeholder={placeholder}
+            onChange={e => this.inputOnChange(e, inputName)}
+          />
+        ) : null}
+      </Checkbox>
+    );
+
     return (
       <View style={{ height: '100%' }}>
         <Header key="header">设置</Header>
@@ -97,67 +129,19 @@ class Overlay extends Component {
         </Bar>
         <Content key={timekey} className={style.content}>
           <div className={style.body}>
-            <div className={style.title}>个人</div>
-            <Checkbox
-              title="自定义昵称"
-              defaultChecked={nameActive}
-              onChange={e => this.checkboxOnChange(e, 'nameActive')}
-            >
-              <Input defaultValue={name} onChange={e => this.inputOnChange(e, 'name')} />
-            </Checkbox>
-            <Checkbox
-              title="自定义头像"
-              defaultChecked={imgActive}
-              onChange={e => this.checkboxOnChange(e, 'imgActive')}
-            >
-              <Input
-                defaultValue={img}
-                placeholder={'图片网址'}
-                onChange={e => this.inputOnChange(e, 'img')}
-              />
-            </Checkbox>
-            <Checkbox
-              title="自定义马赛克"
-              defaultChecked={diyHideNameActive}
-              onChange={e => this.checkboxOnChange(e, 'diyHideNameActive')}
-            >
-              <Input
-                defaultValue={diyHideName}
-                onChange={e => this.inputOnChange(e, 'diyHideName')}
-              />
-            </Checkbox>
+            {CheckItem('自定义昵称', nameActive, 'nameActive', name, 'name')}
+            {CheckItem('自定义头像', imgActive, 'imgActive', img, 'img', '图片网址')}
+            {CheckItem('自定义马赛克', nameHideActive, 'nameHideActive', nameHide, 'nameHide')}
             <br />
-            <div className={style.title}>常规</div>
-            <Checkbox
-              title="图表统计时长(秒)"
-              defaultChecked={graphTimeActive}
-              onChange={e => this.checkboxOnChange(e, 'graphTimeActive')}
-            >
-              <Input
-                defaultValue={graphTime}
-                onChange={e => this.inputOnChange(e, 'graphTime', true)}
-              />
-            </Checkbox>
-            <Checkbox
-              title="UI缩放(倍)"
-              defaultChecked={uiScaleActive}
-              onChange={e => this.checkboxOnChange(e, 'uiScaleActive')}
-            >
-              <Input
-                defaultValue={uiScale}
-                onChange={e => this.inputOnChange(e, 'uiScale', true)}
-              />
-            </Checkbox>
-            <Checkbox
-              title="默认开启 透明模式"
-              defaultChecked={uiTrans}
-              onChange={e => this.checkboxOnChange(e, 'uiTrans')}
-            />
-            <Checkbox
-              title="默认开启 迷你模式"
-              defaultChecked={miniMode}
-              onChange={e => this.checkboxOnChange(e, 'miniMode')}
-            />
+            <Split className={style.title} title="统计" />
+            {CheckItem('图表统计时长(秒)', graphTimeActive, 'graphTimeActive', graphTime, 'graphTime')}
+            {CheckItem('图表动态缩放', graphScale, 'graphScale')}
+            {CheckItem('溢出量不计入HPS', pureHps, 'pureHps')}
+            <br />
+            <Split className={style.title} title="界面" />
+            {CheckItem('UI缩放(倍)', uiScaleActive, 'uiScaleActive', uiScale, 'uiScale')}
+            {CheckItem('默认开启『透明模式』', uiTrans, 'uiTrans')}
+            {CheckItem('默认开启『迷你模式』', uiMini, 'uiMini')}
           </div>
         </Content>
         <Split />

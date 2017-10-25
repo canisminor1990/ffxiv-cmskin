@@ -13,12 +13,13 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
     name,
     nameActive,
     hideName,
-    diyHideName,
-    diyHideNameDefault,
-    diyHideNameActive,
+    nameHide,
+    nameHideDefault,
+    nameHideActive,
     img,
     imgActive,
-    miniMode,
+    uiMini,
+    graphScale,
   } = setting;
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
@@ -58,7 +59,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
     [style.my]: item.isMy && fullscreen,
     [style.trans]: uiTrans,
     [style.fullscreen]: !fullscreen,
-    [style.mini]: miniMode,
+    [style.mini]: uiMini,
   });
 
   let Name, Img;
@@ -72,7 +73,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
   }
   if (hideName) {
     if (Name !== '极限技' && Name !== '陆行鸟') {
-      Name = diyHideNameActive ? diyHideName : diyHideNameDefault;
+      Name = nameHideActive ? nameHide : nameHideDefault;
     }
   }
 
@@ -80,19 +81,19 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
     <Link
       to={path.join('/detail', item.name)}
       className={classnames.bind(style)(listClass, {
-        [style.miniMode]: miniMode,
-        [style.fullMode]: !miniMode,
+        [style.uiMini]: uiMini,
+        [style.fullMode]: !uiMini,
       })}
     >
       <Avatar
         deaths={item.deaths}
         job={Img}
         diy={imgActive && item.isMy}
-        size={miniMode ? '1.5rem' : '2.5rem'}
+        size={uiMini ? '1.5rem' : '2.5rem'}
       />
       <div className={style.header}>
         <div className={style.name}>{Name}</div>
-        {miniMode ? null : (
+        {uiMini ? null : (
           <div className={style.desc}>
             {tabData[tab].desc.map((desc, i) => (
               <span key={i}>
@@ -104,17 +105,18 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
       </div>
       <div className={style.info}>
         <Chart
+          graphScale={graphScale}
           firstItem={firstTabData[tab]}
           data={chart}
           name={item.name}
           tab={tab}
           color={tabData[tab].color}
-          size={miniMode ? 20 : 32}
+          size={uiMini ? 20 : 32}
         />
       </div>
       <Progress
         className={style.right}
-        title={miniMode ? false : tabData[tab].title}
+        title={uiMini ? false : tabData[tab].title}
         number={tabData[tab].number}
         progress={tabData[tab].progress}
         color={tabData[tab].color}

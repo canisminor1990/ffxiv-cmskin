@@ -4,27 +4,32 @@ import { getCookie } from '../utils/cookie';
 export default {
   namespace: 'setting',
   state: {
-    fullscreen: true,
-    uiTrans: false,
-    miniMode: false,
-    hideName: false,
+    // DIY
     name: '我',
     nameDefault: '我',
     nameActive: false,
     img: '',
     imgDefault: '',
     imgActive: false,
-    diyHideName: '光之战士',
-    diyHideNameDefault: '光之战士',
-    diyHideNameActive: false,
+    nameHide: '光之战士',
+    nameHideDefault: '光之战士',
+    nameHideActive: false,
+    // Data
     graphTime: 30,
     graphTimeDefault: 30,
     graphTimeActive: false,
+    graphScale: false,
+    pureHps: false,
+    historyLength: 30,
+    historyPage: 0,
+    // UI
+    fullscreen: true,
+    uiTrans: false,
+    uiMini: false,
+    hideName: false,
     uiScale: 1,
     uiScaleDefault: 1,
     uiScaleActive: false,
-    historyLength: 30,
-    historyPage: 0,
   },
   reducers: {
     save(state, { payload: data }) {

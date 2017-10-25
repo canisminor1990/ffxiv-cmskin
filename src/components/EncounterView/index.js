@@ -1,12 +1,11 @@
 import classnames from 'classnames';
-import { Version } from '../../changelog';
 import style from './index.scss';
 
-export default ({ data, isActive, miniMode }) => {
+export default ({ data, log, isActive, uiMini }) => {
   let Content;
   if (isActive) {
     Content = (
-      <span className={classnames.bind(style)(style.zone, { [style.miniMode]: miniMode })}>
+      <span className={classnames.bind(style)(style.zone, { [style.uiMini]: uiMini })}>
         <a
           href={`http://ff14.huijiwiki.com/wiki/${data.zone.split(' ')[0]}`}
           rel="noopener noreferrer"
@@ -19,7 +18,7 @@ export default ({ data, isActive, miniMode }) => {
     );
   } else {
     Content = (
-      <span className={classnames.bind(style)(style.zone, { [style.miniMode]: miniMode })}>
+      <span className={classnames.bind(style)(style.zone, { [style.uiMini]: uiMini })}>
         <a
           href="https://github.com/canisminor1990/ffxiv-cmskin"
           rel="noopener noreferrer"
@@ -27,7 +26,7 @@ export default ({ data, isActive, miniMode }) => {
         >
           CanisMinor Act
         </a>
-        <span>{` · ${Version}`}</span>
+        <span>{` · ${log.version}`}</span>
       </span>
     );
   }

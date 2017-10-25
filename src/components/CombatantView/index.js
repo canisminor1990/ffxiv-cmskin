@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 let content = [];
 
-export default ({ tab, data, chart, isActive }) => {
+export default ({ tab, data, log, chart, isActive }) => {
   if (isActive) {
     let sortedData = [];
     if (tab === 'dps') {
@@ -20,7 +20,7 @@ export default ({ tab, data, chart, isActive }) => {
       <List chart={chart} tab={tab} key={item.name} item={item} firstItem={sortedData[0]} />
     ));
   } else {
-    content = <ChangeLog />;
+    content = <ChangeLog data={log} />;
   }
   return <div className={style.view}>{content}</div>;
 };
