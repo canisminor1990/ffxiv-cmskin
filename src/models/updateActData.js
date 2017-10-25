@@ -41,9 +41,9 @@ export default {
       });
 
       const newDate = new Date();
-
+      const FormatDate = input => (input.toString().length === 1 ? `0${input}` : input);
       const parseData = {
-        Date: newDate.getHours() + ':' + newDate.getMinutes(),
+        Date: FormatDate(newDate.getHours()) + ':' + FormatDate(newDate.getMinutes()),
         Encounter: newEncounter,
         Combatant: newCombatant,
         Chart: newChart,

@@ -25,16 +25,15 @@
   }
 }
 .date {
-  width: 2rem;
   color: $c-yellow;
-  margin-right: 0.2rem;
 }
 .title {
+  margin-left: 0.5rem;
   color: $c-white;
   flex: 1;
   white-space: nowrap;
-  font-weight: 600;
   overflow: hidden;
+  text-shadow: 0 1px $c-bg-dark;
   > span {
     color: $c-grey;
     font-size: 0.7rem;
