@@ -18,7 +18,7 @@ export default {
     graphTime: 30,
     graphTimeDefault: 30,
     graphTimeActive: false,
-    graphScale: false,
+    graphScale: true,
     pureHps: false,
     historyLength: 30,
     historyPage: 0,

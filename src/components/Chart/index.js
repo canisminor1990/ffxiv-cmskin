@@ -27,13 +27,11 @@ const ChartView = ({
       chart
         .area()
         .position(`time*${tab}`)
-        .color(color)
-        .shape('smooth');
+        .color(color);
       chart
         .line()
         .position(`time*${tab}`)
-        .color(color)
-        .shape('smooth');
+        .color(color);
       chart.axis(false);
       chart.tooltip(false);
       chart.animate(false);
