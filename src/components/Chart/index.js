@@ -9,13 +9,13 @@ const ChartView = ({
   tab,
   color,
   size = 32,
-  highest,
+  firstItem,
   graphScale = false,
 }) => {
   const Data = data[name];
   let content = [];
   let Config = {};
-  if (!graphScale) Config = highest ? { min: 0, max: highest } : { min: 0 };
+  if (!graphScale) Config = firstItem ? { min: 0, max: firstItem } : { min: 0 };
   if (!Data || Data.length <= 1) {
     content = <div className={style.loading}>等待数据积累...</div>;
   } else {
@@ -42,7 +42,7 @@ const ChartView = ({
 
     content = (
       <Chart
-        data={Data}
+        data={data[name]}
         plotCfg={{
           margin: [0, 0, 0, 0],
         }}
