@@ -22,6 +22,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
   } = setting;
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
+
   const tabData = {
     dps: {
       desc: [['暴击', item.damage.criticals.percent], ['直击', item.damage.directhit.percent]],
@@ -44,6 +45,12 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
       progress: parseInt(item.tanking.total) / parseInt(firstItem.damage.total),
       color: '#4488fc',
     },
+  };
+
+  const firstTabData = {
+    dps: parseInt(firstItem.damage.ps),
+    heal: parseInt(firstItem.healing.ps),
+    tank: parseInt(firstItem.tanking.total),
   };
 
   const listClass = classnames.bind(style)({
@@ -97,6 +104,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
       </div>
       <div className={style.info}>
         <Chart
+          firstItem={firstTabData[tab]}
           data={chart}
           name={item.name}
           tab={tab}
