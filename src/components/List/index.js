@@ -28,6 +28,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
     dps: {
       desc: [['暴击', item.damage.criticals.percent], ['直击', item.damage.directhit.percent]],
       title: item.damage.highest.full ? item.damage.highest.full : '输出',
+      highest: item.damage.highest.value,
       number: item.damage.ps,
       progress: parseInt(item.damage.ps) / parseInt(firstItem.damage.ps),
       color: '#d86f87',
@@ -35,6 +36,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
     heal: {
       desc: [['暴击', item.healing.criticals.percent], ['溢出', item.healing.over]],
       title: item.healing.highest.full ? item.healing.highest.full : '治疗',
+      highest: item.healing.highest.value,
       number: item.healing.ps,
       progress: parseInt(item.healing.ps) / parseInt(firstItem.healing.ps),
       color: '#649029',
@@ -42,17 +44,18 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
     tank: {
       desc: [['招架', item.tanking.parry], ['格挡', item.tanking.block]],
       title: '承伤总量',
+      highest: false,
       number: item.tanking.total,
       progress: parseInt(item.tanking.total) / parseInt(firstItem.damage.total),
       color: '#4488fc',
     },
   };
 
-  const firstTabData = {
-    dps: parseInt(firstItem.damage.ps),
-    heal: parseInt(firstItem.healing.ps),
-    tank: parseInt(firstItem.tanking.total),
-  };
+  // const firstTabData = {
+  //  dps: parseInt(firstItem.damage.ps),
+  //  heal: parseInt(firstItem.healing.ps),
+  //  tank: parseInt(firstItem.tanking.total),
+  // };
 
   const listClass = classnames.bind(style)({
     [style.list]: true,
@@ -106,7 +109,7 @@ const ListView = ({ tab, chart, item, firstItem, setting }) => {
       <div className={style.info}>
         <Chart
           graphScale={graphScale}
-          firstItem={firstTabData[tab]}
+          highest={tabData[tab].highest}
           data={chart}
           name={item.name}
           tab={tab}

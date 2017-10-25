@@ -9,13 +9,13 @@ const ChartView = ({
   tab,
   color,
   size = 32,
-  firstItem,
+  highest,
   graphScale = false,
 }) => {
   const Data = data[name];
   let content = [];
   let Config = {};
-  if (!graphScale) Config = firstItem ? { min: 0, max: firstItem } : { min: 0 };
+  if (!graphScale) Config = highest ? { min: 0, max: highest } : { min: 0 };
   if (!Data || Data.length <= 1) {
     content = <div className={style.loading}>等待数据积累...</div>;
   } else {
@@ -27,11 +27,13 @@ const ChartView = ({
       chart
         .area()
         .position(`time*${tab}`)
-        .color(color);
+        .color(color)
+        .shape('smooth');
       chart
         .line()
         .position(`time*${tab}`)
-        .color(color);
+        .color(color)
+        .shape('smooth');
       chart.axis(false);
       chart.tooltip(false);
       chart.animate(false);
@@ -40,7 +42,7 @@ const ChartView = ({
 
     content = (
       <Chart
-        data={data[name]}
+        data={Data}
         plotCfg={{
           margin: [0, 0, 0, 0],
         }}

@@ -32,7 +32,7 @@ class Overlay extends Component {
       [style.active]: this.state.tab === tab,
     });
     return (
-      <span className={tabClass} onClick={() => this.setState({ tab: tab })}>
+      <span key={name} className={tabClass} onClick={() => this.setState({ tab: tab })}>
         {name}
       </span>
     );

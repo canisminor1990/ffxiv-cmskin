@@ -41,23 +41,23 @@ const parseLongjob = db => {
 const parseDamage = db => ({
   total: parseInt(db['damage']),
   ps: parseInt(db['encdps']),
-  count: db['swings'],
+  count: parseInt(db['swings']),
   percent: db['damage%'],
   highest: {
     full: _.startCase(db['maxhit']),
-    value: db['MAXHIT'],
+    value: parseInt(db['MAXHIT']),
   },
   accuracy: {
-    hits: db['hits'],
+    hits: parseInt(db['hits']),
     misses: db['misses'],
     percent: parseInt(db['tohit']) + '%',
   },
   criticals: {
-    count: db['crithits'],
+    count: parseInt(db['crithits']),
     percent: db['crithit%'],
   },
   directhit: {
-    count: db['DirectHitCount'],
+    count: parseInt(db['DirectHitCount']),
     percent: db['DirectHitPct'],
   },
   critdirecthit: {
@@ -68,15 +68,15 @@ const parseDamage = db => ({
 const parseHealing = db => ({
   total: parseInt(db['healed']),
   ps: parseInt(db['enchps']),
-  count: db['heals'],
+  count: parseInt(db['heals']),
   percent: db['healed%'],
   over: db['OverHealPct'],
   highest: {
     full: _.startCase(db['maxheal']).replace('Unknown', '其他'),
-    value: db['MAXHEAL'],
+    value: parseInt(db['MAXHEAL']),
   },
   criticals: {
-    count: db['critheals'],
+    count: parseInt(db['critheals']),
     percent: db['critheal%'],
   },
 });
