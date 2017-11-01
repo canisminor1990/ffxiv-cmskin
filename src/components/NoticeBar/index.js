@@ -8,7 +8,7 @@ export default ({ data, isActive }) => {
         时间: {data.duration}
       </span>,
       <span key="dps" className={style.title}>
-        输出: {data.dps.s30}
+        输出: {data.damage.ps}
       </span>,
       <span key="deaths" className={style.title}>
         放生: {data.deaths}

@@ -12,7 +12,7 @@ export default {
   effects: {
     *update({ payload: newData }, { put, select }) {
       const { Encounter, Combatant, isActive } = newData;
-      const { name, time } = yield select(state => state.event);
+      const { duration } = yield select(state => state.event);
       const { graphTime, graphTimeDefault, graphTimeActive, historyLength, pureHps } = yield select(
         state => state.setting
       );
@@ -26,17 +26,16 @@ export default {
         });
       }
 
-      const newName = newEncounter.name;
-      const newTime = newEncounter.time;
+      const newDuration = newEncounter.duration;
       const Length = graphTimeActive ? graphTime : graphTimeDefault;
 
       let data = yield select(state => state.act);
-      let newChart = newName === name && data[0] ? data[0].Chart : {};
+      let newChart = newDuration > duration && data[0] ? data[0].Chart : {};
       newCombatant.forEach(item => {
         if (!newChart[item.name]) newChart[item.name] = [];
         try {
           newChart[item.name].push({
-            time: time,
+            time: newDuration.toString(),
             dps: item.damage.ps >= 0 ? item.damage.ps : 0,
             heal: item.healing.ps >= 0 ? item.healing.ps : 0,
             tank: item.tanking.total >= 0 ? item.tanking.total : 0,
@@ -55,7 +54,7 @@ export default {
         isActive: isActive,
       };
 
-      if (newName === name) {
+      if (newDuration > duration) {
         data[0] = _.assign(data[0], parseData);
       } else {
         if (data.length > historyLength) data.pop();
@@ -63,7 +62,7 @@ export default {
       }
 
       yield put({ type: 'save', payload: data });
-      yield put({ type: 'event/save', payload: { name: newName, time: newTime } });
+      yield put({ type: 'event/save', payload: { duration: newDuration } });
     },
   },
 };

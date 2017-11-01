@@ -456,6 +456,7 @@ export default () => {
 		});
 
 		Encounter.duration = duration;
+		Encounter.DURATION = (parseInt(Encounter.DURATION) + 1).toString();
 		Encounter.encdps   = parseInt(allEncdps);
 		Encounter.enchps   = parseInt(allEnchps);
 		if (time>5){
