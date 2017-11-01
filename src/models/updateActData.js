@@ -54,11 +54,11 @@ export default {
         isActive: isActive,
       };
 
-      if (newZone === zone) {
-        data[0] = _.assign(data[0], parseData);
-      } else {
+      if (newZone !== zone || newEncounter.name !== '') {
         if (data.length > historyLength) data.pop();
         data.unshift(parseData);
+      } else {
+        data[0] = _.assign(data[0], parseData);
       }
 
       yield put({ type: 'save', payload: data });
