@@ -3,7 +3,7 @@ import _ from 'lodash';
 export default {
   namespace: 'event',
   state: {
-    duration: 0,
+    zone: '',
   },
   reducers: {
     save(state, { payload: event }) {
