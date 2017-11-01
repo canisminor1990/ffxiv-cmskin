@@ -54,7 +54,7 @@ export default {
         isActive: isActive,
       };
 
-      if (newZone !== zone || newEncounter.name !== '') {
+      if (newZone !== zone || newEncounter.name !== 'Encounter') {
         if (data.length > historyLength) data.pop();
         data.unshift(parseData);
       } else {
