@@ -1,16 +1,6 @@
-import _ from 'lodash';
-
 export default {
   namespace: 'event',
-  state: {
-    zone: '',
-  },
-  reducers: {
-    save(state, { payload: event }) {
-      const Event = _.assign(state, event);
-      return Event;
-    },
-  },
+  state: {},
   subscriptions: {
     setup({ dispatch }) {
       document.addEventListener('onOverlayDataUpdate', e => {

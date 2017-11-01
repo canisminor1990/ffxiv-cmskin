@@ -12,7 +12,6 @@ export default {
   effects: {
     *update({ payload: newData }, { put, select }) {
       const { Encounter, Combatant, isActive } = newData;
-      const { zone } = yield select(state => state.event);
       const { graphTime, graphTimeDefault, graphTimeActive, historyLength, pureHps } = yield select(
         state => state.setting
       );
@@ -26,11 +25,12 @@ export default {
         });
       }
 
-      const newZone = newEncounter.zone;
       const Length = graphTimeActive ? graphTime : graphTimeDefault;
+      const isNew = newEncounter.name !== 'Encounter';
 
       let data = yield select(state => state.act);
-      let newChart = newZone === zone && data[0] ? data[0].Chart : {};
+      let newChart =
+        data[0] && data[0].Encounter && data[0].Encounter.name !== '战斗历史已保存' ? data[0].Chart : {};
       newCombatant.forEach(item => {
         if (!newChart[item.name]) newChart[item.name] = [];
         try {
@@ -53,16 +53,17 @@ export default {
         Chart: newChart,
         isActive: isActive,
       };
-
-      if (newZone !== zone || newEncounter.name !== 'Encounter') {
+      if (isNew) {
         if (data.length > historyLength) data.pop();
         data.unshift(parseData);
+        data[1].Encounter.name = newEncounter.name;
+        data[0].Encounter.name = '战斗历史已保存';
       } else {
+        parseData.Encounter.name = '战斗中';
         data[0] = _.assign(data[0], parseData);
       }
 
       yield put({ type: 'save', payload: data });
-      yield put({ type: 'event/save', payload: { zone: newZone } });
     },
   },
 };
