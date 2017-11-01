@@ -6,7 +6,6 @@ import History from './routes/History';
 import Setting from './routes/Setting';
 
 export default ({ history }) => {
-  history.listen(() => window.scrollTo(0, 0));
   return (
     <Router history={history}>
       <Switch>

@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { EncounterView, CombatantView, View, NoticeBar } from '../../components';
+import { EncounterView, AllView, CombatantView, View, NoticeBar } from '../../components';
 import { Component } from 'react';
 import classnames from 'classnames/bind';
 import Package from '../../../package.json';
@@ -51,19 +51,28 @@ class Overlay extends Component {
           </Bar>
         )}
         <Content key="body">
-          <CombatantView
-            tab={this.state.tab}
-            data={Combatant}
-            log={Package}
-            chart={Chart}
-            time={Encounter ? Encounter.duration : ''}
-            isActive={isActive}
-          />
+          {this.state.tab === 'all' ? (
+            <AllView data={Combatant} />
+          ) : (
+            <CombatantView
+              tab={this.state.tab}
+              data={Combatant}
+              log={Package}
+              chart={Chart}
+              time={Encounter ? Encounter.duration : ''}
+              isActive={isActive}
+            />
+          )}
         </Content>
         <Split key="split" />
         <Footer key="footer" isActive={isActive}>
           {isActive
-            ? [this.tabClass('dps', '输出'), this.tabClass('heal', '治疗'), this.tabClass('tank', '承伤')]
+            ? [
+                this.tabClass('dps', '输出'),
+                this.tabClass('heal', '治疗'),
+                this.tabClass('tank', '承伤'),
+                this.tabClass('all', '统计'),
+              ]
             : null}
         </Footer>
       </View>
