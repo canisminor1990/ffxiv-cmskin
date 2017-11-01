@@ -5,22 +5,37 @@ import { Link } from 'dva/router';
 import { connect } from 'dva';
 import { Avatar, Chart, Progress } from '../';
 
-const State = state => ({ setting: state.setting });
-const ListView = ({ tab, chart, item, firstItem, setting }) => {
-  const {
-    fullscreen,
-    uiTrans,
-    name,
-    nameActive,
-    hideName,
-    nameHide,
-    nameHideDefault,
-    nameHideActive,
-    img,
-    imgActive,
-    uiMini,
-    graphScale,
-  } = setting;
+const State = state => ({
+  fullscreen: state.setting.fullscreen,
+  uiMini: state.setting.uiMini,
+  name: state.setting.name,
+  nameActive: state.setting.nameActive,
+  hideName: state.setting.hideName,
+  nameHide: state.setting.nameHide,
+  nameHideDefault: state.setting.nameHideDefault,
+  nameHideActive: state.setting.nameHideActive,
+  img: state.setting.img,
+  imgActive: state.setting.imgActive,
+  graphScale: state.setting.graphScale,
+});
+const ListView = ({
+  tab,
+  chart,
+  item,
+  firstItem,
+  fullscreen,
+  uiTrans,
+  name,
+  nameActive,
+  hideName,
+  nameHide,
+  nameHideDefault,
+  nameHideActive,
+  img,
+  imgActive,
+  graphScale,
+  uiMini,
+}) => {
   if (!item.job || item.job === 'you') return [];
   if (!fullscreen && !item.isMy) return [];
 

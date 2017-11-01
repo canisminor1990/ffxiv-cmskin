@@ -3,6 +3,13 @@ import style from './index.scss';
 
 export default ({ data, log, isActive, uiMini }) => {
   let Content;
+  let Subtitle;
+
+  if (uiMini) {
+    Subtitle = <span> · 输出：{data.damage.ps}</span>;
+  } else {
+    Subtitle = data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : '';
+  }
   if (isActive) {
     Content = (
       <span className={classnames.bind(style)(style.zone, { [style.uiMini]: uiMini })}>
@@ -13,7 +20,7 @@ export default ({ data, log, isActive, uiMini }) => {
         >
           {data.zone}
         </a>
-        {data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : ''}
+        {Subtitle}
       </span>
     );
   } else {

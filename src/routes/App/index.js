@@ -15,47 +15,31 @@ const State = state => ({
 });
 
 class App extends Component {
+  handleClick = payload => this.props.dispatch({ type: 'setting/update', payload: payload });
+
   render() {
-    const {
-      dispatch,
-      children,
-      uiTrans,
-      fullscreen,
-      uiScale,
-      uiScaleActive,
-      uiMini,
-      hideName,
-    } = this.props;
+    const { children, uiTrans, fullscreen, uiScale, uiScaleActive, uiMini, hideName } = this.props;
     let Scale = 16;
     if (uiScaleActive) Scale = Scale * uiScale;
     document.getElementsByTagName('html')[0].style.fontSize = Scale + 'px';
     return [
-      <ContextMenuTrigger id="view" key="view" holdToDisplay={-1}>
+      <ContextMenuTrigger id="view" key="overlay" holdToDisplay={-1}>
         {children}
       </ContextMenuTrigger>,
       <ContextMenu id="view" key="menu" className={style.menu}>
         <div className={style.title}>菜单</div>
         <Split />
         <div className={style.item}>
-          <MenuItem
-            onClick={() =>
-              dispatch({ type: 'setting/update', payload: { fullscreen: !fullscreen } })}
-          >
+          <MenuItem onClick={() => this.handleClick({ fullscreen: !fullscreen })}>
             {fullscreen ? '折叠菜单' : '展开菜单'}
           </MenuItem>
-          <MenuItem
-            onClick={() => dispatch({ type: 'setting/update', payload: { uiTrans: !uiTrans } })}
-          >
+          <MenuItem onClick={() => this.handleClick({ uiTrans: !uiTrans })}>
             {uiTrans ? '实体模式' : '透明模式'}
           </MenuItem>
-          <MenuItem
-            onClick={() => dispatch({ type: 'setting/update', payload: { uiMini: !uiMini } })}
-          >
+          <MenuItem onClick={() => this.handleClick({ uiMini: !uiMini })}>
             {uiMini ? '完全模式' : '迷你模式'}
           </MenuItem>
-          <MenuItem
-            onClick={() => dispatch({ type: 'setting/update', payload: { hideName: !hideName } })}
-          >
+          <MenuItem onClick={() => this.handleClick({ hideName: !hideName })}>
             {hideName ? '显示ID' : '马赛克ID'}
           </MenuItem>
         </div>
