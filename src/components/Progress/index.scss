@@ -28,4 +28,33 @@
 .active {
   height: 100%;
   border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: 10px;
+    animation: ant-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+}
+
+@keyframes ant-progress-active {
+  0% {
+    opacity: 0.1;
+    width: 0;
+  }
+  20% {
+    opacity: 0.5;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 100%;
+  }
 }

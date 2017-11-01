@@ -1,6 +1,7 @@
 import createG2 from 'g2-react';
-import style from './index.scss';
 import classnames from 'classnames/bind';
+import hexToRgba from '../../utils/hexToRgba';
+import style from './index.scss';
 
 const ChartView = ({
   className,
@@ -27,7 +28,7 @@ const ChartView = ({
       chart
         .area()
         .position(`time*${tab}`)
-        .color(color);
+        .color(`l(90) 0:${color} 1:${hexToRgba(color, '.75')}`);
       chart
         .line()
         .position(`time*${tab}`)
