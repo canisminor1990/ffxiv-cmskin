@@ -54,7 +54,7 @@ export default {
         isActive: isActive,
       };
 
-      if (newZone !== zone) {
+      if (newZone === zone) {
         data[0] = _.assign(data[0], parseData);
       } else {
         if (data.length > historyLength) data.pop();
