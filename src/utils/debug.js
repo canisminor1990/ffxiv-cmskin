@@ -5,7 +5,7 @@ const ActData = {
 	Encounter: {
 		n              : '\n',
 		t              : '\t',
-		title          : '瑞光丸',
+		title          : 'Encounter',
 		duration       : '13:09',
 		DURATION       : '789',
 		damage         : '1840349',
@@ -459,9 +459,11 @@ export default () => {
 		Encounter.DURATION = (parseInt(Encounter.DURATION) + 1).toString();
 		Encounter.encdps   = parseInt(allEncdps);
 		Encounter.enchps   = parseInt(allEnchps);
-		if (time>5){
+		if (time == 10){
 			Encounter.title   = '测试';
 			time = 0
+		} else {
+			Encounter.title   = 'Encounter';
 		}
 
 		const event = new CustomEvent('onOverlayDataUpdate', {detail: ActData});
