@@ -7,7 +7,7 @@ export default ({ data }) => {
     Data.push({
       name: item.name,
       dps: parseInt(item.damage.percent),
-      hps: parseInt(item.damage.percent),
+      hps: parseInt(item.healing.percent),
     })
   );
 
