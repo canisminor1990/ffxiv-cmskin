@@ -41,7 +41,10 @@ class Overlay extends Component {
   render() {
     const { Encounter, Combatant, Chart, isActive, uiTrans, fullscreen, uiMini } = this.props;
     return (
-      <View transparent={uiTrans} style={fullscreen ? { height: '100%' } : {}}>
+      <View
+        transparent={uiTrans}
+        style={fullscreen || this.state.tab === 'all' ? { height: '100%' } : {}}
+      >
         <Header key="header" uiMini={uiMini}>
           <EncounterView data={Encounter} log={Package} isActive={isActive} uiMini={uiMini} />
         </Header>

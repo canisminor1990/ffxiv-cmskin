@@ -5,7 +5,7 @@ export default ({ data, isActive }) => {
   if (isActive) {
     Content = [
       <span key="time" className={style.title}>
-        时间: {data.duration}
+        时间: {data.time}
       </span>,
       <span key="dps" className={style.title}>
         输出: {data.damage.ps}
