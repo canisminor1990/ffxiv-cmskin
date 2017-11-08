@@ -1,28 +1,37 @@
 @import 'import';
-
 .view {
   height: 100%;
   background: $c-bg;
 }
-
 .bar {
   color: $c-yellow;
 }
-
+.flex {
+  display: flex;
+  height: 100%;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-right: 1px solid rgba($c-border-highlight, 0.3);
+}
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .content {
   display: flex;
   flex-direction: column;
 }
-
 .body {
   flex: 1;
   font-size: 0.8rem;
 }
-
 .title {
   margin-bottom: 0.6rem;
 }
-
 .item {
   font-size: 0.9rem;
   display: flex;
@@ -31,7 +40,6 @@
   margin: 0 0 0.4rem !important;
   color: $c-yellow-light;
 }
-
 :global {
   .ant-checkbox-inner {
     background: linear-gradient(to bottom, #373232 0, #6a6662 100%);
@@ -59,14 +67,12 @@
     }
   }
 }
-
 .btngroup {
   height: 2rem;
 
   display: flex;
   align-items: center;
 }
-
 .foot {
   font-size: 0.7rem;
   color: $c-yellow;

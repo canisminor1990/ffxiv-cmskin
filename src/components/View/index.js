@@ -7,8 +7,8 @@ const View = ({ transparent, children, ...other }) => {
   return (
     <div
       className={classnames.bind(style)({
-        [style.view]: !transparent,
-        [style.viewTrans]: transparent,
+        view: !transparent,
+        viewTrans: transparent,
       })}
       {...other}
     >
@@ -18,23 +18,20 @@ const View = ({ transparent, children, ...other }) => {
 };
 
 View.Header = ({ className, children, uiMini, ...other }) => (
-  <div
-    className={classnames.bind(style)(style.header, className, { [style.uiMini]: uiMini })}
-    {...other}
-  >
+  <div className={classnames.bind(style)('header', className, { uiMini: uiMini })} {...other}>
     {children}
   </div>
 );
 View.Content = ({ className, children, ...other }) => (
   <div className={style.content}>
-    <div className={classnames.bind(style)(style.body, className)} {...other}>
+    <div className={classnames.bind(style)('body', className)} {...other}>
       {children}
     </div>
   </div>
 );
 View.Footer = ({ className, children, isActive, ...other }) => (
   <div className={style.footer}>
-    <div className={classnames.bind(style)(style.infooter, className)} {...other}>
+    <div className={classnames.bind(style)('infooter', className)} {...other}>
       {children}
     </div>
     {window.location.pathname === '/' && isActive ? (
@@ -54,7 +51,7 @@ View.Footer = ({ className, children, isActive, ...other }) => (
   </div>
 );
 View.Bar = ({ className, children, ...other }) => (
-  <div className={classnames.bind(style)(style.bar, className)} {...other}>
+  <div className={classnames.bind(style)('bar', className)} {...other}>
     {children}
   </div>
 );
@@ -66,9 +63,7 @@ View.Split = ({ className, title, ...other }) => {
         {title}
       </div>
     );
-  List.push(
-    <div key="split" className={classnames.bind(style)(style.split, className)} {...other} />
-  );
+  List.push(<div key="split" className={classnames.bind(style)('split', className)} {...other} />);
   return List;
 };
 export default View;

@@ -76,8 +76,8 @@
 .split {
   border: none;
   height: 1px;
-  background: $c-bg-light;
-  box-shadow: 0 -1px 0 $c-bg-dark;
+  min-height: 1px;
+  box-shadow: 0 -1px 0 $c-bg-dark, inset 0 -1px 0 $c-bg-light;
 }
 .view {
   border-radius: 0.5rem;

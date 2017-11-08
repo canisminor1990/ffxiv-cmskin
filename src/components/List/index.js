@@ -1,65 +1,65 @@
 import classnames from 'classnames/bind';
-import style from './index.scss';
 import path from 'path';
+import _ from 'lodash';
 import { Link } from 'dva/router';
 import { connect } from 'dva';
+import { getSetting } from '../../utils/getSetting';
 import { Avatar, Chart, Progress } from '../';
+import { options } from '../../data';
+import style from './index.scss';
 
-const State = state => ({
-  fullscreen: state.setting.fullscreen,
-  uiMini: state.setting.uiMini,
-  name: state.setting.name,
-  nameActive: state.setting.nameActive,
-  hideName: state.setting.hideName,
-  nameHide: state.setting.nameHide,
-  nameHideDefault: state.setting.nameHideDefault,
-  nameHideActive: state.setting.nameHideActive,
-  img: state.setting.img,
-  imgActive: state.setting.imgActive,
-  graphScale: state.setting.graphScale,
-});
-const ListView = ({
-  tab,
-  chart,
-  item,
-  firstItem,
-  fullscreen,
-  uiTrans,
-  name,
-  nameActive,
-  hideName,
-  nameHide,
-  nameHideDefault,
-  nameHideActive,
-  img,
-  imgActive,
-  graphScale,
-  uiMini,
-}) => {
+const Setting = [
+  'fullscreen',
+  'uiTrans',
+  'name',
+  'nameActive',
+  'hideName',
+  'nameHide',
+  'nameHideDefault',
+  'nameHideActive',
+  'img',
+  'imgActive',
+  'uiMini',
+  'graphScale',
+  'normalDamage',
+  'normalHeal',
+  'normalTank',
+];
+
+const State = state => getSetting(Setting, state.setting);
+const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
   if (!item.job || item.job === 'you') return [];
-  if (!fullscreen && !item.isMy) return [];
+  if (!$.fullscreen && !item.isMy) return [];
+
+  const Img = item.isMy ? ($.imgActive ? $.img : item.job) : item.job;
+  let Name = item.isMy ? ($.nameActive ? $.name : item.name) : item.name;
+  if ($.hideName && Name !== '极限技' && Name !== '陆行鸟')
+    Name = $.nameHideActive ? $.nameHide : $.nameHideDefault;
 
   const tabData = {
     dps: {
-      desc: [['暴击', item.damage.criticals.percent], ['直击', item.damage.directhit.percent]],
-      title: item.damage.highest.full ? item.damage.highest.full : '输出',
+      value: 'damage',
+      desc: $.normalDamage,
+      title: item.damage.highest ? item.damage.highest : options.Setting.damage.title,
+      color: options.Setting.damage.color,
       number: item.damage.ps,
       progress: parseInt(item.damage.ps) / parseInt(firstItem.damage.ps),
-      color: '#d86f87',
     },
     heal: {
-      desc: [['暴击', item.healing.criticals.percent], ['溢出', item.healing.over]],
-      title: item.healing.highest.full ? item.healing.highest.full : '治疗',
+      value: 'healing',
+      desc: $.normalHeal,
+      title: item.healing.highest ? item.healing.highest : options.Setting.healing.title,
+      color: options.Setting.healing.color,
       number: item.healing.ps,
       progress: parseInt(item.healing.ps) / parseInt(firstItem.healing.ps),
-      color: '#649029',
     },
     tank: {
-      desc: [['招架', item.tanking.parry], ['格挡', item.tanking.block]],
-      title: '承伤总量',
+      value: 'tanking',
+      desc: $.normalTank,
+      title: options.Setting.tanking.title,
+      color: options.Setting.tanking.color,
       number: item.tanking.total,
       progress: parseInt(item.tanking.total) / parseInt(firstItem.damage.total),
-      color: '#4488fc',
     },
   };
 
@@ -69,69 +69,58 @@ const ListView = ({
     tank: parseInt(firstItem.tanking.total),
   };
 
-  const listClass = classnames.bind(style)({
-    [style.list]: true,
-    [style.my]: item.isMy && fullscreen,
-    [style.trans]: uiTrans,
-    [style.fullscreen]: !fullscreen,
-    [style.mini]: uiMini,
+  const listClass = classnames.bind(style)('list', {
+    my: item.isMy && $.fullscreen,
+    trans: $.uiTrans,
+    fullscreen: !$.fullscreen,
+    mini: $.uiMini,
   });
 
-  let Name, Img;
-
-  if (item.isMy) {
-    Name = nameActive ? name : item.name;
-    Img = imgActive ? img : item.job;
-  } else {
-    Name = item.name;
-    Img = item.job;
-  }
-  if (hideName) {
-    if (Name !== '极限技' && Name !== '陆行鸟') {
-      Name = nameHideActive ? nameHide : nameHideDefault;
-    }
-  }
+  const mapDesc = (desc, value) => {
+    const Key = `${value}.${desc}`;
+    return (
+      <span key={desc}>
+        {_.result(options.Combatant, Key)}: {_.result(item, Key)}
+      </span>
+    );
+  };
 
   return (
     <Link
       to={path.join('/detail', item.name)}
       className={classnames.bind(style)(listClass, {
-        [style.uiMini]: uiMini,
-        [style.fullMode]: !uiMini,
+        uiMini: $.uiMini,
+        fullMode: !$.uiMini,
       })}
     >
       <Avatar
         deaths={item.deaths}
         job={Img}
-        diy={imgActive && item.isMy}
-        size={uiMini ? '1.5rem' : '2.5rem'}
+        diy={$.imgActive && item.isMy}
+        size={$.uiMini ? '1.5rem' : '2.5rem'}
       />
       <div className={style.header}>
         <div className={style.name}>{Name}</div>
-        {uiMini ? null : (
+        {$.uiMini ? null : (
           <div className={style.desc}>
-            {tabData[tab].desc.map((desc, i) => (
-              <span key={i}>
-                {desc[0]}: {desc[1]}
-              </span>
-            ))}
+            {tabData[tab].desc.map(desc => mapDesc(desc, tabData[tab].value))}
           </div>
         )}
       </div>
       <div className={style.info}>
         <Chart
-          graphScale={graphScale}
+          graphScale={$.graphScale}
           firstItem={firstTabData[tab]}
           data={chart}
           name={item.name}
           tab={tab}
           color={tabData[tab].color}
-          size={uiMini ? 20 : 32}
+          size={$.uiMini ? 20 : 32}
         />
       </div>
       <Progress
         className={style.right}
-        title={uiMini ? false : tabData[tab].title}
+        title={$.uiMini ? false : tabData[tab].title}
         number={tabData[tab].number}
         progress={tabData[tab].progress}
         color={tabData[tab].color}

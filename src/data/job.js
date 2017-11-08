@@ -1,4 +1,4 @@
-const Job = {
+export default {
   acn: {
     role: '法术',
     name: '秘术',
@@ -116,5 +116,3 @@ const Job = {
     name: '极限技',
   },
 };
-
-export { Job };

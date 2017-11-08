@@ -13,7 +13,7 @@ export default ({ history }) => {
           <Route exact path="/" component={Overlay} />
           <Route exact path="/detail/:name" component={Detail} />
           <Route exact path="/history" component={History} />
-          <Route exact path="/setting" component={Setting} />
+          <Route path="/setting" component={Setting} />
         </App>
       </Switch>
     </Router>

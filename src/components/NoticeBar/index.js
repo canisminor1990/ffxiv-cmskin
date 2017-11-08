@@ -1,22 +1,19 @@
 import style from './index.scss';
+import { options } from '../../data';
+import _ from 'lodash';
 
-export default ({ data, isActive }) => {
-  let Content;
-  if (isActive) {
-    Content = [
-      <span key="time" className={style.title}>
-        时间: {data.time}
-      </span>,
-      <span key="dps" className={style.title}>
-        输出: {data.damage.ps}
-      </span>,
-      <span key="deaths" className={style.title}>
-        放生: {data.deaths}
-      </span>,
-    ];
-  } else {
-    Content = <span className={style.title}>{'等待数据传入...'}</span>;
-  }
+const { Encounter } = options;
+export default ({ option, data, isActive }) => {
+  let Content = [];
+  isActive
+    ? option.forEach(item =>
+        Content.push(
+          <span key={item} className={style.title}>
+            {Encounter[item]}: {_.result(data, item)}
+          </span>
+        )
+      )
+    : (Content = <span className={style.title}>{'等待数据传入...'}</span>);
 
   return Content;
 };

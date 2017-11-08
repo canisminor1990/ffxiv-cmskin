@@ -1,54 +1,51 @@
-import { View } from '../../components';
 import { connect } from 'dva';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
+import { View } from '../../components';
+import { getSetting } from '../../utils/getSetting';
 import style from './index.scss';
 
 const { Split } = View;
-const State = state => ({
-  fullscreen: state.setting.fullscreen,
-  uiTrans: state.setting.uiTrans,
-  uiScale: state.setting.uiScale,
-  uiScaleActive: state.setting.uiScaleActive,
-  uiMini: state.setting.uiMini,
-  hideName: state.setting.hideName,
-});
+const Setting = ['fullscreen', 'uiTrans', 'uiScale', 'uiScaleActive', 'uiMini', 'hideName'];
+const State = state => getSetting(Setting, state.setting);
 
 class App extends Component {
+  componentWillMount() {
+    const fontSize = this.props.uiScaleActive ? 16 * this.props.uiScale : 16;
+    document.getElementsByTagName('html')[0].style.fontSize = fontSize + 'px';
+  }
+
   handleClick = payload => this.props.dispatch({ type: 'setting/update', payload: payload });
+  handleSetting = () => {
+    const Scale = this.props.uiScaleActive ? this.props.uiScale : 1;
+    window.open('/setting/basic', '设置', `height=${640 * Scale}, width=${540 * Scale}`);
+  };
+  handleReload = () => window.location.reload();
+
+  MenuItem = (name, data, on, off) => (
+    <MenuItem onClick={() => this.handleClick({ [name]: !data })}>{data ? on : off}</MenuItem>
+  );
 
   render() {
-    const { children, uiTrans, fullscreen, uiScale, uiScaleActive, uiMini, hideName } = this.props;
-    let Scale = 16;
-    if (uiScaleActive) Scale = Scale * uiScale;
-    document.getElementsByTagName('html')[0].style.fontSize = Scale + 'px';
+    const $ = this.props;
+
     return [
       <ContextMenuTrigger id="view" key="overlay" holdToDisplay={-1}>
-        {children}
+        {$.children}
       </ContextMenuTrigger>,
       <ContextMenu id="view" key="menu" className={style.menu}>
         <div className={style.title}>菜单</div>
         <Split />
         <div className={style.item}>
-          <MenuItem onClick={() => this.handleClick({ fullscreen: !fullscreen })}>
-            {fullscreen ? '折叠菜单' : '展开菜单'}
-          </MenuItem>
-          <MenuItem onClick={() => this.handleClick({ uiTrans: !uiTrans })}>
-            {uiTrans ? '实体模式' : '透明模式'}
-          </MenuItem>
-          <MenuItem onClick={() => this.handleClick({ uiMini: !uiMini })}>
-            {uiMini ? '完全模式' : '迷你模式'}
-          </MenuItem>
-          <MenuItem onClick={() => this.handleClick({ hideName: !hideName })}>
-            {hideName ? '显示ID' : '马赛克ID'}
-          </MenuItem>
+          {this.MenuItem('fullscreen', $.fullscreen, '折叠菜单', '展开菜单')}
+          {this.MenuItem('uiTrans', $.uiTrans, '实体模式', '透明模式')}
+          {this.MenuItem('uiMini', $.uiMini, '完全模式', '迷你模式')}
+          {this.MenuItem('hideName', $.hideName, '显示ID', '马赛克ID')}
         </div>
         <Split />
         <div className={style.item}>
-          <MenuItem onClick={() => window.open('/setting', '设置', 'height=500, width=380')}>
-            设置
-          </MenuItem>
-          <MenuItem onClick={() => window.location.reload()}>刷新</MenuItem>
+          <MenuItem onClick={this.handleSetting}>设置</MenuItem>
+          <MenuItem onClick={this.handleReload}>刷新</MenuItem>
         </div>
       </ContextMenu>,
     ];

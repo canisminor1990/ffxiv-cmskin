@@ -2,7 +2,7 @@ const setCookie = (name, value) => {
   const Days = 30;
   const exp = new Date();
   exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-  document.cookie = name + '=' + JSON.stringify(value) + ';expires=' + exp.toGMTString();
+  document.cookie = `${name}=${JSON.stringify(value)};expires=${exp.toGMTString()};path=/`;
 };
 
 const getCookie = name => {

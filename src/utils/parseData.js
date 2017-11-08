@@ -1,4 +1,4 @@
-import { Job } from '../lang/cn';
+import { Job } from '../data';
 import _ from 'lodash';
 
 const parseName = db => {
@@ -24,45 +24,35 @@ const parseJob = db => {
   }
 };
 
+const parseRole = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他');
+
 const parseLongjob = db => {
   if (typeof db['Job'] !== 'undefined' && db['Job'] !== '') {
     return Job[db['Job'].toLowerCase()].name;
   } else if (typeof db['name'] !== 'undefined') {
     try {
       return db['name'].indexOf('(') !== -1 ? 'Chocobo' : Job[db['name'].toLowerCase()].name;
-    } catch (e) {
-      return db['name'];
-    }
+    } catch (e) {}
   } else {
     return db['name'];
   }
 };
 
+const parseHighest = db => _.startCase(db).replace('Unknown', '其他');
+
 const parseDamage = db => ({
   total: parseInt(db['damage']),
   ps: parseInt(db['encdps']),
+  ps10: parseInt(db['Last10DPS']),
+  ps30: parseInt(db['Last30DPS']),
+  ps60: parseInt(db['Last60DPS']),
   count: parseInt(db['swings']),
   percent: db['damage%'],
-  highest: {
-    full: _.startCase(db['maxhit']),
-    value: parseInt(db['MAXHIT']),
-  },
-  accuracy: {
-    hits: parseInt(db['hits']),
-    misses: db['misses'],
-    percent: parseInt(db['tohit']) + '%',
-  },
-  criticals: {
-    count: parseInt(db['crithits']),
-    percent: db['crithit%'],
-  },
-  directhit: {
-    count: parseInt(db['DirectHitCount']),
-    percent: db['DirectHitPct'],
-  },
-  critdirecthit: {
-    percent: db['CritDirectHitPct'],
-  },
+  criticals: db['crithit%'],
+  directhit: db['DirectHitPct'],
+  critdirecthit: db['CritDirectHitPct'],
+  highest: parseHighest(db['maxhit']),
+  kills: parseInt(db['kills']),
 });
 
 const parseHealing = db => ({
@@ -71,32 +61,26 @@ const parseHealing = db => ({
   count: parseInt(db['heals']),
   percent: db['healed%'],
   over: db['OverHealPct'],
-  highest: {
-    full: _.startCase(db['maxheal']).replace('Unknown', '其他'),
-    value: parseInt(db['MAXHEAL']),
-  },
-  criticals: {
-    count: parseInt(db['critheals']),
-    percent: db['critheal%'],
-  },
+  criticals: db['critheal%'],
+  highest: parseHighest(db['maxheal']),
+  deaths: parseInt(db['deaths']),
 });
 const parseTanking = (db, Damage) => ({
   total: parseInt(db['damagetaken']),
   percent: parseInt(db['damagetaken'] / Damage * 100) + '%',
   parry: db['ParryPct'],
   block: db['BlockPct'],
-  inc: parseInt(100 - db['IncToHit']) + '%',
+  dodge: parseInt(100 - db['IncToHit']) + '%',
 });
 const parseData = (db, Damage) => ({
   name: parseName(db),
   job: parseJob(db),
   longjob: parseLongjob(db),
-  role: db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他',
+  role: parseRole(db),
+  deaths: parseInt(db['deaths']),
   damage: parseDamage(db),
   healing: parseHealing(db),
   tanking: parseTanking(db, Damage),
-  kills: db['kills'],
-  deaths: db['deaths'],
   isMy: db['name'] === 'YOU',
 });
 
@@ -117,8 +101,8 @@ const parseEncounter = db => ({
   zone: db['CurrentZoneName'],
   name: db['title'],
   duration: parseInt(db['DURATION']),
-  kills: db['kills'],
-  deaths: db['deaths'],
+  kills: parseInt(db['kills']),
+  deaths: parseInt(db['deaths']),
   damage: parseDamage(db),
   healing: parseHealing(db),
   tanking: parseTanking(db),

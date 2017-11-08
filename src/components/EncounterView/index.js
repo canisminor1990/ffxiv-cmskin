@@ -1,18 +1,25 @@
-import classnames from 'classnames';
+import classnames from 'classnames/bind';
 import style from './index.scss';
+import { options } from '../../data';
+import _ from 'lodash';
 
-export default ({ data, log, isActive, uiMini }) => {
-  let Content;
-  let Subtitle;
+const { Encounter } = options;
+
+export default ({ option, data, log, isActive, uiMini }) => {
+  let Content = [];
+  let Subtitle = [];
 
   if (isActive) {
     if (uiMini) {
-      Subtitle = <span> · 输出：{data.damage.ps}</span>;
+      option.forEach(item =>
+        Subtitle.push(<span key={item}>{` · ${Encounter[item]}: ${_.result(data, item)}`}</span>)
+      );
     } else {
-      Subtitle = data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : '';
+      Subtitle = data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : null;
     }
+
     Content = (
-      <span className={classnames.bind(style)(style.zone, { [style.uiMini]: uiMini })}>
+      <span className={classnames.bind(style)('zone', { uiMini: uiMini })}>
         <a
           href={`http://ff14.huijiwiki.com/wiki/${data.zone.split(' ')[0]}`}
           rel="noopener noreferrer"
@@ -25,7 +32,7 @@ export default ({ data, log, isActive, uiMini }) => {
     );
   } else {
     Content = (
-      <span className={classnames.bind(style)(style.zone, { [style.uiMini]: uiMini })}>
+      <span className={classnames.bind(style)('zone', { uiMini: uiMini })}>
         <a
           href="https://github.com/canisminor1990/ffxiv-cmskin"
           rel="noopener noreferrer"

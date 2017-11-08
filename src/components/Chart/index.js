@@ -54,7 +54,7 @@ const ChartView = ({
   }
   return (
     <div
-      className={classnames.bind(style)(style.chart, className)}
+      className={classnames.bind(style)('chart', className)}
       style={{ height: `${size}px`, lineHeight: `${size}px` }}
     >
       {content}
