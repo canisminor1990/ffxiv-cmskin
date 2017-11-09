@@ -27,7 +27,7 @@ const Setting = [
 ];
 
 const State = state => getSetting(Setting, state.setting);
-const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
+const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
   if (!item.job || item.job === 'you') return [];
   if (!$.fullscreen && !item.isMy) return [];
 
@@ -95,6 +95,27 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
     if (Calc < -10) upDown = 'down';
   }
 
+  let playLevel = false;
+
+  const CalcDps = Math.floor(item.damage.ps / avDps * 100);
+
+  if (hasDps) {
+    if (item.role === 'dps') {
+      if (CalcDps > 130) playLevel = 'high';
+      if (CalcDps < 80) playLevel = 'low';
+    }
+    if (item.role === 'tank') {
+      if (CalcDps > 80) playLevel = 'high';
+      if (CalcDps < 50) playLevel = 'low';
+    }
+    if (item.role === 'heal') {
+      if (CalcDps > 60) playLevel = 'high';
+      if (CalcDps < 30) playLevel = 'low';
+    }
+  } else {
+    if (CalcDps > 130) playLevel = 'high';
+  }
+
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
       <div className={style.left}>
@@ -128,6 +149,7 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
         <Progress
           className={style.progress}
           arrow={upDown}
+          level={playLevel}
           title={$.uiMini ? false : tabData[tab].title}
           number={tabData[tab].number}
           progress={tabData[tab].progress}

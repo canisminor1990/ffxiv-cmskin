@@ -24,19 +24,32 @@ export default {
         const newEncounter = parseEncounter(Encounter);
         const newCombatant = parseCombatant(Combatant);
 
-        if (pureHps) {
-          newCombatant.forEach(item => {
-            item.healing.ps = parseInt(item.healing.ps * (100 - parseInt(item.healing.over)) / 100);
-          });
-        }
-
         const Length = graphTimeActive ? graphTime : graphTimeDefault;
         const isNew = newEncounter.name !== 'Encounter';
 
         let data = yield select(state => state.act);
         let newChart =
           data[0] && data[0].Encounter && data[0].Encounter.name !== '战斗历史已保存' ? data[0].Chart : {};
-        newCombatant.forEach(item => {
+
+        let avAllDps = 0;
+        let numberAll = 0;
+        let hasDps = false;
+
+        const reMap = item => {
+          // 平均dps
+          if (item.role) {
+            avAllDps += item.damage.ps;
+            numberAll += 1;
+          }
+
+          // 是否有输出职业
+          if (item.role === 'dps') hasDps = true;
+
+          // 过量是否计入hps
+          if (pureHps)
+            item.healing.ps = parseInt(item.healing.ps * (100 - parseInt(item.healing.over)) / 100);
+
+          // 图标和历史记录相关
           if (!newChart[item.name]) newChart[item.name] = [];
           try {
             newChart[item.name].push({
@@ -47,8 +60,15 @@ export default {
             });
             if (newChart[item.name].length > Length) newChart[item.name].shift();
           } catch (e) {}
-        });
+        };
 
+        newCombatant.forEach(reMap);
+
+        // 有DPS职业只计算DPS职业的平均dps
+        newEncounter.avDps = Math.floor(avAllDps / numberAll);
+        newEncounter.hasDps = hasDps;
+
+        // 重构数据结构
         const newDate = new Date();
         const FormatDate = input => (input.toString().length === 1 ? `0${input}` : input);
         const parseData = {
@@ -60,7 +80,6 @@ export default {
         };
 
         // 判断战斗是否结束
-
         if (isNew) {
           if (data.length > historyLength) data.pop();
           data.unshift(parseData);

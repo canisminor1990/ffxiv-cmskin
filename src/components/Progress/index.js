@@ -1,7 +1,8 @@
 import { Icon } from 'antd';
+import classnames from 'classnames/bind';
 import style from './index.scss';
 
-export default ({ title, number, progress, color, arrow, ...other }) => {
+export default ({ title, number, progress, color, arrow, level, ...other }) => {
   let Arrow = [];
   if (arrow === 'up')
     Arrow = (
@@ -26,10 +27,16 @@ export default ({ title, number, progress, color, arrow, ...other }) => {
       }}
     />
   ) : null;
+
+  const NumberClass = classnames.bind(style)('show', {
+    high: level === 'high',
+    low: level === 'low',
+  });
+
   return (
     <div {...other}>
       {Title}
-      <div className={style.show}>
+      <div className={NumberClass}>
         {Arrow}
         {parseFloat(number).toLocaleString()}
       </div>

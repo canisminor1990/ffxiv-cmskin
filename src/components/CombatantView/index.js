@@ -4,20 +4,28 @@ import _ from 'lodash';
 
 let content = [];
 
-export default ({ tab, data, log, chart, isActive }) => {
+export default ({ tab, Combatant, Encounter, log, chart, isActive }) => {
   if (isActive) {
     let sortedData = [];
     if (tab === 'dps') {
-      sortedData = _.reverse(_.sortBy(data, 'damage.ps'));
+      sortedData = _.reverse(_.sortBy(Combatant, 'damage.ps'));
     }
     if (tab === 'heal') {
-      sortedData = _.reverse(_.sortBy(data, 'healing.ps'));
+      sortedData = _.reverse(_.sortBy(Combatant, 'healing.ps'));
     }
     if (tab === 'tank') {
-      sortedData = _.reverse(_.sortBy(data, 'tanking.total'));
+      sortedData = _.reverse(_.sortBy(Combatant, 'tanking.total'));
     }
     content = sortedData.map((item, key) => (
-      <List chart={chart} tab={tab} key={item.name} item={item} firstItem={sortedData[0]} />
+      <List
+        chart={chart}
+        tab={tab}
+        key={item.name}
+        item={item}
+        firstItem={sortedData[0]}
+        hasDps={Encounter.hasDps}
+        avDps={Encounter.avDps}
+      />
     ));
   } else {
     content = <ChangeLog data={log} />;

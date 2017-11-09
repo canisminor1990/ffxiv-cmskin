@@ -110,7 +110,7 @@ const Detail = $ => {
           <div className={style.name}>{MyName}</div>
           {$.uiMini ? null : (
             <div className={style.role}>
-              {Data.role}: {Data.jobCN}
+              {Data.roleCN}: {Data.jobCN}
             </div>
           )}
         </div>

@@ -59,7 +59,8 @@ class Overlay extends Component {
       ) : (
         <CombatantView
           tab={this.state.tab}
-          data={$.Combatant}
+          Combatant={$.Combatant}
+          Encounter={$.Encounter}
           log={Package}
           chart={$.Chart}
           time={$.Encounter ? $.Encounter.duration : ''}

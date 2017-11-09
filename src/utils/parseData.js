@@ -16,6 +16,7 @@ const parseCombatantData = (db, Damage) => ({
   job: parseJob(db),
   jobCN: parseJobCN(db),
   role: parseRole(db),
+  roleCN: parseRoleCN(db),
   damage: parseDamage(db),
   healing: parseHealing(db),
   tanking: parseTanking(db, Damage),
@@ -89,7 +90,8 @@ const parseName = db => {
   }
 };
 
-const parseRole = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他');
+const parseRole = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()].r : false);
+const parseRoleCN = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他');
 
 const parseJob = db => {
   if (typeof db['Job'] !== 'undefined' && db['Job'] !== '') {
