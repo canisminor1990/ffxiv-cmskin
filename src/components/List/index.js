@@ -88,6 +88,11 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
 
   const Desc = tabData[tab].desc.map(desc => mapDesc(desc, tabData[tab].value));
 
+  let upDown;
+  const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
+  if (Calc > 10) upDown = 'up';
+  if (Calc < -10) upDown = 'down';
+
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
       <div className={style.left}>
@@ -120,6 +125,7 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
         </div>
         <Progress
           className={style.progress}
+          arrow={upDown}
           title={$.uiMini ? false : tabData[tab].title}
           number={tabData[tab].number}
           progress={tabData[tab].progress}

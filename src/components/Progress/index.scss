@@ -1,5 +1,4 @@
 @import 'import';
-
 .skill {
   font-size: 0.7rem;
   text-align: right;
@@ -43,7 +42,16 @@
     animation: ant-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
   }
 }
-
+.up {
+  i:before {
+    color: $c-red-light;
+  }
+}
+.down {
+  i:before {
+    color: $c-green-light;
+  }
+}
 @keyframes ant-progress-active {
   0% {
     opacity: 0.1;
