@@ -17,3 +17,20 @@
 .list {
   margin-bottom: 1.6rem;
 }
+.showall {
+  display: block;
+  font-size: 0.7rem;
+  i:before {
+    font-size: 0.6rem;
+  }
+}
+.changelog-0 {
+  padding: 0.3rem 0.6rem;
+  margin: 0 -0.6rem 0.6rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    to right,
+    rgba($c-yellow-light, 0.15),
+    rgba($c-yellow-light, 0) 80%
+  );
+}

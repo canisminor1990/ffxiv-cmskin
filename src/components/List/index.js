@@ -73,7 +73,8 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
     my: item.isMy && $.fullscreen,
     trans: $.uiTrans,
     fullscreen: !$.fullscreen,
-    mini: $.uiMini,
+    uiMini: $.uiMini,
+    uiFull: !$.uiMini,
   });
 
   const mapDesc = (desc, value) => {
@@ -85,46 +86,46 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
     );
   };
 
+  const Desc = tabData[tab].desc.map(desc => mapDesc(desc, tabData[tab].value));
+
   return (
-    <Link
-      to={path.join('/detail', item.name)}
-      className={classnames.bind(style)(listClass, {
-        uiMini: $.uiMini,
-        fullMode: !$.uiMini,
-      })}
-    >
-      <Avatar
-        deaths={item.deaths}
-        job={Img}
-        diy={$.imgActive && item.isMy}
-        size={$.uiMini ? '1.5rem' : '2.5rem'}
-      />
-      <div className={style.header}>
-        <div className={style.name}>{Name}</div>
-        {$.uiMini ? null : (
-          <div className={style.desc}>
-            {tabData[tab].desc.map(desc => mapDesc(desc, tabData[tab].value))}
+    <Link to={path.join('/detail', item.name)} className={listClass}>
+      <div className={style.left}>
+        <Avatar
+          deaths={item.deaths}
+          job={Img}
+          diy={$.imgActive && item.isMy}
+          size={$.uiMini ? '1.5rem' : '2.5rem'}
+        />
+        <div className={style.header}>
+          <div key="name" className={style.name}>
+            {Name}
           </div>
-        )}
+          <div key="desc" className={style.desc}>
+            {Desc}
+          </div>
+        </div>
       </div>
-      <div className={style.info}>
-        <Chart
-          graphScale={$.graphScale}
-          firstItem={firstTabData[tab]}
-          data={chart}
-          name={item.name}
-          tab={tab}
+      <div className={style.right}>
+        <div className={style.chart}>
+          <Chart
+            graphScale={$.graphScale}
+            firstItem={firstTabData[tab]}
+            data={chart}
+            name={item.name}
+            tab={tab}
+            color={tabData[tab].color}
+            size={$.uiMini ? 20 : 32}
+          />
+        </div>
+        <Progress
+          className={style.progress}
+          title={$.uiMini ? false : tabData[tab].title}
+          number={tabData[tab].number}
+          progress={tabData[tab].progress}
           color={tabData[tab].color}
-          size={$.uiMini ? 20 : 32}
         />
       </div>
-      <Progress
-        className={style.right}
-        title={$.uiMini ? false : tabData[tab].title}
-        number={tabData[tab].number}
-        progress={tabData[tab].progress}
-        color={tabData[tab].color}
-      />
     </Link>
   );
 };

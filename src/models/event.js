@@ -8,10 +8,6 @@ export default {
           dispatch({ type: 'act/update', payload: e.detail });
         }
       });
-      document.addEventListener('onMessageReceive', e => {
-        console.log(e.detail.message);
-        if (e.detail.message === 'reload') window.location.reload();
-      });
     },
   },
 };

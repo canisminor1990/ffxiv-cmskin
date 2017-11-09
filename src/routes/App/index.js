@@ -11,8 +11,10 @@ const State = state => getSetting(Setting, state.setting);
 
 class App extends Component {
   componentWillMount() {
-    const fontSize = this.props.uiScaleActive ? 16 * this.props.uiScale : 16;
-    document.getElementsByTagName('html')[0].style.fontSize = fontSize + 'px';
+    this.props.dispatch({ type: 'setting/root' });
+    setInterval(() => {
+      this.props.dispatch({ type: 'setting/root' });
+    }, 1000);
   }
 
   handleClick = payload => this.props.dispatch({ type: 'setting/update', payload: payload });
@@ -26,9 +28,11 @@ class App extends Component {
     <MenuItem onClick={() => this.handleClick({ [name]: !data })}>{data ? on : off}</MenuItem>
   );
 
+  UiSize = fontSize => (document.getElementsByTagName('html')[0].style.fontSize = fontSize + 'px');
+
   render() {
     const $ = this.props;
-
+    this.UiSize($.uiScaleActive ? 16 * $.uiScale : 16);
     return [
       <ContextMenuTrigger id="view" key="overlay" holdToDisplay={-1}>
         {$.children}
@@ -46,6 +50,9 @@ class App extends Component {
         <div className={style.item}>
           <MenuItem onClick={this.handleSetting}>设置</MenuItem>
           <MenuItem onClick={this.handleReload}>刷新</MenuItem>
+          {process.env.NODE_ENV === 'development' ? (
+            <MenuItem onClick={() => (window.debug = true)}>DEBUG</MenuItem>
+          ) : null}
         </div>
       </ContextMenu>,
     ];

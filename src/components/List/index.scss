@@ -3,6 +3,7 @@
   color: $c-white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 0.8rem;
   position: relative;
   white-space: nowrap;
@@ -18,33 +19,21 @@
       rgba($c-yellow-light, 0) 80%
     );
   }
-  &.mini {
-    padding: 0.2rem 0.4rem;
-    &.fullscreen {
-      margin-bottom: -0.4rem !important;
-    }
-  }
 }
-.trans {
-  border-radius: 0 !important;
-  &.my,
-  &:hover {
-    background: linear-gradient(
-      to right,
-      rgba($c-yellow-light, 0),
-      rgba($c-yellow-light, 0.1) 5%,
-      rgba($c-yellow-light, 0.1) 60%,
-      rgba($c-yellow-light, 0)
-    ) !important;
-  }
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
 }
-.fullscreen {
-  margin-bottom: -0.4rem !important;
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
 }
 .header {
-  max-width: 120px;
   min-width: 0;
-  flex: 1;
   position: relative;
   margin-right: 1rem;
 }
@@ -63,17 +52,19 @@
   color: $c-yellow;
   text-overflow: ellipsis;
   > span {
+    display: inline-block;
+    min-width: 3.4rem;
     + span {
       margin-left: 0.6rem;
     }
   }
 }
-.info {
+.chart {
   min-width: 32px;
-  flex: 1;
+  width: 50%;
   margin-right: 1rem;
 }
-.right {
+.progress {
   min-width: 5rem;
   max-width: 160px;
   flex: 1;
@@ -83,14 +74,16 @@
   align-items: flex-end;
   position: relative;
 }
-.fullMode {
+.uiFull {
   .header {
     @include media($m-exsmall) {
       display: none;
     }
   }
-
-  .info {
+  .desc {
+    font-size: 0.7rem;
+  }
+  .chart {
     @include media($m-large) {
       max-width: 2.5rem;
     }
@@ -100,20 +93,75 @@
   }
 }
 .uiMini {
+  padding: 0.2rem 0.4rem;
+  &.fullscreen {
+    margin-bottom: -0.4rem !important;
+  }
+  .left {
+    width: 68%;
+    @include media($m-middle) {
+      width: 60%;
+    }
+    @include media($m-small) {
+      width: 4rem;
+    }
+    @include media($m-tiny) {
+      width: 2rem;
+    }
+  }
+  .right {
+    width: 30%;
+    @include media($m-tiny) {
+      width: auto;
+      flex: 1;
+    }
+  }
   .header {
+    display: flex;
+    align-items: center;
+    margin-left: -0.25rem;
+    flex: 1;
     @include media($m-tiny) {
       display: none;
     }
   }
-  .info {
-    @include media($m-middle) {
-      max-width: 2.5rem;
-    }
-    @include media($m-small) {
+  .name {
+    margin-right: 0.2rem;
+    width: 2.5rem;
+  }
+  .desc {
+    margin: 0;
+    width: auto;
+    flex: 1;
+    @include media($m-smiddle) {
       display: none;
     }
   }
-  .right {
+  .chart {
+    @include media($m-middle) {
+      max-width: 2.5rem;
+    }
+    @include media($m-exsmall) {
+      display: none;
+    }
+  }
+  .progress {
     min-width: 3rem;
   }
+}
+.trans {
+  border-radius: 0 !important;
+  &.my,
+  &:hover {
+    background: linear-gradient(
+      to right,
+      rgba($c-yellow-light, 0),
+      rgba($c-yellow-light, 0.1) 5%,
+      rgba($c-yellow-light, 0.1) 60%,
+      rgba($c-yellow-light, 0)
+    ) !important;
+  }
+}
+.fullscreen {
+  margin-bottom: -0.4rem !important;
 }

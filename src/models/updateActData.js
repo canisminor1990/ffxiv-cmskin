@@ -58,6 +58,9 @@ export default {
           Chart: newChart,
           isActive: isActive,
         };
+
+        // 判断战斗是否结束
+
         if (isNew) {
           if (data.length > historyLength) data.pop();
           data.unshift(parseData);

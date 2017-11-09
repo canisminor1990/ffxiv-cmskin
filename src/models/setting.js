@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { getCookie, setCookie } from '../utils/cookie';
-
+import { Console } from '../utils/debug';
+let timekey = -1;
 const Setting = {
   // DIY
   name: '我',
@@ -54,11 +55,17 @@ export default {
   effects: {
     *root({}, { put, select }) {
       const Cookie = getCookie('setting');
-      const Setting = yield select(state => state.setting);
-      const Data = _.assign(Setting, Cookie);
-      Data.fullscreen = true;
-      Data.hideName = false;
-      yield put({ type: 'save', payload: Data });
+      if (Cookie.timekey !== timekey) {
+        const Setting = yield select(state => state.setting);
+        const Data = _.assign(Setting, Cookie);
+        Data.fullscreen = true;
+        Data.hideName = false;
+        timekey = Cookie.timekey;
+        yield put({ type: 'save', payload: Data });
+        // debug
+        console.log('[CM] Setting Load');
+        Console.table(Data);
+      }
     },
     *update({ payload: data }, { put, select }) {
       const Setting = yield select(state => state.setting);
@@ -66,16 +73,12 @@ export default {
       _.forEach(Data, (item, key) => {
         if (key.indexOf('Default') !== -1) delete Data[key];
       });
+      Data.timekey++;
       setCookie('setting', Data);
-      console.log('[CM] Setting Update');
       yield put({ type: 'save', payload: Data });
-    },
-  },
-  subscriptions: {
-    setup({ dispatch, history }) {
-      return history.listen(() => {
-        dispatch({ type: 'root' });
-      });
+      // debug
+      console.log('[CM] Setting Update');
+      Console.table(Data);
     },
   },
 };

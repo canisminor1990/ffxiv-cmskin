@@ -60,11 +60,6 @@ class Overlay extends Component {
     this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
     Message.success('保存成功');
-    if (typeof window.OverlayPluginApi !== 'undefined') {
-      window.OverlayPluginApi.broadcastMessage('reload');
-    } else {
-      Message.info('请刷新界面');
-    }
   };
 
   render() {

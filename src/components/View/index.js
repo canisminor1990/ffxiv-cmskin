@@ -55,12 +55,13 @@ View.Bar = ({ className, children, ...other }) => (
     {children}
   </div>
 );
-View.Split = ({ className, title, ...other }) => {
+View.Split = ({ right, className, title, ...other }) => {
   let List = [];
   if (title)
     List.push(
       <div key="title" className={style.title}>
         {title}
+        <div>{right}</div>
       </div>
     );
   List.push(<div key="split" className={classnames.bind(style)('split', className)} {...other} />);

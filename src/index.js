@@ -7,7 +7,8 @@ import Console from './utils/console';
 import Baidu from './utils/baiduPush';
 import Debug from './utils/debug';
 
-const ifDebug = true;
+window.debug = false;
+
 const ERROR_MSG_DURATION = 3; // 3 秒
 
 // 1. Initialize
@@ -33,8 +34,9 @@ app.router(require('./router'));
 app.start('#root');
 
 // 6. Other
-if (ifDebug && process.env.NODE_ENV === 'development') Debug();
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'development') {
+  Debug();
+} else {
   Console();
   Baidu();
 }

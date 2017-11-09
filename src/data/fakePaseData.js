@@ -34,7 +34,7 @@ export default {
     {
       name: '我',
       job: 'pld',
-      longjob: '骑士',
+      jobCN: '骑士',
       role: '坦克',
       damage: {
         total: 147560,
@@ -72,7 +72,7 @@ export default {
     {
       name: 'D.O.',
       job: 'drg',
-      longjob: '龙骑',
+      jobCN: '龙骑',
       role: '近战',
       damage: {
         total: 331961,
@@ -110,7 +110,7 @@ export default {
     {
       name: 'B.M.',
       job: 'blm',
-      longjob: '黑魔',
+      jobCN: '黑魔',
       role: '法术',
       damage: {
         total: 329454,
@@ -148,7 +148,7 @@ export default {
     {
       name: 'S.U.',
       job: 'sch',
-      longjob: '学者',
+      jobCN: '学者',
       role: '治疗',
       damage: {
         total: 67373,
@@ -186,7 +186,7 @@ export default {
     {
       name: '极限技',
       job: 'limitbreak',
-      longjob: '极限技',
+      jobCN: '极限技',
       role: '其他',
       damage: {
         total: 34210,
