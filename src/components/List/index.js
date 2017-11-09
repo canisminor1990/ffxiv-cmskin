@@ -114,6 +114,10 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
     }
   }
 
+  if (tab === 'heal') {
+    if (parseInt(item.healing.over) > 30) playLevel = 'low';
+  }
+
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
       <div className={style.left}>

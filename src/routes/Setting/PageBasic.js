@@ -92,7 +92,7 @@ class Overlay extends Component {
           <Split className={style.title} title="统计" />
           {CheckItem('图表统计时长(秒)', $.graphTimeActive, 'graphTimeActive', $.graphTime, 'graphTime')}
           {CheckItem('图表动态缩放', $.graphScale, 'graphScale')}
-          {CheckItem('溢出量不计入HPS', $.pureHps, 'pureHps')}
+          {CheckItem('过量不计入HPS', $.pureHps, 'pureHps')}
           <br />
           <Split className={style.title} title="界面" />
           {CheckItem('UI缩放(倍)', $.uiScaleActive, 'uiScaleActive', $.uiScale, 'uiScale')}
