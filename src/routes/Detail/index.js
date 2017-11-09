@@ -105,7 +105,7 @@ const Detail = $ => {
   return (
     <View transparent={$.uiTrans} style={$.fullscreen ? { height: '100%' } : {}}>
       <Header key="header" className={style.header}>
-        <Avatar size={$.uiMini ? '1.5rem' : '3rem'} deaths={Data.deaths} job={MyImg} />
+        <Avatar size={$.uiMini ? '1.5rem' : '3rem'} deaths={Data.healing.deaths} job={MyImg} />
         <div>
           <div className={style.name}>{MyName}</div>
           {$.uiMini ? null : (

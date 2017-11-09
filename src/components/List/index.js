@@ -27,7 +27,7 @@ const Setting = [
 ];
 
 const State = state => getSetting(Setting, state.setting);
-const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
+const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, isBattle, ...$ }) => {
   if (!item.job || item.job === 'you') return [];
   if (!$.fullscreen && !item.isMy) return [];
 
@@ -91,14 +91,17 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
   let upDown = false;
   let playLevel = false;
   if (tab === 'dps') {
-    const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
-    if (Calc > 15) upDown = 'up';
-    if (Calc < -15) upDown = 'down';
-
+    // 升降
+    if (isBattle) {
+      const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
+      if (Calc > 20) upDown = 'up';
+      if (Calc < -20) upDown = 'down';
+    }
+    // 量化
     const CalcDps = Math.floor(item.damage.ps / avDps * 100);
     if (hasDps) {
       if (item.role === 'dps') {
-        if (CalcDps > 130) playLevel = 'high';
+        if (CalcDps > 140) playLevel = 'high';
         if (CalcDps < 80) playLevel = 'low';
       }
       if (item.role === 'tank') {
@@ -116,13 +119,14 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
 
   if (tab === 'heal') {
     if (parseInt(item.healing.over) > 30) playLevel = 'low';
+    if (parseInt(item.healing.over) > 0 && parseInt(item.healing.over) < 5) playLevel = 'high';
   }
 
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
       <div className={style.left}>
         <Avatar
-          deaths={item.deaths}
+          deaths={item.healing.deaths}
           job={Img}
           diy={$.imgActive && item.isMy}
           size={$.uiMini ? '1.5rem' : '2.5rem'}
