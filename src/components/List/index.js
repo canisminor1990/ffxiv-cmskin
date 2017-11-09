@@ -89,31 +89,29 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
   const Desc = tabData[tab].desc.map(desc => mapDesc(desc, tabData[tab].value));
 
   let upDown = false;
+  let playLevel = false;
   if (tab === 'dps') {
     const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
     if (Calc > 15) upDown = 'up';
     if (Calc < -15) upDown = 'down';
-  }
 
-  let playLevel = false;
-
-  const CalcDps = Math.floor(item.damage.ps / avDps * 100);
-
-  if (hasDps) {
-    if (item.role === 'dps') {
+    const CalcDps = Math.floor(item.damage.ps / avDps * 100);
+    if (hasDps) {
+      if (item.role === 'dps') {
+        if (CalcDps > 130) playLevel = 'high';
+        if (CalcDps < 80) playLevel = 'low';
+      }
+      if (item.role === 'tank') {
+        if (CalcDps > 80) playLevel = 'high';
+        if (CalcDps < 50) playLevel = 'low';
+      }
+      if (item.role === 'heal') {
+        if (CalcDps > 60) playLevel = 'high';
+        if (CalcDps < 30) playLevel = 'low';
+      }
+    } else {
       if (CalcDps > 130) playLevel = 'high';
-      if (CalcDps < 80) playLevel = 'low';
     }
-    if (item.role === 'tank') {
-      if (CalcDps > 80) playLevel = 'high';
-      if (CalcDps < 50) playLevel = 'low';
-    }
-    if (item.role === 'heal') {
-      if (CalcDps > 60) playLevel = 'high';
-      if (CalcDps < 30) playLevel = 'low';
-    }
-  } else {
-    if (CalcDps > 130) playLevel = 'high';
   }
 
   return (
