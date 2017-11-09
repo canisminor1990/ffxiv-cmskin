@@ -54,15 +54,20 @@ export default {
   },
   effects: {
     *root({}, { put, select }) {
-      const Cookie = getCookie('setting');
-      if (Cookie.timekey !== timekey) {
-        const Setting = yield select(state => state.setting);
-        const Data = _.assign(Setting, Cookie);
-        timekey = Cookie.timekey;
-        yield put({ type: 'save', payload: Data });
-        // debug
-        console.log('[CM] Setting Load');
-        Console.table(Data);
+      const Setting = yield select(state => state.setting);
+      try {
+        const Cookie = getCookie('setting');
+        if (Cookie.timekey !== timekey) {
+          const Data = _.assign(Setting, Cookie);
+          timekey = Cookie.timekey;
+          yield put({ type: 'save', payload: Data });
+          // debug
+          console.log('[CM] Setting Load');
+          Console.table(Data);
+        }
+      } catch (e) {
+        setCookie('setting', Setting);
+        console.log('[CM] Setting Root');
       }
     },
     *update({ payload: data }, { put, select }) {
