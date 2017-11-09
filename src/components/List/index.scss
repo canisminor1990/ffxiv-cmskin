@@ -110,7 +110,10 @@
     }
   }
   .right {
-    width: 30%;
+    width: 50%;
+    @include media($m-middle) {
+      width: 30%;
+    }
     @include media($m-tiny) {
       width: auto;
       flex: 1;
@@ -133,6 +136,13 @@
     margin: 0;
     width: auto;
     flex: 1;
+    > span {
+      display: inline-block;
+      min-width: 3rem;
+      + span {
+        margin-left: 0.3rem;
+      }
+    }
     @include media($m-smiddle) {
       display: none;
     }
