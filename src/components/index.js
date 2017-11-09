@@ -8,6 +8,7 @@ export { default as View } from './View';
 export { default as ChangeLog } from './ChangeLog';
 export { default as Avatar } from './Avatar';
 export { default as Chart } from './Chart';
+export { default as GroupChart } from './GroupChart';
 export { default as PieChart } from './PieChart';
 export { default as Progress } from './Progress';
 export { default as Back } from './Back';

@@ -1,3 +1,21 @@
 @import 'import';
-.view {
+.desc {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  margin: 0.6rem 0 1rem;
+}
+.content {
+  min-width: 50%;
+  flex: 1;
+  display: flex;
+  margin: 0.2rem 0;
+  flex-wrap: wrap;
+  @include media($m-extra) {
+    min-width: 25%;
+  }
+}
+.title {
+  color: $c-yellow;
+  margin-right: 0.3rem;
 }

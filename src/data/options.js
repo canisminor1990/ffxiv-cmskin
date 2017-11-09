@@ -17,8 +17,8 @@ const Setting = {
 
 const EncounterRaw = {
   damage: {
-    total: '总伤',
-    ps: '秒伤',
+    total: '总输出',
+    ps: '总秒伤',
     ps10: '10秒伤',
     ps30: '30秒伤',
     ps60: '60秒伤',
@@ -27,14 +27,14 @@ const EncounterRaw = {
     kills: '击杀',
   },
   healing: {
-    total: '总疗',
-    ps: '秒疗',
+    total: '总治疗',
+    ps: '秒秒疗',
     count: '疗数',
     highest: '最高疗',
     deaths: '死亡',
   },
   tanking: {
-    total: '承伤',
+    total: '总承伤',
   },
 };
 
@@ -88,6 +88,7 @@ const Combatant = {
 };
 
 export default {
+  EncounterRaw: EncounterRaw,
   Encounter: Encounter,
   Combatant: Combatant,
   Setting: Setting,

@@ -55,7 +55,7 @@ class Overlay extends Component {
 
     const ContentInner =
       this.state.tab === 'all' ? (
-        <AllView data={$.Combatant} />
+        <AllView Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
       ) : (
         <CombatantView
           tab={this.state.tab}

@@ -59,7 +59,7 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
       title: options.Setting.tanking.title,
       color: options.Setting.tanking.color,
       number: item.tanking.total,
-      progress: parseInt(item.tanking.total) / parseInt(firstItem.damage.total),
+      progress: parseInt(item.tanking.total) / parseInt(firstItem.tanking.total),
     },
   };
 

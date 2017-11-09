@@ -1,11 +1,7 @@
 import createG2 from 'g2-react';
 import G2 from 'g2';
 
-export default ({ data, type, width = 200, height = 280 }) => {
-  const colors =
-    type === 'dps'
-      ? ['#F55678', '#FB7B34', '#FFA108', '#FFE102', '#F86B50', '#FE8C17', '#FFC804', '#FFF200']
-      : null;
+export default ({ data, color, desc, width = 200, height = 280 }) => {
   const Chart = createG2(chart => {
     const Stat = G2.Stat;
     chart.coord('theta', {
@@ -17,15 +13,12 @@ export default ({ data, type, width = 200, height = 280 }) => {
       word: {
         fill: 'rgba(255,255,255,.5)',
       },
-      formatter: name => {
-        const Item = data.find(itme => itme.name === name);
-        return `${name}: ${Item[type]}%`;
-      },
+      formatter: name => `${name}: ${desc[name].percent} - ${desc[name].ps}`,
     });
     chart
       .intervalStack()
-      .position(Stat.summary.percent(type))
-      .color('name', colors)
+      .position(Stat.summary.percent('data'))
+      .color('name', color)
       .label('name');
     chart.axis(false);
     chart.tooltip(false);
