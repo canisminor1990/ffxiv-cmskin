@@ -91,8 +91,8 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, ...$ }) => {
   let upDown = false;
   if (tab === 'dps') {
     const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
-    if (Calc > 10) upDown = 'up';
-    if (Calc < -10) upDown = 'down';
+    if (Calc > 15) upDown = 'up';
+    if (Calc < -15) upDown = 'down';
   }
 
   let playLevel = false;

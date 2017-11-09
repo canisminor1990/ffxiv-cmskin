@@ -15,7 +15,7 @@ FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
 
 <br />
 
-## Usage
+## 安装
 
 - 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
 - 或直接下载ACT整合包: [NGA](http://bbs.ngacn.cc/read.php?tid=12526945)
@@ -26,18 +26,7 @@ FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
 http://ffxiv.canisminor.cc
 ```
 
-|模式|路径|
-|---|---|
-|设置|右键菜单 - 设置|
-|历史记录|点击右下角时钟查看历史记录|
-|详情模式|点击某人列表条目，即可显示此人详情模式|
-|折叠模式|右键菜单 - 折叠/展开|
-|透明模式|右键菜单 - 透明/实体|
-|马赛克ID|右键菜单 - 马赛克/显示|
-
-<br />
-
-## ChangeLog
+## 更新说明
 
 |日期|版本|改动|
 |---|---|---|
@@ -58,6 +47,41 @@ http://ffxiv.canisminor.cc
 |2017.10.19|v1.0.2|Add 每人数据详情页面|
 |2017.10.18|v1.0.1|Add 右键菜单/折叠模式|
 |2017.10.18|v1.0.0|Root CanisMinor Act 上线|
+
+<br />
+
+## 使用说明
+
+|模式|路径|
+|---|---|
+|设置|右键菜单 - 设置|
+|历史记录|点击右下角时钟查看历史记录|
+|详情模式|点击某人列表条目，即可显示此人详情模式|
+|折叠模式|右键菜单 - 折叠/展开|
+|透明模式|右键菜单 - 透明/实体|
+|马赛克ID|右键菜单 - 马赛克/显示|
+
+<br />
+
+## 关于量化
+
+**输出职业判定:**
+- > 130% 平均DPS => 高
+- < 80% 平均DPS => 低
+
+**治疗职业判定:**
+- > 60% 平均DPS => 高
+- < 30% 平均DPS => 低
+
+**坦克职业判定:**
+- > 80% 平均DPS => 高
+- < 50% 平均DPS => 低
+
+**升降判定:**
+- 10秒DPS > 115% 60秒DPS => 升
+- 10秒DPS < 85% 60秒DPS => 降
+
+> PS:此为预设值，后计划设为可配置项
 
 <br />
 
