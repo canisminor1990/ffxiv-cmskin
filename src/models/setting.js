@@ -58,8 +58,6 @@ export default {
       if (Cookie.timekey !== timekey) {
         const Setting = yield select(state => state.setting);
         const Data = _.assign(Setting, Cookie);
-        Data.fullscreen = true;
-        Data.hideName = false;
         timekey = Cookie.timekey;
         yield put({ type: 'save', payload: Data });
         // debug

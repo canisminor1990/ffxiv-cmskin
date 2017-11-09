@@ -14,7 +14,7 @@ class App extends Component {
     this.props.dispatch({ type: 'setting/root' });
     setInterval(() => {
       this.props.dispatch({ type: 'setting/root' });
-    }, 1000);
+    }, 2000);
   }
 
   handleClick = payload => this.props.dispatch({ type: 'setting/update', payload: payload });
