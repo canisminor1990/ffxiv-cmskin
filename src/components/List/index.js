@@ -88,10 +88,12 @@ const ListView = ({ tab, chart, item, firstItem, ...$ }) => {
 
   const Desc = tabData[tab].desc.map(desc => mapDesc(desc, tabData[tab].value));
 
-  let upDown;
-  const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
-  if (Calc > 10) upDown = 'up';
-  if (Calc < -10) upDown = 'down';
+  let upDown = false;
+  if (tab === 'dps') {
+    const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
+    if (Calc > 10) upDown = 'up';
+    if (Calc < -10) upDown = 'down';
+  }
 
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
