@@ -23,7 +23,7 @@ class App extends Component {
 
   componentWillMount() {
     this.props.dispatch({ type: 'setting/root' });
-    // setInterval(() => this.props.dispatch({ type: 'setting/root' }), SYNC_SETTING_TIMEOUT);
+    setInterval(() => this.props.dispatch({ type: 'setting/root' }), 2000);
   }
 
   render() {
