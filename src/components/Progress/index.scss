@@ -20,22 +20,24 @@
 }
 .high {
   color: $c-high;
-  text-shadow: 0 0 2px $c-high-dark;
+  text-shadow: 0 0 1px darken($c-high-dark, 10%);
 }
 .low {
   color: $c-low;
-  text-shadow: 0 0 2px $c-low-dark;
+  text-shadow: 0 0 1px darken($c-low-dark, 10%);
 }
 // arrow
 
 .up {
   i:before {
-    color: $c-red-light;
+    color: lighten($c-red-light, 10%);
+    text-shadow: 0 0 1px darken($c-red, 10%);
   }
 }
 .down {
   i:before {
     color: $c-green-light;
+    text-shadow: 0 0 1px $c-green;
   }
 }
 // progerss
