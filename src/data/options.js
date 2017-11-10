@@ -18,7 +18,7 @@ const Setting = {
 const EncounterRaw = {
   damage: {
     total: '总输出',
-    avps: '平均输出',
+    avps: 'w均秒伤',
     ps: '总秒伤',
     ps10: '10秒伤',
     ps30: '30秒伤',
