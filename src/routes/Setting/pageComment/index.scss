@@ -1,18 +1,131 @@
 @import 'import';
 
 :global {
-  @import 'gitment';
-}
-
-.command {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-}
-
-.item {
-  margin: 0;
-  width: 100%;
+  .module-cmt-notice,
+  .block-title-gw,
+  .gap-gw,
+  .function-face-w,
+  .function-uploading-w,
+  .click-ding-gw,
+  .click-prop-gw,
+  .click-report-gw,
+  .cmt-list-border,
+  .post-wrap-border-l,
+  .post-wrap-border-r,
+  .post-wrap-border-t-l,
+  .post-wrap-border-t-r {
+    display: none !important;
+  }
+  .post-wrap-main {
+    color: $c-white;
+    font-size: 0.8rem;
+    background: $c-bg-input;
+    box-shadow: 0 1px 0 rgba(#fff, 0.16), 0 -1px 0 $c-bg-dark;
+    border: none !important;
+    border-radius: 0.2rem;
+    position: relative;
+  }
+  .header-login,
+  .head-img-w,
+  .head-img-gw {
+    left: 0 !important;
+    padding: 0 !important;
+    height: 44px !important;
+    width: 44px !important;
+    overflow: hidden;
+    border-radius: 0.5rem !important;
+    background: $c-border !important;
+    color: $c-yellow !important;
+    padding: 4px;
+    border: none !important;
+    box-shadow: 0 1px 1px 0 $c-border-highlight inset,
+      0 0 1px 0 rgba($c-border-highlight, 0.5) inset,
+      0 0 1px 2px rgba(#000, 0.5);
+    transform: scale(0.9);
+    position: relative;
+    img {
+      margin-left: 4px !important;
+      margin-top: 4px !important;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 4px !important;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px $c-bg-light inset, 0 0 0 2px #222,
+        0 3px 1px $c-border-highlight, 0 0 2px 1px $c-bg-dark;
+    }
+  }
+  .user-wrap-w {
+    top: 2.2rem !important;
+    left: 2.5rem !important;
+    text-shadow: 0 1px 1px #111;
+  }
+  .wrap-name-w,
+  .user-name-gw a {
+    color: $c-yellow-light !important;
+  }
+  .user-address-gw {
+    color: $c-grey !important;
+  }
+  .click-reply-gw a {
+    color: $c-yellow !important;
+  }
+  .block-cont-gw,
+  .cmt-list-type {
+    border-bottom: 1px solid $c-bg-dark !important;
+    box-shadow: 0 1px 0 $c-bg-light;
+  }
+  .type-lists,
+  .type-list {
+    border: none !important;
+    background: none !important;
+  }
+  .type-list {
+    display: none !important;
+  }
+  .comment-number,
+  .cy-number {
+    color: $c-grey !important;
+    font-size: 0.8rem !important;
+  }
+  .btn-fw {
+    color: $c-white;
+    border: none;
+    font-size: 0.8rem;
+    text-decoration: none;
+    background: linear-gradient(
+      to bottom,
+      $btn-highlight 0,
+      $btn-highlight 45%,
+      $btn 55%,
+      $btn 100%
+    ) !important;
+    border-radius: 2rem;
+    text-align: center;
+    width: 6rem;
+    text-shadow: 0 1px rgba(#000, 0.8);
+    padding: 0.4rem;
+    border-top: 1px solid rgba($c-white, 0.5) !important;
+    box-shadow: 0 0 3px 1px #000;
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    position: relative;
+    user-select: none;
+    white-space: nowrap;
+    height: 1.5rem !important;
+    &:before {
+      content: '留言';
+    }
+  }
+  .post-wrap-main {
+    margin: 0 !important;
+  }
+  .module-cmt-header {
+    margin: -1rem 0 !important;
+  }
+  .wrap-area-w {
+    padding: 0.3rem 0.8rem !important;
+  }
 }

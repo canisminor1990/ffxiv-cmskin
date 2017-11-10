@@ -1,6 +1,7 @@
 import { View } from '../../../components';
 import style from '../index.scss';
-const { Content, Split } = View;
+import cStyle from './index.scss';
+const { Content } = View;
 
 const createNs = () => {
   if (window.changyan !== undefined) {
@@ -69,18 +70,22 @@ const loadVersionJs = () => {
 };
 
 export default () => {
-  createNs();
-  createMobileNs();
-  loadVersionJs();
+  setTimeout(() => {
+    createNs();
+    createMobileNs();
+    loadVersionJs();
 
-  window.changyan.api.config({
-    appid: 'cytjdgeJ7',
-    conf: 'prod_e0ae268a3629c862b8790af46e93c5cb',
+    window.changyan.api.config(
+      {
+        appid: 'cytjdgeJ7',
+        conf: 'prod_e0ae268a3629c862b8790af46e93c5cb',
+      },
+      100
+    );
   });
   return (
     <Content key="content" className={style.content}>
-      <Split className={style.title} title="评论列表" />
-      <div id="SOHUCS" />
+      <div id="SOHUCS" className={cStyle.command} />
     </Content>
   );
 };
