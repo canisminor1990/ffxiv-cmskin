@@ -93,7 +93,7 @@ class Overlay extends Component {
         </div>
       </Content>,
       <Split key="split" />,
-      <Footer className={style.foot} key="footer">
+      <Footer className={style.foot} key="footer" hasBtn>
         <div className={style.btngroup}>
           <Button onClick={this.onDefault}>恢复默认</Button>
           <Button onClick={this.onSave}>应用</Button>

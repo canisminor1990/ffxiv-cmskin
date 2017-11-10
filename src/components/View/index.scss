@@ -31,10 +31,14 @@
   }
 }
 .footer {
+  min-height: 2rem;
   padding: 0.4rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.hasBtn {
+  min-height: 2.8rem !important;
 }
 .infooter {
   display: flex;
