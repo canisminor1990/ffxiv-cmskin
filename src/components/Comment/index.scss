@@ -1,0 +1,18 @@
+@import 'import';
+
+:global {
+  @import 'gitment';
+}
+
+.command {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  margin: 0;
+  width: 100%;
+}

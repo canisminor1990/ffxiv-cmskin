@@ -4,6 +4,7 @@ import style from './index.scss';
 import PageBasic from './PageBasic';
 import PageNormal from './PageNormal';
 import PageDetail from './PageDetail';
+import pageComment from './pageComment';
 import _ from 'lodash';
 
 const { Bar, Header } = View;
@@ -24,6 +25,11 @@ export default () => {
       name: '详情页面',
       icon: 'idcard',
       component: PageDetail,
+    },
+    '/setting/comment': {
+      name: '评论反馈',
+      icon: 'message',
+      component: pageComment,
     },
   };
 

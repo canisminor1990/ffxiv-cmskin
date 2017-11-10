@@ -1,7 +1,11 @@
 import { connect } from 'dva';
 import { Component } from 'react';
 import classnames from 'classnames/bind';
-import { EncounterView, AllView, CombatantView, View, NoticeBar } from '../../components';
+import { View } from '../../components';
+import ViewHeader from './ViewHeader';
+import ViewBar from './ViewBar';
+import TabList from './TabList';
+import TabGroup from './TabGroup';
 import { getSetting } from '../../utils/getSetting';
 import Package from '../../../package.json';
 import style from './index.scss';
@@ -49,15 +53,15 @@ class Overlay extends Component {
 
     const BarInner = this.props.uiMini ? null : (
       <Bar key="bar">
-        <NoticeBar option={$.normalFull} data={$.Encounter} isActive={$.isActive} />
+        <ViewBar option={$.normalFull} data={$.Encounter} isActive={$.isActive} />
       </Bar>
     );
 
     const ContentInner =
       this.state.tab === 'all' ? (
-        <AllView Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
+        <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
       ) : (
-        <CombatantView
+        <TabList
           tab={this.state.tab}
           Combatant={$.Combatant}
           Encounter={$.Encounter}
@@ -83,7 +87,7 @@ class Overlay extends Component {
         style={$.fullscreen || this.state.tab === 'all' ? { height: '100%' } : {}}
       >
         <Header key="header" uiMini={$.uiMini}>
-          <EncounterView
+          <ViewHeader
             option={$.normalMini}
             data={$.Encounter}
             log={Package}
