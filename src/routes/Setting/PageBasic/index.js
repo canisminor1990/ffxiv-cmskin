@@ -59,7 +59,7 @@ class Overlay extends Component {
   onSave = () => {
     this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success('保存成功');
+    Message.success('应用成功');
   };
 
   render() {
@@ -104,7 +104,7 @@ class Overlay extends Component {
       <Footer className={style.foot} key="footer">
         <div className={style.btngroup}>
           <Button onClick={this.onDefault}>恢复默认</Button>
-          <Button onClick={this.onSave}>保存</Button>
+          <Button onClick={this.onSave}>应用</Button>
         </div>
       </Footer>,
     ];
