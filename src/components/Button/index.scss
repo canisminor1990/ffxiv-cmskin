@@ -1,8 +1,5 @@
 @import 'import';
-$btn-highlight: lighten($c-bg-highlight, 5%);
-$btn: lighten($c-bg, 5%);
-$btn-hover-highlight: lighten($c-bg-highlight, 10%);
-$btn-hover: lighten($c-bg, 10%);
+
 .btn {
   height: 22px;
   color: $c-white;

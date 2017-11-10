@@ -1,10 +1,12 @@
-import { Comment } from '../../../components';
-import style from './index.scss';
-
+import { Comment, View } from '../../../components';
+import style from '../index.scss';
+const { Content, Footer, Split } = View;
 export default () => {
-  return (
-    <div className={style.view}>
+  return [
+    <Content key="content" className={style.content}>
       <Comment />
-    </div>
-  );
+    </Content>,
+    <Split key="split" />,
+    <Footer className={style.foot} key="footer" />,
+  ];
 };

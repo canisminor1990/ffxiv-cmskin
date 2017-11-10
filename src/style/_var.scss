@@ -17,6 +17,8 @@ $c-bg: #1e1e1e;
 $c-bg-highlight: #3a3a3a;
 $c-bg-dark: rgba(#000, 0.4);
 $c-bg-light: rgba(#fff, 0.1);
+$c-bg-input: rgba(#fff, 0.07);
+
 $c-split: rgba(#fff, 0.1);
 
 $c-border: #554121;
@@ -31,3 +33,9 @@ $m-small: '<=240px';
 $m-exsmall: '<=200px';
 $m-tiny: '<=180px';
 $anim-showup: showup 0.8s forwards ease-out;
+
+// btn
+$btn-highlight: lighten($c-bg-highlight, 5%);
+$btn: lighten($c-bg, 5%);
+$btn-hover-highlight: lighten($c-bg-highlight, 10%);
+$btn-hover: lighten($c-bg, 10%);
