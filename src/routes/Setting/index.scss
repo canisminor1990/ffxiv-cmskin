@@ -15,6 +15,8 @@
   flex-direction: column;
   padding: 0.5rem;
   border-right: 1px solid rgba($c-border-highlight, 0.3);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .right {
   flex: 1;

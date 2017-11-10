@@ -14,6 +14,7 @@
   position: relative;
 }
 .bar {
+  min-height: 26px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -145,6 +146,7 @@
     padding-bottom: 0.5rem;
   }
   .bar {
+    min-height: 0.8rem;
     padding: 0 0.8rem;
   }
 }
