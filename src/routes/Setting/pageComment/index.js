@@ -1,4 +1,5 @@
-import { Comment, Editor, View } from '../../../components';
+import { View } from '../../../components';
+import { Comment, Editor } from './Comment';
 import style from '../index.scss';
 const { Content, Split } = View;
 export default () => {

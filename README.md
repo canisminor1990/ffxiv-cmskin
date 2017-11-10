@@ -1,5 +1,7 @@
 # CanisMinor ACT
 
+![](http://qn.canisminor.cc/2017-11-10-cmskin-logo.png)
+
 `ACT` `OverlayPlugin` `FFXIV` `React` `Redux`
 
 FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
@@ -79,6 +81,13 @@ http://ffxiv.canisminor.cc
 **治疗职业DPS判定:**
 - `> 60% 平均DPS` => `金`
 - `< 30% 平均DPS` => `紫`
+
+> **举例**
+> D1:380 / D2:320 / T:200 / H:100
+> 团队平均DPS: 250
+> 输出: 紫 < 200 < 白 < 350 < 金
+> 坦克: 紫 < 125 < 白 < 200 < 金
+> 治疗: 紫 < 75 < 白 < 150 < 金
 
 **治疗职业过量判定:**
 - `过量 < 10%` => `金`

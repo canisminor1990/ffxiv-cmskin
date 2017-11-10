@@ -4,7 +4,6 @@ export { default as Back } from './Back';
 export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
 export { default as Chart } from './Chart';
-export { Comment, Editor } from './Comment';
 export { default as GroupChart } from './GroupChart';
 export { default as Icon } from './Icon';
 export { default as InfoList } from './InfoList';
