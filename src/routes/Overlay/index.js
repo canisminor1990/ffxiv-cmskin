@@ -3,10 +3,12 @@ import { Component } from 'react';
 import classnames from 'classnames/bind';
 import { View } from '../../components';
 import ViewHeader from './ViewHeader';
-import ViewBar from './ViewBar';
+import TabSplash from './TabSplash';
 import TabList from './TabList';
 import TabGroup from './TabGroup';
 import { getSetting } from '../../utils/getSetting';
+import _ from 'lodash';
+import { options } from '../../data';
 import Package from '../../../package.json';
 import style from './index.scss';
 
@@ -51,35 +53,39 @@ class Overlay extends Component {
   render() {
     const $ = this.props;
 
-    const BarInner = this.props.uiMini ? null : (
-      <Bar key="bar">
-        <ViewBar option={$.normalFull} data={$.Encounter} isActive={$.isActive} />
-      </Bar>
-    );
+    let BarInner = <span className={style.title}>{'等待数据传入...'}</span>;
+    let ContentInner = <TabSplash data={Package} />;
+    let FooterInner = [];
 
-    const ContentInner =
-      this.state.tab === 'all' ? (
-        <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
-      ) : (
-        <TabList
-          tab={this.state.tab}
-          Combatant={$.Combatant}
-          Encounter={$.Encounter}
-          log={Package}
-          chart={$.Chart}
-          time={$.Encounter ? $.Encounter.duration : ''}
-          isActive={$.isActive}
-        />
-      );
+    if ($.isActive) {
+      BarInner = $.normalFull.map(item => (
+        <span key={item} className={style.title}>
+          {options.Encounter[item]}: {_.result($.Encounter, item)}
+        </span>
+      ));
 
-    const FooterInner = this.props.isActive
-      ? [
-          this.tabClass('dps', '输出'),
-          this.tabClass('heal', '治疗'),
-          this.tabClass('tank', '承伤'),
-          this.tabClass('all', '统计'),
-        ]
-      : null;
+      ContentInner =
+        this.state.tab === 'all' ? (
+          <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
+        ) : (
+          <TabList
+            tab={this.state.tab}
+            Combatant={$.Combatant}
+            Encounter={$.Encounter}
+            chart={$.Chart}
+            time={$.Encounter ? $.Encounter.duration : ''}
+          />
+        );
+
+      FooterInner = [
+        this.tabClass('dps', '输出'),
+        this.tabClass('heal', '治疗'),
+        this.tabClass('tank', '承伤'),
+        this.tabClass('all', '统计'),
+      ];
+    }
+
+    BarInner = $.uiMini ? null : <Bar key="bar">{BarInner}</Bar>;
 
     return (
       <View

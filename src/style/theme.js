@@ -1,10 +1,8 @@
 import _ from 'lodash';
 
-const PrimaryColor = '#bca98a';
-
 const Base = {
-  '@primary-color': PrimaryColor,
-  '@link-color': PrimaryColor,
+  '@primary-color': '#bca98a',
+  '@link-color': '#eee1c5',
   '@border-radius-base': '2px',
   '@font-size-base': '16px',
   '@line-height-base': '1.2',

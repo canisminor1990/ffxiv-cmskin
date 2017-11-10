@@ -5,6 +5,7 @@ import PageBasic from './PageBasic';
 import PageNormal from './PageNormal';
 import PageDetail from './PageDetail';
 import pageComment from './pageComment';
+import PageAbout from './PageAbout';
 import _ from 'lodash';
 
 const { Bar, Header } = View;
@@ -30,6 +31,11 @@ export default () => {
       name: '评论反馈',
       icon: 'message',
       component: pageComment,
+    },
+    '/setting/about': {
+      name: '关于',
+      icon: 'github',
+      component: PageAbout,
     },
   };
 

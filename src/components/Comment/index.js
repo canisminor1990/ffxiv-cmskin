@@ -12,12 +12,12 @@ const config = {
   },
 };
 
-export default class extends Component {
+const Config = { id: window.location.pathname, ...config };
+const gitment = new Gitment(Config);
+
+class Comment extends Component {
   componentDidMount() {
-    const Config = { id: window.location.pathname, ...config };
-    const gitment = new Gitment(Config);
     gitment.renderComments('comments');
-    gitment.renderEditor('editor');
   }
 
   render() {
@@ -25,8 +25,24 @@ export default class extends Component {
     return (
       <div className={classnames.bind(styles)(className, styles.command)} {...other}>
         <div id="comments" className={styles.item} />
+      </div>
+    );
+  }
+}
+
+class Editor extends Component {
+  componentDidMount() {
+    gitment.renderEditor('editor');
+  }
+
+  render() {
+    const { className, ...other } = this.props;
+    return (
+      <div className={classnames.bind(styles)(className, styles.command)} {...other}>
         <div id="editor" className={styles.item} />
       </div>
     );
   }
 }
+
+export { Comment, Editor };

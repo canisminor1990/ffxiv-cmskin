@@ -40,6 +40,28 @@
   margin: 0 0 0.4rem !important;
   color: $c-yellow-light;
 }
+
+.btngroup {
+  height: 2rem;
+
+  display: flex;
+  align-items: center;
+}
+.foot {
+  font-size: 0.7rem;
+  color: $c-yellow;
+}
+.editor {
+  padding: 1rem;
+}
+
+.list {
+  margin-bottom: 1rem;
+}
+.logo {
+  padding: 1rem;
+}
+
 :global {
   .ant-checkbox-inner {
     background: linear-gradient(to bottom, #373232 0, #6a6662 100%);
@@ -66,14 +88,4 @@
       }
     }
   }
-}
-.btngroup {
-  height: 2rem;
-
-  display: flex;
-  align-items: center;
-}
-.foot {
-  font-size: 0.7rem;
-  color: $c-yellow;
 }

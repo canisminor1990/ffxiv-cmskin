@@ -11,3 +11,10 @@
     font-weight: 600;
   }
 }
+
+.title {
+  color: $c-yellow;
+  + .title {
+    margin-left: 0.6rem;
+  }
+}

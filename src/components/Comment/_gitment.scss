@@ -44,22 +44,9 @@
   }
 }
 .gitment-comment-like-btn {
-  cursor: pointer;
-  font-size: 0.8rem;
-  position: absolute;
-  right: 1rem;
-  top: 0.8rem;
+  display: none;
+}
 
-  svg {
-    fill: $c-yellow;
-    height: 1.4rem;
-    vertical-align: middle;
-  }
-}
-.gitment-header-like-btn.liked svg,
-.gitment-comment-like-btn.liked svg {
-  fill: $c-red-light;
-}
 .gitment-header-issue-link {
   color: #666;
   float: right;
@@ -68,6 +55,7 @@
 .gitment-comments-loading,
 .gitment-comments-error,
 .gitment-comments-empty {
+  color: $c-grey;
   margin: 3rem 0;
   text-align: center;
 }
@@ -78,10 +66,12 @@
 }
 .gitment-comment,
 .gitment-editor-container {
-  margin: 1rem 0;
   min-height: 4rem;
   padding-left: 4rem;
   position: relative;
+}
+.gitment-comment {
+  margin-bottom: 1rem;
 }
 .gitment-editor-container {
   @include media($m-large) {
@@ -159,7 +149,7 @@
   }
 }
 .gitment-comment-main {
-  padding: 0.1rem 2rem 0.1rem 0.1rem;
+  padding: 0.1rem;
 }
 .gitment-editor-main {
   &:before,
@@ -175,7 +165,8 @@
   margin: 0.75rem 3rem 0.75rem 1rem;
 }
 .gitment-editor-header {
-  border-bottom: 1px solid $c-split;
+  border-bottom: 1px solid $c-bg-light;
+  box-shadow: inset 0 -1px 0 $c-bg-dark;
   margin: 0;
   padding: 0;
 }
@@ -208,8 +199,11 @@
 }
 .gitment-editor-login {
   float: right;
-  margin-right: 15px;
-  margin-top: -30px;
+  margin-right: 0.5rem;
+  margin-top: -2rem;
+  background: $c-bg-dark;
+  padding: 0.2rem 0.8rem;
+  border-radius: 1rem;
 }
 .gitment-editor-logout-link {
   color: #666;
@@ -277,9 +271,9 @@
   font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
-  max-height: 500px;
+  max-height: 20rem;
   max-width: 100%;
-  min-height: 150px;
+  min-height: 6rem;
   outline: none;
   overflow: visible;
   padding: 0.5rem 1rem;
@@ -329,6 +323,7 @@
 .gitment-editor-submit,
 .gitment-comments-init-btn {
   color: $c-white;
+  border: none;
   font-size: 0.8rem;
   text-decoration: none;
   background: linear-gradient(
@@ -342,7 +337,7 @@
   text-align: center;
   width: 6rem;
   text-shadow: 0 1px rgba(#000, 0.8);
-  padding: 3px;
+  padding: 0.4rem;
   border-top: 1px solid rgba($c-white, 0.5);
   box-shadow: 0 0 3px 1px #000;
   position: relative;

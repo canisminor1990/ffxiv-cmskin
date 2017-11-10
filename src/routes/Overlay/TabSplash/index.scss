@@ -1,0 +1,32 @@
+@import 'import';
+.line {
+  margin-bottom: 0.8rem;
+}
+.list {
+  margin-bottom: 1.6rem;
+}
+.showall {
+  display: block;
+  font-size: 0.7rem;
+  i:before {
+    font-size: 0.6rem;
+  }
+}
+.logo {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:global {
+  .changelog-0 {
+    padding: 0.3rem 0.4rem;
+    margin: 0 -0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(
+      to right,
+      rgba($c-yellow-light, 0.13),
+      rgba($c-yellow-light, 0) 80%
+    );
+  }
+}

@@ -1,0 +1,13 @@
+@import 'import';
+.item {
+  font-size: 0.8rem;
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+.time {
+  color: $c-yellow;
+  width: 80px;
+}
+.content {
+  flex: 1;
+}
