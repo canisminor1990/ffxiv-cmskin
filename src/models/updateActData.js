@@ -65,7 +65,7 @@ export default {
         newCombatant.forEach(reMap);
 
         // 有DPS职业只计算DPS职业的平均dps
-        newEncounter.avDps = Math.floor(avAllDps / numberAll);
+        newEncounter.damage.avps = Math.floor(avAllDps / numberAll);
         newEncounter.hasDps = hasDps;
 
         // 重构数据结构

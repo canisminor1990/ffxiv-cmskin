@@ -35,6 +35,17 @@ const Setting = {
   detailDamage: ['percent', 'criticals', 'directhit', 'critdirecthit'],
   detailHeal: ['percent', 'over', 'criticals', 'deaths'],
   detailTank: ['percent', 'parry', 'block', 'dodge'],
+  // Quantity
+  qtDpsHigh: 140,
+  qtDpsLow: 80,
+  qtTankHigh: 80,
+  qtTankLow: 50,
+  qtHealHigh: 60,
+  qtHealLow: 30,
+  qtOverHealHigh: 10,
+  qtOverHealLow: 30,
+  qtUp: 120,
+  qtDown: 80,
 };
 
 const SettingDefault = {};

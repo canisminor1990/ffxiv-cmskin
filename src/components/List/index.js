@@ -18,13 +18,25 @@ const Setting = [
   'imgActive',
   'uiMini',
   'graphScale',
+  // Tag
   'normalDamage',
   'normalHeal',
   'normalTank',
+  // Quantity
+  'qtDpsHigh',
+  'qtDpsLow',
+  'qtTankHigh',
+  'qtTankLow',
+  'qtHealHigh',
+  'qtHealLow',
+  'qtOverHealHigh',
+  'qtOverHealLow',
+  'qtUp',
+  'qtDown',
 ];
 
 const State = state => getSetting(Setting, state.setting);
-const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, isBattle, ...$ }) => {
+const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ }) => {
   if (!item.job || item.job === 'you') return [];
   if (!$.fullscreen && !item.isMy) return [];
 
@@ -90,32 +102,34 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, isBattle, ...$ }
     // 升降
     if (isBattle) {
       const Calc = Math.floor((item.damage.ps10 - item.damage.ps60) / item.damage.ps60 * 100);
-      if (Calc > 20) upDown = 'up';
-      if (Calc < -20) upDown = 'down';
+      if (Calc > $.qtUp - 100) upDown = 'up';
+      if (Calc < $.qtDown - 100) upDown = 'down';
     }
     // 量化
-    const CalcDps = Math.floor(item.damage.ps / avDps * 100);
+    const CalcDps = Math.floor(item.damage.ps / avps * 100);
     if (hasDps) {
       if (item.role === 'dps') {
-        if (CalcDps > 140) playLevel = 'high';
-        if (CalcDps < 80) playLevel = 'low';
+        if (CalcDps > $.qtDpsHigh) playLevel = 'high';
+        if (CalcDps < $.qtDpsLow) playLevel = 'low';
       }
       if (item.role === 'tank') {
-        if (CalcDps > 80) playLevel = 'high';
-        if (CalcDps < 50) playLevel = 'low';
+        if (CalcDps > $.qtTankHigh) playLevel = 'high';
+        if (CalcDps < $.qtTankLow) playLevel = 'low';
       }
       if (item.role === 'heal') {
-        if (CalcDps > 60) playLevel = 'high';
-        if (CalcDps < 30) playLevel = 'low';
+        if (CalcDps > $.qtHealHigh) playLevel = 'high';
+        if (CalcDps < $.qtHealLow) playLevel = 'low';
       }
     } else {
-      if (CalcDps > 130) playLevel = 'high';
+      if (CalcDps > $.qtDpsHigh) playLevel = 'high';
+      if (CalcDps < $.qtHealLow) playLevel = 'low';
     }
   }
 
   if (tab === 'heal') {
-    if (parseInt(item.healing.over) > 30) playLevel = 'low';
-    if (parseInt(item.healing.over) > 0 && parseInt(item.healing.over) < 5) playLevel = 'high';
+    if (parseInt(item.healing.over) > $.qtOverHealLow) playLevel = 'low';
+    if (parseInt(item.healing.over) > 0 && parseInt(item.healing.over) < $.qtOverHealHigh)
+      playLevel = 'high';
   }
 
   return (

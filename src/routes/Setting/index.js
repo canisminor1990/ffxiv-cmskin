@@ -1,6 +1,7 @@
 import { Route } from 'dva/router';
 import { View, Icon } from '../../components';
 import style from './index.scss';
+import PageQuantity from './PageQuantity';
 import PageBasic from './PageBasic';
 import PageNormal from './PageNormal';
 import PageDetail from './PageDetail';
@@ -16,6 +17,11 @@ export default () => {
       name: '一般设置',
       icon: 'laptop',
       component: PageBasic,
+    },
+    '/setting/quantity': {
+      name: '量化设置',
+      icon: 'bar-chart',
+      component: PageQuantity,
     },
     '/setting/normal': {
       name: '基础页面',

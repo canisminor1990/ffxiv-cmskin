@@ -70,10 +70,11 @@ class Overlay extends Component {
           {options.Encounter[item]}: {_.result($.Encounter, item)}
         </span>
       ));
-
+      // 暂时移出团队区域图
+      // <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
       ContentInner =
         this.state.tab === 'all' ? (
-          <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
+          <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} />
         ) : (
           <TabList
             tab={this.state.tab}

@@ -61,7 +61,46 @@
 .logo {
   padding: 1rem;
 }
+.qtGroup {
+  margin-bottom: 2rem;
+}
+.qtList {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  input {
+    width: 3rem;
+    margin: 0 0.5rem;
+  }
+}
+.qtRight {
+  margin: 0 1rem;
+  i::before {
+    color: $c-grey;
+  }
+}
 
+.smile i::before {
+  color: $c-high;
+  text-shadow: 0 0 2px $c-high-dark;
+  font-size: 1.1rem;
+}
+.frown i::before {
+  color: $c-low;
+  text-shadow: 0 0 2px $c-low-dark;
+  font-size: 1.1rem;
+}
+.arrow-up i::before {
+  color: $c-red-light;
+  text-shadow: 0 0 2px $c-red;
+  font-size: 1.1rem;
+}
+
+.arrow-down i::before {
+  color: $c-green-light;
+  text-shadow: 0 0 2px $c-green;
+  font-size: 1.1rem;
+}
 :global {
   .ant-checkbox-inner {
     background: linear-gradient(to bottom, #373232 0, #6a6662 100%);

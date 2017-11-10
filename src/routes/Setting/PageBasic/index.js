@@ -83,8 +83,8 @@ class Overlay extends Component {
 
     return [
       <Content key={$.timekey} className={style.content}>
-        <Split className={style.title} title="个人" />
         <div className={style.body}>
+          <Split className={style.title} title="个人" />
           {CheckItem('自定义昵称', 'nameActive', 'name')}
           {CheckItem('自定义头像', 'imgActive', 'img', '图片网址')}
           <br />

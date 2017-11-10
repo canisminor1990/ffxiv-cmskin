@@ -24,6 +24,11 @@ $c-split: rgba(#fff, 0.1);
 $c-border: #554121;
 $c-border-highlight: #cfc36e;
 
+$c-high: lighten(#ffdf30, 5%);
+$c-high-dark: #e2a806;
+$c-low: lighten(#ee80ed, 15%);
+$c-low-dark: #6e309c;
+
 // media-point
 $m-extra: '>520px';
 $m-large: '<=520px';

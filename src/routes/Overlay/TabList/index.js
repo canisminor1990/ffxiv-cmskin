@@ -21,7 +21,7 @@ export default ({ tab, Combatant, Encounter, chart }) => {
       item={item}
       firstItem={sortedData[0]}
       hasDps={Encounter.hasDps}
-      avDps={Encounter.avDps}
+      avps={Encounter.damage.avps}
       isBattle={Encounter.name === '战斗中'}
     />
   );

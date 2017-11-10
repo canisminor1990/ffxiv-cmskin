@@ -19,12 +19,12 @@
   z-index: 9;
 }
 .high {
-  color: lighten(#ffdf30, 5%);
-  text-shadow: 0 0 2px #e2a806;
+  color: $c-high;
+  text-shadow: 0 0 2px $c-high-dark;
 }
 .low {
-  color: lighten(#ee80ed, 15%);
-  text-shadow: 0 0 2px #6e309c;
+  color: $c-low;
+  text-shadow: 0 0 2px $c-low-dark;
 }
 // arrow
 

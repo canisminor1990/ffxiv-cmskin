@@ -1,9 +1,12 @@
 import _ from 'lodash';
-import { PieChart, GroupChart, View } from '../../../components';
+import { PieChart, View } from '../../../components';
 import { Encounter as Options } from '../../../data/options';
 import style from './index.scss';
 
-export default ({ Encounter, Combatant, Chart }) => {
+// 暂时移出团队区域图
+// import { GroupChart } from '../../../components';
+// export default ({ Encounter, Combatant, Chart }) => {
+export default ({ Encounter, Combatant }) => {
   const Info = {
     damage: ['damage.total', 'damage.ps', 'damage.highest'],
     healing: ['healing.total', 'healing.ps', 'healing.highest'],
@@ -52,19 +55,19 @@ export default ({ Encounter, Combatant, Chart }) => {
     }
   });
 
-  const ChartData = {
-    damage: [],
-    healing: [],
-    tanking: [],
-  };
-
-  _.forEach(Chart, (item, key) => {
-    item.forEach(i => {
-      ChartData.damage.push({ name: key, time: i.time, value: i.dps });
-      ChartData.healing.push({ name: key, time: i.time, value: i.heal });
-      ChartData.tanking.push({ name: key, time: i.time, value: i.tank });
-    });
-  });
+  // const ChartData = {
+  //	damage : [],
+  //	healing: [],
+  //	tanking: []
+  // };
+  //
+  // _.forEach(Chart, (item, key) => {
+  //	item.forEach(i => {
+  //		ChartData.damage.push({name: key, time: i.time, value: i.dps});
+  //		ChartData.healing.push({name: key, time: i.time, value: i.heal});
+  //		ChartData.tanking.push({name: key, time: i.time, value: i.tank});
+  //	});
+  // });
 
   const Tag = type => (
     <div className={style.desc}>
@@ -77,25 +80,23 @@ export default ({ Encounter, Combatant, Chart }) => {
     </div>
   );
 
+  const MapData = (title, type) => (
+    <div>
+      <View.Split title={title} />
+      {Tag(type)}
+      <View.Split />
+      <PieChart data={PieData[type]} color={Colors[type]} desc={PieDesc[type]} />
+      {/* <GroupChart data={ChartData[type]} color={Colors[type]}/> */}
+    </div>
+  );
+
   return (
     <div className={style.view}>
-      <View.Split title="团队输出" />
-      {Tag('damage')}
-      <View.Split />
-      <PieChart data={PieData.damage} color={Colors.damage} desc={PieDesc.damage} />
-      <GroupChart data={ChartData.damage} color={Colors.damage} />
+      {MapData('团队输出', 'damage')}
       <br />
-      <View.Split title="团队治疗" />
-      {Tag('healing')}
-      <View.Split />
-      <PieChart data={PieData.healing} color={Colors.healing} desc={PieDesc.healing} />
-      <GroupChart data={ChartData.healing} color={Colors.healing} />
+      {MapData('团队治疗', 'healing')}
       <br />
-      <View.Split title="团队承伤" />
-      {Tag('tanking')}
-      <View.Split />
-      <PieChart data={PieData.tanking} color={Colors.tanking} desc={PieDesc.tanking} />
-      <GroupChart data={ChartData.tanking} color={Colors.tanking} />
+      {MapData('团队承伤', 'tanking')}
     </div>
   );
 };
