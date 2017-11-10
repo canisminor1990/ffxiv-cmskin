@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { getCookie, setCookie } from '../utils/cookie';
 import { Console } from '../utils/debug';
+
 let timekey = -1;
 const Setting = {
   // DIY
@@ -8,8 +9,6 @@ const Setting = {
   nameActive: false,
   img: '',
   imgActive: false,
-  nameHide: '光之战士',
-  nameHideActive: false,
   // Data
   graphTime: 30,
   graphTimeActive: false,
@@ -24,6 +23,8 @@ const Setting = {
   hideName: false,
   uiScale: 1,
   uiScaleActive: false,
+  uiAutoMini: 5,
+  uiAutoMiniActive: false,
   // Detail
   normalFull: ['time', 'damage.ps', 'healing.deaths'],
   normalMini: ['damage.ps'],

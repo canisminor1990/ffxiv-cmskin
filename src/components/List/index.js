@@ -14,9 +14,6 @@ const Setting = [
   'name',
   'nameActive',
   'hideName',
-  'nameHide',
-  'nameHideDefault',
-  'nameHideActive',
   'img',
   'imgActive',
   'uiMini',
@@ -33,8 +30,7 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avDps, isBattle, ...$ }
 
   const Img = item.isMy ? ($.imgActive ? $.img : item.job) : item.job;
   let Name = item.isMy ? ($.nameActive ? $.name : item.name) : item.name;
-  if ($.hideName && Name !== '极限技' && Name !== '陆行鸟')
-    Name = $.nameHideActive ? $.nameHide : item.jobCN;
+  if ($.hideName && Name !== '极限技' && Name !== '陆行鸟') Name = item.jobCN;
 
   const tabData = {
     dps: {

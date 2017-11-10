@@ -17,6 +17,8 @@ const Setting = [
   'fullscreen',
   'uiMini',
   'uiTrans',
+  'uiAutoMini',
+  'uiAutoMiniActive',
   'normalFull',
   'normalMini',
   'normalDamage',
@@ -58,6 +60,11 @@ class Overlay extends Component {
     let FooterInner = [];
 
     if ($.isActive) {
+      if ($.uiAutoMiniActive) {
+        const ifMini = $.Combatant.length > $.uiAutoMini;
+        this.props.dispatch({ type: 'setting/update', payload: { uiMini: ifMini } });
+      }
+
       BarInner = $.normalFull.map(item => (
         <span key={item} className={style.title}>
           {options.Encounter[item]}: {_.result($.Encounter, item)}

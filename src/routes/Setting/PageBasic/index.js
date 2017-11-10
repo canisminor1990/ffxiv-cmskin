@@ -12,8 +12,6 @@ const State = state => ({
 const Setting = [
   'name',
   'nameActive',
-  'nameHide',
-  'nameHideActive',
   'img',
   'imgActive',
   'pureHps',
@@ -24,6 +22,8 @@ const Setting = [
   'uiScaleActive',
   'uiTrans',
   'uiMini',
+  'uiAutoMini',
+  'uiAutoMiniActive',
 ];
 
 class Overlay extends Component {
@@ -65,17 +65,17 @@ class Overlay extends Component {
   render() {
     const $ = this.state;
 
-    const CheckItem = (title, defaultChecked, onChange, inputValue, inputName, placeholder) => (
+    const CheckItem = (title, defaultChecked, inputValue, placeholder) => (
       <Checkbox
         title={title}
-        defaultChecked={defaultChecked}
-        onChange={e => this.checkboxOnChange(e, onChange)}
+        defaultChecked={$[defaultChecked]}
+        onChange={e => this.checkboxOnChange(e, defaultChecked)}
       >
         {inputValue || placeholder ? (
           <Input
-            defaultValue={inputValue}
+            defaultValue={$[inputValue]}
             placeholder={placeholder}
-            onChange={e => this.inputOnChange(e, inputName)}
+            onChange={e => this.inputOnChange(e, inputValue)}
           />
         ) : null}
       </Checkbox>
@@ -85,19 +85,19 @@ class Overlay extends Component {
       <Content key={$.timekey} className={style.content}>
         <Split className={style.title} title="个人" />
         <div className={style.body}>
-          {CheckItem('自定义昵称', $.nameActive, 'nameActive', $.name, 'name')}
-          {CheckItem('自定义头像', $.imgActive, 'imgActive', $.img, 'img', '图片网址')}
-          {CheckItem('自定义马赛克', $.nameHideActive, 'nameHideActive', $.nameHide, 'nameHide')}
+          {CheckItem('自定义昵称', 'nameActive', 'name')}
+          {CheckItem('自定义头像', 'imgActive', 'img', '图片网址')}
           <br />
           <Split className={style.title} title="统计" />
-          {CheckItem('图表统计时长(秒)', $.graphTimeActive, 'graphTimeActive', $.graphTime, 'graphTime')}
-          {CheckItem('图表动态缩放', $.graphScale, 'graphScale')}
-          {CheckItem('过量不计入HPS', $.pureHps, 'pureHps')}
+          {CheckItem('图表统计时长 (秒)', 'graphTimeActive', 'graphTime')}
+          {CheckItem('图表动态缩放', 'graphScale')}
+          {CheckItem('过量不计入HPS', 'pureHps')}
           <br />
           <Split className={style.title} title="界面" />
-          {CheckItem('UI缩放(倍)', $.uiScaleActive, 'uiScaleActive', $.uiScale, 'uiScale')}
-          {CheckItem('默认开启『透明模式』', $.uiTrans, 'uiTrans')}
-          {CheckItem('默认开启『迷你模式』', $.uiMini, 'uiMini')}
+          {CheckItem('自动切换迷你 (>人数)', 'uiAutoMiniActive', 'uiAutoMini')}
+          {CheckItem('UI缩放 (倍)', 'uiScaleActive', 'uiScale')}
+          {CheckItem('默认开启『透明模式』', 'uiTrans')}
+          {CheckItem('默认开启『迷你模式』', 'uiMini')}
         </div>
       </Content>,
       <Split key="split" />,
