@@ -62,7 +62,8 @@ class Overlay extends Component {
     if ($.isActive) {
       if ($.uiAutoMiniActive) {
         const ifMini = $.Combatant.length > $.uiAutoMini;
-        this.props.dispatch({ type: 'setting/update', payload: { uiMini: ifMini } });
+        if ($.uiMini !== ifMini)
+          this.props.dispatch({ type: 'setting/update', payload: { uiMini: ifMini } });
       }
 
       BarInner = $.normalFull.map(item => (
