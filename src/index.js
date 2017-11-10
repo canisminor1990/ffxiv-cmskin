@@ -40,8 +40,3 @@ if (process.env.NODE_ENV === 'development') {
   Console();
   Baidu();
 }
-
-window.changyan.api.config({
-  appid: 'cytjdgeJ7',
-  conf: 'prod_e0ae268a3629c862b8790af46e93c5cb',
-});
