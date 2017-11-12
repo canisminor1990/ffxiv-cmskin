@@ -12,11 +12,12 @@
 
 .show {
   text-align: right;
-  font-weight: 800;
+
   color: #fff;
   font-size: inherit;
   text-shadow: 0 1px $c-bg-dark;
   z-index: 9;
+  font-family: 'ActNumber';
 }
 .high {
   color: $c-high;
