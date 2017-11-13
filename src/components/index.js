@@ -14,4 +14,4 @@ export { default as Message } from './Message';
 export { default as PieChart } from './PieChart';
 export { default as Progress } from './Progress';
 export { default as Select } from './Select';
-export { default as Lang } from './Lang';
+export { default as Lang, LangStr } from './Lang';

@@ -1,7 +1,7 @@
 import style from './index.scss';
 import { Component } from 'react';
 import { Icon } from 'antd';
-import { View, InfoList, Logo } from '../../../components';
+import { View, InfoList, Logo, LangStr, Lang } from '../../../components';
 
 const { Split } = View;
 
@@ -15,12 +15,12 @@ class Splash extends Component {
   HandleShowAll = type =>
     this.state[type] ? null : (
       <a key="showall" className={style.showall} onClick={() => this.setState({ [type]: true })}>
-        展开 <Icon type="caret-down" />
+        <Lang id="splash.more" /> <Icon type="caret-down" />
       </a>
     );
 
   MapList = type =>
-    this.props.data[type].map((item, key) => {
+    LangStr(type).map((item, key) => {
       if (!this.state[type] && key > 1) return;
       const Data = item.split('|');
       const title = Data[1];
@@ -28,9 +28,14 @@ class Splash extends Component {
       return <InfoList key={key} title={title} desc={desc} className={`${type}-${key}`} />;
     });
 
-  BuildList = (title, name) => [
-    <Split key={title} className={style.line} title={title} right={this.HandleShowAll(name)} />,
-    <div key={name} className={style.list}>
+  BuildList = name => [
+    <Split
+      key={name}
+      className={style.line}
+      id={`splash.${name}`}
+      right={this.HandleShowAll(name)}
+    />,
+    <div key={name + 'list'} className={style.list}>
       {this.MapList(name)}
     </div>,
   ];
@@ -41,9 +46,9 @@ class Splash extends Component {
         <div className={style.logo}>
           <Logo size={300} />
         </div>
-        {this.BuildList('更新说明', 'changelog')}
-        {this.BuildList('使用说明', 'usage')}
-        {this.BuildList('版权信息', 'copyright')}
+        {this.BuildList('changelog')}
+        {this.BuildList('usage')}
+        {this.BuildList('copyright')}
       </div>
     );
   }

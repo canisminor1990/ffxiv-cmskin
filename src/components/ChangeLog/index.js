@@ -2,7 +2,7 @@ import style from './index.scss';
 import classnames from 'classnames/bind';
 import { Component } from 'react';
 import { Icon } from 'antd';
-import { View } from '../';
+import { View, LangStr } from '../';
 
 const { Split } = View;
 
@@ -14,7 +14,7 @@ class ChangeLog extends Component {
   };
 
   Buildlog = type =>
-    this.props.data[type].map((item, key) => {
+    LangStr(type).map((item, key) => {
       if (!this.state[type] && key > 1) return;
       const Data = item.split('|');
       return (
