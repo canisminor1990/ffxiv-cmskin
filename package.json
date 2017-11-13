@@ -84,8 +84,7 @@
 		"path": "^0.12.7",
 		"react": "^16.0.0",
 		"react-contextmenu": "^2.8.0",
-		"react-dom": "^16.0.0",
-		"react-intl": "^2.4.0"
+		"react-dom": "^16.0.0"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.0",
