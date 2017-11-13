@@ -101,4 +101,4 @@ const parseJob = db => {
   }
 };
 
-const parseHighest = db => _.startCase(db).replace('Unknown', '其他');
+const parseHighest = db => db.replace('unknown', LangStr('role.other'));

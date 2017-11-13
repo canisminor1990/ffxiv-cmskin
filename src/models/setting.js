@@ -7,7 +7,7 @@ const Setting = {
   lang: 'cn',
   // DIY
   name: '我',
-  nameActive: false,
+  nameActive: true,
   img: '',
   imgActive: false,
   // Data
