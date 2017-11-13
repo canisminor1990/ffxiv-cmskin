@@ -4,7 +4,7 @@ import { Console } from '../utils/debug';
 
 let timekey = -1;
 const Setting = {
-  lang: 'zh',
+  lang: 'cn',
   // DIY
   name: '我',
   nameActive: false,
