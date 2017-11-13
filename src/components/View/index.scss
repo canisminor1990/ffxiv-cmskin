@@ -80,6 +80,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 1.5rem;
+  > span {
+    display: block;
+  }
 }
 .split {
   border: none;

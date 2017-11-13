@@ -1,7 +1,7 @@
 import { connect } from 'dva';
 import path from 'path';
 import _ from 'lodash';
-import { View, Avatar, Progress, Chart, Back } from '../../components';
+import { View, Avatar, Progress, Chart, Back, Lang } from '../../components';
 import { getSetting } from '../../utils/getSetting';
 import { options } from '../../data';
 import style from './index.scss';
@@ -120,7 +120,7 @@ const Detail = $ => {
       </div>
       {$.uiMini ? null : (
         <Bar key="bar" style={!$.fullscreen ? { display: 'none' } : {}}>
-          详细数据
+          <Lang id="detail.bar" />
         </Bar>
       )}
       <Content key="body" style={!$.fullscreen ? { display: 'none' } : {}}>

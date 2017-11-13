@@ -1,12 +1,12 @@
 import { connect } from 'dva';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
-import { View } from '../../components';
+import { View, Lang } from '../../components';
 import { getSetting } from '../../utils/getSetting';
 import style from './index.scss';
 
 const { Split } = View;
-const Setting = ['fullscreen', 'uiTrans', 'uiScale', 'uiScaleActive', 'uiMini', 'hideName'];
+const Setting = ['fullscreen', 'uiTrans', 'uiScale', 'uiScaleActive', 'uiMini', 'hideName', 'lang'];
 const State = state => getSetting(Setting, state.setting);
 
 class App extends Component {
@@ -28,7 +28,6 @@ class App extends Component {
 
   render() {
     const $ = this.props;
-
     // 设置UI缩放
     this.handleUiSize($.uiScaleActive ? 16 * $.uiScale : 16);
 
@@ -37,19 +36,19 @@ class App extends Component {
     const isInDevelop = process.env.NODE_ENV === 'development';
 
     // 规划右键菜单
-    const BuildMenuItem = (name, data, on, off) => (
+    const BuildMenuItem = (name, data) => (
       <MenuItem key={name} onClick={() => this.handleClick({ [name]: !data })}>
-        {data ? on : off}
+        <Lang id={data ? `menu.${name}.on` : `menu.${name}.off`} />
       </MenuItem>
     );
     const MenuItemGroup = isInSetting
       ? null
       : [
           <div key="group" className={style.item}>
-            {BuildMenuItem('fullscreen', $.fullscreen, '折叠菜单', '展开菜单')}
-            {BuildMenuItem('uiTrans', $.uiTrans, '实体模式', '透明模式')}
-            {BuildMenuItem('uiMini', $.uiMini, '完全模式', '迷你模式')}
-            {BuildMenuItem('hideName', $.hideName, '显示ID', '马赛克ID')}
+            {BuildMenuItem('fullscreen', $.fullscreen)}
+            {BuildMenuItem('uiTrans', $.uiTrans)}
+            {BuildMenuItem('uiMini', $.uiMini)}
+            {BuildMenuItem('hideName', $.hideName)}
           </div>,
           <Split key="split" />,
         ];
@@ -57,30 +56,34 @@ class App extends Component {
     const MenuItemGroupSec = [
       isInSetting ? null : (
         <MenuItem key="setting" onClick={this.handleSetting}>
-          设置
+          <Lang id="menu.setting" />
         </MenuItem>
       ),
       <MenuItem key="reload" onClick={this.handleReload}>
-        刷新
+        <Lang id="menu.refresh" />
       </MenuItem>,
-      isInDevelop ? (
+      !isInDevelop ? null : (
         <MenuItem key="debug" onClick={this.handleDebug}>
-          DEBUG
+          <Lang id="menu.debug" />
         </MenuItem>
-      ) : null,
+      ),
     ];
 
-    return [
+    const AppContent = [
       <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
         {$.children}
       </ContextMenuTrigger>,
       <ContextMenu key="menu" id="view" className={style.menu}>
-        <div className={style.title}>菜单</div>
+        <div className={style.title}>
+          <Lang id="menu.title" />
+        </div>
         <Split />
         {MenuItemGroup}
         <div className={style.item}>{MenuItemGroupSec}</div>
       </ContextMenu>,
     ];
+
+    return AppContent;
   }
 }
 

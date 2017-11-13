@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { View, Button, Checkbox, Input, Message } from '../../../components';
+import { View, Button, Checkbox, Input, Message, Select, Lang } from '../../../components';
 import { Component } from 'react';
 import { getSetting } from '../../../utils/getSetting';
 import style from '../index.scss';
@@ -10,6 +10,7 @@ const State = state => ({
 });
 
 const Setting = [
+  'lang',
   'name',
   'nameActive',
   'img',
@@ -32,11 +33,15 @@ class Overlay extends Component {
     ...getSetting(Setting, this.props.setting),
   };
 
+  handleLangChange = value => {
+    this.setState({ lang: value });
+  };
+
   inputOnChange = (e, name, isNumber) => {
     let { value } = e.target;
     if (isNumber) value = parseFloat(value);
     if (!value) {
-      Message.error('数值错误');
+      Message.error(<Lang id="setting.message.error" />);
     } else {
       this.setState({ [name]: value });
     }
@@ -53,21 +58,22 @@ class Overlay extends Component {
       ...getSetting(Setting, this.props.setting, true),
     };
     this.setState(Default);
-    Message.success('重置成功');
+    Message.success(<Lang id="setting.message.reset" />);
   };
 
   onSave = () => {
+    window.lang = this.state.lang;
     this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success('应用成功');
+    Message.success(<Lang id="setting.message.apply" />);
   };
 
   render() {
     const $ = this.state;
 
-    const CheckItem = (title, defaultChecked, inputValue, placeholder) => (
+    const CheckItem = (defaultChecked, inputValue, placeholder) => (
       <Checkbox
-        title={title}
+        title={<Lang id={`setting.basic.${defaultChecked}`} />}
         defaultChecked={$[defaultChecked]}
         onChange={e => this.checkboxOnChange(e, defaultChecked)}
       >
@@ -81,33 +87,61 @@ class Overlay extends Component {
       </Checkbox>
     );
 
+    const LangOptions = [
+      {
+        value: 'cn',
+        text: '简体中文',
+      },
+      {
+        value: 'en',
+        text: 'English',
+      },
+    ];
+    const LangItem = lang => (
+      <div className={style.listItem}>
+        <div className={style.listTitle}>
+          <Lang id={'setting.basic.' + lang} />
+        </div>
+        <Select
+          defaultValue={$.lang}
+          mode={false}
+          options={LangOptions}
+          onChange={this.handleLangChange}
+        />
+      </div>
+    );
     return [
       <Content key={$.timekey} className={style.content}>
         <div className={style.body}>
-          <Split className={style.title} title="个人" />
-          {CheckItem('自定义昵称', 'nameActive', 'name')}
-          {CheckItem('自定义头像', 'imgActive', 'img', '图片网址')}
+          <Split className={style.title} id="setting.basic.split.lang" />
+          {LangItem('lang')}
+          <Split className={style.title} id="setting.basic.split.personal" />
+          {CheckItem('nameActive', 'name')}
+          {CheckItem('imgActive', 'img', 'http://url.png')}
           <br />
-          <Split className={style.title} title="统计" />
-          {CheckItem('图表统计时长 (秒)', 'graphTimeActive', 'graphTime')}
-          {CheckItem('图表动态缩放', 'graphScale')}
-          {CheckItem('过量不计入HPS', 'pureHps')}
+          <Split className={style.title} id="setting.basic.split.statistics" />
+          {CheckItem('graphTimeActive', 'graphTime')}
+          {CheckItem('graphScale')}
+          {CheckItem('pureHps')}
           <br />
-          <Split className={style.title} title="界面" />
-          {CheckItem('自动切换迷你 (>人数)', 'uiAutoMiniActive', 'uiAutoMini')}
-          {CheckItem('UI缩放 (倍)', 'uiScaleActive', 'uiScale')}
-          {CheckItem('默认开启『透明模式』', 'uiTrans')}
-          {CheckItem('默认开启『迷你模式』', 'uiMini')}
+          <Split className={style.title} id="setting.basic.split.gui" />
+          {CheckItem('uiAutoMiniActive', 'uiAutoMini')}
+          {CheckItem('uiScaleActive', 'uiScale')}
         </div>
       </Content>,
       <Split key="split" />,
       <Footer className={style.foot} key="footer" hasBtn>
         <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>恢复默认</Button>
-          <Button onClick={this.onSave}>应用</Button>
+          <Button onClick={this.onDefault}>
+            <Lang id="setting.btn.reset" />
+          </Button>
+          <Button onClick={this.onSave}>
+            <Lang id="setting.btn.apply" />
+          </Button>
         </div>
       </Footer>,
     ];
   }
 }
+
 export default connect(State)(Overlay);

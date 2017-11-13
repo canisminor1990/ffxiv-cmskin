@@ -1,4 +1,5 @@
 import classnames from 'classnames/bind';
+import { Lang } from '../';
 import { Icon } from 'antd';
 import { Link } from 'dva/router';
 import style from './index.scss';
@@ -55,16 +56,22 @@ View.Bar = ({ className, children, ...other }) => (
     {children}
   </div>
 );
-View.Split = ({ right, className, title, ...other }) => {
-  let List = [];
-  if (title)
-    List.push(
+View.Split = ({ right, className, title, id, ...other }) => {
+  const rightContent = right ? <div>{right}</div> : null;
+  return [
+    id ? (
+      <div key="title" className={style.title}>
+        <Lang id={id} />
+        {rightContent}
+      </div>
+    ) : null,
+    title ? (
       <div key="title" className={style.title}>
         {title}
-        <div>{right}</div>
+        {rightContent}
       </div>
-    );
-  List.push(<div key="split" className={classnames.bind(style)('split', className)} {...other} />);
-  return List;
+    ) : null,
+    <div key="split" className={classnames.bind(style)('split', className)} {...other} />,
+  ];
 };
 export default View;

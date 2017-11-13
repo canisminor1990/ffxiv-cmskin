@@ -4,6 +4,7 @@ import { Console } from '../utils/debug';
 
 let timekey = -1;
 const Setting = {
+  lang: 'zh',
   // DIY
   name: '我',
   nameActive: false,
@@ -61,7 +62,7 @@ export default {
   },
   reducers: {
     save(state, { payload: data }) {
-      return { ...state, data }.data;
+      return data;
     },
   },
   effects: {
@@ -72,6 +73,7 @@ export default {
         if (Cookie.timekey !== timekey) {
           const Data = _.assign(Setting, Cookie);
           timekey = Cookie.timekey;
+          window.lang = Data.lang;
           yield put({ type: 'save', payload: Data });
           // debug
           console.log('[CM] Setting Load');
@@ -85,9 +87,6 @@ export default {
     *update({ payload: data }, { put, select }) {
       const Setting = yield select(state => state.setting);
       const Data = _.assign(Setting, data);
-      _.forEach(Data, (item, key) => {
-        if (key.indexOf('Default') !== -1) delete Data[key];
-      });
       Data.timekey++;
       setCookie('setting', Data);
       yield put({ type: 'save', payload: Data });

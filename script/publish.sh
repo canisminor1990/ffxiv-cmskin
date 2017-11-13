@@ -4,7 +4,7 @@ yarn lint:es
 
 # Build
 read -p "Nead Build y/n: " BUILD
-if [ "BUILD" = "y" ]
+if [ "$BUILD" = "y" ]
 then
 	yarn build:dist
 fi

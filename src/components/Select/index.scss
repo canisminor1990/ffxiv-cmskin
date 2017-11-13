@@ -1,6 +1,7 @@
 @import 'import';
 .input {
   margin-bottom: 1rem;
+  position: relative;
 }
 .menu {
   border-top: 1px solid $c-bg-light;
@@ -10,15 +11,15 @@
   text-shadow: 0 1px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 2px 3px rgba(0, 0, 0, 0.6);
   width: 10rem;
+  position: relative;
 }
+
 :global {
   .ant-select-selection {
     color: $c-white;
-    padding: 0.4rem;
     font-size: 0.8rem;
     text-align: center;
     background: rgba(#fff, 0.07);
-    box-shadow: 0 1px 0 rgba(#fff, 0.16), 0 -1px 0 $c-bg-dark;
     border: none;
     position: relative;
   }
@@ -84,6 +85,45 @@
     ) !important;
     &:after {
       color: $c-green-light !important;
+    }
+  }
+}
+
+.multiple {
+  :global(.ant-select-selection) {
+    padding: 0.4rem;
+    text-align: center;
+    background: rgba(#fff, 0.07);
+    box-shadow: 0 1px 0 rgba(#fff, 0.16), 0 -1px 0 $c-bg-dark;
+  }
+}
+.single {
+  max-width: 10rem;
+  :global {
+    .ant-select-selection {
+      background: linear-gradient(
+        to bottom,
+        $btn-highlight 0,
+        $btn-highlight 45%,
+        $btn 55%,
+        $btn 100%
+      );
+      width: 100%;
+      border-radius: 2rem;
+      display: inline-block;
+      text-align: center;
+      text-shadow: 0 1px rgba(#000, 0.8);
+      border-top: 1px solid rgba($c-white, 0.5);
+      box-shadow: 0 0 3px 1px #000;
+      position: relative;
+      font-weight: 600;
+    }
+    .ant-select-selection-selected-value {
+      width: 100%;
+    }
+    .ant-select-arrow:before {
+      color: $c-grey;
+      font-size: 0.9rem;
     }
   }
 }

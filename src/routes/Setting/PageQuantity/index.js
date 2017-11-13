@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { View, Button, Input, Message } from '../../../components';
+import { View, Button, Input, Message, Lang } from '../../../components';
 import { Component } from 'react';
 import { Icon } from 'antd';
 import { getSetting } from '../../../utils/getSetting';
@@ -33,7 +33,7 @@ class Overlay extends Component {
     let { value } = e.target;
     if (isNumber) value = parseFloat(value);
     if (!value) {
-      Message.error('数值错误');
+      Message.error(<Lang id="setting.message.error" />);
     } else {
       this.setState({ [name]: value });
     }
@@ -45,23 +45,27 @@ class Overlay extends Component {
       ...getSetting(Setting, this.props.setting, true),
     };
     this.setState(Default);
-    Message.success('重置成功');
+    Message.success(<Lang id="setting.message.reset" />);
   };
 
   onSave = () => {
     this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success('应用成功');
+    Message.success(<Lang id="setting.message.apply" />);
   };
 
   render() {
     const $ = this.state;
 
-    const Item = (title, data, icon, desc = '团队平均DPS') => (
+    const Item = (is, data, icon, desc = 'avDps') => (
       <div className={style.qtList}>
-        <span>{title}</span>
+        <span>
+          <Lang id={`setting.quantity.is.${is}`} />
+        </span>
         <Input defaultValue={$[data]} onChange={e => this.inputOnChange(e, data)} />
-        <span>% {desc}</span>
+        <span>
+          % <Lang id={`setting.quantity.desc.${desc}`} />
+        </span>
         <span className={style.qtRight}>
           <Icon type="caret-right" />
         </span>
@@ -71,32 +75,36 @@ class Overlay extends Component {
       </div>
     );
 
-    const Group = (title, type, func = ['大于', '小于'], desc, icon = ['smile', 'frown']) => (
+    const Group = (title, type, is = ['large', 'small'], desc, icon = ['smile', 'frown']) => (
       <div className={style.qtGroup}>
-        <Split className={style.title} title={title} />
-        {Item(func[0], type[0], icon[0], desc)}
-        {Item(func[1], type[1], icon[1], desc)}
+        <Split className={style.title} id={`setting.quantity.title.${title}`} />
+        {Item(is[0], type[0], icon[0], desc)}
+        {Item(is[1], type[1], icon[1], desc)}
       </div>
     );
 
     return [
       <Content key={$.timekey} className={style.content}>
         <div className={style.body}>
-          {Group('输出升降提示', ['qtUp', 'qtDown'], ['10秒DPS 高于', '10秒DPS 低于'], '60秒DPS', [
+          {Group('updwon', ['qtUp', 'qtDown'], ['dps10high', 'dps10low'], 'dps60', [
             'arrow-up',
             'arrow-down',
           ])}
-          {Group('输出职业DPS判定', ['qtDpsHigh', 'qtDpsLow'])}
-          {Group('坦克职业DPS判定', ['qtTankHigh', 'qtTankLow'])}
-          {Group('治疗职业DPS判定', ['qtHealHigh', 'qtHealLow'])}
-          {Group('治疗职业过量判定', ['qtOverHealHigh', 'qtOverHealLow'], ['低于', '高于'], '过量治疗')}
+          {Group('damage', ['qtDpsHigh', 'qtDpsLow'])}
+          {Group('tank', ['qtTankHigh', 'qtTankLow'])}
+          {Group('heal', ['qtHealHigh', 'qtHealLow'])}
+          {Group('overheal', ['qtOverHealHigh', 'qtOverHealLow'], ['low', 'high'], 'overHeal')}
         </div>
       </Content>,
       <Split key="split" />,
       <Footer className={style.foot} key="footer" hasBtn>
         <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>恢复默认</Button>
-          <Button onClick={this.onSave}>应用</Button>
+          <Button onClick={this.onDefault}>
+            <Lang id="setting.btn.reset" />
+          </Button>
+          <Button onClick={this.onSave}>
+            <Lang id="setting.btn.apply" />
+          </Button>
         </div>
       </Footer>,
     ];

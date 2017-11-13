@@ -1,6 +1,6 @@
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { View, Back } from '../../components';
+import { View, Back, Lang } from '../../components';
 import classnames from 'classnames/bind';
 import style from './index.scss';
 
@@ -13,7 +13,11 @@ const State = state => ({
 const History = ({ data, historyPage, dispatch }) => {
   let content = [];
   !data[0]
-    ? (content = <div className={style.history}>暂无历史记录</div>)
+    ? (content = (
+        <div className={style.history}>
+          <Lang id="history.null" />
+        </div>
+      ))
     : data.forEach((item, key) => {
         const { Encounter, Date } = item;
         const listClass = classnames.bind(style)('list', { active: key === historyPage });
@@ -35,8 +39,12 @@ const History = ({ data, historyPage, dispatch }) => {
 
   return (
     <View style={{ height: '100%' }}>
-      <Header key="header">历史记录</Header>
-      <Bar className={style.bar}>最多显示30条记录</Bar>
+      <Header key="header">
+        <Lang id="history.header" />
+      </Header>
+      <Bar className={style.bar}>
+        <Lang id="history.bar" />
+      </Bar>
       <Content className={style.content}>{content}</Content>
       <Split />
       <Footer key="footer">

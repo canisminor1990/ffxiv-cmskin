@@ -130,3 +130,13 @@
     }
   }
 }
+
+.listItem {
+  display: flex;
+  font-size: 0.9rem;
+  line-height: 2rem;
+}
+.listTitle {
+  width: 11.2rem;
+  color: $c-yellow-light;
+}

@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { View, Button, Message, Select } from '../../../components';
+import { View, Button, Message, Select, Lang } from '../../../components';
 import { Component } from 'react';
 import { getSetting } from '../../../utils/getSetting';
 import { options } from '../../../data';
@@ -29,18 +29,18 @@ class Overlay extends Component {
       ...getSetting(Setting, this.props.setting, true),
     };
     this.setState(Default);
-    Message.success('重置成功');
+    Message.success(<Lang id="setting.message.reset" />);
   };
 
   onSave = () => {
     this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success('应用成功');
+    Message.success(<Lang id="setting.message.apply" />);
   };
 
-  select = (title, key, options) => {
+  select = (key, options) => {
     return [
-      <Split key="Split" className={style.title} title={title} />,
+      <Split key="Split" className={style.title} id={`setting.normal.${key}`} />,
       <Select
         key="Select"
         defaultValue={this.state[key]}
@@ -56,18 +56,22 @@ class Overlay extends Component {
     return [
       <Content key={$.timekey} className={style.content}>
         <div className={style.body}>
-          {this.select('完全模式', 'normalFull', options.Encounter)}
-          {this.select('迷你模式', 'normalMini', options.Encounter)}
-          {this.select('输出标签', 'normalDamage', options.Combatant.damage)}
-          {this.select('治疗标签', 'normalHeal', options.Combatant.healing)}
-          {this.select('承伤标签', 'normalTank', options.Combatant.tanking)}
+          {this.select('normalFull', options.Encounter)}
+          {this.select('normalMini', options.Encounter)}
+          {this.select('normalDamage', options.Combatant.damage)}
+          {this.select('normalHeal', options.Combatant.healing)}
+          {this.select('normalTank', options.Combatant.tanking)}
         </div>
       </Content>,
       <Split key="split" />,
       <Footer className={style.foot} key="footer" hasBtn>
         <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>恢复默认</Button>
-          <Button onClick={this.onSave}>应用</Button>
+          <Button onClick={this.onDefault}>
+            <Lang id="setting.btn.reset" />
+          </Button>
+          <Button onClick={this.onSave}>
+            <Lang id="setting.btn.apply" />
+          </Button>
         </div>
       </Footer>,
     ];

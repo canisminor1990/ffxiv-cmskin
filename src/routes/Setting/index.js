@@ -1,5 +1,5 @@
 import { Route } from 'dva/router';
-import { View, Icon } from '../../components';
+import { View, Icon, Lang } from '../../components';
 import style from './index.scss';
 import PageQuantity from './PageQuantity';
 import PageBasic from './PageBasic';
@@ -14,32 +14,32 @@ const { Bar, Header } = View;
 export default () => {
   const Doc = {
     '/setting/basic': {
-      name: '一般设置',
+      name: 'setting.basic',
       icon: 'laptop',
       component: PageBasic,
     },
     '/setting/quantity': {
-      name: '量化设置',
+      name: 'setting.quantity',
       icon: 'bar-chart',
       component: PageQuantity,
     },
     '/setting/normal': {
-      name: '基础页面',
+      name: 'setting.normal',
       icon: 'bars',
       component: PageNormal,
     },
     '/setting/detail': {
-      name: '详情页面',
+      name: 'setting.detail',
       icon: 'idcard',
       component: PageDetail,
     },
     '/setting/comment': {
-      name: '评论反馈',
+      name: 'setting.comment',
       icon: 'message',
       component: pageComment,
     },
     '/setting/about': {
-      name: '关于',
+      name: 'setting.about',
       icon: 'github',
       component: PageAbout,
     },
@@ -53,8 +53,12 @@ export default () => {
   });
   return (
     <View style={{ height: '100%' }}>
-      <Header key="header">设置</Header>
-      <Bar className={style.bar}>{Doc[window.location.pathname].name}</Bar>
+      <Header key="header">
+        <Lang id="setting.header" />
+      </Header>
+      <Bar className={style.bar}>
+        <Lang id={Doc[window.location.pathname].name} />
+      </Bar>
       <div className={style.flex}>
         <div className={style.left}>{sidebar}</div>
         <div className={style.right}>{route}</div>
