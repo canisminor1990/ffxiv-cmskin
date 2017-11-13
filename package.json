@@ -50,8 +50,7 @@
 		"build:dll": "roadhog buildDll",
 		"lint": "lint-staged",
 		"lint:es": "eslint --fix --ext .js src",
-		"commit": "git add -A && read msg && git commit -m $msg && git push",
-		"test": "read -p 'Enter a number' && echo $REPLY"
+		"build:publish": "bash ./publish.sh"
 	},
 	"pre-commit": [
 		"lint"
