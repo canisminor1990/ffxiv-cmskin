@@ -1,3 +1,14 @@
 body {
-  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-family: 'ActSubNumber', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', sans-serif;
+}
+
+@font-face {
+  font-family: 'ActNumber';
+  src: url('/font/number.ttf');
+}
+
+@font-face {
+  font-family: 'ActSubNumber';
+  src: url('/font/subNumber.ttf');
 }

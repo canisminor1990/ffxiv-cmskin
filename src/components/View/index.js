@@ -29,8 +29,8 @@ View.Content = ({ className, children, ...other }) => (
     </div>
   </div>
 );
-View.Footer = ({ className, children, isActive, ...other }) => (
-  <div className={style.footer}>
+View.Footer = ({ className, children, hasBtn, isActive, ...other }) => (
+  <div className={classnames.bind(style)('footer', { hasBtn: hasBtn })}>
     <div className={classnames.bind(style)('infooter', className)} {...other}>
       {children}
     </div>

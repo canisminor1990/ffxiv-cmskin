@@ -12,30 +12,33 @@
 
 .show {
   text-align: right;
-  font-weight: 800;
+
   color: #fff;
   font-size: inherit;
   text-shadow: 0 1px $c-bg-dark;
   z-index: 9;
+  font-family: 'ActNumber';
 }
 .high {
   color: $c-high;
-  text-shadow: 0 0 2px $c-high-dark;
+  text-shadow: 0 1px darken($c-high-dark, 20%);
 }
 .low {
   color: $c-low;
-  text-shadow: 0 0 2px $c-low-dark;
+  text-shadow: 0 1px darken($c-low-dark, 20%);
 }
 // arrow
 
 .up {
   i:before {
-    color: $c-red-light;
+    color: lighten($c-red-light, 10%);
+    text-shadow: 0 1px darken($c-red, 20%);
   }
 }
 .down {
   i:before {
     color: $c-green-light;
+    text-shadow: 0 1px darken($c-green, 20%);
   }
 }
 // progerss

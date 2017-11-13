@@ -6,7 +6,6 @@ import { getSetting } from '../../utils/getSetting';
 import style from './index.scss';
 
 const { Split } = View;
-const SYNC_SETTING_TIMEOUT = 2000;
 const Setting = ['fullscreen', 'uiTrans', 'uiScale', 'uiScaleActive', 'uiMini', 'hideName'];
 const State = state => getSetting(Setting, state.setting);
 
@@ -24,7 +23,7 @@ class App extends Component {
 
   componentWillMount() {
     this.props.dispatch({ type: 'setting/root' });
-    setInterval(() => this.props.dispatch({ type: 'setting/root' }), SYNC_SETTING_TIMEOUT);
+    setInterval(() => this.props.dispatch({ type: 'setting/root' }), 2000);
   }
 
   render() {

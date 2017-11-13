@@ -12,7 +12,7 @@ export default ({ option, data, log, isActive, uiMini }) => {
   if (isActive) {
     if (uiMini) {
       option.forEach(item =>
-        Subtitle.push(<span key={item}>{` · ${Encounter[item]}: ${_.result(data, item)}`}</span>)
+        Subtitle.push(<span key={item}>{` ${Encounter[item]}: ${_.result(data, item)}`}</span>)
       );
     } else {
       Subtitle = data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : null;
