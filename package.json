@@ -1,6 +1,6 @@
 {
 	"name": "ffxiv-cmskin",
-	"version": "2.1.4",
+	"version": "2.1.5",
 	"usage": [
 		"|设置|右键菜单 - 设置|",
 		"|历史记录|点击右下角时钟查看历史记录|",
@@ -51,7 +51,7 @@
 		"lint": "lint-staged",
 		"lint:es": "eslint --fix --ext .js src",
 		"commit": "git add -A && read msg && git commit -m $msg && git push",
-		"test": "read A && echo $A"
+		"test": "read -p 'Enter a number' && echo $REPLY"
 	},
 	"pre-commit": [
 		"lint"
