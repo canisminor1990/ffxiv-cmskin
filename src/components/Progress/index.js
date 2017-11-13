@@ -2,7 +2,7 @@ import { Icon } from 'antd';
 import classnames from 'classnames/bind';
 import style from './index.scss';
 
-export default ({ title, number, progress, color, arrow, level, ...other }) => {
+export default ({ title, number, progress, overProgress, color, arrow, level, ...other }) => {
   let Arrow = [];
   if (arrow === 'up')
     Arrow = (
@@ -18,6 +18,14 @@ export default ({ title, number, progress, color, arrow, level, ...other }) => {
     );
 
   const Title = title ? <div className={style.skill}>{title}</div> : null;
+  const Overprogress = overProgress ? (
+    <div
+      className={style.overActive}
+      style={{
+        width: overProgress,
+      }}
+    />
+  ) : null;
   const Progress = progress ? (
     <div
       className={style.active}
@@ -25,7 +33,9 @@ export default ({ title, number, progress, color, arrow, level, ...other }) => {
         background: color,
         width: progress.toString().indexOf('%') === -1 ? progress * 100 + '%' : progress,
       }}
-    />
+    >
+      {Overprogress}
+    </div>
   ) : null;
 
   const NumberClass = classnames.bind(style)('show', {

@@ -18,6 +18,7 @@ const Setting = [
   'imgActive',
   'uiMini',
   'graphScale',
+  'pureHps',
   // Tag
   'normalDamage',
   'normalHeal',
@@ -126,10 +127,13 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
     }
   }
 
+  let overProgress = false;
+
   if (tab === 'heal') {
     if (parseInt(item.healing.over) > $.qtOverHealLow) playLevel = 'low';
     if (parseInt(item.healing.over) > 0 && parseInt(item.healing.over) < $.qtOverHealHigh)
       playLevel = 'high';
+    if (!$.pureHps) overProgress = item.healing.over;
   }
 
   return (
@@ -169,6 +173,7 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
           title={$.uiMini ? false : tabData[tab].title}
           number={tabData[tab].number}
           progress={tabData[tab].progress}
+          overProgress={overProgress}
           color={tabData[tab].color}
         />
       </div>

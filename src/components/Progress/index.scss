@@ -49,11 +49,17 @@
   position: relative;
   overflow: hidden;
 }
+.overActive {
+  height: 100%;
+  border-radius: 4px;
+  background: darken($c-green, 10%);
+}
 .active {
   height: 100%;
   border-radius: 4px;
   position: relative;
   overflow: hidden;
+  position: relative;
   &:before {
     content: '';
     opacity: 0;
@@ -67,6 +73,7 @@
     animation: ant-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
   }
 }
+
 @keyframes ant-progress-active {
   0% {
     opacity: 0.1;
