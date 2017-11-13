@@ -1,11 +1,7 @@
 import _ from 'lodash';
-import { PieChart, View } from '../../../components';
-import { Encounter as Options } from '../../../data/options';
+import { PieChart, View, Lang } from '../../../components';
 import style from './index.scss';
 
-// 暂时移出团队区域图
-// import { GroupChart } from '../../../components';
-// export default ({ Encounter, Combatant, Chart }) => {
 export default ({ Encounter, Combatant }) => {
   const Info = {
     damage: ['damage.total', 'damage.ps', 'damage.highest'],
@@ -55,48 +51,35 @@ export default ({ Encounter, Combatant }) => {
     }
   });
 
-  // const ChartData = {
-  //	damage : [],
-  //	healing: [],
-  //	tanking: []
-  // };
-  //
-  // _.forEach(Chart, (item, key) => {
-  //	item.forEach(i => {
-  //		ChartData.damage.push({name: key, time: i.time, value: i.dps});
-  //		ChartData.healing.push({name: key, time: i.time, value: i.heal});
-  //		ChartData.tanking.push({name: key, time: i.time, value: i.tank});
-  //	});
-  // });
-
   const Tag = type => (
     <div className={style.desc}>
       {Info[type].map(item => (
         <div key={item} className={style.content}>
-          <div className={style.title}>{Options[item]}</div>
+          <div className={style.title}>
+            <Lang id={`encounter.${item}`} />
+          </div>
           <div className={style.number}>{_.result(Encounter, item)}</div>
         </div>
       ))}
     </div>
   );
 
-  const MapData = (title, type) => (
+  const MapData = type => (
     <div>
-      <View.Split title={title} />
+      <View.Split id={`normal.all.${type}`} />
       {Tag(type)}
       <View.Split />
       <PieChart data={PieData[type]} color={Colors[type]} desc={PieDesc[type]} />
-      {/* <GroupChart data={ChartData[type]} color={Colors[type]}/> */}
     </div>
   );
 
   return (
     <div className={style.view}>
-      {MapData('团队输出', 'damage')}
+      {MapData('damage')}
       <br />
-      {MapData('团队治疗', 'healing')}
+      {MapData('healing')}
       <br />
-      {MapData('团队承伤', 'tanking')}
+      {MapData('tanking')}
     </div>
   );
 };

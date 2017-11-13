@@ -1,4 +1,5 @@
 import { Job } from '../data';
+import { LangStr } from '../components';
 import _ from 'lodash';
 
 const parseEncounter = db => ({
@@ -14,9 +15,7 @@ const parseEncounter = db => ({
 const parseCombatantData = (db, Damage) => ({
   name: parseName(db),
   job: parseJob(db),
-  jobCN: parseJobCN(db),
   role: parseRole(db),
-  roleCN: parseRoleCN(db),
   damage: parseDamage(db),
   healing: parseHealing(db),
   tanking: parseTanking(db, Damage),
@@ -80,38 +79,25 @@ export { parseCombatant, parseEncounter };
 const parseName = db => {
   if (typeof db['name'] === 'undefined') return false;
   if (db['name'].indexOf('(') !== -1) {
-    return '陆行鸟';
+    return LangStr('role.chocobo');
   } else if (db['name'].toLowerCase() === 'you') {
-    return '我';
+    return LangStr('role.you');
   } else if (db['name'].toLowerCase() === 'limit break') {
-    return '极限技';
+    return LangStr('role.limitbreak');
   } else {
     return db['name'];
   }
 };
 
-const parseRole = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()].r : false);
-const parseRoleCN = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()].role : '其他');
+const parseRole = db => (db['Job'] !== '' ? Job[db['Job'].toLowerCase()] : false);
 
 const parseJob = db => {
   if (typeof db['Job'] !== 'undefined' && db['Job'] !== '') {
     return db['Job'].toLowerCase();
   } else if (typeof db['name'] !== 'undefined' && db['name'].indexOf('(') !== -1) {
-    return 'pet';
+    return 'chocobo';
   } else {
     return db['name'].replace(' ', '').toLowerCase();
-  }
-};
-
-const parseJobCN = db => {
-  if (typeof db['Job'] !== 'undefined' && db['Job'] !== '') {
-    return Job[db['Job'].toLowerCase()].name;
-  } else if (typeof db['name'] !== 'undefined') {
-    try {
-      return db['name'].indexOf('(') !== -1 ? 'Chocobo' : Job[db['name'].toLowerCase()].name;
-    } catch (e) {}
-  } else {
-    return db['name'];
   }
 };
 

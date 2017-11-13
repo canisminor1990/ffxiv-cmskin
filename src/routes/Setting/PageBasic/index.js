@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { View, Button, Checkbox, Input, Message, Select, Lang } from '../../../components';
+import { View, Button, Checkbox, Input, Message, Select, Lang, LangStr } from '../../../components';
 import { Component } from 'react';
 import { getSetting } from '../../../utils/getSetting';
 import style from '../index.scss';
@@ -80,23 +80,13 @@ class Overlay extends Component {
         {inputValue || placeholder ? (
           <Input
             defaultValue={$[inputValue]}
-            placeholder={placeholder}
+            placeholder={LangStr(placeholder)}
             onChange={e => this.inputOnChange(e, inputValue)}
           />
         ) : null}
       </Checkbox>
     );
 
-    const LangOptions = [
-      {
-        value: 'cn',
-        text: '简体中文',
-      },
-      {
-        value: 'en',
-        text: 'English',
-      },
-    ];
     const LangItem = lang => (
       <div className={style.listItem}>
         <div className={style.listTitle}>
@@ -105,7 +95,7 @@ class Overlay extends Component {
         <Select
           defaultValue={$.lang}
           mode={false}
-          options={LangOptions}
+          options={['cn', 'en']}
           onChange={this.handleLangChange}
         />
       </div>
@@ -116,8 +106,8 @@ class Overlay extends Component {
           <Split className={style.title} id="setting.basic.split.lang" />
           {LangItem('lang')}
           <Split className={style.title} id="setting.basic.split.personal" />
-          {CheckItem('nameActive', 'name')}
-          {CheckItem('imgActive', 'img', 'http://url.png')}
+          {CheckItem('nameActive', 'name', 'placeholder.you')}
+          {CheckItem('imgActive', 'img', 'placeholder.img')}
           <br />
           <Split className={style.title} id="setting.basic.split.statistics" />
           {CheckItem('graphTimeActive', 'graphTime')}

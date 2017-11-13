@@ -1,6 +1,6 @@
 const Author = [
   {
-    title: '作者',
+    title: 'Author',
     desc: 'CanisMinor',
   },
   {
@@ -52,7 +52,7 @@ const Github = [
     ),
   },
   {
-    title: '开源许可',
+    title: 'Licence',
     desc: 'MIT',
   },
 ];

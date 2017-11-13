@@ -1,9 +1,7 @@
 import classnames from 'classnames/bind';
 import style from './index.scss';
-import { options } from '../../../data';
+import { LangStr } from '../../../components';
 import _ from 'lodash';
-
-const { Encounter } = options;
 
 export default ({ option, data, log, isActive, uiMini }) => {
   let Content = [];
@@ -12,7 +10,9 @@ export default ({ option, data, log, isActive, uiMini }) => {
   if (isActive) {
     if (uiMini) {
       option.forEach(item =>
-        Subtitle.push(<span key={item}>{` ${Encounter[item]}: ${_.result(data, item)}`}</span>)
+        Subtitle.push(
+          <span key={item}>{` ${LangStr(`encounter.${item}`)}: ${_.result(data, item)}`}</span>
+        )
       );
     } else {
       Subtitle = data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : null;

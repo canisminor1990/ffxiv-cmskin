@@ -1,4 +1,5 @@
 import { parseEncounter, parseCombatant } from '../utils/parseData';
+import { LangStr } from '../components';
 import _ from 'lodash';
 
 export default {
@@ -29,7 +30,9 @@ export default {
 
         let data = yield select(state => state.act);
         let newChart =
-          data[0] && data[0].Encounter && data[0].Encounter.name !== '战斗历史已保存' ? data[0].Chart : {};
+          data[0] && data[0].Encounter && data[0].Encounter.name !== 'header.save'
+            ? data[0].Chart
+            : {};
 
         let avAllDps = 0;
         let numberAll = 0;
@@ -84,9 +87,9 @@ export default {
           if (data.length > historyLength) data.pop();
           data.unshift(parseData);
           data[1].Encounter.name = newEncounter.name;
-          data[0].Encounter.name = '战斗历史已保存';
+          data[0].Encounter.name = LangStr('header.save');
         } else {
-          parseData.Encounter.name = '战斗中';
+          parseData.Encounter.name = LangStr('header.inbattle');
           data[0] = _.assign(data[0], parseData);
         }
 

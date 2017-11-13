@@ -1,6 +1,8 @@
 import createG2 from 'g2-react';
 import classnames from 'classnames/bind';
 import hexToRgba from '../../utils/hexToRgba';
+import { Lang } from '../';
+
 import style from './index.scss';
 
 const ChartView = ({
@@ -18,7 +20,11 @@ const ChartView = ({
   let Config = {};
   if (!graphScale) Config = firstItem ? { min: 0, max: firstItem } : { min: 0 };
   if (!Data || Data.length <= 1) {
-    content = <div className={style.loading}>等待数据积累...</div>;
+    content = (
+      <div className={style.loading}>
+        <Lang id="placeholder.chart" />
+      </div>
+    );
   } else {
     const Chart = createG2(chart => {
       chart.col('time', {

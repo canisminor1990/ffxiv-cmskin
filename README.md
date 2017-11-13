@@ -6,8 +6,6 @@
 
 FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
 
-[English Version](README_en.md)
-
 ## OverView
 
 ![](http://qn.canisminor.cc/2017-10-23-1.png)
@@ -16,6 +14,8 @@ FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
 ![](http://qn.canisminor.cc/2017-10-23-4.png)
 ![](http://qn.canisminor.cc/2017-10-23-5.png)
 ![](http://qn.canisminor.cc/2017-10-23-6.png)
+
+Readme: [English Version](README_en.md)
 
 <br />
 
@@ -38,7 +38,7 @@ http://ffxiv.canisminor.cc
 
 |日期|版本|改动|
 |---|---|---|
-|2017.11.13|v2.1.6|Todo 英文版|
+|2017.11.13|v2.1.6|ADD 英文版|
 |2017.11.13|v2.1.5|ADD 过量进度条/新字体|
 |2017.11.10|v2.1.4|Fix 大量重复读取设置Bug|
 |2017.11.10|v2.1.3|Add 量化设置界面/按人数自动Mini设置|

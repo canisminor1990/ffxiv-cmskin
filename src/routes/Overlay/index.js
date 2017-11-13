@@ -1,14 +1,13 @@
 import { connect } from 'dva';
 import { Component } from 'react';
 import classnames from 'classnames/bind';
-import { View } from '../../components';
+import { View, Lang } from '../../components';
 import ViewHeader from './ViewHeader';
 import TabSplash from './TabSplash';
 import TabList from './TabList';
 import TabGroup from './TabGroup';
 import { getSetting } from '../../utils/getSetting';
 import _ from 'lodash';
-import { options } from '../../data';
 import Package from '../../../package.json';
 import style from './index.scss';
 
@@ -43,11 +42,11 @@ class Overlay extends Component {
     tab: 'dps',
   };
 
-  tabClass = (tab, name) => {
+  tabClass = tab => {
     const tabClass = classnames.bind(style)('tab', { active: this.state.tab === tab });
     return (
-      <span key={name} className={tabClass} onClick={() => this.setState({ tab: tab })}>
-        {name}
+      <span key={tab} className={tabClass} onClick={() => this.setState({ tab: tab })}>
+        <Lang id={`footer.${tab}`} />
       </span>
     );
   };
@@ -55,7 +54,11 @@ class Overlay extends Component {
   render() {
     const $ = this.props;
 
-    let BarInner = <span className={style.title}>{'等待数据传入...'}</span>;
+    let BarInner = (
+      <span className={style.title}>
+        <Lang id="normal.waiting" />
+      </span>
+    );
     let ContentInner = <TabSplash data={Package} />;
     let FooterInner = [];
 
@@ -68,7 +71,7 @@ class Overlay extends Component {
 
       BarInner = $.normalFull.map(item => (
         <span key={item} className={style.title}>
-          {options.Encounter[item]}: {_.result($.Encounter, item)}
+          <Lang id={`encounter.${item}`} />: {_.result($.Encounter, item)}
         </span>
       ));
       // 暂时移出团队区域图
@@ -87,10 +90,10 @@ class Overlay extends Component {
         );
 
       FooterInner = [
-        this.tabClass('dps', '输出'),
-        this.tabClass('heal', '治疗'),
-        this.tabClass('tank', '承伤'),
-        this.tabClass('all', '统计'),
+        this.tabClass('dps'),
+        this.tabClass('heal'),
+        this.tabClass('tank'),
+        this.tabClass('all'),
       ];
     }
 

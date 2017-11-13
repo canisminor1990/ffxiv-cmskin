@@ -1,7 +1,7 @@
 import { connect } from 'dva';
 import path from 'path';
 import _ from 'lodash';
-import { View, Avatar, Progress, Chart, Back, Lang } from '../../components';
+import { View, Avatar, Progress, Chart, Back, Lang, LangStr } from '../../components';
 import { getSetting } from '../../utils/getSetting';
 import { options } from '../../data';
 import style from './index.scss';
@@ -39,7 +39,6 @@ const Detail = $ => {
   const tabData = {
     dps: {
       value: 'damage',
-      title: options.Setting.damage.title,
       color: options.Setting.damage.color,
       desc: $.detailDamage,
       number: Data.damage.ps,
@@ -47,7 +46,6 @@ const Detail = $ => {
     },
     heal: {
       value: 'healing',
-      title: options.Setting.healing.title,
       color: options.Setting.healing.color,
       desc: $.detailHeal,
       number: Data.healing.ps,
@@ -55,7 +53,6 @@ const Detail = $ => {
     },
     tank: {
       value: 'tanking',
-      title: options.Setting.tanking.title,
       color: options.Setting.tanking.color,
       desc: $.detailTank,
       number: Data.tanking.total,
@@ -67,7 +64,7 @@ const Detail = $ => {
     ProgressList.push(
       <Progress
         key={key}
-        title={$.uiMini ? false : item.title}
+        title={$.uiMini ? false : LangStr(item.value)}
         number={item.number}
         progress={item.progress}
         color={item.color}
@@ -85,7 +82,7 @@ const Detail = $ => {
         color={item.color}
       />
     );
-    DataList.push(<Split key={key + 'split'} title={`${item.title}数据`} />);
+    DataList.push(<Split key={key + 'split'} id={`detail.data.${item.value}`} />);
 
     DataList.push(
       <div key={key + 'desc'} className={style.desc}>
@@ -93,7 +90,9 @@ const Detail = $ => {
           const Key = `${item.value}.${desc}`;
           return (
             <div key={desc} className={style.content}>
-              <div className={style.title}>{_.result(options.Combatant, Key)}</div>
+              <div className={style.title}>
+                <Lang id={`combatant.${Key}`} />
+              </div>
               <div className={style.number}>{_.result(Data, Key)}</div>
             </div>
           );
@@ -110,7 +109,7 @@ const Detail = $ => {
           <div className={style.name}>{MyName}</div>
           {$.uiMini ? null : (
             <div className={style.role}>
-              {Data.roleCN}: {Data.jobCN}
+              <Lang id={`role.${Data.role}`} />: <Lang id={`role.${Data.job}`} />
             </div>
           )}
         </div>

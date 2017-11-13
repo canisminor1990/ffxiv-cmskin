@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Link } from 'dva/router';
 import { connect } from 'dva';
 import { getSetting } from '../../utils/getSetting';
-import { Avatar, Chart, Progress } from '../';
+import { Avatar, Chart, Progress, Lang, LangStr } from '../';
 import { options } from '../../data';
 import style from './index.scss';
 
@@ -43,13 +43,13 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
 
   const Img = item.isMy ? ($.imgActive ? $.img : item.job) : item.job;
   let Name = item.isMy ? ($.nameActive ? $.name : item.name) : item.name;
-  if ($.hideName && Name !== '极限技' && Name !== '陆行鸟') Name = item.jobCN;
+  if ($.hideName) Name = LangStr(`role.${item.job}`);
 
   const tabData = {
     dps: {
       value: 'damage',
       desc: $.normalDamage,
-      title: item.damage.highest ? item.damage.highest : options.Setting.damage.title,
+      title: item.damage.highest ? item.damage.highest : LangStr('setting.damage.title'),
       color: options.Setting.damage.color,
       number: item.damage.ps,
       progress: parseInt(item.damage.ps) / parseInt(firstItem.damage.ps),
@@ -57,7 +57,7 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
     heal: {
       value: 'healing',
       desc: $.normalHeal,
-      title: item.healing.highest ? item.healing.highest : options.Setting.healing.title,
+      title: item.healing.highest ? item.healing.highest : LangStr('setting.healing.title'),
       color: options.Setting.healing.color,
       number: item.healing.ps,
       progress: parseInt(item.healing.ps) / parseInt(firstItem.healing.ps),
@@ -65,7 +65,7 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
     tank: {
       value: 'tanking',
       desc: $.normalTank,
-      title: options.Setting.tanking.title,
+      title: LangStr('setting.tanking.title'),
       color: options.Setting.tanking.color,
       number: item.tanking.total,
       progress: parseInt(item.tanking.total) / parseInt(firstItem.tanking.total),
@@ -90,7 +90,7 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
     const Key = `${value}.${desc}`;
     return (
       <span key={desc}>
-        {_.result(options.Combatant, Key)}: {_.result(item, Key)}
+        <Lang id={`combatant.${Key}`} />: {_.result(item, Key)}
       </span>
     );
   };

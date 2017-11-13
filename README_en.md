@@ -32,7 +32,7 @@ http://ffxiv.canisminor.cc
 
 |Date|Version|Changelog|
 |---|---|---|
-|2017.11.13|v2.1.6|Todo English Version|
+|2017.11.13|v2.1.6|ADD English Version|
 |2017.11.13|v2.1.5|ADD Overheal Progress|
 |2017.11.10|v2.1.4|Fix Load Setting Bug|
 |2017.11.10|v2.1.3|Add Setting: Quantity / Auto Mini|
