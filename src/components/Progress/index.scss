@@ -1,4 +1,5 @@
 @import 'import';
+
 .skill {
   font-size: 0.7rem;
   text-align: right;
@@ -8,25 +9,28 @@
   color: $c-yellow;
   margin-bottom: 0.2rem;
 }
+
 // number
 
 .show {
   text-align: right;
-
+  font-weight: 600;
   color: #fff;
   font-size: inherit;
   text-shadow: 0 1px $c-bg-dark;
   z-index: 9;
-  font-family: 'ActNumber';
 }
+
 .high {
   color: $c-high;
   text-shadow: 0 1px darken($c-high-dark, 20%);
 }
+
 .low {
   color: $c-low;
   text-shadow: 0 1px darken($c-low-dark, 20%);
 }
+
 // arrow
 
 .up {
@@ -35,12 +39,14 @@
     text-shadow: 0 1px darken($c-red, 20%);
   }
 }
+
 .down {
   i:before {
     color: $c-green-light;
     text-shadow: 0 1px darken($c-green, 20%);
   }
 }
+
 // progerss
 
 .progress {
@@ -52,11 +58,13 @@
   position: relative;
   overflow: hidden;
 }
+
 .overActive {
   height: 100%;
   border-radius: 4px;
   background: darken($c-green, 10%);
 }
+
 .active {
   height: 100%;
   border-radius: 4px;
