@@ -9,7 +9,7 @@
 
 **FFXIV CanisMinor ActSkin:** [Online](http://ffxiv.canisminor.cc)
 
-**README:** [English (EN)](README_en.md)
+**README:** [English (EN)](en_README.md)
 
 ## OverView
 

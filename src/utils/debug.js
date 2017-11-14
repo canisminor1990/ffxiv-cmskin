@@ -35,7 +35,7 @@ const Debug   = () => {
 			Encounter.DURATION = (parseInt(Encounter.DURATION) + 1).toString();
 			Encounter.encdps   = parseInt(allEncdps);
 			Encounter.enchps   = parseInt(allEnchps);
-			if (time == 10) {
+			if (time == 60) {
 				Encounter.title = '测试';
 				time            = 0;
 			} else {

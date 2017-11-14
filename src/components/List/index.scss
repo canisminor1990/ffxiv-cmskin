@@ -53,9 +53,9 @@
   text-overflow: ellipsis;
   > span {
     display: inline-block;
-    min-width: 3.4rem;
+    min-width: 3rem;
     + span {
-      margin-left: 0.6rem;
+      margin-left: 0.5rem;
     }
   }
 }
