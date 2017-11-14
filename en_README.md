@@ -7,7 +7,9 @@
 
 `ACT` `OverlayPlugin` `FFXIV` `React` `Redux`
 
-FF14 ACT OverlayPlugin Skin: [Online](http://ffxiv.canisminor.cc)
+**FFXIV CanisMinor ActSkin:** [Online](http://ffxiv.canisminor.cc)
+
+**README:** [简体中文 (CN)](README.md)
 
 ## OverView
 
