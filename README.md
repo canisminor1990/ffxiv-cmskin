@@ -1,6 +1,6 @@
 # CanisMinor ACT
 
-![](http://qn.canisminor.cc/2017-11-10-cmskin-logo.png)
+![](http://qn.canisminor.cc/2017-11-14-1.png)
 
 [![](https://img.shields.io/github/tag/canisminor1990/ffxiv-cmskin.svg)](https://github.com/canisminor1990/ffxiv-cmskin)
 [![](https://img.shields.io/badge/Works%20with-OverlayPlugin-green.svg)](https://github.com/hibiyasleep/OverlayPlugin)
@@ -13,12 +13,15 @@
 
 ## OverView
 
-![](http://qn.canisminor.cc/2017-10-23-1.png)
-![](http://qn.canisminor.cc/2017-10-23-2.png)
-![](http://qn.canisminor.cc/2017-10-23-3.png)
-![](http://qn.canisminor.cc/2017-10-23-4.png)
-![](http://qn.canisminor.cc/2017-10-23-5.png)
-![](http://qn.canisminor.cc/2017-10-23-6.png)
+![](http://qn.canisminor.cc/2017-11-14-2.png)
+![](http://qn.canisminor.cc/2017-11-14-3.png)
+![](http://qn.canisminor.cc/2017-11-14-4.png)
+![](http://qn.canisminor.cc/2017-11-14-5.png)
+![](http://qn.canisminor.cc/2017-11-14-6.png)
+![](http://qn.canisminor.cc/2017-11-14-7.png)
+![](http://qn.canisminor.cc/2017-11-14-8.png)
+![](http://qn.canisminor.cc/2017-11-14-9.png)
+![](http://qn.canisminor.cc/2017-11-14-10.png)
 
 <br />
 
