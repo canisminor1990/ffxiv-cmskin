@@ -31,6 +31,7 @@
 http://ffxiv.canisminor.cc
 ```
 
+- To Change Language: Right Click > `设置` > Language > English > `应用`
 
 
 ## Changelog
