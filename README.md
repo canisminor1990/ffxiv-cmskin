@@ -25,8 +25,15 @@
 
 <br />
 
-## 安装
+## 安装 (2选1)
 
+**ACTWebSocket：**
+- 下载最新版`ACTWebSocket`: [Latest](https://github.com/ZCube/ACTWebSocket/releases)
+- [√]开启Html服务器 [√]启动模板管理器
+- ACTWebSocket > 添加模板 > 拷贝下面的地址
+- 打开模板管理器 > 选择FFXIV - CanisMinor ActSkin > new
+
+**OverlayPlugin：**
 - 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
 - 或直接下载ACT整合包: [NGA](http://bbs.ngacn.cc/read.php?tid=12526945)
 - DPS统计美化插件 > DPS统计（MiniParser）> 模板路径
@@ -44,6 +51,7 @@ http://ffxiv.canisminor.cc
 
 |日期|版本|改动|
 |---|---|---|
+|2017.11.13|v2.1.7|Add 支持ActWebsocket|
 |2017.11.13|v2.1.6|Add 英文版|
 |2017.11.13|v2.1.5|Add 过量进度条/新字体|
 |2017.11.10|v2.1.4|Fix 大量重复读取设置Bug|

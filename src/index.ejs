@@ -5,7 +5,11 @@
 	<meta name="viewport"
 	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
 	<!-- seo -->
+	<% if (process.env.NODE_ENV === 'development') { %>
+	<title>Dev - CanisMinor ActSkin</title>
+	<% } else { %>
 	<title>FFXIV - CanisMinor ActSkin</title>
+	<% } %>
 	<meta name="description" content="Final Fantasy XIV - CanisMinor ActSkin">
 	<meta name="keywords" content="ff14 ffxiv CanisMinor ACT Final Fantasy XIV CM">
 	<!-- qq-share -->

@@ -1,7 +1,8 @@
-export default {
+const Splash = {
   changelog: [
-    '|2017.11.13|v2.1.6|ADD 英文版|',
-    '|2017.11.13|v2.1.5|ADD 过量进度条|',
+    '|2017.11.14|v2.1.7|Add 支持ActWebsocket|',
+    '|2017.11.13|v2.1.6|Add 英文版|',
+    '|2017.11.13|v2.1.5|Add 过量进度条|',
     '|2017.11.10|v2.1.4|Fix 大量重复读取设置Bug|',
     '|2017.11.10|v2.1.3|Add 量化设置界面/按人数自动Mini设置|',
     '|2017.11.10|v2.1.2|Add 设置页面反馈组件/设置页面关于界面|',
@@ -24,6 +25,27 @@ export default {
     '|2017.10.18|v1.0.1|Add 右键菜单/折叠模式|',
     '|2017.10.18|v1.0.0|Root CanisMinor Act 上线|',
   ],
+  // usage
+  usage: [
+    '|设置|右键菜单 - 设置|',
+    '|历史记录|点击右下角时钟查看历史记录|',
+    '|详情模式|点击列表条目，即可显示该队友详情模式|',
+    '|折叠模式|右键菜单 - 折叠/展开|',
+    '|透明模式|右键菜单 - 透明/实体|',
+    '|迷你模式|右键菜单 - 迷你/完全|',
+    '|马赛克ID|右键菜单 - 马赛克/显示|',
+  ],
+  // copyright
+  copyright: [
+    '|作者|CanisMinor|',
+    '|ID|男孩纸榨汁机(紫水)|',
+    '|QQ|40073838|',
+    '|Email|i@canisminor.cc|',
+    '|皮肤地址|http://ffxiv.canisminor.cc|',
+  ],
+};
+
+export default {
   // basic
   damage: '输出',
   healing: '治疗',
@@ -214,22 +236,5 @@ export default {
   'combatant.tanking.parry': '招架',
   'combatant.tanking.block': '格挡',
   'combatant.tanking.dodge': '回避',
-  // usage
-  usage: [
-    '|设置|右键菜单 - 设置|',
-    '|历史记录|点击右下角时钟查看历史记录|',
-    '|详情模式|点击列表条目，即可显示该队友详情模式|',
-    '|折叠模式|右键菜单 - 折叠/展开|',
-    '|透明模式|右键菜单 - 透明/实体|',
-    '|迷你模式|右键菜单 - 迷你/完全|',
-    '|马赛克ID|右键菜单 - 马赛克/显示|',
-  ],
-  // copyright
-  copyright: [
-    '|作者|CanisMinor|',
-    '|ID|男孩纸榨汁机(紫水)|',
-    '|QQ|40073838|',
-    '|Email|i@canisminor.cc|',
-    '|皮肤地址|http://ffxiv.canisminor.cc|',
-  ],
+  ...Splash,
 };

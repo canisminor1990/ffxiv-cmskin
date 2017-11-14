@@ -1,5 +1,5 @@
 import classnames from 'classnames/bind';
-import { Lang } from '../';
+import { Lang, Back } from '../';
 import { Icon } from 'antd';
 import { Link } from 'dva/router';
 import style from './index.scss';
@@ -30,27 +30,47 @@ View.Content = ({ className, children, ...other }) => (
     </div>
   </div>
 );
-View.Footer = ({ className, children, hasBtn, isActive, ...other }) => (
-  <div className={classnames.bind(style)('footer', { hasBtn: hasBtn })}>
-    <div className={classnames.bind(style)('infooter', className)} {...other}>
-      {children}
-    </div>
-    {window.location.pathname === '/' && isActive ? (
-      <Link className={style.history} to="/history">
-        <Icon type="clock-circle-o" />
-      </Link>
-    ) : (
-      <a
-        className={style.copyright}
-        href="https://github.com/canisminor1990/ffxiv-cmskin"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        By CanisMinor
-      </a>
-    )}
-  </div>
-);
+View.Footer = ({ className, children, hasBtn, ...other }) => {
+  const FooterClass = classnames.bind(style)('footer', { hasBtn: hasBtn });
+  const InFooterClass = classnames.bind(style)('infooter', className);
+  const Copyright = (
+    <a
+      className={style.copyright}
+      href="https://github.com/canisminor1990/ffxiv-cmskin"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      By CanisMinor
+    </a>
+  );
+  const History = (
+    <Link className={style.history} to="/history">
+      <Icon type="clock-circle-o" />
+    </Link>
+  );
+  const FooterContent = window.location.pathname === '/' && window.active ? History : Copyright;
+  let FooterDiv = [];
+  if (window.websocket && hasBtn) {
+    FooterDiv = (
+      <div className={FooterClass}>
+        <Back />
+        <div className={InFooterClass} {...other}>
+          {children}
+        </div>
+      </div>
+    );
+  } else {
+    FooterDiv = (
+      <div className={FooterClass}>
+        <div className={InFooterClass} {...other}>
+          {children}
+        </div>
+        {FooterContent}
+      </div>
+    );
+  }
+  return FooterDiv;
+};
 View.Bar = ({ className, children, ...other }) => (
   <div className={classnames.bind(style)('bar', className)} {...other}>
     {children}

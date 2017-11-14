@@ -7,15 +7,11 @@ import Console from './utils/console';
 import Baidu from './utils/baiduPush';
 import Debug from './utils/debug';
 
-window.debug = false;
-
-const ERROR_MSG_DURATION = 3; // 3 秒
-
 // 1. Initialize
 const app = dva({
   history: createHistory(),
   onError(e) {
-    Message.error(e.message, ERROR_MSG_DURATION);
+    Message.error(e.message, 3);
   },
 });
 
@@ -34,6 +30,8 @@ app.router(require('./router'));
 app.start('#root');
 
 // 6. Other
+window.debug = false;
+if (window.location.search.indexOf('?HOST_PORT=ws://') !== -1) window.websocket = true;
 if (process.env.NODE_ENV === 'development') {
   Debug();
 } else {

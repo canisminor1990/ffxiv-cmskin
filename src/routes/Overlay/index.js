@@ -62,7 +62,9 @@ class Overlay extends Component {
     let ContentInner = <TabSplash data={Package} />;
     let FooterInner = [];
 
-    if ($.isActive) {
+    if ($.isActive) window.active = true;
+
+    if (window.active) {
       if ($.uiAutoMiniActive) {
         const ifMini = $.Combatant.length > $.uiAutoMini;
         if ($.uiMini !== ifMini)
@@ -105,20 +107,12 @@ class Overlay extends Component {
         style={$.fullscreen || this.state.tab === 'all' ? { height: '100%' } : {}}
       >
         <Header key="header" uiMini={$.uiMini}>
-          <ViewHeader
-            option={$.normalMini}
-            data={$.Encounter}
-            log={Package}
-            isActive={$.isActive}
-            uiMini={$.uiMini}
-          />
+          <ViewHeader option={$.normalMini} data={$.Encounter} log={Package} uiMini={$.uiMini} />
         </Header>
         {BarInner}
         <Content key="body">{ContentInner}</Content>
         <Split key="split" />
-        <Footer key="footer" isActive={$.isActive}>
-          {FooterInner}
-        </Footer>
+        <Footer key="footer">{FooterInner}</Footer>
       </View>
     );
   }

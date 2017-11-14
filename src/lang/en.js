@@ -1,7 +1,8 @@
-export default {
+const Splash = {
   changelog: [
-    '|2017.11.13|v2.1.6|ADD English Version|',
-    '|2017.11.13|v2.1.5|ADD Overheal Progress|',
+    '|2017.11.14|v2.1.7|Support ActWebsocket|',
+    '|2017.11.13|v2.1.6|Add English Version|',
+    '|2017.11.13|v2.1.5|Add Overheal Progress|',
     '|2017.11.10|v2.1.4|Fix Load Setting Bug|',
     '|2017.11.10|v2.1.3|Add Setting: Quantity / Auto Mini|',
     '|2017.11.10|v2.1.2|Add Feedbac / About|',
@@ -24,6 +25,27 @@ export default {
     '|2017.10.18|v1.0.1|Add Right-click Menu / Collapse|',
     '|2017.10.18|v1.0.0|CanisMinor Act Online|',
   ],
+  // usage
+  usage: [
+    '|Setting|Right-click - Setting|',
+    '|History|Click bottom-right clock icon|',
+    '|DetailPage|Click List to Show Detail Data|',
+    '|Collapse|Right-click - Collapse/Extended|',
+    '|Transparent|Right-click - Transparent/Opaque|',
+    '|MiniMode|Right-click - MiniMode/FullMode|',
+    '|HideID|Right-click - HideID/ShowID|',
+  ],
+  // copyright
+  copyright: [
+    '|Author|CanisMinor|',
+    '|ID|男孩纸榨汁机(紫水)|',
+    '|QQ|40073838|',
+    '|Email|i@canisminor.cc|',
+    '|Site|http://ffxiv.canisminor.cc|',
+  ],
+};
+
+export default {
   // basic
   damage: 'Damage',
   healing: 'Healing',
@@ -214,22 +236,5 @@ export default {
   'combatant.tanking.parry': 'Pry',
   'combatant.tanking.block': 'Blc',
   'combatant.tanking.dodge': 'Dod',
-  // usage
-  usage: [
-    '|Setting|Right-click - Setting|',
-    '|History|Click bottom-right clock icon|',
-    '|DetailPage|Click List to Show Detail Data|',
-    '|Collapse|Right-click - Collapse/Extended|',
-    '|Transparent|Right-click - Transparent/Opaque|',
-    '|MiniMode|Right-click - MiniMode/FullMode|',
-    '|HideID|Right-click - HideID/ShowID|',
-  ],
-  // copyright
-  copyright: [
-    '|Author|CanisMinor|',
-    '|ID|男孩纸榨汁机(紫水)|',
-    '|QQ|40073838|',
-    '|Email|i@canisminor.cc|',
-    '|Site|http://ffxiv.canisminor.cc|',
-  ],
+  ...Splash,
 };

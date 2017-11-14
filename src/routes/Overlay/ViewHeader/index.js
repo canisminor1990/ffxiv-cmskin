@@ -3,11 +3,11 @@ import style from './index.scss';
 import { LangStr } from '../../../components';
 import _ from 'lodash';
 
-export default ({ option, data, log, isActive, uiMini }) => {
+export default ({ option, data, log, uiMini }) => {
   let Content = [];
   let Subtitle = [];
 
-  if (isActive) {
+  if (window.active) {
     if (uiMini) {
       option.forEach(item =>
         Subtitle.push(

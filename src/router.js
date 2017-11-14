@@ -1,12 +1,10 @@
 import { Route, Router, Switch } from 'dva/router';
-import dynamic from 'dva/dynamic';
 import App from './routes/App';
 import Overlay from './routes/Overlay';
 import Detail from './routes/Detail';
 import History from './routes/History';
-
+import Setting from './routes/Setting';
 export default ({ app, history }) => {
-  const Setting = dynamic({ app, component: () => import('./routes/Setting') });
   return (
     <Router history={history}>
       <Switch>

@@ -1,4 +1,5 @@
 import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
 import { View, Lang } from '../../components';
@@ -15,8 +16,12 @@ class App extends Component {
 
   handleClick = payload => this.props.dispatch({ type: 'setting/update', payload: payload });
   handleSetting = () => {
-    const Scale = this.props.uiScaleActive ? this.props.uiScale : 1;
-    window.open('/setting/basic', '设置', `height=${640 * Scale}, width=${540 * Scale}`);
+    if (window.websocket) {
+      this.props.dispatch(routerRedux.push('/setting/basic'));
+    } else {
+      const Scale = this.props.uiScaleActive ? this.props.uiScale : 1;
+      window.open('/setting/basic', '设置', `height=${640 * Scale}, width=${540 * Scale}`);
+    }
   };
   handleReload = () => window.location.reload();
   handleDebug = () => (window.debug = true);
