@@ -1,6 +1,6 @@
 # CanisMinor ACT
 
-[![](https://img.shields.io/github/release/canisminor1990/ffxiv-cmskin.svg)](https://github.com/canisminor1990/ffxiv-cmskin)
+[![](https://img.shields.io/github/tag/canisminor1990/ffxiv-cmskin.svg)](https://github.com/canisminor1990/ffxiv-cmskin)
 [![](https://img.shields.io/badge/Works%20with-OverlayPlugin-green.svg)](https://github.com/hibiyasleep/OverlayPlugin)
 
 ![](http://qn.canisminor.cc/2017-11-10-cmskin-logo.png)
