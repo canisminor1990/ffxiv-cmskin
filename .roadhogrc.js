@@ -24,24 +24,14 @@ export default {
   extraBabelPlugins: [
     'transform-runtime',
     'lodash',
-    [
-      'import',
-      [
-        {
-          libraryName: 'antd',
-          style: true
-        }
-      ]
-    ]
+    ['import', {libraryName: 'antd', style: true}]
   ],
   autoprefixer: {
     browsers: ['iOS >= 8', 'Android >= 4']
   },
   env: {
     development: {
-      extraBabelPlugins: ['dva-hmr', ["babel-plugin-styled-components", {
-        "displayName": false
-      }]]
+      extraBabelPlugins: ['dva-hmr']
     },
     production: {
       extraPostCSSPlugins: [cssnano(

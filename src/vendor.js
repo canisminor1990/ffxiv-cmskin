@@ -1,8 +1,7 @@
-import 'classnames';
+import 'classnames/bind';
 import 'dva';
 import 'dva/router';
 import 'dva-loading';
-import 'history';
 import 'path';
 import 'react';
 import 'react-dom';
