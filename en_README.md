@@ -88,6 +88,42 @@ http://ffxiv.canisminor.cc
 
 <br />
 
+## Quantity
+
+**Dps Damage Quantity:**
+- `> 140% Average Dps` => 😇
+- `< 80% Average Dps` => 👿
+
+**Tank Damage Quantity:**
+- `> 80% Average Dps` => 😇
+- `< 50% Average Dps` => 👿
+
+**Heal Damage Quantity':**
+- `> 60% Average Dps` => 😇
+- `< 30% Average Dps` => 👿
+
+**Example:**
+```sh
+D1:380 / D2:320 / T:200 / H:100
+Average Dps: 250
+
+Dps: 👿 < 200 < ... < 350 < 😇
+Tank: 👿 < 125 < ... < 200 < 😇
+Heal: 👿 < 75 < ... < 150 < 😇
+```
+
+**Heal Overheal Quantity:**
+- `Overheal < 10%` => 😇
+- `Overheal > 30%` => 👿
+
+**Dps Up & Down Tips:**
+- `D10s > 120% D60s` => ⬆️
+- `D10s < 80% D60s` => ⬇️
+
+
+<br />
+
+
 ## Link
 
 - **Site:** [ffxiv.canisminor.cc](https://ffxiv.canisminor.cc)
