@@ -27,7 +27,8 @@
   text-shadow: 0 1px $c-bg-dark;
   padding: 0.6rem 0.8rem;
   &.uiMini {
-    padding: 0.3rem 0.8rem 0;
+    padding-bottom: 0.2rem;
+    font-size: 0.8rem;
   }
 }
 .footer {
@@ -44,17 +45,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.history {
-  i:before {
-    color: $c-grey;
-    font-size: 0.8rem;
-  }
-  i:hover {
-    &:before {
-      color: $c-yellow;
-    }
-  }
 }
 .content {
   width: 100%;

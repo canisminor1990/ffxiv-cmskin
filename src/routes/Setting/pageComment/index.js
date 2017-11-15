@@ -1,9 +1,10 @@
 import { View } from '../../../components';
+import { FooterLite } from '../Page';
 import style from '../index.scss';
 import cyStyle from './index.scss';
 import { createNs, createMobileNs, loadVersionJs } from './changyan';
 
-const { Content, Split, Footer } = View;
+const { Content } = View;
 
 const CHANGYAN_API = {
   appid: 'cytjdgeJ7',
@@ -21,7 +22,6 @@ export default () => {
     <Content key="content" className={style.content}>
       <div id="SOHUCS" className={cyStyle.command} />
     </Content>,
-    <Split key="split" />,
-    <Footer className={style.foot} key="footer" />,
+    <FooterLite key="foot" />,
   ];
 };

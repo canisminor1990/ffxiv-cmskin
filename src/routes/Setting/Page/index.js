@@ -1,9 +1,16 @@
-import { Message, Lang, View, Button } from '../../../components';
+import { Message, Lang, View, Button, Back } from '../../../components';
 import { getSetting } from '../../../utils/getSetting';
 import { Component } from 'react';
 import style from '../index.scss';
 
 const { Split, Footer } = View;
+
+const FooterLite = () => [
+  <Split key="split" />,
+  <Footer key="footer" className={style.foot}>
+    <Back />
+  </Footer>,
+];
 
 class PageComponent extends Component {
   onDefault = () => {
@@ -24,17 +31,24 @@ class PageComponent extends Component {
 
   Footer = [
     <Split key="split" />,
-    <Footer className={style.foot} key="footer" hasBtn>
-      <div className={style.btngroup}>
-        <Button onClick={this.onDefault}>
-          <Lang id="setting.btn.reset" />
-        </Button>
-        <Button onClick={this.onSave}>
-          <Lang id="setting.btn.apply" />
-        </Button>
-      </div>
+    <Footer
+      key="footer"
+      className={style.foot}
+      hasBtn
+      rightContent={
+        <div className={style.btngroup}>
+          <Button onClick={this.onDefault}>
+            <Lang id="setting.btn.reset" />
+          </Button>
+          <Button onClick={this.onSave}>
+            <Lang id="setting.btn.apply" />
+          </Button>
+        </div>
+      }
+    >
+      {window.websocket ? <Back /> : null}
     </Footer>,
   ];
 }
 
-export default { PageComponent };
+export default { PageComponent, FooterLite };

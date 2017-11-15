@@ -32,6 +32,7 @@ class App extends Component {
       window.location.reload();
     }, 1000);
   };
+
   componentWillMount() {
     this.props.dispatch({ type: 'setting/root' });
     setInterval(() => this.props.dispatch({ type: 'setting/root' }), 2000);
@@ -89,7 +90,12 @@ class App extends Component {
 
     const AppContent = [
       <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
-        {$.children}
+        <View
+          transparent={$.uiTrans}
+          style={$.fullscreen || this.state.tab === 'all' ? { height: '100%' } : {}}
+        >
+          {$.children}
+        </View>
       </ContextMenuTrigger>,
       <ContextMenu key="menu" id="view" className={style.menu}>
         <div className={style.title}>

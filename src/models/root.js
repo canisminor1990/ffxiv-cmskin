@@ -1,14 +1,15 @@
-import { webs } from '../utils/ActWebsocket';
+import wsImpl from '../services/wsImpl';
+const ws = new wsImpl(wsUri); // eslint-disable-line
 
 export default {
-  namespace: 'event',
+  namespace: 'root',
   state: {},
   subscriptions: {
     setup({ dispatch }) {
-      if (window.websocket) {
-        webs.connect();
-        window.onbeforeunload = () => webs.close();
-        window.addEventListener('unload', () => webs.close(), false);
+      if (window.wsocket) {
+        ws.connect();
+        window.onbeforeunload = () => ws.close();
+        window.addEventListener('unload', () => ws.close(), false);
       }
       document.addEventListener('onOverlayDataUpdate', e => {
         if (Object.keys(e.detail.Combatant).length > 0)

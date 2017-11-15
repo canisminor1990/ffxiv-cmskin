@@ -1,16 +1,18 @@
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { View, Back, Lang } from '../../components';
+import { getSetting } from '../../utils/getSetting';
 import classnames from 'classnames/bind';
 import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
+const Setting = ['historyPage', 'uiMini'];
 const State = state => ({
   data: state.act,
-  historyPage: state.setting.historyPage,
+  ...getSetting(Setting, state.setting),
 });
 
-const History = ({ data, historyPage, dispatch }) => {
+const History = ({ data, dispatch, ...$ }) => {
   let content = [];
   !data[0]
     ? (content = (
@@ -20,7 +22,7 @@ const History = ({ data, historyPage, dispatch }) => {
       ))
     : data.forEach((item, key) => {
         const { Encounter, Date } = item;
-        const listClass = classnames.bind(style)('list', { active: key === historyPage });
+        const listClass = classnames.bind(style)('list', { active: key === $.historyPage });
         content.push(
           <Link
             className={listClass}
@@ -37,21 +39,25 @@ const History = ({ data, historyPage, dispatch }) => {
         );
       });
 
-  return (
-    <View style={{ height: '100%' }}>
-      <Header key="header">
-        <Lang id="history.header" />
-      </Header>
-      <Bar className={style.bar}>
-        <Lang id="history.bar" />
-      </Bar>
-      <Content className={style.content}>{content}</Content>
-      <Split />
-      <Footer key="footer">
-        <Back />
-      </Footer>
-    </View>
+  const BarContent = $.uiMini ? null : (
+    <Bar key="bar" className={style.bar}>
+      <Lang id="history.bar" />
+    </Bar>
   );
+
+  return [
+    <Header key="header" uiMini={$.uiMini}>
+      <Lang id="history.header" />
+    </Header>,
+    BarContent,
+    <Content key="content" className={style.content}>
+      {content}
+    </Content>,
+    <Split key="split" />,
+    <Footer key="footer">
+      <Back />
+    </Footer>,
+  ];
 };
 
 export default connect(State)(History);

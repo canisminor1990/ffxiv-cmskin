@@ -7,3 +7,4 @@ import 'react';
 import 'react-dom';
 import 'g2';
 import 'g2-react';
+import 'qrcode.react';

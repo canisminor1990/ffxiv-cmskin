@@ -1,14 +1,17 @@
+import { Icon } from 'antd';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import { Component } from 'react';
 import classnames from 'classnames/bind';
 import { View, Lang } from '../../components';
 import ViewHeader from './ViewHeader';
 import TabSplash from './TabSplash';
 import TabList from './TabList';
-import TabGroup from './TabGroup';
 import { getSetting } from '../../utils/getSetting';
 import _ from 'lodash';
 import Package from '../../../package.json';
+// import QRCode from 'qrcode.react';
+
 import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
@@ -76,45 +79,44 @@ class Overlay extends Component {
           <Lang id={`encounter.${item}`} />: {_.result($.Encounter, item)}
         </span>
       ));
-      // 暂时移出团队区域图
-      // <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} Chart={$.Chart} />
-      ContentInner =
-        this.state.tab === 'all' ? (
-          <TabGroup Encounter={$.Encounter} Combatant={$.Combatant} />
-        ) : (
-          <TabList
-            tab={this.state.tab}
-            Combatant={$.Combatant}
-            Encounter={$.Encounter}
-            chart={$.Chart}
-            time={$.Encounter ? $.Encounter.duration : ''}
-          />
-        );
 
-      FooterInner = [
-        this.tabClass('dps'),
-        this.tabClass('heal'),
-        this.tabClass('tank'),
-        this.tabClass('all'),
-      ];
+      ContentInner = (
+        <TabList
+          tab={this.state.tab}
+          Combatant={$.Combatant}
+          Encounter={$.Encounter}
+          chart={$.Chart}
+          time={$.Encounter ? $.Encounter.duration : ''}
+        />
+      );
+
+      FooterInner = [this.tabClass('dps'), this.tabClass('heal'), this.tabClass('tank')];
     }
 
     BarInner = $.uiMini ? null : <Bar key="bar">{BarInner}</Bar>;
 
-    return (
-      <View
-        transparent={$.uiTrans}
-        style={$.fullscreen || this.state.tab === 'all' ? { height: '100%' } : {}}
-      >
-        <Header key="header" uiMini={$.uiMini}>
-          <ViewHeader option={$.normalMini} data={$.Encounter} log={Package} uiMini={$.uiMini} />
-        </Header>
-        {BarInner}
-        <Content key="body">{ContentInner}</Content>
-        <Split key="split" />
-        <Footer key="footer">{FooterInner}</Footer>
-      </View>
+    const History = !window.active ? null : (
+      <div className={style.rightContent}>
+        <Link to="/team">
+          <Icon type="line-chart" />
+        </Link>
+        <Link to="/history">
+          <Icon type="clock-circle-o" />
+        </Link>
+      </div>
     );
+
+    return [
+      <Header key="header" uiMini={$.uiMini}>
+        <ViewHeader option={$.normalMini} data={$.Encounter} log={Package} uiMini={$.uiMini} />
+      </Header>,
+      BarInner,
+      <Content key="body">{ContentInner}</Content>,
+      <Split key="split" />,
+      <Footer key="footer" rightContent={History}>
+        {FooterInner}
+      </Footer>,
+    ];
   }
 }
 

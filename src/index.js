@@ -2,10 +2,10 @@ import { Message } from './components';
 import dva from 'dva';
 import createLoading from 'dva-loading';
 import createHistory from 'history/createBrowserHistory';
-import './index.scss';
 import Console from './utils/console';
-import Baidu from './utils/baiduPush';
-import Debug from './utils/debug';
+import BaiduTongji from './services/baiduTongji';
+import Debug from './services/debug';
+import './index.scss';
 
 // 1. Initialize
 const app = dva({
@@ -20,8 +20,8 @@ app.use(createLoading());
 
 // 3. Model
 app.model(require('./models/setting'));
-app.model(require('./models/updateActData'));
-app.model(require('./models/event'));
+app.model(require('./models/act'));
+app.model(require('./models/root'));
 
 // 4. Router
 app.router(require('./router'));
@@ -31,10 +31,11 @@ app.start('#root');
 
 // 6. Other
 window.debug = false;
+window.wsURL = window.location.pathname;
 if (window.location.search.indexOf('?HOST_PORT=ws://') !== -1) window.websocket = true;
 if (process.env.NODE_ENV === 'development') {
   Debug();
 } else {
   Console();
-  Baidu();
+  BaiduTongji();
 }

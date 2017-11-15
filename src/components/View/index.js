@@ -1,10 +1,9 @@
 import classnames from 'classnames/bind';
-import { Lang, Back } from '../';
-import { Icon } from 'antd';
-import { Link } from 'dva/router';
+import { Lang } from '../';
 import style from './index.scss';
 
 const View = ({ transparent, children, ...other }) => {
+  if (window.location.pathname.indexOf('setting') !== -1) transparent = false;
   return (
     <div
       className={classnames.bind(style)({
@@ -30,7 +29,7 @@ View.Content = ({ className, children, ...other }) => (
     </div>
   </div>
 );
-View.Footer = ({ className, children, hasBtn, ...other }) => {
+View.Footer = ({ className, children, hasBtn, rightContent, ...other }) => {
   const FooterClass = classnames.bind(style)('footer', { hasBtn: hasBtn });
   const InFooterClass = classnames.bind(style)('infooter', className);
   const Copyright = (
@@ -43,33 +42,14 @@ View.Footer = ({ className, children, hasBtn, ...other }) => {
       By CanisMinor
     </a>
   );
-  const History = (
-    <Link className={style.history} to="/history">
-      <Icon type="clock-circle-o" />
-    </Link>
+  return (
+    <div className={FooterClass}>
+      <div className={InFooterClass} {...other}>
+        {children}
+      </div>
+      {rightContent || Copyright}
+    </div>
   );
-  const FooterContent = window.location.pathname === '/' && window.active ? History : Copyright;
-  let FooterDiv = [];
-  if (window.websocket && hasBtn) {
-    FooterDiv = (
-      <div className={FooterClass}>
-        <Back />
-        <div className={InFooterClass} {...other}>
-          {children}
-        </div>
-      </div>
-    );
-  } else {
-    FooterDiv = (
-      <div className={FooterClass}>
-        <div className={InFooterClass} {...other}>
-          {children}
-        </div>
-        {FooterContent}
-      </div>
-    );
-  }
-  return FooterDiv;
 };
 View.Bar = ({ className, children, ...other }) => (
   <div className={classnames.bind(style)('bar', className)} {...other}>

@@ -1,5 +1,5 @@
-import { Job } from '../data';
-import { LangStr } from '../components';
+import { Job } from '../data/index';
+import { LangStr } from '../components/index';
 import _ from 'lodash';
 
 const parseEncounter = db => ({

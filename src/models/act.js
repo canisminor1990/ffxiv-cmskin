@@ -1,4 +1,4 @@
-import { parseEncounter, parseCombatant } from '../utils/parseData';
+import { parseEncounter, parseCombatant } from '../services/parseData';
 import { LangStr } from '../components';
 import _ from 'lodash';
 

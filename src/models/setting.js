@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { getCookie, setCookie } from '../utils/cookie';
-import { Console } from '../utils/debug';
+import { getCookie, setCookie } from '../services/cookie';
+import { Console } from '../services/debug';
 
 let timekey = -1;
 const Setting = {

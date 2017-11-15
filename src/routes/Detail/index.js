@@ -32,6 +32,8 @@ const Detail = $ => {
   const ProgressList = [];
   const DataList = [];
   const ChartList = [];
+  const BarContent = [];
+  const FullHeader = [];
   const Name = path.basename($.location.pathname);
   const Data = $.Combatant[_.findIndex($.Combatant, item => item.name === Name)];
   const MyName = Data.isMy ? ($.nameActive ? $.name : Data.name) : Data.name;
@@ -101,37 +103,40 @@ const Detail = $ => {
     );
   });
 
-  return (
-    <View transparent={$.uiTrans} style={$.fullscreen ? { height: '100%' } : {}}>
-      <Header key="header" className={style.header}>
-        <Avatar size={$.uiMini ? '1.5rem' : '3rem'} deaths={Data.healing.deaths} job={MyImg} />
-        <div>
-          <div className={style.name}>{MyName}</div>
-          {$.uiMini ? null : (
-            <div className={style.role}>
-              <Lang id={`role.${Data.role}`} />: <Lang id={`role.${Data.job}`} />
-            </div>
-          )}
-        </div>
-      </Header>
-      <div key="progerss" className={style.progress}>
-        {ProgressList}
+  if (!$.uiMini) {
+    BarContent.push(
+      <Bar key="bar" style={!$.fullscreen ? { display: 'none' } : {}}>
+        <Lang id="detail.bar" />
+      </Bar>
+    );
+    FullHeader.push = $.uiMini ? null : (
+      <div className={style.role}>
+        <Lang id={`role.${Data.role}`} />: <Lang id={`role.${Data.job}`} />
       </div>
-      {$.uiMini ? null : (
-        <Bar key="bar" style={!$.fullscreen ? { display: 'none' } : {}}>
-          <Lang id="detail.bar" />
-        </Bar>
-      )}
-      <Content key="body" style={!$.fullscreen ? { display: 'none' } : {}}>
-        <div className={style.chartlist}>{ChartList}</div>
-        {DataList}
-      </Content>
-      <Split key="split" />
-      <Footer key="footer">
-        <Back />
-      </Footer>
-    </View>
-  );
+    );
+  }
+
+  return [
+    <Header key="header" className={style.header}>
+      <Avatar size={$.uiMini ? '1.5rem' : '3rem'} deaths={Data.healing.deaths} job={MyImg} />
+      <div>
+        <div className={style.name}>{MyName}</div>
+        {FullHeader}
+      </div>
+    </Header>,
+    <div key="progerss" className={style.progress}>
+      {ProgressList}
+    </div>,
+    BarContent,
+    <Content key="body" style={!$.fullscreen ? { display: 'none' } : {}}>
+      <div className={style.chartlist}>{ChartList}</div>
+      {DataList}
+    </Content>,
+    <Split key="split" />,
+    <Footer key="footer">
+      <Back />
+    </Footer>,
+  ];
 };
 
 export default connect(State)(Detail);

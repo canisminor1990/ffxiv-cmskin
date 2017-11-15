@@ -61,7 +61,7 @@ if (wsUri.indexOf('@HOST_PORT') !== -1) {
   }
 }
 
-class ActWebsocketInterface {
+class wsInterface {
   constructor(uri, path = 'MiniParse') {
     // url check
     const querySet = this.getQuerySet();
@@ -211,19 +211,4 @@ class ActWebsocketInterface {
   onBroadcastMessage(e) {}
 }
 
-class WebSocketImpl extends ActWebsocketInterface {
-  constructor(uri, path = 'MiniParse') {
-    super(uri, path);
-  }
-
-  onRecvMessage(e) {}
-
-  onBroadcastMessage(e) {
-    if (e.detail.msgtype == 'CombatData')
-      document.dispatchEvent(new CustomEvent('onOverlayDataUpdate', { detail: e.detail.msg }));
-  }
-}
-
-const webs = new WebSocketImpl(wsUri);
-
-export default { ActWebsocketInterface, WebSocketImpl, webs };
+export default wsInterface;

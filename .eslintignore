@@ -1,4 +1,5 @@
 **/node_modules/**
 **/vendor.js
-**/debug.js
-**/ActWebsocket.js
+src/services/debug.js
+src/services/wsInterface.js
+src/services/wsImpl.js

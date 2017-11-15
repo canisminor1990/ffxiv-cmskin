@@ -51,18 +51,16 @@ export default () => {
     sidebar.push(<Icon key={item.name} type={item.icon} to={to} />);
     route.push(<Route key={to} path={to} component={item.component} />);
   });
-  return (
-    <View style={{ height: '100%' }}>
-      <Header key="header">
-        <Lang id="setting.header" />
-      </Header>
-      <Bar className={style.bar}>
-        <Lang id={Doc[window.location.pathname].name} />
-      </Bar>
-      <div className={style.flex}>
-        <div className={style.left}>{sidebar}</div>
-        <div className={style.right}>{route}</div>
-      </div>
-    </View>
-  );
+  return [
+    <Header key="header">
+      <Lang id="setting.header" />
+    </Header>,
+    <Bar key="bar" className={style.bar}>
+      <Lang id={Doc[window.location.pathname].name} />
+    </Bar>,
+    <div key="content" className={style.flex}>
+      <div className={style.left}>{sidebar}</div>
+      <div className={style.right}>{route}</div>
+    </div>,
+  ];
 };

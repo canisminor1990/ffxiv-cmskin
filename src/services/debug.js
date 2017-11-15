@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { fakeData } from '../data';
+import { fakeData } from '../data/index';
 
 const Console = () => {};
 Console.log   = e => window.debug ? console.log(e) : null;
