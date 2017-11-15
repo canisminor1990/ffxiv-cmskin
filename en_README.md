@@ -3,6 +3,7 @@
 ![](http://qn.canisminor.cc/2017-11-14-1.png)
 
 [![](https://img.shields.io/github/tag/canisminor1990/ffxiv-cmskin.svg)](https://github.com/canisminor1990/ffxiv-cmskin)
+[![](https://img.shields.io/badge/Works%20with-ActWebsocket-green.svg)](https://github.com/ZCube/ACTWebSocket)
 [![](https://img.shields.io/badge/Works%20with-OverlayPlugin-green.svg)](https://github.com/hibiyasleep/OverlayPlugin)
 
 `ACT` `OverlayPlugin` `FFXIV` `React` `Redux`
