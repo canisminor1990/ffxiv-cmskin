@@ -6,7 +6,6 @@ import _ from 'lodash';
 export default ({ option, data, log, uiMini }) => {
   let Content = [];
   let Subtitle = [];
-
   if (window.active) {
     if (uiMini) {
       option.forEach(item =>

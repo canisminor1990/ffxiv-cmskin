@@ -10,7 +10,6 @@ import TabList from './TabList';
 import { getSetting } from '../../utils/getSetting';
 import _ from 'lodash';
 import Package from '../../../package.json';
-// import QRCode from 'qrcode.react';
 
 import style from './index.scss';
 
@@ -95,15 +94,22 @@ class Overlay extends Component {
 
     BarInner = $.uiMini ? null : <Bar key="bar">{BarInner}</Bar>;
 
-    const History = !window.active ? null : (
-      <div className={style.rightContent}>
-        <Link to="/team">
-          <Icon type="line-chart" />
+    const RightItem = [
+      window.websocket ? (
+        <Link to="/qrcode" key="qrcode">
+          <Icon type="scan" />
         </Link>
-        <Link to="/history">
-          <Icon type="clock-circle-o" />
-        </Link>
-      </div>
+      ) : null,
+      <Link to="/team" key="team">
+        <Icon type="line-chart" />
+      </Link>,
+      <Link to="/history" key="history">
+        <Icon type="clock-circle-o" />
+      </Link>,
+    ];
+
+    const RightContent = !window.active ? null : (
+      <div className={style.rightContent}>{RightItem}</div>
     );
 
     return [
@@ -113,7 +119,7 @@ class Overlay extends Component {
       BarInner,
       <Content key="body">{ContentInner}</Content>,
       <Split key="split" />,
-      <Footer key="footer" rightContent={History}>
+      <Footer key="footer" rightContent={RightContent}>
         {FooterInner}
       </Footer>,
     ];

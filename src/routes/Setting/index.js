@@ -1,50 +1,51 @@
 import { Route } from 'dva/router';
+import dynamic from 'dva/dynamic';
 import { View, Icon, Lang } from '../../components';
 import style from './index.scss';
-import PageQuantity from './PageQuantity';
-import PageBasic from './PageBasic';
-import PageNormal from './PageNormal';
-import PageDetail from './PageDetail';
-import pageComment from './pageComment';
-import PageAbout from './PageAbout';
 import _ from 'lodash';
 
 const { Bar, Header } = View;
+const PageQuantity = dynamic({ component: () => import('./PageQuantity') });
+const PageBasic = dynamic({ component: () => import('./PageBasic') });
+const PageNormal = dynamic({ component: () => import('./PageNormal') });
+const PageDetail = dynamic({ component: () => import('./PageDetail') });
+const pageComment = dynamic({ component: () => import('./pageComment') });
+const PageAbout = dynamic({ component: () => import('./PageAbout') });
+
+const Doc = {
+  '/setting/basic': {
+    name: 'setting.basic',
+    icon: 'laptop',
+    component: PageBasic,
+  },
+  '/setting/quantity': {
+    name: 'setting.quantity',
+    icon: 'bar-chart',
+    component: PageQuantity,
+  },
+  '/setting/normal': {
+    name: 'setting.normal',
+    icon: 'bars',
+    component: PageNormal,
+  },
+  '/setting/detail': {
+    name: 'setting.detail',
+    icon: 'idcard',
+    component: PageDetail,
+  },
+  '/setting/comment': {
+    name: 'setting.comment',
+    icon: 'message',
+    component: pageComment,
+  },
+  '/setting/about': {
+    name: 'setting.about',
+    icon: 'github',
+    component: PageAbout,
+  },
+};
 
 export default () => {
-  const Doc = {
-    '/setting/basic': {
-      name: 'setting.basic',
-      icon: 'laptop',
-      component: PageBasic,
-    },
-    '/setting/quantity': {
-      name: 'setting.quantity',
-      icon: 'bar-chart',
-      component: PageQuantity,
-    },
-    '/setting/normal': {
-      name: 'setting.normal',
-      icon: 'bars',
-      component: PageNormal,
-    },
-    '/setting/detail': {
-      name: 'setting.detail',
-      icon: 'idcard',
-      component: PageDetail,
-    },
-    '/setting/comment': {
-      name: 'setting.comment',
-      icon: 'message',
-      component: pageComment,
-    },
-    '/setting/about': {
-      name: 'setting.about',
-      icon: 'github',
-      component: PageAbout,
-    },
-  };
-
   const sidebar = [];
   const route = [];
   _.forEach(Doc, (item, to) => {

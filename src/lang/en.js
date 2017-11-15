@@ -94,6 +94,10 @@ export default {
   'history.header': 'History',
   'history.bar': 'Recent battle logs',
   'history.null': 'No Battle Log',
+  // qrcode
+  'qrcode.header': 'Mobile Sync',
+  'qrcode.null': 'Pls check the url',
+  'qrcode.scan': 'Scan to sync data',
   // setting
   'setting.header': 'Setting',
   'setting.basic': 'Basic Setting',

@@ -20,7 +20,7 @@ class App extends Component {
       this.props.dispatch(routerRedux.push('/setting/basic'));
     } else {
       const Scale = this.props.uiScaleActive ? this.props.uiScale : 1;
-      window.open('/setting/basic', '设置', `height=${640 * Scale}, width=${540 * Scale}`);
+      window.open('/setting/basic', '设置', `height=${680 * Scale}, width=${480 * Scale}`);
     }
   };
   handleReload = () => window.location.reload();

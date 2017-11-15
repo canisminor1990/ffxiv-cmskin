@@ -94,6 +94,10 @@ export default {
   'history.header': '历史记录',
   'history.bar': '显示最近30条战斗记录',
   'history.null': '暂无历史记录',
+  // qrcode
+  'qrcode.header': '手机同步',
+  'qrcode.null': '地址有误请检查',
+  'qrcode.scan': '扫码可同步至手机',
   // setting
   'setting.header': '设置',
   'setting.basic': '一般设置',

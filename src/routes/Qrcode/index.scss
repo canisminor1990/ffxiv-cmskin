@@ -1,0 +1,27 @@
+@import 'import';
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.qrcode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $c-yellow-light;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: 0.1rem solid $c-yellow;
+  overflow: hidden;
+  position: relative;
+  color: $c-bg;
+}
+.scan {
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
+  background: $c-bg-dark;
+  border-radius: 2rem;
+  margin-top: 1rem;
+}
