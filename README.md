@@ -29,7 +29,7 @@
 
 **ACTWebSocket：**
 - 下载最新版`ACTWebSocket`: [Latest](https://github.com/ZCube/ACTWebSocket/releases)
-- [√]开启Html服务器 [√]启动模板管理器
+- [x]开启Html服务器 [x]启动模板管理器
 - ACTWebSocket > 添加模板 > 拷贝下面的地址
 - 打开模板管理器 > 选择FFXIV - CanisMinor ActSkin > new
 
