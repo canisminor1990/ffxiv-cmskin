@@ -1,32 +1,32 @@
 import { connect } from 'dva';
-import { View, Button, Input, Message, Lang } from '../../../components';
-import { Component } from 'react';
+import { View, Input, Message, Lang } from '../../../components';
+import { PageComponent } from '../Page';
 import { Icon } from 'antd';
 import { getSetting } from '../../../utils/getSetting';
 import style from '../index.scss';
 
-const { Content, Footer, Split } = View;
+const { Content, Split } = View;
 const State = state => ({
   setting: state.setting,
 });
 
-const Setting = [
-  'qtDpsHigh',
-  'qtDpsLow',
-  'qtTankHigh',
-  'qtTankLow',
-  'qtHealHigh',
-  'qtHealLow',
-  'qtOverHealHigh',
-  'qtOverHealLow',
-  'qtUp',
-  'qtDown',
-];
+class Overlay extends PageComponent {
+  Setting = [
+    'qtDpsHigh',
+    'qtDpsLow',
+    'qtTankHigh',
+    'qtTankLow',
+    'qtHealHigh',
+    'qtHealLow',
+    'qtOverHealHigh',
+    'qtOverHealLow',
+    'qtUp',
+    'qtDown',
+  ];
 
-class Overlay extends Component {
   state = {
     timekey: 0,
-    ...getSetting(Setting, this.props.setting),
+    ...getSetting(this.Setting, this.props.setting),
   };
 
   inputOnChange = (e, name, isNumber) => {
@@ -37,21 +37,6 @@ class Overlay extends Component {
     } else {
       this.setState({ [name]: value });
     }
-  };
-
-  onDefault = () => {
-    const Default = {
-      timekey: this.state.timekey + 1,
-      ...getSetting(Setting, this.props.setting, true),
-    };
-    this.setState(Default);
-    Message.success(<Lang id="setting.message.reset" />);
-  };
-
-  onSave = () => {
-    this.setState({ timekey: this.state.timekey + 1 });
-    this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success(<Lang id="setting.message.apply" />);
   };
 
   render() {
@@ -96,17 +81,7 @@ class Overlay extends Component {
           {Group('overheal', ['qtOverHealHigh', 'qtOverHealLow'], ['low', 'high'], 'overHeal')}
         </div>
       </Content>,
-      <Split key="split" />,
-      <Footer className={style.foot} key="footer" hasBtn>
-        <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>
-            <Lang id="setting.btn.reset" />
-          </Button>
-          <Button onClick={this.onSave}>
-            <Lang id="setting.btn.apply" />
-          </Button>
-        </div>
-      </Footer>,
+      ...this.Footer,
     ];
   }
 }

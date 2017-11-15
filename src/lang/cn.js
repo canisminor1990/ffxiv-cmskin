@@ -47,6 +47,8 @@ const Splash = {
 
 export default {
   // basic
+  cn: '简体中文',
+  en: 'English',
   damage: '输出',
   healing: '治疗',
   tanking: '承伤',
@@ -60,6 +62,7 @@ export default {
   'menu.setting': '设置',
   'menu.refresh': '刷新',
   'menu.debug': '测试',
+  'menu.root': '恢复初始化',
   'menu.fullscreen.on': '折叠菜单',
   'menu.fullscreen.off': '展开菜单',
   'menu.uiTrans.on': '实体模式',
@@ -92,8 +95,6 @@ export default {
   'history.bar': '显示最近30条战斗记录',
   'history.null': '暂无历史记录',
   // setting
-  cn: '简体中文',
-  en: 'English',
   'setting.header': '设置',
   'setting.basic': '一般设置',
   'setting.quantity': '量化设置',
@@ -108,6 +109,7 @@ export default {
   'setting.message.reset': '重置成功',
   'setting.message.apply': '应用成功',
   'setting.message.error': '数值错误',
+  'setting.message.root': '设置已初始化',
   // setting.basic
   'setting.basic.split.lang': '语言',
   'setting.basic.lang': '语言 (Language)',

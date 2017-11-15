@@ -1,12 +1,16 @@
 #!/bin/bash
 
+echo '[Eslint] Start'
 yarn lint:es
+echo '[Eslint] Done'
 
 # Build
 read -p "Nead Build y/n: " BUILD
 if [ "$BUILD" = "y" ]
 then
-	yarn build:dist
+  echo '[Roadhog] Build'
+	yarn build
+	echo '[Roadhog] Done'
 fi
 
 # Tag list

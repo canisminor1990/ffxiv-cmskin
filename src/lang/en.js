@@ -47,6 +47,8 @@ const Splash = {
 
 export default {
   // basic
+  cn: '简体中文',
+  en: 'English',
   damage: 'Damage',
   healing: 'Healing',
   tanking: 'Tanking',
@@ -60,6 +62,7 @@ export default {
   'menu.setting': 'Setting',
   'menu.refresh': 'Refresh',
   'menu.debug': 'Debug',
+  'menu.root': 'Restore',
   'menu.fullscreen.on': 'Collapse',
   'menu.fullscreen.off': 'Extended',
   'menu.uiTrans.on': 'Opaque',
@@ -92,8 +95,6 @@ export default {
   'history.bar': 'Recent battle logs',
   'history.null': 'No Battle Log',
   // setting
-  cn: '简体中文',
-  en: 'English',
   'setting.header': 'Setting',
   'setting.basic': 'Basic Setting',
   'setting.quantity': 'Quantity Setting',
@@ -108,6 +109,7 @@ export default {
   'setting.message.reset': 'Reset Success',
   'setting.message.apply': 'Apply Success',
   'setting.message.error': 'Wrong Input',
+  'setting.message.root': 'Setting Restore',
   // setting.basic
   'setting.basic.split.lang': 'Language',
   'setting.basic.lang': 'Language (语言)',

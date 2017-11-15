@@ -1,36 +1,36 @@
 import { connect } from 'dva';
-import { View, Button, Checkbox, Input, Message, Select, Lang, LangStr } from '../../../components';
-import { Component } from 'react';
+import { View, Checkbox, Input, Message, Select, Lang, LangStr } from '../../../components';
+import { PageComponent } from '../Page';
 import { getSetting } from '../../../utils/getSetting';
 import style from '../index.scss';
 
-const { Content, Footer, Split } = View;
+const { Content, Split } = View;
 const State = state => ({
   setting: state.setting,
 });
 
-const Setting = [
-  'lang',
-  'name',
-  'nameActive',
-  'img',
-  'imgActive',
-  'pureHps',
-  'graphScale',
-  'graphTime',
-  'graphTimeActive',
-  'uiScale',
-  'uiScaleActive',
-  'uiTrans',
-  'uiMini',
-  'uiAutoMini',
-  'uiAutoMiniActive',
-];
+class Overlay extends PageComponent {
+  Setting = [
+    'lang',
+    'name',
+    'nameActive',
+    'img',
+    'imgActive',
+    'pureHps',
+    'graphScale',
+    'graphTime',
+    'graphTimeActive',
+    'uiScale',
+    'uiScaleActive',
+    'uiTrans',
+    'uiMini',
+    'uiAutoMini',
+    'uiAutoMiniActive',
+  ];
 
-class Overlay extends Component {
   state = {
     timekey: 0,
-    ...getSetting(Setting, this.props.setting),
+    ...getSetting(this.Setting, this.props.setting),
   };
 
   handleLangChange = value => {
@@ -50,22 +50,6 @@ class Overlay extends Component {
   checkboxOnChange = (e, name) => {
     const { checked } = e.target;
     this.setState({ [name]: checked });
-  };
-
-  onDefault = () => {
-    const Default = {
-      timekey: this.state.timekey + 1,
-      ...getSetting(Setting, this.props.setting, true),
-    };
-    this.setState(Default);
-    Message.success(<Lang id="setting.message.reset" />);
-  };
-
-  onSave = () => {
-    window.lang = this.state.lang;
-    this.setState({ timekey: this.state.timekey + 1 });
-    this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success(<Lang id="setting.message.apply" />);
   };
 
   render() {
@@ -119,17 +103,7 @@ class Overlay extends Component {
           {CheckItem('uiScaleActive', 'uiScale')}
         </div>
       </Content>,
-      <Split key="split" />,
-      <Footer className={style.foot} key="footer" hasBtn>
-        <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>
-            <Lang id="setting.btn.reset" />
-          </Button>
-          <Button onClick={this.onSave}>
-            <Lang id="setting.btn.apply" />
-          </Button>
-        </div>
-      </Footer>,
+      ...this.Footer,
     ];
   }
 }

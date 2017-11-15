@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
-import { View, Lang } from '../../components';
+import { View, Message, Lang, LangStr } from '../../components';
 import { getSetting } from '../../utils/getSetting';
 import style from './index.scss';
 
@@ -25,7 +25,13 @@ class App extends Component {
   };
   handleReload = () => window.location.reload();
   handleDebug = () => (window.debug = true);
-
+  handleRoot = () => {
+    Message.info(LangStr('setting.message.root'));
+    setTimeout(() => {
+      document.cookie = 'setting=false';
+      window.location.reload();
+    }, 1000);
+  };
   componentWillMount() {
     this.props.dispatch({ type: 'setting/root' });
     setInterval(() => this.props.dispatch({ type: 'setting/root' }), 2000);
@@ -46,14 +52,21 @@ class App extends Component {
         <Lang id={data ? `menu.${name}.on` : `menu.${name}.off`} />
       </MenuItem>
     );
-    const MenuItemGroup = isInSetting
-      ? null
-      : [
+    const MenuItemGroup = !isInSetting
+      ? [
           <div key="group" className={style.item}>
             {BuildMenuItem('fullscreen', $.fullscreen)}
             {BuildMenuItem('uiTrans', $.uiTrans)}
             {BuildMenuItem('uiMini', $.uiMini)}
             {BuildMenuItem('hideName', $.hideName)}
+          </div>,
+          <Split key="split" />,
+        ]
+      : [
+          <div key="group" className={style.item}>
+            <MenuItem key="setting" onClick={this.handleRoot}>
+              <Lang id="menu.root" />
+            </MenuItem>
           </div>,
           <Split key="split" />,
         ];
