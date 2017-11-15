@@ -15,7 +15,6 @@ import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
 const Setting = [
-  'fullscreen',
   'uiMini',
   'uiTrans',
   'uiAutoMini',

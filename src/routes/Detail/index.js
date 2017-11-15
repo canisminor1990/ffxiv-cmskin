@@ -8,7 +8,6 @@ import style from './index.scss';
 
 const { Header, Content, Bar, Footer, Split } = View;
 const Setting = [
-  'fullscreen',
   'uiTrans',
   'name',
   'nameActive',
@@ -105,7 +104,7 @@ const Detail = $ => {
 
   if (!$.uiMini) {
     BarContent.push(
-      <Bar key="bar" style={!$.fullscreen ? { display: 'none' } : {}}>
+      <Bar key="bar">
         <Lang id="detail.bar" />
       </Bar>
     );
@@ -128,7 +127,7 @@ const Detail = $ => {
       {ProgressList}
     </div>,
     BarContent,
-    <Content key="body" style={!$.fullscreen ? { display: 'none' } : {}}>
+    <Content key="body">
       <div className={style.chartlist}>{ChartList}</div>
       {DataList}
     </Content>,

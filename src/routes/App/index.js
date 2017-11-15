@@ -41,7 +41,6 @@ class App extends Component {
 
   render() {
     const $ = this.props;
-    $.fullscreen = true;
     // 设置UI缩放
     this.handleUiSize($.uiScaleActive ? 16 * $.uiScale : 16);
 
@@ -91,10 +90,7 @@ class App extends Component {
 
     const AppContent = [
       <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
-        <View
-          transparent={$.uiTrans}
-          style={$.fullscreen || this.state.tab === 'all' ? { height: '100%' } : {}}
-        >
+        <View transparent={$.uiTrans} style={{ height: '100%' }}>
           {$.children}
         </View>
       </ContextMenuTrigger>,
