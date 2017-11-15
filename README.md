@@ -7,9 +7,9 @@
 
 `ACT` `OverlayPlugin` `FFXIV` `React` `Redux`
 
-**FFXIV CanisMinor ActSkin:** [Online](http://ffxiv.canisminor.cc)
+**FFXIV CanisMinor ActSkin:** [🌱 Online](http://ffxiv.canisminor.cc)
 
-**README:** [English (EN)](en_README.md)
+**README:** [📙 English (EN)](en_README.md)
 
 ## OverView
 
@@ -27,15 +27,16 @@
 
 ## 安装 (2选1)
 
-**ACTWebSocket：**
-- 下载最新版`ACTWebSocket`: [Latest](https://github.com/ZCube/ACTWebSocket/releases)
-- [x]开启Html服务器 [x]启动模板管理器
+**ACTWebSocket (推荐)：**
+- 下载最新版`ACTWebSocket`: [🔗 Latest](https://github.com/ZCube/ACTWebSocket/releases)
+- ✅ 开启Html服务器
+- ✅ 启动模板管理器
 - ACTWebSocket > 添加模板 > 拷贝下面的地址
 - 打开模板管理器 > 选择FFXIV - CanisMinor ActSkin > new
 
 **OverlayPlugin：**
-- 下载最新版`OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
-- 或直接下载ACT整合包: [NGA](http://bbs.ngacn.cc/read.php?tid=12526945)
+- 下载最新版`OverlayPlugin`: [🔗 Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
+- 或直接下载ACT整合包: [🔗 NGA](http://bbs.ngacn.cc/read.php?tid=12526945)
 - DPS统计美化插件 > DPS统计（MiniParser）> 模板路径
 
 ```sh
@@ -94,33 +95,33 @@ http://ffxiv.canisminor.cc
 ## 关于量化
 
 **输出职业DPS判定:**
-- `> 140% 平均DPS` => `金`
-- `< 80% 平均DPS` => `紫`
+- `> 140% 平均DPS` => 😇
+- `< 80% 平均DPS` => 👿
 
 **坦克职业DPS判定:**
-- `> 80% 平均DPS` => `金`
-- `< 50% 平均DPS` => `紫`
+- `> 80% 平均DPS` => 😇
+- `< 50% 平均DPS` => 👿
 
 **治疗职业DPS判定:**
-- `> 60% 平均DPS` => `金`
-- `< 30% 平均DPS` => `紫`
+- `> 60% 平均DPS` => 😇
+- `< 30% 平均DPS` => 👿
 
 **举例:**
 ```sh
 D1:380 / D2:320 / T:200 / H:100
 团队平均DPS: 250
 
-输出: 紫 < 200 < 白 < 350 < 金
-坦克: 紫 < 125 < 白 < 200 < 金
-治疗: 紫 < 75 < 白 < 150 < 金
+输出: 👿 < 200 < ... < 350 < 😇
+坦克: 👿 < 125 < ... < 200 < 😇
+治疗: 👿 < 75 < ... < 150 < 😇
 ```
 
 **治疗职业过量判定:**
-- `过量 < 10%` => `金`
-- `过量 > 30%` => `紫`
+- `过量 < 10%` => 😇
+- `过量 > 30%` => 👿
 
 **升降判定:**
-- `10秒DPS > 120% 60秒DPS` => `↑`
+- `10秒DPS > 120% 60秒DPS` => `↑`⬆️⬆️⬆️⬆️
 - `10秒DPS < 80% 60秒DPS` => `↓`
 
 > PS:此为预设值，可在设置中调整
@@ -129,12 +130,13 @@ D1:380 / D2:320 / T:200 / H:100
 
 ## Q&A
 
-- **本地版本和浏览器版本不一致:** 恭喜你遇到了ACT强制缓存，请打开调试模式 > Network标签 > 勾选Disable Cache，再右键刷新界面
-- **不小心把UI调得过大导致无法重置:** 请打开调试模式 > Console > 输入`document.cookie="setting=false"` > 回车
+- **放大GUI:** 4K显示器调整UI缩放倍率至 `2`
+- **缩小GUI:** 请默认开启mini模式，如果依然觉得大，可以调整UI缩放倍率至 `0.x`
+- **无法合并宠物数据:** 请升级 `OverlayPlugin` 至 `0.3.3.14` 以上
+- **无数据传入等Bug:** 打开设置 > 右键菜单 > 恢复初始化
+- **无法恢复初始化:** 打开调试模式 > Console > 输入`document.cookie="setting=false"` > 回车
 - **无法调节窗口大小:** 请关闭ACT中的，锁定窗口和鼠标穿透，并不要启动皮肤的折叠模式，然后右下角调整窗口大小
-- **屏幕小挂件尺寸大:** 请默认开启mini模式，如果依然觉得大，可以调整UI缩放倍率至0.X
-- **4K显示器:** 调整UI缩放倍率至2
-- **无法合并宠物数据:** 请升级OverlayPlugin至0.3.3.14
+- **本地版本和线上不一致:** 恭喜你遇到了ACT强制缓存，请打开调试模式 > Network标签 > 勾选Disable Cache，再右键刷新界面
 
 <br />
 

@@ -7,9 +7,9 @@
 
 `ACT` `OverlayPlugin` `FFXIV` `React` `Redux`
 
-**FFXIV CanisMinor ActSkin:** [Online](http://ffxiv.canisminor.cc)
+**FFXIV CanisMinor ActSkin:** [🌱 Online](http://ffxiv.canisminor.cc)
 
-**README:** [简体中文 (CN)](README.md)
+**README:** [📙 简体中文 (CN)](README.md)
 
 ## OverView
 
@@ -25,14 +25,20 @@
 
 <br />
 
-## Setup
+## Setup (1 or 2)
 
-- Download Latest `OverlayPlugin`: [Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
+**ACTWebSocket (Recommand)：**
+- Download Latest `ACTWebSocket`: [🔗 Latest](https://github.com/ZCube/ACTWebSocket/releases)
+
+**OverlayPlugin：**
+- Download Latest `OverlayPlugin`: [🔗 Latest](https://github.com/hibiyasleep/OverlayPlugin/releases)
 - Act > MiniParser > Paste Url
 
 ```sh
 http://ffxiv.canisminor.cc
 ```
+
+## Language
 
 - To Change Language: Right Click > `设置` > Language > English > `应用`
 
@@ -41,6 +47,7 @@ http://ffxiv.canisminor.cc
 
 |Date|Version|Changelog|
 |---|---|---|
+|2017.11.13|v2.1.7|Support ActWebsocket|
 |2017.11.13|v2.1.6|Add English Version|
 |2017.11.13|v2.1.5|Add Overheal Progress|
 |2017.11.10|v2.1.4|Fix Load Setting Bug|
