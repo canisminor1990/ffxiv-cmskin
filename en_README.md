@@ -123,6 +123,16 @@ Heal: 👿 < 75 < ... < 150 < 😇
 
 <br />
 
+## Q&A
+
+- **Zoom out gui:** 4K screen could set the UiScale to `2`
+- **Zoom in gui:** if the mini mode still too large for u，set the UiScale to `0.x`
+- **Can't combine pet data:** update `OverlayPlugin` to `^0.3.3.14`
+- **Always waiting data:** Setting > right-click > restore
+- **Can't restore:** Open console > enter `document.cookie="setting=false"`
+- **Version cache:** Sometimes Act will force cache the html files，Open console > Network > Disable Cache，then right-click > reload
+
+<br />
 
 ## Link
 
