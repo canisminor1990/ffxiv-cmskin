@@ -31,8 +31,12 @@ app.start('#root');
 
 // 6. Other
 window.debug = false;
-window.wsURL = window.location.pathname;
-if (window.location.search.indexOf('?HOST_PORT=ws://') !== -1) window.websocket = true;
+
+if (window.location.search.indexOf('?HOST_PORT=ws://') !== -1) {
+  window.websocket = true;
+  window.wsURL = window.location.href;
+}
+
 if (process.env.NODE_ENV === 'development') {
   Debug();
 } else {

@@ -29,6 +29,7 @@ class App extends Component {
     Message.info(LangStr('setting.message.root'));
     setTimeout(() => {
       document.cookie = 'setting=false';
+      document.cookie = 'setting=false;path=/';
       window.location.reload();
     }, 1000);
   };
