@@ -41,6 +41,7 @@ class App extends Component {
 
   render() {
     const $ = this.props;
+    $.fullscreen = true;
     // 设置UI缩放
     this.handleUiSize($.uiScaleActive ? 16 * $.uiScale : 16);
 
@@ -57,7 +58,6 @@ class App extends Component {
     const MenuItemGroup = !isInSetting
       ? [
           <div key="group" className={style.item}>
-            {BuildMenuItem('fullscreen', $.fullscreen)}
             {BuildMenuItem('uiTrans', $.uiTrans)}
             {BuildMenuItem('uiMini', $.uiMini)}
             {BuildMenuItem('hideName', $.hideName)}
