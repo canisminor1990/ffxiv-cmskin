@@ -33,15 +33,11 @@
     }
   }
 }
-
+.iconTrans,
 .icon {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: $c-border;
-  box-shadow: 0 1px 1px 0 $c-border-highlight inset,
-    0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 1px 2px rgba(#000, 0.5),
-    0 2px 2px 2px rgba(#000, 0.5);
   padding: 4px;
   .iconInner {
     width: 100%;
@@ -50,14 +46,28 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: #363131;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px $c-bg-light inset, 0 0 0 2px #222,
-      0 3px 1px $c-border-highlight, 0 0 2px 1px $c-bg-dark;
   }
   img {
     height: 2rem;
     width: 2rem;
-    border: 2px solid #363131;
+    border: 2px solid transparent;
+  }
+}
+.iconTrans {
+  .iconInner {
+    background: rgba(#000, 0.6);
+    box-shadow: 0 0 0.2rem 0.2rem rgba(#000, 0.6);
+  }
+}
+.icon {
+  background: $c-border;
+  box-shadow: 0 1px 1px 0 $c-border-highlight inset,
+    0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 1px 2px rgba(#000, 0.5),
+    0 2px 2px 2px rgba(#000, 0.5);
+  .iconInner {
+    background: #363131;
+    box-shadow: 0 0 0 1px $c-bg-light inset, 0 0 0 2px #222,
+      0 3px 1px $c-border-highlight, 0 0 2px 1px $c-bg-dark;
   }
 }

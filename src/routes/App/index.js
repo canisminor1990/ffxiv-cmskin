@@ -108,9 +108,9 @@ class App extends Component {
         </ContextMenu>,
       ]
     ) : (
-      <div className={style.icon} onClick={this.handleFullscreen}>
+      <div className={$.uiTrans ? style.iconTrans : style.icon} onClick={this.handleFullscreen}>
         <div className={style.iconInner}>
-          <img src="/favicons/apple-touch-icon.png" />
+          <img src="/img/icon.png" />
         </div>
       </div>
     );
