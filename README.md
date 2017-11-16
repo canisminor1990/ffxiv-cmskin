@@ -1,3 +1,4 @@
+
 # CanisMinor ACT
 
 ![](http://qn.canisminor.cc/2017-11-14-1.png)
@@ -49,10 +50,12 @@ http://ffxiv.canisminor.cc
 
 
 
+
 ## 更新说明
 
 |日期|版本|改动|
 |---|---|---|
+|2017.11.16|v2.1.8|Add 新折叠模式/细节调整|
 |2017.11.13|v2.1.7|Add 支持ActWebsocket|
 |2017.11.13|v2.1.6|Add 英文版|
 |2017.11.13|v2.1.5|Add 过量进度条/新字体|
@@ -156,6 +159,7 @@ D1:380 / D2:320 / T:200 / H:100
 - **ID:** 男孩纸榨汁机(紫水)
 - **E-Mail:** <i@canisminor.cc>
 - **License:** MIT
+
 
 
 

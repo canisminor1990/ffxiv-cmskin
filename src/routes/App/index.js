@@ -23,6 +23,8 @@ class App extends Component {
       window.open('/setting/basic', '设置', `height=${680 * Scale}, width=${480 * Scale}`);
     }
   };
+  handleFullscreen = () =>
+    this.props.dispatch({ type: 'setting/update', payload: { fullscreen: true } });
   handleReload = () => window.location.reload();
   handleDebug = () => (window.debug = true);
   handleRoot = () => {
@@ -57,6 +59,7 @@ class App extends Component {
     const MenuItemGroup = !isInSetting
       ? [
           <div key="group" className={style.item}>
+            {BuildMenuItem('fullscreen', $.fullscreen)}
             {BuildMenuItem('uiTrans', $.uiTrans)}
             {BuildMenuItem('uiMini', $.uiMini)}
             {BuildMenuItem('hideName', $.hideName)}
@@ -88,21 +91,29 @@ class App extends Component {
       ),
     ];
 
-    const AppContent = [
-      <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
-        <View transparent={$.uiTrans} style={{ height: '100%' }}>
-          {$.children}
-        </View>
-      </ContextMenuTrigger>,
-      <ContextMenu key="menu" id="view" className={style.menu}>
-        <div className={style.title}>
-          <Lang id="menu.title" />
+    const AppContent = $.fullscreen ? (
+      [
+        <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
+          <View transparent={$.uiTrans} style={{ height: '100%' }}>
+            {$.children}
+          </View>
+        </ContextMenuTrigger>,
+        <ContextMenu key="menu" id="view" className={style.menu}>
+          <div className={style.title}>
+            <Lang id="menu.title" />
+          </div>
+          <Split />
+          {MenuItemGroup}
+          <div className={style.item}>{MenuItemGroupSec}</div>
+        </ContextMenu>,
+      ]
+    ) : (
+      <div className={style.icon} onClick={this.handleFullscreen}>
+        <div className={style.iconInner}>
+          <img src="/favicons/apple-touch-icon.png" />
         </div>
-        <Split />
-        {MenuItemGroup}
-        <div className={style.item}>{MenuItemGroupSec}</div>
-      </ContextMenu>,
-    ];
+      </div>
+    );
 
     return AppContent;
   }

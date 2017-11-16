@@ -1,5 +1,6 @@
 const Splash = {
   changelog: [
+    '|2017.11.16|v2.1.8|Add New CollapseMode|',
     '|2017.11.14|v2.1.7|Support ActWebsocket|',
     '|2017.11.13|v2.1.6|Add English Version|',
     '|2017.11.13|v2.1.5|Add Overheal Progress|',

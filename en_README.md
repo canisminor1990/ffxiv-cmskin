@@ -1,3 +1,4 @@
+
 # CanisMinor ACT
 
 ![](http://qn.canisminor.cc/2017-11-14-1.png)
@@ -44,10 +45,12 @@ http://ffxiv.canisminor.cc
 - To Change Language: Right Click > `设置` > Language > English > `应用`
 
 
+
 ## Changelog
 
 |Date|Version|Changelog|
 |---|---|---|
+|2017.11.16|v2.1.8|Add New CollapseMode|
 |2017.11.13|v2.1.7|Support ActWebsocket|
 |2017.11.13|v2.1.6|Add English Version|
 |2017.11.13|v2.1.5|Add Overheal Progress|
@@ -150,6 +153,7 @@ Heal: 👿 < 75 < ... < 150 < 😇
 - **ID:** 男孩纸榨汁机(紫水)
 - **E-Mail:** <i@canisminor.cc>
 - **License:** MIT
+
 
 
 
