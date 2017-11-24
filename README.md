@@ -33,6 +33,7 @@
 
 **ACTWebSocket (推荐)：**
 - 下载最新版`ACTWebSocket`: [🔗 Latest](https://github.com/ZCube/ACTWebSocket/releases)
+- NGA整合版请使用: [🔗整合版专用](https://coding.net/u/canisminor1990/p/act-websocket/git/archive/v1.0.0.zip)
 - ✅ 开启Html服务器
 - ✅ 启动模板管理器
 - ACTWebSocket > 添加模板 > 拷贝下面的地址
