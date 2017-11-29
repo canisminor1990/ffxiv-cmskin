@@ -9,11 +9,15 @@ const Author = [
   },
   {
     title: 'Online',
-    desc: <a href="https://canisminor.cc">ffxiv.canisminor.cc</a>,
+    desc: <a href="https://ffxiv.canisminor.cc">ffxiv.canisminor.cc</a>,
   },
 ];
 
 const Contact = [
+  {
+    title: '讨论群',
+    desc: '246243038',
+  },
   {
     title: 'QQ',
     desc: '40073838',
