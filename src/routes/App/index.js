@@ -11,6 +11,8 @@ const Setting = ['fullscreen', 'uiTrans', 'uiScale', 'uiScaleActive', 'uiMini', 
 const State = state => getSetting(Setting, state.setting);
 
 class App extends Component {
+  state = { fullscreen: true };
+
   handleUiSize = fontSize =>
     (document.getElementsByTagName('html')[0].style.fontSize = fontSize + 'px');
 
@@ -23,8 +25,11 @@ class App extends Component {
       window.open('/setting/basic', '设置', `height=${680 * Scale}, width=${480 * Scale}`);
     }
   };
-  handleFullscreen = () =>
-    this.props.dispatch({ type: 'setting/update', payload: { fullscreen: true } });
+  handleFullscreen = () => {
+    const newState = !this.state.fullscreen;
+    this.props.dispatch({ type: 'setting/update', payload: { fullscreen: newState } });
+    this.setState({ fullscreen: newState });
+  };
   handleReload = () => window.location.reload();
   handleDebug = () => (window.debug = true);
   handleRoot = () => {
@@ -95,6 +100,7 @@ class App extends Component {
       [
         <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
           <View transparent={$.uiTrans} style={{ height: '100%' }}>
+            <div className={style.fullscreenBtn} onClick={this.handleFullscreen} />
             {$.children}
           </View>
         </ContextMenuTrigger>,
