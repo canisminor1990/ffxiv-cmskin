@@ -100,7 +100,9 @@ class App extends Component {
       [
         <ContextMenuTrigger key="menuTrigger" id="view" holdToDisplay={-1}>
           <View transparent={$.uiTrans} style={{ height: '100%' }}>
-            <div className={style.fullscreenBtn} onClick={this.handleFullscreen} />
+            <div className={style.fullscreenBtn} onClick={this.handleFullscreen}>
+              <div className={style.fullscreenBtnInner} />
+            </div>
             {$.children}
           </View>
         </ContextMenuTrigger>,

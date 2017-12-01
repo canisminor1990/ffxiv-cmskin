@@ -61,6 +61,7 @@
   }
 }
 .icon {
+  cursor: pointer;
   background: $c-border;
   box-shadow: 0 1px 1px 0 $c-border-highlight inset,
     0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 1px 2px rgba(#000, 0.5),
@@ -72,20 +73,28 @@
   }
 }
 .fullscreenBtn {
-  border-radius: 50%;
-  width: 0.8rem;
-  height: 0.8rem;
-  background: $c-border;
-  box-shadow: 0 1px 1px 0 $c-border-highlight inset,
-    0 0 1px 0 rgba($c-border-highlight, 0.5) inset, 0 0 1px 2px rgba(#000, 0.5),
-    0 2px 2px 2px rgba(#000, 0.5);
+  width: 3.8rem;
+  height: 3.8rem;
   position: fixed;
-  right: 1.5rem;
-  top: 1.5rem;
-  opacity: 0;
+  right: 0;
+  top: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
   transition-duration: 0.3s;
   &:hover {
     opacity: 1;
   }
+}
+
+.fullscreenBtnInner {
+  border-radius: 50%;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: $c-border;
+  box-shadow: 0 2px 2px 0 $c-border-highlight inset,
+    0 0 2px 0 rgba($c-border-highlight, 0.5) inset, 0 0 2px 2px rgba(#000, 0.5),
+    0 2px 2px 2px rgba(#000, 0.5);
 }
