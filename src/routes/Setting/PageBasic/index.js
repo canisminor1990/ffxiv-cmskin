@@ -17,6 +17,7 @@ class Overlay extends PageComponent {
     'img',
     'imgActive',
     'pureHps',
+    'graphHide',
     'graphScale',
     'graphTime',
     'graphTimeActive',
@@ -95,6 +96,7 @@ class Overlay extends PageComponent {
           <br />
           <Split className={style.title} id="setting.basic.split.statistics" />
           {CheckItem('graphTimeActive', 'graphTime')}
+          {CheckItem('graphHide')}
           {CheckItem('graphScale')}
           {CheckItem('pureHps')}
           <br />

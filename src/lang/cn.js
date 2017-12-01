@@ -1,5 +1,6 @@
 const Splash = {
   changelog: [
+    '|2017.12.01|v2.1.9|Add 可开关图表|',
     '|2017.11.16|v2.1.8|Add 新折叠模式/细节调整|',
     '|2017.11.14|v2.1.7|Add 支持ActWebsocket|',
     '|2017.11.13|v2.1.6|Add 英文版|',
@@ -126,6 +127,7 @@ export default {
   //
   'setting.basic.split.statistics': '统计',
   'setting.basic.graphTimeActive': '图表统计时长 (秒)',
+  'setting.basic.graphHide': '隐藏图表',
   'setting.basic.graphScale': '图表动态缩放',
   'setting.basic.pureHps': '过量不计入HPS',
   //

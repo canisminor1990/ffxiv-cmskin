@@ -11,6 +11,7 @@ const Setting = {
   img: '',
   imgActive: false,
   // Data
+  graphHide: false,
   graphTime: 30,
   graphTimeActive: false,
   graphScale: true,

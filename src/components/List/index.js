@@ -17,6 +17,7 @@ const Setting = [
   'img',
   'imgActive',
   'uiMini',
+  'graphHide',
   'graphScale',
   'pureHps',
   // Tag
@@ -135,9 +136,23 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
     if (!$.pureHps) overProgress = item.healing.over;
   }
 
+  const ChartView = $.graphHide ? null : (
+    <div className={style.chart}>
+      <Chart
+        graphScale={$.graphScale}
+        firstItem={firstTabData[tab]}
+        data={chart}
+        name={item.name}
+        tab={tab}
+        color={tabData[tab].color}
+        size={$.uiMini ? 20 : 32}
+      />
+    </div>
+  );
+
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
-      <div className={style.left}>
+      <div className={classnames.bind(style)('left', { leftWithoutGraph: $.graphHide })}>
         <Avatar
           deaths={item.healing.deaths}
           job={Img}
@@ -153,18 +168,8 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
           </div>
         </div>
       </div>
-      <div className={style.right}>
-        <div className={style.chart}>
-          <Chart
-            graphScale={$.graphScale}
-            firstItem={firstTabData[tab]}
-            data={chart}
-            name={item.name}
-            tab={tab}
-            color={tabData[tab].color}
-            size={$.uiMini ? 20 : 32}
-          />
-        </div>
+      <div className={classnames.bind(style)('right', { rightWithoutGraph: $.graphHide })}>
+        {ChartView}
         <Progress
           className={style.progress}
           arrow={upDown}

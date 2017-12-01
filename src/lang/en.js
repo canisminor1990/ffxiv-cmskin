@@ -1,5 +1,6 @@
 const Splash = {
   changelog: [
+    '|2017.12.01|v2.1.9|Add Graph On/Off|',
     '|2017.11.16|v2.1.8|Add New CollapseMode|',
     '|2017.11.14|v2.1.7|Support ActWebsocket|',
     '|2017.11.13|v2.1.6|Add English Version|',
@@ -125,6 +126,7 @@ export default {
   //
   'setting.basic.split.statistics': 'Statistics',
   'setting.basic.graphTimeActive': 'Chart Duration (s)',
+  'setting.basic.graphHide': 'Hide Chart',
   'setting.basic.graphScale': 'Chart Dynamic Scale',
   'setting.basic.pureHps': 'Hps Exclude Overheal',
   //

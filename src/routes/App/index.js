@@ -33,7 +33,7 @@ class App extends Component {
       document.cookie = 'setting=false';
       document.cookie = 'setting=false;path=/';
       window.location.reload();
-    }, 1000);
+    }, 500);
   };
 
   componentWillMount() {

@@ -24,13 +24,19 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 50%;
+  width: 49%;
+}
+.leftWithoutGraph {
+  width: 74%;
 }
 .right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 50%;
+  width: 49%;
+}
+.rightWithoutGraph {
+  width: 24%;
 }
 .header {
   min-width: 0;
