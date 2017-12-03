@@ -150,6 +150,8 @@ const ListView = ({ tab, chart, item, firstItem, hasDps, avps, isBattle, ...$ })
     </div>
   );
 
+  if (!tabData[tab].number || isNaN(tabData[tab].number) || tabData[tab].number === 0) return null;
+
   return (
     <Link to={path.join('/detail', item.name)} className={listClass}>
       <div className={classnames.bind(style)('left', { leftWithoutGraph: $.graphHide })}>
