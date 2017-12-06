@@ -19,7 +19,7 @@
 ![](http://qn.canisminor.cc/2017-11-14-3.png)
 ![](http://qn.canisminor.cc/2017-11-14-4.png)
 ![](http://qn.canisminor.cc/2017-11-14-5.png)
-![](http://qn.canisminor.cc/2017-11-16-12.png)
+![](http://qn.canisminor.cc/2017-12-06-12.png)
 ![](http://qn.canisminor.cc/2017-11-14-6.png)
 ![](http://qn.canisminor.cc/2017-11-16-13.png)
 ![](http://qn.canisminor.cc/2017-11-14-7.png)
@@ -58,6 +58,7 @@ http://ffxiv.canisminor.cc
 
 |日期|版本|改动|
 |---|---|---|
+|2017.12.01|v2.2.0|Adj 右键菜单,移出折叠增加初始化,折叠按钮移动至右上角|
 |2017.12.01|v2.1.9|Add 可开关图表|
 |2017.11.16|v2.1.8|Add 新折叠模式/细节调整|
 |2017.11.13|v2.1.7|Add 支持ActWebsocket|
@@ -142,7 +143,7 @@ D1:380 / D2:320 / T:200 / H:100
 - **放大GUI:** 4K显示器调整UI缩放倍率至 `2`
 - **缩小GUI:** 请默认开启mini模式，如果依然觉得大，可以调整UI缩放倍率至 `0.x`
 - **无法合并宠物数据:** 请升级 `OverlayPlugin` 至 `0.3.3.14` 以上
-- **无数据传入等Bug:** 打开设置 > 右键菜单 > 恢复初始化
+- **无数据传入等Bug:** 右键菜单 > 恢复初始化
 - **无法恢复初始化:** 打开调试模式 > Console > 输入`document.cookie="setting=false"` > 回车
 - **无法调节窗口大小:** 请关闭ACT中的，锁定窗口和鼠标穿透，并不要启动皮肤的折叠模式，然后右下角调整窗口大小
 - **本地版本和线上不一致:** 恭喜你遇到了ACT强制缓存，请打开调试模式 > Network标签 > 勾选Disable Cache，再右键刷新界面

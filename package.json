@@ -1,6 +1,6 @@
 {
 	"name": "ffxiv-cmskin",
-	"version": "2.1.9",
+	"version": "2.2.0",
 	"main": "dist/index.html",
 	"repository": [
 		"git@git.coding.net:canisminor1990/ffxiv-cmskin.git",

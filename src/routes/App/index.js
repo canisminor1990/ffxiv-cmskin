@@ -35,8 +35,8 @@ class App extends Component {
   handleRoot = () => {
     Message.info(LangStr('setting.message.root'));
     setTimeout(() => {
-      document.cookie = 'setting=false';
       document.cookie = 'setting=false;path=/';
+      document.cookie = 'setting=false';
       window.location.reload();
     }, 500);
   };
@@ -61,25 +61,15 @@ class App extends Component {
         <Lang id={data ? `menu.${name}.on` : `menu.${name}.off`} />
       </MenuItem>
     );
-    const MenuItemGroup = !isInSetting
-      ? [
-          <div key="group" className={style.item}>
-            {BuildMenuItem('fullscreen', $.fullscreen)}
-            {BuildMenuItem('uiTrans', $.uiTrans)}
-            {BuildMenuItem('uiMini', $.uiMini)}
-            {BuildMenuItem('hideName', $.hideName)}
-          </div>,
-          <Split key="split" />,
-        ]
-      : [
-          <div key="group" className={style.item}>
-            <MenuItem key="setting" onClick={this.handleRoot}>
-              <Lang id="menu.root" />
-            </MenuItem>
-          </div>,
-          <Split key="split" />,
-        ];
-
+    const MenuItemGroup = [
+      <div key="group" className={style.item}>
+        {BuildMenuItem('fullscreen', $.fullscreen)}
+        {BuildMenuItem('uiTrans', $.uiTrans)}
+        {BuildMenuItem('uiMini', $.uiMini)}
+        {BuildMenuItem('hideName', $.hideName)}
+      </div>,
+      <Split key="split" />,
+    ];
     const MenuItemGroupSec = [
       isInSetting ? null : (
         <MenuItem key="setting" onClick={this.handleSetting}>
@@ -88,6 +78,9 @@ class App extends Component {
       ),
       <MenuItem key="reload" onClick={this.handleReload}>
         <Lang id="menu.refresh" />
+      </MenuItem>,
+      <MenuItem key="setting" onClick={this.handleRoot}>
+        <Lang id="menu.root" />
       </MenuItem>,
       !isInDevelop ? null : (
         <MenuItem key="debug" onClick={this.handleDebug}>

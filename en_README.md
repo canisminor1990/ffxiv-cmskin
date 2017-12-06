@@ -19,7 +19,7 @@
 ![](http://qn.canisminor.cc/2017-11-14-3.png)
 ![](http://qn.canisminor.cc/2017-11-14-4.png)
 ![](http://qn.canisminor.cc/2017-11-14-5.png)
-![](http://qn.canisminor.cc/2017-11-16-12.png)
+![](http://qn.canisminor.cc/2017-12-06-12.png)
 ![](http://qn.canisminor.cc/2017-11-14-6.png)
 ![](http://qn.canisminor.cc/2017-11-16-13.png)
 ![](http://qn.canisminor.cc/2017-11-14-7.png)
@@ -52,6 +52,8 @@ http://ffxiv.canisminor.cc
 
 |Date|Version|Changelog|
 |---|---|---|
+|2017.12.01|v2.2.0|Adj CollapseMode btn move to right-top corner|
+|2017.12.01|v2.1.9|Add Graph On/Off|
 |2017.11.16|v2.1.8|Add New CollapseMode|
 |2017.11.13|v2.1.7|Support ActWebsocket|
 |2017.11.13|v2.1.6|Add English Version|
