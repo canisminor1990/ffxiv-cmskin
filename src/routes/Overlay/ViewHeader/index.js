@@ -17,10 +17,12 @@ export default ({ option, data, log, uiMini }) => {
       Subtitle = data.name !== 'Encounter' ? <span>{` · ${data.name}`}</span> : null;
     }
 
+    const DataZone = data.zone.replace(' ', '_').replace(/\(|\)/g, '');
+
     Content = (
       <span className={classnames.bind(style)('zone', { uiMini: uiMini })}>
         <a
-          href={`http://ff14.huijiwiki.com/wiki/${data.zone.split(' ')[0]}`}
+          href={`http://ff14.huijiwiki.com/wiki/${DataZone}`}
           rel="noopener noreferrer"
           target="_blank"
         >
