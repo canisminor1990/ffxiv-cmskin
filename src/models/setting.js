@@ -26,7 +26,7 @@ const Setting = {
   uiScale: 1,
   uiScaleActive: false,
   uiAutoMini: 5,
-  uiAutoMiniActive: true,
+  uiAutoMiniActive: false,
   // Detail
   normalFull: ['time', 'damage.ps', 'healing.deaths'],
   normalMini: ['damage.ps'],

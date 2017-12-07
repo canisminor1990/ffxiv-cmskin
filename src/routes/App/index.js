@@ -7,7 +7,16 @@ import { getSetting } from '../../utils/getSetting';
 import style from './index.scss';
 
 const { Split } = View;
-const Setting = ['fullscreen', 'uiTrans', 'uiScale', 'uiScaleActive', 'uiMini', 'hideName', 'lang'];
+const Setting = [
+  'fullscreen',
+  'uiTrans',
+  'uiScale',
+  'uiScaleActive',
+  'uiMini',
+  'uiAutoMiniActive',
+  'hideName',
+  'lang',
+];
 const State = state => getSetting(Setting, state.setting);
 
 class App extends Component {
@@ -65,7 +74,7 @@ class App extends Component {
       <div key="group" className={style.item}>
         {BuildMenuItem('fullscreen', $.fullscreen)}
         {BuildMenuItem('uiTrans', $.uiTrans)}
-        {BuildMenuItem('uiMini', $.uiMini)}
+        {$.uiAutoMiniActive ? null : BuildMenuItem('uiMini', $.uiMini)}
         {BuildMenuItem('hideName', $.hideName)}
       </div>,
       <Split key="split" />,
