@@ -119,7 +119,7 @@ export default {
   'setting.message.root': 'Setting Restore',
   // setting.basic
   'setting.basic.split.lang': 'Language',
-  'setting.basic.lang': 'Language (语言)',
+  'setting.basic.lang': 'Lang (语言)',
   //
   'setting.basic.split.personal': 'Personal',
   'setting.basic.nameActive': 'Nickname',
@@ -134,6 +134,9 @@ export default {
   'setting.basic.split.gui': 'Gui',
   'setting.basic.uiAutoMiniActive': 'Auto Mini (>num)',
   'setting.basic.uiScaleActive': 'UI Scale',
+  //
+  'setting.basic.split.history': 'History',
+  'setting.basic.historyLength': 'History Length',
   // setting.normal
   'setting.normal.normalFull': 'Full-mode Header Display',
   'setting.normal.normalMini': 'Mini-mode Header Display',

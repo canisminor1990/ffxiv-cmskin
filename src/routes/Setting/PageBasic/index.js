@@ -21,6 +21,7 @@ class Overlay extends PageComponent {
     'graphScale',
     'graphTime',
     'graphTimeActive',
+    'historyLength',
     'uiScale',
     'uiScaleActive',
     'uiTrans',
@@ -73,8 +74,8 @@ class Overlay extends PageComponent {
     );
 
     const LangItem = lang => (
-      <div className={style.listItem}>
-        <div className={style.listTitle}>
+      <div className={style.listLang}>
+        <div className={style.listLangTitle}>
           <Lang id={'setting.basic.' + lang} />
         </div>
         <Select
@@ -83,6 +84,19 @@ class Overlay extends PageComponent {
           options={['cn', 'en']}
           onChange={this.handleLangChange}
         />
+      </div>
+    );
+
+    const InputItem = lang => (
+      <div className={style.listItem}>
+        <span>
+          <div className={style.listTitle}>
+            <Lang id={'setting.basic.' + lang} />
+          </div>
+          <div className={style.listInput}>
+            <Input defaultValue={$[lang]} onChange={e => this.inputOnChange(e, lang)} />
+          </div>
+        </span>
       </div>
     );
     return [
@@ -103,6 +117,8 @@ class Overlay extends PageComponent {
           <Split className={style.title} id="setting.basic.split.gui" />
           {CheckItem('uiAutoMiniActive', 'uiAutoMini')}
           {CheckItem('uiScaleActive', 'uiScale')}
+          <Split className={style.title} id="setting.basic.split.history" />
+          {InputItem('historyLength')}
         </div>
       </Content>,
       ...this.Footer,

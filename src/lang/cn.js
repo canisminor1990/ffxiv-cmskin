@@ -120,7 +120,7 @@ export default {
   'setting.message.root': '设置已初始化',
   // setting.basic
   'setting.basic.split.lang': '语言',
-  'setting.basic.lang': '语言 (Language)',
+  'setting.basic.lang': '语言 (Lang)',
   //
   'setting.basic.split.personal': '个人',
   'setting.basic.nameActive': '自定义昵称',
@@ -135,6 +135,9 @@ export default {
   'setting.basic.split.gui': '界面',
   'setting.basic.uiAutoMiniActive': '自动切换迷你 (>人数)',
   'setting.basic.uiScaleActive': 'UI缩放 (倍)',
+  //
+  'setting.basic.split.history': '历史记录',
+  'setting.basic.historyLength': '历史记录条数',
   // setting.normal
   'setting.normal.normalFull': '完全模式顶部数据',
   'setting.normal.normalMini': '迷你模式顶部数据',

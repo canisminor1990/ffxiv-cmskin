@@ -131,12 +131,33 @@
   }
 }
 
-.listItem {
+.listItem,
+.listLang {
   display: flex;
-  font-size: 0.9rem;
-  line-height: 2rem;
+  align-items: center;
 }
+
+.listTitle,
+.listLangTitle {
+  font-size: 0.9rem;
+  width: 10.8rem;
+  color: $c-yellow-light;
+  line-height: 1;
+}
+
+.listItem {
+  height: 1.6rem;
+  padding: 0;
+  margin: 0 0 0.2rem !important;
+  > span {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .listTitle {
   width: 11.2rem;
-  color: $c-yellow-light;
+}
+.listInput {
+  flex: 1;
 }
