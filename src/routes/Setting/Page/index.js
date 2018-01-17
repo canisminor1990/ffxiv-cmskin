@@ -51,4 +51,4 @@ class PageComponent extends Component {
   ];
 }
 
-export default { PageComponent, FooterLite };
+export { PageComponent, FooterLite };

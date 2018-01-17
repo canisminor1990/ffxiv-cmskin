@@ -35,6 +35,17 @@
 <!-- script -->
 <% if (process.env.NODE_ENV === 'development') { %>
 <script type="text/javascript" src="/roadhog.dll.js"></script>
+<% }else { %>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112617256-2"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-112617256-2');
+</script>
+<!-- Baidu Tongji -->
+<script async src="https://hm.baidu.com/hm.js?4bd4ebaa032babcb958a74b644bb924b"></script>
 <% } %>
 </body>
 </html>

@@ -3,7 +3,6 @@ import dva from 'dva';
 import createLoading from 'dva-loading';
 import createHistory from 'history/createBrowserHistory';
 import Console from './utils/console';
-import BaiduTongji from './services/baiduTongji';
 import Debug from './services/debug';
 import './index.scss';
 
@@ -41,5 +40,4 @@ if (process.env.NODE_ENV === 'development') {
   Debug();
 } else {
   Console();
-  BaiduTongji();
 }
