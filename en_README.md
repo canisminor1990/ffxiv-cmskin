@@ -3,6 +3,7 @@
 
 ![](http://qn.canisminor.cc/2017-11-14-1.png)
 
+[![](https://img.shields.io/github/license/canisminor1990/ffxiv-cmskin.svg)](https://github.com/canisminor1990/ffxiv-cmskin/blob/master/LICENSE)
 [![](https://img.shields.io/github/tag/canisminor1990/ffxiv-cmskin.svg)](https://github.com/canisminor1990/ffxiv-cmskin)
 [![](https://img.shields.io/badge/Works%20with-ActWebsocket-green.svg)](https://github.com/ZCube/ACTWebSocket)
 [![](https://img.shields.io/badge/Works%20with-OverlayPlugin-green.svg)](https://github.com/hibiyasleep/OverlayPlugin)
@@ -156,7 +157,7 @@ Heal: 👿 < 75 < ... < 150 < 😇
 - **Author:** CanisMinor
 - **ID:** 男孩纸榨汁机(紫水)
 - **E-Mail:** <i@canisminor.cc>
-- **License:** MIT
+- **License:** [MIT](https://github.com/canisminor1990/ffxiv-cmskin/blob/master/LICENSE)
 
 
 
