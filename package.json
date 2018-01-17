@@ -1,18 +1,22 @@
 {
 	"name": "ffxiv-cmskin",
 	"version": "2.2.0",
-	"main": "dist/index.html",
-	"repository": [
-		"git@git.coding.net:canisminor1990/ffxiv-cmskin.git",
-		"git@github.com:canisminor1990/ffxiv-cmskin.git"
-	],
-	"author": "canisminor1990 <canisminor1990@gmail.com>",
+	"main": "src/index.html",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:canisminor1990/ffxiv-cmskin.git",
+		"coding": "git@git.coding.net:canisminor1990/ffxiv-cmskin.git"
+	},
+	"author": {
+		"name": "CanisMinor",
+		"email": "i@canisminor.cc",
+		"url": "https://canisminor.cc/"
+	},
 	"license": "MIT",
 	"scripts": {
 		"start": "roadhog server",
 		"publish": "bash ./script/publish.sh",
 		"build": "roadhog build",
-		"build:dll": "roadhog buildDll",
 		"nga": "gulp nga -m ",
 		"lint": "lint-staged",
 		"lint:es": "eslint --fix --ext .js src"
@@ -30,11 +34,8 @@
 			"git add"
 		]
 	},
-	"engines": {
-		"install-node": "6.9.2"
-	},
 	"dependencies": {
-		"antd": "^3.0.3",
+		"antd": "^3.1.0",
 		"babel-runtime": "^6.26.0",
 		"classnames": "^2.2.5",
 		"dva": "^2.1.0",

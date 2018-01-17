@@ -33,9 +33,7 @@
 <body>
 <div id="root"></div>
 <!-- script -->
-<% if (process.env.NODE_ENV === 'development') { %>
-<script type="text/javascript" src="/roadhog.dll.js"></script>
-<% }else { %>
+<% if (process.env.NODE_ENV !== 'development') { %>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112617256-2"></script>
 <script>
