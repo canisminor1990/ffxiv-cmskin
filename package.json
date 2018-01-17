@@ -26,6 +26,10 @@
 		"lint"
 	],
 	"lint-staged": {
+		"./**/*.md": [
+			"prettier --trailing-comma all --single-quote --write",
+			"git add"
+		],
 		"src/**/*.scss": [
 			"prettier --trailing-comma all --single-quote --write",
 			"git add"
