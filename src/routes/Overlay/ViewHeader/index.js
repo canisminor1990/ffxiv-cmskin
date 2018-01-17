@@ -1,6 +1,6 @@
 import classnames from 'classnames/bind';
 import style from './index.scss';
-import { LangStr } from '../../../components';
+import { Lang } from '../../../components';
 import _ from 'lodash';
 
 export default ({ option, data, log, uiMini }) => {
@@ -10,7 +10,7 @@ export default ({ option, data, log, uiMini }) => {
     if (uiMini) {
       option.forEach(item =>
         Subtitle.push(
-          <span key={item}>{` ${LangStr(`encounter.${item}`)}: ${_.result(data, item)}`}</span>
+          <span key={item}>{` ${Lang(`encounter.${item}`)}: ${_.result(data, item)}`}</span>
         )
       );
     } else {

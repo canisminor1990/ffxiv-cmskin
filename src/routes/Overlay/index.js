@@ -47,7 +47,7 @@ class Overlay extends Component {
     const tabClass = classnames.bind(style)('tab', { active: this.state.tab === tab });
     return (
       <span key={tab} className={tabClass} onClick={() => this.setState({ tab: tab })}>
-        <Lang id={`footer.${tab}`} />
+        {Lang(`footer.${tab}`)}
       </span>
     );
   };
@@ -55,11 +55,7 @@ class Overlay extends Component {
   render() {
     const $ = this.props;
 
-    let BarInner = (
-      <span className={style.title}>
-        <Lang id="normal.waiting" />
-      </span>
-    );
+    let BarInner = <span className={style.title}>{Lang('normal.waiting')}</span>;
     let ContentInner = <TabSplash data={Package} />;
     let FooterInner = [];
 
@@ -74,7 +70,7 @@ class Overlay extends Component {
 
       BarInner = $.normalFull.map(item => (
         <span key={item} className={style.title}>
-          <Lang id={`encounter.${item}`} />: {_.result($.Encounter, item)}
+          {Lang(`encounter.${item}`)}: {_.result($.Encounter, item)}
         </span>
       ));
 

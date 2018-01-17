@@ -2,7 +2,7 @@ import { connect } from 'dva';
 import { routerRedux } from 'dva/router';
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { Component } from 'react';
-import { View, Message, Lang, LangStr } from '../../components';
+import { View, Message, Lang } from '../../components';
 import { getSetting } from '../../utils/getSetting';
 import style from './index.scss';
 
@@ -42,7 +42,7 @@ class App extends Component {
   handleReload = () => window.location.reload();
   handleDebug = () => (window.debug = true);
   handleRoot = () => {
-    Message.info(LangStr('setting.message.root'));
+    Message.info(Lang('setting.message.root'));
     setTimeout(() => {
       document.cookie = 'setting=false;path=/';
       document.cookie = 'setting=false';
@@ -67,7 +67,8 @@ class App extends Component {
     // 规划右键菜单
     const BuildMenuItem = (name, data) => (
       <MenuItem key={name} onClick={() => this.handleClick({ [name]: !data })}>
-        <Lang id={data ? `menu.${name}.on` : `menu.${name}.off`} />
+        {Lang(data ? `menu.${name}.on` : `menu.${name}.off`)}
+        {}
       </MenuItem>
     );
     const MenuItemGroup = [
@@ -82,18 +83,18 @@ class App extends Component {
     const MenuItemGroupSec = [
       isInSetting ? null : (
         <MenuItem key="setting" onClick={this.handleSetting}>
-          <Lang id="menu.setting" />
+          {Lang('menu.setting')}
         </MenuItem>
       ),
       <MenuItem key="reload" onClick={this.handleReload}>
-        <Lang id="menu.refresh" />
+        {Lang('menu.refresh')}
       </MenuItem>,
-      <MenuItem key="setting" onClick={this.handleRoot}>
-        <Lang id="menu.root" />
+      <MenuItem key="root" onClick={this.handleRoot}>
+        {Lang('menu.root')}
       </MenuItem>,
       !isInDevelop ? null : (
         <MenuItem key="debug" onClick={this.handleDebug}>
-          <Lang id="menu.debug" />
+          {Lang('menu.debug')}
         </MenuItem>
       ),
     ];
@@ -109,9 +110,7 @@ class App extends Component {
           </View>
         </ContextMenuTrigger>,
         <ContextMenu key="menu" id="view" className={style.menu}>
-          <div className={style.title}>
-            <Lang id="menu.title" />
-          </div>
+          <div className={style.title}>{Lang('menu.title')}</div>
           <Split />
           {MenuItemGroup}
           <div className={style.item}>{MenuItemGroupSec}</div>

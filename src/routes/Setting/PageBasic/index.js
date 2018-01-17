@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { View, Checkbox, Input, Message, Select, Lang, LangStr } from '../../../components';
+import { View, Checkbox, Input, Message, Select, Lang } from '../../../components';
 import { PageComponent } from '../Page';
 import { getSetting } from '../../../utils/getSetting';
 import style from '../index.scss';
@@ -43,7 +43,7 @@ class Overlay extends PageComponent {
     let { value } = e.target;
     if (isNumber) value = parseFloat(value);
     if (!value) {
-      Message.error(<Lang id="setting.message.error" />);
+      Message.error(Lang('setting.message.error'));
     } else {
       this.setState({ [name]: value });
     }
@@ -59,14 +59,14 @@ class Overlay extends PageComponent {
 
     const CheckItem = (defaultChecked, inputValue, placeholder) => (
       <Checkbox
-        title={<Lang id={`setting.basic.${defaultChecked}`} />}
+        title={Lang(`setting.basic.${defaultChecked}`)}
         defaultChecked={$[defaultChecked]}
         onChange={e => this.checkboxOnChange(e, defaultChecked)}
       >
         {inputValue || placeholder ? (
           <Input
             defaultValue={$[inputValue]}
-            placeholder={LangStr(placeholder)}
+            placeholder={Lang(placeholder)}
             onChange={e => this.inputOnChange(e, inputValue)}
           />
         ) : null}
@@ -75,9 +75,7 @@ class Overlay extends PageComponent {
 
     const LangItem = lang => (
       <div className={style.listLang}>
-        <div className={style.listLangTitle}>
-          <Lang id={'setting.basic.' + lang} />
-        </div>
+        <div className={style.listLangTitle}>{Lang('setting.basic.' + lang)}</div>
         <Select
           defaultValue={$.lang}
           mode={false}
@@ -90,9 +88,7 @@ class Overlay extends PageComponent {
     const InputItem = lang => (
       <div className={style.listItem}>
         <span>
-          <div className={style.listTitle}>
-            <Lang id={'setting.basic.' + lang} />
-          </div>
+          <div className={style.listTitle}>{Lang('setting.basic.' + lang)}</div>
           <div className={style.listInput}>
             <Input defaultValue={$[lang]} onChange={e => this.inputOnChange(e, lang)} />
           </div>

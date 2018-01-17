@@ -20,11 +20,7 @@ const ChartView = ({
   let Config = {};
   if (!graphScale) Config = firstItem ? { min: 0, max: firstItem } : { min: 0 };
   if (!Data || Data.length <= 1) {
-    content = (
-      <div className={style.loading}>
-        <Lang id="placeholder.chart" />
-      </div>
-    );
+    content = <div className={style.loading}>{Lang('placeholder.chart')}</div>;
   } else {
     const Chart = createG2(chart => {
       chart.col('time', {

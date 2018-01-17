@@ -7,17 +7,13 @@ export default () => {
   const Qrcode = window.wsURL ? (
     <QRCode value={window.wsURL} bgColor="#eee1c5" fgColor="#333" size={160} level="Q" />
   ) : (
-    <Lang id="qrcode.null" />
+    Lang('qrcode.null')
   );
   return [
-    <Header key="header">
-      <Lang id="qrcode.header" />
-    </Header>,
+    <Header key="header">{Lang('qrcode.header')}</Header>,
     <Content className={style.content} key="content">
       <div className={style.qrcode}>{Qrcode}</div>
-      <div className={style.scan}>
-        <Lang id="qrcode.scan" />
-      </div>
+      <div className={style.scan}>{Lang('qrcode.scan')}</div>
     </Content>,
     <Split key="split" />,
     <Footer key="footer">

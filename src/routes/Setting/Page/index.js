@@ -19,14 +19,14 @@ class PageComponent extends Component {
       ...getSetting(this.Setting, this.props.setting, true),
     };
     this.setState(Default);
-    Message.success(<Lang id="setting.message.reset" />);
+    Message.success(Lang('setting.message.reset'));
   };
 
   onSave = () => {
     window.lang = this.state.lang;
     this.setState({ timekey: this.state.timekey + 1 });
     this.props.dispatch({ type: 'setting/update', payload: this.state });
-    Message.success(<Lang id="setting.message.apply" />);
+    Message.success(Lang('setting.message.apply'));
   };
 
   Footer = [
@@ -37,12 +37,8 @@ class PageComponent extends Component {
       hasBtn
       rightContent={
         <div className={style.btngroup}>
-          <Button onClick={this.onDefault}>
-            <Lang id="setting.btn.reset" />
-          </Button>
-          <Button onClick={this.onSave}>
-            <Lang id="setting.btn.apply" />
-          </Button>
+          <Button onClick={this.onDefault}>{Lang('setting.btn.reset')}</Button>
+          <Button onClick={this.onSave}>{Lang('setting.btn.apply')}</Button>
         </div>
       }
     >

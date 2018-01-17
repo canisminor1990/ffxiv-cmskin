@@ -1,7 +1,7 @@
 import { connect } from 'dva';
 import path from 'path';
 import _ from 'lodash';
-import { View, Avatar, Progress, Chart, Back, Lang, LangStr } from '../../components';
+import { View, Avatar, Progress, Chart, Back, Lang } from '../../components';
 import { getSetting } from '../../utils/getSetting';
 import { options } from '../../data';
 import style from './index.scss';
@@ -65,7 +65,7 @@ const Detail = $ => {
     ProgressList.push(
       <Progress
         key={key}
-        title={$.uiMini ? false : LangStr(item.value)}
+        title={$.uiMini ? false : Lang(item.value)}
         number={item.number}
         progress={item.progress}
         color={item.color}
@@ -91,9 +91,7 @@ const Detail = $ => {
           const Key = `${item.value}.${desc}`;
           return (
             <div key={desc} className={style.content}>
-              <div className={style.title}>
-                <Lang id={`combatant.${Key}`} />
-              </div>
+              <div className={style.title}>{Lang(`combatant.${Key}`)}</div>
               <div className={style.number}>{_.result(Data, Key)}</div>
             </div>
           );
@@ -103,14 +101,10 @@ const Detail = $ => {
   });
 
   if (!$.uiMini) {
-    BarContent.push(
-      <Bar key="bar">
-        <Lang id="detail.bar" />
-      </Bar>
-    );
+    BarContent.push(<Bar key="bar">{Lang('detail.bar')}</Bar>);
     FullHeader.push = $.uiMini ? null : (
       <div className={style.role}>
-        <Lang id={`role.${Data.role}`} />: <Lang id={`role.${Data.job}`} />
+        {Lang(`role.${Data.role}`)}: {Lang(`role.${Data.job}`)}
       </div>
     );
   }

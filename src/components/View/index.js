@@ -61,7 +61,7 @@ View.Split = ({ right, className, title, id, ...other }) => {
   return [
     id ? (
       <div key="title" className={style.title}>
-        <Lang id={id} />
+        {Lang(id)}
         {rightContent}
       </div>
     ) : null,

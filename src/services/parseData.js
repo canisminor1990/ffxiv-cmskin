@@ -1,5 +1,5 @@
 import { Job } from '../data/index';
-import { LangStr } from '../components/index';
+import { Lang } from '../components/index';
 import _ from 'lodash';
 
 const parseEncounter = db => ({
@@ -79,11 +79,11 @@ export { parseCombatant, parseEncounter };
 const parseName = db => {
   if (typeof db['name'] === 'undefined') return false;
   if (db['name'].indexOf('(') !== -1) {
-    return LangStr('role.chocobo');
+    return Lang('role.chocobo');
   } else if (db['name'].toLowerCase() === 'you') {
-    return LangStr('role.you');
+    return Lang('role.you');
   } else if (db['name'].toLowerCase() === 'limit break') {
-    return LangStr('role.limitbreak');
+    return Lang('role.limitbreak');
   } else {
     return db['name'];
   }
@@ -101,4 +101,4 @@ const parseJob = db => {
   }
 };
 
-const parseHighest = db => db.replace('unknown', LangStr('role.other'));
+const parseHighest = db => db.replace('unknown', Lang('role.other'));

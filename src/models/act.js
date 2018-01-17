@@ -1,5 +1,5 @@
 import { parseEncounter, parseCombatant } from '../services/parseData';
-import { LangStr } from '../components';
+import { Lang } from '../components';
 import _ from 'lodash';
 
 export default {
@@ -87,9 +87,9 @@ export default {
           if (data.length > historyLength) data.pop();
           data.unshift(parseData);
           data[1].Encounter.name = newEncounter.name;
-          data[0].Encounter.name = LangStr('header.save');
+          data[0].Encounter.name = Lang('header.save');
         } else {
-          parseData.Encounter.name = LangStr('header.inbattle');
+          parseData.Encounter.name = Lang('header.inbattle');
           data[0] = _.assign(data[0], parseData);
         }
 

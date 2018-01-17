@@ -33,7 +33,7 @@ class Overlay extends PageComponent {
     let { value } = e.target;
     if (isNumber) value = parseFloat(value);
     if (!value) {
-      Message.error(<Lang id="setting.message.error" />);
+      Message.error(Lang('setting.message.error'));
     } else {
       this.setState({ [name]: value });
     }
@@ -44,13 +44,9 @@ class Overlay extends PageComponent {
 
     const Item = (is, data, icon, desc = 'avDps') => (
       <div className={style.qtList}>
-        <span>
-          <Lang id={`setting.quantity.is.${is}`} />
-        </span>
+        <span>{Lang(`setting.quantity.is.${is}`)}</span>
         <Input defaultValue={$[data]} onChange={e => this.inputOnChange(e, data)} />
-        <span>
-          % <Lang id={`setting.quantity.desc.${desc}`} />
-        </span>
+        <span>% {Lang(`setting.quantity.desc.${desc}`)}</span>
         <span className={style.qtRight}>
           <Icon type="caret-right" />
         </span>

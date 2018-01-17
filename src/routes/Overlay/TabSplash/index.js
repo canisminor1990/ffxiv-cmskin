@@ -1,7 +1,7 @@
 import style from './index.scss';
 import { Component } from 'react';
 import { Icon } from 'antd';
-import { View, InfoList, Logo, LangStr, Lang } from '../../../components';
+import { View, InfoList, Logo, Lang } from '../../../components';
 
 const { Split } = View;
 
@@ -15,12 +15,12 @@ class Splash extends Component {
   HandleShowAll = type =>
     this.state[type] ? null : (
       <a key="showall" className={style.showall} onClick={() => this.setState({ [type]: true })}>
-        <Lang id="splash.more" /> <Icon type="caret-down" />
+        {Lang('splash.more')} <Icon type="caret-down" />
       </a>
     );
 
   MapList = type =>
-    LangStr(type).map((item, key) => {
+    Lang(type).map((item, key) => {
       if (!this.state[type] && key > 1) return;
       const Data = item.split('|');
       const title = Data[1];

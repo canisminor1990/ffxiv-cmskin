@@ -53,11 +53,9 @@ export default () => {
     route.push(<Route key={to} path={to} component={item.component} />);
   });
   return [
-    <Header key="header">
-      <Lang id="setting.header" />
-    </Header>,
+    <Header key="header">{Lang('setting.header')}</Header>,
     <Bar key="bar" className={style.bar}>
-      <Lang id={Doc[window.location.pathname].name} />
+      {Lang(Doc[window.location.pathname].name)}
     </Bar>,
     <div key="content" className={style.flex}>
       <div className={style.left}>{sidebar}</div>

@@ -55,9 +55,7 @@ export default ({ Encounter, Combatant }) => {
     <div className={style.desc}>
       {Info[type].map(item => (
         <div key={item} className={style.content}>
-          <div className={style.title}>
-            <Lang id={`encounter.${item}`} />
-          </div>
+          <div className={style.title}>{Lang(`encounter.${item}`)}</div>
           <div className={style.number}>{_.result(Encounter, item)}</div>
         </div>
       ))}

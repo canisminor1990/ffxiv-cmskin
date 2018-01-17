@@ -15,11 +15,7 @@ const State = state => ({
 const History = ({ data, dispatch, ...$ }) => {
   let content = [];
   !data[0]
-    ? (content = (
-        <div className={style.history}>
-          <Lang id="history.null" />
-        </div>
-      ))
+    ? (content = <div className={style.history}>{Lang('history.null')}</div>)
     : data.forEach((item, key) => {
         const { Encounter, Date } = item;
         const listClass = classnames.bind(style)('list', { active: key === $.historyPage });
@@ -41,13 +37,13 @@ const History = ({ data, dispatch, ...$ }) => {
 
   const BarContent = $.uiMini ? null : (
     <Bar key="bar" className={style.bar}>
-      <Lang id="history.bar" />
+      {Lang('history.bar')}
     </Bar>
   );
 
   return [
     <Header key="header" uiMini={$.uiMini}>
-      <Lang id="history.header" />
+      {Lang('history.header')}
     </Header>,
     BarContent,
     <Content key="content" className={style.content}>
