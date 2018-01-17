@@ -24,10 +24,7 @@
   },
   "pre-commit": ["lint"],
   "lint-staged": {
-    "**/*.md": [
-      "prettier --trailing-comma all --single-quote --write",
-      "git add"
-    ],
+    "*.md": ["prettier --trailing-comma all --single-quote --write", "git add"],
     "*.json": [
       "prettier --trailing-comma all --single-quote --write",
       "git add"
