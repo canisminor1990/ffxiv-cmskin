@@ -1,24 +1,26 @@
 import langData from '../../lang';
 
-export default ({ id }) => {
+const Lang = ({ id }) => {
   try {
     if (!window.lang) window.lang = 'cn';
-    return langData[window.lang][id].toString();
+    const Str = langData[window.lang][id].toString();
+    return Str || 'err';
   } catch (e) {
     console.log('No lang:', id);
-    return id.toString();
+    return id ? id.toString() : e;
   }
 };
 
 const LangStr = id => {
   try {
     if (!window.lang) window.lang = 'cn';
-    return langData[window.lang][id];
+    const Str = langData[window.lang][id];
+    return Str || 'err';
   } catch (e) {
     console.log(e);
     console.log('No lang:', id);
-    return id.toString();
+    return id ? id.toString() : e;
   }
 };
 
-export { LangStr };
+export { Lang, LangStr };

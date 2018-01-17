@@ -1,4 +1,4 @@
 export default {
-  cn: require('./cn'),
-  en: require('./en'),
+  cn: require('./cn').default,
+  en: require('./en').default,
 };

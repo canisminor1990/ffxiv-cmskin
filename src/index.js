@@ -18,12 +18,12 @@ const app = dva({
 app.use(createLoading());
 
 // 3. Model
-app.model(require('./models/setting'));
-app.model(require('./models/act'));
-app.model(require('./models/root'));
+app.model(require('./models/setting').default);
+app.model(require('./models/act').default);
+app.model(require('./models/root').default);
 
 // 4. Router
-app.router(require('./router'));
+app.router(require('./router').default);
 
 // 5. Start
 app.start('#root');
@@ -36,7 +36,7 @@ if (window.location.search.indexOf('?HOST_PORT=ws://') !== -1) {
   window.wsURL = window.location.href;
 }
 
-if (process.env.NODE_ENV === 'development') {
+if ($isDev) { // eslint-disable-line
   Debug();
 } else {
   Console();

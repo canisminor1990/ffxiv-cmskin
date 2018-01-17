@@ -62,7 +62,7 @@ class App extends Component {
 
     // 判断路径和环境
     const isInSetting = window.location.pathname.indexOf('setting') !== -1;
-    const isInDevelop = process.env.NODE_ENV === 'development';
+    const isInDevelop = $isDev; // eslint-disable-line
 
     // 规划右键菜单
     const BuildMenuItem = (name, data) => (

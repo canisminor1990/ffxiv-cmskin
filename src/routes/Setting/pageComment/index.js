@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import { View } from '../../../components';
 import { FooterLite } from '../Page';
 import style from '../index.scss';
@@ -11,17 +12,22 @@ const CHANGYAN_API = {
   conf: 'prod_e0ae268a3629c862b8790af46e93c5cb',
 };
 
-export default () => {
-  setTimeout(() => {
-    createNs();
-    createMobileNs();
-    loadVersionJs();
-    window.changyan.api.config(CHANGYAN_API, 100);
-  });
-  return [
-    <Content key="content" className={style.content}>
-      <div id="SOHUCS" className={cyStyle.command} />
-    </Content>,
-    <FooterLite key="foot" />,
-  ];
-};
+export default class extends Component {
+  componentWillMount() {
+    setTimeout(() => {
+      createNs();
+      createMobileNs();
+      loadVersionJs();
+      window.changyan.api.config(CHANGYAN_API, 100);
+    });
+  }
+
+  render() {
+    return [
+      <Content key="content" className={style.content}>
+        <div id="SOHUCS" className={cyStyle.command} />
+      </Content>,
+      <FooterLite key="foot" />,
+    ];
+  }
+}
