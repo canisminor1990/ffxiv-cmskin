@@ -24,7 +24,8 @@ module.exports = {
   globals: {
     'window': true,
     'document': true,
-    'navigator': true
+    'navigator': true,
+    '$isDev': true,
   },
   env: {
     'es6': true,

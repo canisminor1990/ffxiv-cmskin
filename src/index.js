@@ -36,7 +36,7 @@ if (window.location.search.indexOf('?HOST_PORT=ws://') !== -1) {
   window.wsURL = window.location.href;
 }
 
-if ($isDev) { // eslint-disable-line
+if ($isDev) {
   Debug();
 } else {
   Console();
