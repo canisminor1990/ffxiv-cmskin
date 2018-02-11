@@ -35,12 +35,12 @@ gulp.task('deploy', () => {
 		'qrcode',
 		'detail',
 		'setting',
-		'setting/overlay',
-		'setting/team',
-		'setting/history',
+		'setting/basic',
+		'setting/quantity',
+		'setting/normal',
 		'setting/detail',
-		'setting/qrcode',
-		'setting/setting'
+		'setting/comment',
+		'setting/about'
 	];
 	routesDir.forEach((route) => {
 		fs.copySync('docs/index.html', path.join('docs', route, 'index.html'));
