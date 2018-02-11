@@ -14,14 +14,14 @@ gulp.task('nga', nga);
 gulp.task('html', () => {
 	const options = {indentSize: 2};
 	gulp
-		.src('./dist/*.html')
+		.src('./docs/*.html')
 		.pipe(htmlbeautify(options))
 		.pipe(gulp.dest('./docs/'));
 });
 gulp.task('test', () => {
 	const options = {
 		server: {
-			baseDir   : './dist',
+			baseDir   : './docs',
 			middleware: [historyApiFallback()]
 		}
 	};
