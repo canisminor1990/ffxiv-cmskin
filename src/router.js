@@ -15,11 +15,11 @@ export default ({ app, history }) => {
       <Switch>
         <App>
           <Route exact path="/" component={Overlay} />
-          <Route exact path="team" component={Team} />
-          <Route exact path="history" component={History} />
-          <Route exact path="qrcode" component={Qrcode} />
-          <Route path="detail" component={Detail} />
-          <Route path="setting" component={Setting} />
+          <Route exact path="/team" component={Team} />
+          <Route exact path="/history" component={History} />
+          <Route exact path="/qrcode" component={Qrcode} />
+          <Route path="/detail" component={Detail} />
+          <Route path="/setting" component={Setting} />
         </App>
       </Switch>
     </Router>

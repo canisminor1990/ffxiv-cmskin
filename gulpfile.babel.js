@@ -16,7 +16,7 @@ gulp.task('html', () => {
 	gulp
 		.src('./dist/*.html')
 		.pipe(htmlbeautify(options))
-		.pipe(gulp.dest('./dist/'));
+		.pipe(gulp.dest('./docs/'));
 });
 gulp.task('test', () => {
 	const options = {
@@ -26,23 +26,4 @@ gulp.task('test', () => {
 		}
 	};
 	create.init(options);
-});
-
-gulp.task('deploy', () => {
-	const routesDir = [
-		'team',
-		'history',
-		'qrcode',
-		'detail',
-		'setting',
-		'setting/basic',
-		'setting/quantity',
-		'setting/normal',
-		'setting/detail',
-		'setting/comment',
-		'setting/about'
-	];
-	routesDir.forEach((route) => {
-		fs.copySync('docs/index.html', path.join('docs', route, 'index.html'));
-	});
 });

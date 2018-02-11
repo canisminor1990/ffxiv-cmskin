@@ -15,7 +15,7 @@
   "license": "MIT",
   "scripts": {
     "start": "DISABLE_ESLINT=1 roadhog dev",
-    "build": "DISABLE_ESLINT=1 roadhog build && gulp html && gulp deploy",
+    "build": "DISABLE_ESLINT=1 roadhog build && gulp html",
     "publish": "bash ./script/publish.sh",
     "test": "gulp test",
     "nga": "gulp nga -m ",
