@@ -1,7 +1,5 @@
 import gulp from 'gulp';
 import htmlbeautify from 'gulp-html-beautify';
-import fs from 'fs-extra';
-import path from 'path';
 import { create } from 'browser-sync';
 import historyApiFallback from 'connect-history-api-fallback';
 import Changelog from './script/changelog';
