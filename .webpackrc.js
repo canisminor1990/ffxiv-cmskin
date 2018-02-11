@@ -18,6 +18,7 @@ export default {
 			'qrcode.react'
 		]
 	},
+	outputPath         : './docs',
 	publicPath         : '/',
 	disableCSSModules  : false,
 	hash               : true,

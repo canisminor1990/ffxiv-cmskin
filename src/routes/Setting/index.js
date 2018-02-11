@@ -13,32 +13,32 @@ const pageComment = dynamic({ component: () => import('./pageComment') });
 const PageAbout = dynamic({ component: () => import('./PageAbout') });
 
 const Doc = {
-  '/setting/basic': {
+  'setting/basic': {
     name: 'setting.basic',
     icon: 'laptop',
     component: PageBasic,
   },
-  '/setting/quantity': {
+  'setting/quantity': {
     name: 'setting.quantity',
     icon: 'bar-chart',
     component: PageQuantity,
   },
-  '/setting/normal': {
+  'setting/normal': {
     name: 'setting.normal',
     icon: 'bars',
     component: PageNormal,
   },
-  '/setting/detail': {
+  'setting/detail': {
     name: 'setting.detail',
     icon: 'idcard',
     component: PageDetail,
   },
-  '/setting/comment': {
+  'setting/comment': {
     name: 'setting.comment',
     icon: 'message',
     component: pageComment,
   },
-  '/setting/about': {
+  'setting/about': {
     name: 'setting.about',
     icon: 'github',
     component: PageAbout,
