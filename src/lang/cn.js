@@ -1,5 +1,6 @@
 const Splash = {
   changelog: [
+    '|2019.11.01|v2.2.1|Add 添加青魔、舞者、绝枪战士图标和文字',
     '|2017.12.01|v2.2.0|Adj 右键菜单,移出折叠增加初始化,折叠按钮移动至右上角|',
     '|2017.12.01|v2.1.9|Add 可开关图表|',
     '|2017.11.16|v2.1.8|Add 新折叠模式/细节调整|',
@@ -196,6 +197,8 @@ export default {
   'role.nin': '忍者',
   'role.rdm': '赤魔',
   'role.sam': '武士',
+  'role.blu': '青魔',
+  'role.dnc': '舞者',
   'role.ast': '占星',
   'role.cnj': '幻术',
   'role.whm': '白魔',
@@ -205,6 +208,7 @@ export default {
   'role.war': '战士',
   'role.gla': '剑术',
   'role.pld': '骑士',
+  'role.gnb': '绝枪',
   'role.chocobo': '陆行鸟',
   'role.limitbreak': '极限技',
   // encounter

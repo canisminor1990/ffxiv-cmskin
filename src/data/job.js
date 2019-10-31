@@ -14,6 +14,8 @@ export default {
   nin: 'dps',
   rdm: 'dps',
   sam: 'dps',
+  blu: 'dps',
+  dnc: 'dps',
   ast: 'heal',
   cnj: 'heal',
   whm: 'heal',
@@ -23,6 +25,7 @@ export default {
   war: 'tank',
   gla: 'tank',
   pld: 'tank',
+  gnb: 'tank',
   chocobo: false,
   limitbreak: false,
 };

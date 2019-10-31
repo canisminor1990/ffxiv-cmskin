@@ -1,6 +1,6 @@
 {
   "name": "ffxiv-cmskin",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "main": "src/index.html",
   "repository": {
     "type": "git",
@@ -22,9 +22,14 @@
     "lint": "lint-staged",
     "lint:es": "eslint --fix --ext .js src"
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "lint-staged": {
-    "*.md": ["prettier --trailing-comma all --single-quote --write", "git add"],
+    "*.md": [
+      "prettier --trailing-comma all --single-quote --write",
+      "git add"
+    ],
     "*.json": [
       "prettier --trailing-comma all --single-quote --write",
       "git add"
@@ -33,8 +38,14 @@
       "prettier --trailing-comma all --single-quote --write",
       "git add"
     ],
-    "./*.js": ["eslint --fix", "git add"],
-    "src/**/*.js": ["eslint --fix", "git add"]
+    "./*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "antd": "^3.1.0",
