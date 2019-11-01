@@ -1,5 +1,6 @@
 const Splash = {
   changelog: [
+    '|2019.11.02|v2.2.2|Add Display NPC name in The Trust System|',
     '|2019.11.01|v2.2.1|Add Job icon and text for BlueMage, Dancer, Gunbreaker|',
     '|2017.12.01|v2.2.0|Adj CollapseMode btn move to right-top corner|',
     '|2017.12.01|v2.1.9|Add Graph On/Off|',

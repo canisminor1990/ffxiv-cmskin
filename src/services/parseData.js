@@ -1,6 +1,7 @@
 import { Job } from '../data/index';
 import { Lang } from '../components/index';
 import _ from 'lodash';
+import cacheResult from '../utils/cacheResult';
 
 const parseEncounter = db => ({
   time: db['duration'],
@@ -52,7 +53,7 @@ const parseHealing = db => ({
 
 const parseTanking = (db, Damage) => ({
   total: parseInt(db['damagetaken']),
-  percent: parseInt(db['damagetaken'] / Damage * 100) + '%',
+  percent: parseInt((db['damagetaken'] / Damage) * 100) + '%',
   parry: db['ParryPct'],
   block: db['BlockPct'],
   dodge: parseInt(100 - db['IncToHit']) + '%',
@@ -76,9 +77,28 @@ export { parseCombatant, parseEncounter };
 
 // 格式化方法
 
+/**
+ * check if a name is a npc in the trust system
+ * @param {string} name
+ * @returns {string|null}
+ */
+const isNpc = cacheResult(name => {
+  if (typeof name !== 'string') return null;
+  const npcName = Lang('npcName');
+  const match = name.match(/^(.+?) \((.+?)\)$/);
+  if (!match) return null;
+  // `阿莉塞 (玩家ID)`
+  if (npcName.indexOf(match[1]) !== -1) return match[1];
+  // `月长石宝石兽 (阿尔菲诺)`
+  if (npcName.indexOf(match[2]) !== -1) return name;
+  return null;
+});
+
 const parseName = db => {
   if (typeof db['name'] === 'undefined') return false;
-  if (db['name'].indexOf('(') !== -1) {
+  if (isNpc(db['name']) !== null) {
+    return isNpc(db['name']);
+  } else if (db['name'].indexOf('(') !== -1) {
     return Lang('role.chocobo');
   } else if (db['name'].toLowerCase() === 'you') {
     return Lang('role.you');
