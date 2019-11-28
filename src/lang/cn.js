@@ -1,5 +1,7 @@
 const Splash = {
   changelog: [
+    '|2019.11.02|v2.2.2|Add 显示亲信战友系统中 NPC 的名字|',
+    '|2019.11.01|v2.2.1|Add 添加青魔、舞者、绝枪战士图标和文字|',
     '|2017.12.01|v2.2.0|Adj 右键菜单,移出折叠增加初始化,折叠按钮移动至右上角|',
     '|2017.12.01|v2.1.9|Add 可开关图表|',
     '|2017.11.16|v2.1.8|Add 新折叠模式/细节调整|',
@@ -48,6 +50,18 @@ const Splash = {
     '|皮肤地址|http://ffxiv.canisminor.cc|',
   ],
 };
+
+const npcName = [
+  '水晶公',
+  '阿尔菲诺',
+  '阿莉塞',
+  '莱楠',
+  '桑克瑞德',
+  '于里昂热',
+  '敏菲利亚',
+  '雅·修特拉',
+  '琳',
+];
 
 export default {
   // basic
@@ -196,6 +210,8 @@ export default {
   'role.nin': '忍者',
   'role.rdm': '赤魔',
   'role.sam': '武士',
+  'role.blu': '青魔',
+  'role.dnc': '舞者',
   'role.ast': '占星',
   'role.cnj': '幻术',
   'role.whm': '白魔',
@@ -205,8 +221,11 @@ export default {
   'role.war': '战士',
   'role.gla': '剑术',
   'role.pld': '骑士',
+  'role.gnb': '绝枪',
   'role.chocobo': '陆行鸟',
   'role.limitbreak': '极限技',
+  // name list of NPC
+  npcName,
   // encounter
   'encounter.time': '时间',
   'encounter.damage.total': '总输出',

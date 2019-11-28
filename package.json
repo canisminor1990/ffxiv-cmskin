@@ -1,6 +1,6 @@
 {
   "name": "ffxiv-cmskin",
-  "version": "2.2.0",
+  "version": "2.2.2",
   "main": "src/index.html",
   "repository": {
     "type": "git",
@@ -14,17 +14,22 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "DISABLE_ESLINT=1 roadhog dev",
-    "build": "DISABLE_ESLINT=1 roadhog build && gulp html",
+    "start": "ESLINT=none roadhog dev",
+    "build": "ESLINT=none roadhog build && gulp html",
     "publish": "bash ./script/publish.sh",
     "test": "gulp test",
     "nga": "gulp nga -m ",
     "lint": "lint-staged",
     "lint:es": "eslint --fix --ext .js src"
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "lint-staged": {
-    "*.md": ["prettier --trailing-comma all --single-quote --write", "git add"],
+    "*.md": [
+      "prettier --trailing-comma all --single-quote --write",
+      "git add"
+    ],
     "*.json": [
       "prettier --trailing-comma all --single-quote --write",
       "git add"
@@ -33,12 +38,17 @@
       "prettier --trailing-comma all --single-quote --write",
       "git add"
     ],
-    "./*.js": ["eslint --fix", "git add"],
-    "src/**/*.js": ["eslint --fix", "git add"]
+    "./*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "antd": "^3.1.0",
-    "babel-runtime": "^6.26.0",
     "classnames": "^2.2.5",
     "dva": "^2.1.0",
     "dva-loading": "^1.0.4",
@@ -53,16 +63,14 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.31",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.31",
-    "@babel/preset-env": "^7.0.0-beta.31",
-    "@babel/preset-stage-0": "^7.0.0-beta.31",
-    "@babel/register": "^7.0.0-beta.31",
-    "@babel/runtime": "^7.0.0-beta.31",
-    "babel-eslint": "^8.0.0",
-    "babel-plugin-dva-hmr": "^0.4.0",
-    "babel-plugin-import": "^1.6.2",
-    "babel-plugin-lodash": "^3.2.11",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.12.2",
+    "babel-plugin-lodash": "^3.3.4",
     "browser-sync": "^2.23.5",
     "connect-history-api-fallback": "^1.5.0",
     "cssnano": "^3.10.0",
@@ -78,7 +86,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "expect": "^1.20.2",
     "fs-extra": "^4.0.2",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-html-beautify": "^1.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
@@ -88,7 +96,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.9.2",
     "redbox-react": "^1.5.0",
-    "roadhog": "^2.1.0",
+    "roadhog": "^2.5.0-beta.4",
     "sass-loader": "^6.0.6"
   }
 }
