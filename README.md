@@ -164,6 +164,11 @@ D1:380 / D2:320 / T:200 / H:100
 
 <br />
 
+## Contributor
+
+- [SgLy](https://github.com/SgLy)
+- [SasarinoMARi](https://github.com/SasarinoMARi)
+
 ## Copyright
 
 - **Author:** CanisMinor
